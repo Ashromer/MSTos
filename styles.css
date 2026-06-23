@@ -1380,6 +1380,10 @@ footer {
     color: var(--text-secondary);
     margin-bottom: 1.2rem;
 }
+.about-bio strong {
+    font-weight: 600;
+    color: var(--text-primary);
+}
 
 .about-cv-platforms {
     margin-top: 2rem;
