@@ -1,0 +1,17 @@
+# Media pesada — no versionar (estática, ~3.8 GB). Se versiona solo el código y la documentación.
+*.mp4
+*.png
+*.jpg
+*.jpeg
+*.JPG
+*.JPEG
+*.webp
+*.pdf
+*.psd
+*.rar
+
+# Temporales de trabajo
+scratch_*.py
+
+# Backups locales
+_backup_*/

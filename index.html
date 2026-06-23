@@ -1,0 +1,1637 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MSTos — Architecture, Visual & BIM Systems</title>
+    <meta name="description" content="Portfolio profesional de MSTos. Obra de arquitectura bioclimática, visualización avanzada en Unreal Engine 5 y programación de automatizaciones BIM.">
+    <!-- Google Fonts: Cormorant Garamond (Serif) & Montserrat (Sans-Serif) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Montserrat:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="lang-es">
+
+    <!-- Custom Cursor -->
+    <div class="custom-cursor"></div>
+    <div class="custom-cursor-follower"></div>
+
+    <!-- 1. LANDING PAGE SELECTOR (unstudio.com style - Full Screen Panels) -->
+    <section class="landing-selector" id="landing-selector">
+        <div class="selector-brand-floating">
+            <span class="brand-name">MSTos</span>
+            <span class="brand-sub">PORTFOLIO &copy; 2026</span>
+        </div>
+        
+        <div class="selector-grid">
+            <!-- Column 1: Architecture -->
+            <div class="selector-panel" data-tab="architecture">
+                <div class="panel-bg" style="background-image: url('assets/project_09.png');"></div>
+                <div class="panel-overlay"></div>
+                <div class="panel-content">
+                    <span class="panel-num">01 // SPATIAL</span>
+                    <h2 class="panel-title">
+                        <span class="lang-es">Arquitectura<br><span class="serif-italic">Bioclimática</span></span>
+                        <span class="lang-en">Bioclimatic<br><span class="serif-italic">Architecture</span></span>
+                    </h2>
+                    <p class="panel-desc">
+                        <span class="lang-es">Concursos internacionales, obra de cooperación social y proyectos de investigación espacial con enfoque ecológico de bajo impacto.</span>
+                        <span class="lang-en">International competitions, social cooperation work, and low-impact ecological spatial research.</span>
+                    </p>
+                    <span class="panel-btn-text">
+                        <span class="lang-es">Explorar Obra</span><span class="lang-en">Explore Work</span> <i data-lucide="arrow-right"></i>
+                    </span>
+                </div>
+            </div>
+
+            <!-- Column 2: Visualization -->
+            <div class="selector-panel" data-tab="visualization">
+                <div class="panel-bg" style="background-image: url('assets/00_RenderExterior.png');"></div>
+                <div class="panel-overlay"></div>
+                <div class="panel-content">
+                    <span class="panel-num">02 // VISUAL</span>
+                    <h2 class="panel-title">
+                        <span class="lang-es">Medios Inmersivos<br><span class="serif-italic">y Tiempo Real</span></span>
+                        <span class="lang-en">Immersive Media<br><span class="serif-italic">& Real-Time</span></span>
+                    </h2>
+                    <p class="panel-desc">
+                        <span class="lang-es">Visualizaciones hiperrealistas, cinemáticas fotorrealistas y entornos interactivos basados en Unreal Engine 5 y Twinmotion.</span>
+                        <span class="lang-en">Hyper-realistic visualizations, photorealistic cinematics, and interactive environments based on Unreal Engine 5.</span>
+                    </p>
+                    <span class="panel-btn-text">
+                        <span class="lang-es">Ver Renders</span><span class="lang-en">View Renders</span> <i data-lucide="arrow-right"></i>
+                    </span>
+                </div>
+            </div>
+
+            <!-- Column 3: Technology -->
+            <div class="selector-panel" data-tab="technology">
+                <div class="panel-bg" style="background-image: url('assets/project_17.png');"></div>
+                <div class="panel-overlay"></div>
+                <div class="panel-content">
+                    <span class="panel-num">03 // COMPUTATIONAL</span>
+                    <h2 class="panel-title">
+                        <span class="lang-es">Sistemas BIM<br><span class="serif-italic">y Código</span></span>
+                        <span class="lang-en">BIM Systems<br><span class="serif-italic">& Code</span></span>
+                    </h2>
+                    <p class="panel-desc">
+                        <span class="lang-es">Automatización Revit API, programación en Python para CNC con optimización snake-path y sincronización de datos de catálogo.</span>
+                        <span class="lang-en">Revit API automation, Python scripting for CNC with snake-path optimization, and catalog data sync.</span>
+                    </p>
+                    <span class="panel-btn-text">
+                        <span class="lang-es">Ejecutar Código</span><span class="lang-en">Execute Code</span> <i data-lucide="arrow-right"></i>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. MAIN WEBSITE STRUCTURE (Hidden by default, shown when a tab is selected) -->
+    <div class="main-wrapper-site hidden" id="main-wrapper-site">
+        
+        <!-- Header Navigation -->
+        <header>
+            <div class="header-container">
+                <a href="#" class="logo" id="logo-back">
+                    <span class="logo-name logo-full">MSTos</span>
+                    <span class="logo-name logo-minimal">MST</span>
+                    <span class="logo-title">Architecture, Visual & Code</span>
+                </a>
+                <nav class="nav-links">
+                    <button class="nav-link-btn" data-target="architecture">
+                        <span class="lang-es">Arquitectura</span><span class="lang-en">Architecture</span>
+                    </button>
+                    <button class="nav-link-btn" data-target="visualization">
+                        <span class="lang-es">Visualización</span><span class="lang-en">Visualization</span>
+                    </button>
+                    <button class="nav-link-btn" data-target="technology">
+                        <span class="lang-es">Tecnología</span><span class="lang-en">Technology</span>
+                    </button>
+                    <button class="nav-link-btn" data-target="about">
+                        <span class="lang-es">Quién Soy</span><span class="lang-en">About</span>
+                    </button>
+                    <button class="nav-link-btn" data-target="contact-page">
+                        <span class="lang-es">Contacto</span><span class="lang-en">Contact</span>
+                    </button>
+
+                    <!-- Language Selector Toggle -->
+                    <div class="lang-selector-nav">
+                        <button class="lang-btn active" data-lang="es">ES</button>
+                        <span class="lang-separator">/</span>
+                        <button class="lang-btn" data-lang="en">EN</button>
+                    </div>
+                </nav>
+                <button class="mobile-nav-toggle" aria-label="Abrir menú">
+                    <i data-lucide="menu"></i>
+                </button>
+            </div>
+        </header>
+
+        <!-- Main Content Areas -->
+        <main class="content-container">
+            
+            <!-- PANEL 1: ARCHITECTURE (Concursos y Cooperación - Estructura tipo play-time.es) -->
+            <section class="tab-panel" id="panel-architecture">
+                
+                <!-- Service Introduction Block -->
+                <div class="tab-intro-block">
+                    <div class="intro-content-wrapper">
+                        <span class="intro-tag">01 // Spatial Design</span>
+                        <h2 class="intro-title">
+                            <span class="lang-es">Arquitectura Bioclimática & Obra Social</span>
+                            <span class="lang-en">Bioclimatic Architecture & Social Work</span>
+                        </h2>
+                        <p class="intro-desc">
+                            <span class="lang-es">Diseño pasivo de bajo impacto ambiental y alta inercia térmica. Especializado en concursos internacionales y proyectos de cooperación comunitaria. Utilización de materiales locales (tierra, bambú, madera) combinados con uniones tradicionales y simulaciones termodinámicas avanzadas para eliminar el acondicionamiento artificial.</span>
+                            <span class="lang-en">Low-impact passive design and high thermal inertia. Specializing in international competitions and community cooperation projects. Using local materials (earth, bamboo, timber) combined with traditional joinery and advanced thermodynamic simulations to eliminate artificial climate systems.</span>
+                        </p>
+                        <div class="logo-band">
+                            <button class="logo-band-item" data-scroll-to="waraqa" aria-label="Escuela Waraqa"><img src="content/arquitectura/waraqa/logo.png" alt="Waraqa"><span class="logo-band-label">Waraqa</span></button>
+                            <button class="logo-band-item" data-scroll-to="orkide" aria-label="Refugios Orkide"><img src="content/arquitectura/orkide/logo.png" alt="Orkide"><span class="logo-band-label">Orkide</span></button>
+                            <button class="logo-band-item" data-scroll-to="lighthouse" aria-label="Faro de Cooperación"><img src="content/arquitectura/lighthouse/logo.png" alt="Kaira Looro"><span class="logo-band-label">Kaira Looro</span></button>
+                            <button class="logo-band-item" data-scroll-to="barbate" aria-label="Torre en Barbate"><img src="content/arquitectura/barbate/logo.png" alt="Barbate"><span class="logo-band-label">Barbate</span></button>
+                            <button class="logo-band-item" data-scroll-to="tfm" aria-label="Erosión / Oasis"><img src="content/arquitectura/tfm/logo.jpg" alt="TFM"><span class="logo-band-label">Erosión / Oasis</span></button>
+                            <button class="logo-band-item" data-scroll-to="campillos" aria-label="Rehabilitación Campillos"><img src="content/arquitectura/campillos/logo.jpg" alt="Campillos"><span class="logo-band-label">Campillos</span></button>
+                            <button class="logo-band-item" data-scroll-to="puerto-torre" aria-label="Puerto de la Torre"><img src="content/arquitectura/puerto-torre/logo.png" alt="Puerto de la Torre"><span class="logo-band-label">Puerto de la Torre</span></button>
+                            <button class="logo-band-item" data-scroll-to="colonizar-fabrica" aria-label="Cómo colonizar una fábrica"><img src="content/arquitectura/colonizar-fabrica/logo.jpg" alt="Colonizar Fábrica"><span class="logo-band-label">Colonizar Fábrica</span></button>
+                        </div>
+                        <div class="intro-scroll-hint">
+                            <span class="lang-es">Desliza para explorar proyectos</span>
+                            <span class="lang-en">Scroll to explore projects</span>
+                            <i data-lucide="arrow-down"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Projects Navigation Strip (Visual Index) -->
+                <div class="projects-nav-strip">
+                    <!-- Project 1: Waraqa -->
+                    <div class="nav-strip-item" data-scroll-to="waraqa">
+                        <div class="nav-strip-left">
+                            <span class="nav-strip-num">01 //</span>
+                            <div class="nav-strip-text">
+                                <h4 class="nav-strip-title">
+                                    <span class="lang-es">Escuela Bioclimática Waraqa</span>
+                                    <span class="lang-en">Waraqa Bioclimatic School</span>
+                                </h4>
+                                <p class="nav-strip-meta">
+                                    <span class="lang-es">2022 / Cooperación / Mahandougou, Côte d'Ivoire</span>
+                                    <span class="lang-en">2022 / Cooperation / Mahandougou, Ivory Coast</span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="nav-strip-center">
+                            <img src="assets/Autocad Logo ONG.png" alt="Autocad Logo ONG" class="nav-strip-logo">
+                        </div>
+                        <div class="nav-strip-right">
+                            <img src="assets/Escuela.jpg" alt="Waraqa School" class="nav-strip-thumb">
+                        </div>
+                    </div>
+                    
+                    <!-- Project 2: Orkide -->
+                    <div class="nav-strip-item" data-scroll-to="orkide">
+                        <div class="nav-strip-left">
+                            <span class="nav-strip-num">02 //</span>
+                            <div class="nav-strip-text">
+                                <h4 class="nav-strip-title">
+                                    <span class="lang-es">Refugios Bioclimáticos Orkide</span>
+                                    <span class="lang-en">Orkide Bioclimatic Shelters</span>
+                                </h4>
+                                <p class="nav-strip-meta">
+                                    <span class="lang-es">2019 / Concurso / B4H Refugee Camp, Turquía-Siria</span>
+                                    <span class="lang-en">2019 / Competition / B4H Refugee Camp, Turkey-Syria</span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="nav-strip-center">
+                            <img src="assets/Autocad Logo.png" alt="Autocad Logo" class="nav-strip-logo">
+                        </div>
+                        <div class="nav-strip-right">
+                            <img src="assets/4_Interior orquidea.png" alt="Orkide Shelter" class="nav-strip-thumb">
+                        </div>
+                    </div>
+
+                    <!-- Project 3: Lighthouse -->
+                    <div class="nav-strip-item" data-scroll-to="lighthouse">
+                        <div class="nav-strip-left">
+                            <span class="nav-strip-num">03 //</span>
+                            <div class="nav-strip-text">
+                                <h4 class="nav-strip-title">
+                                    <span class="lang-es">Faro de Cooperación (Kaira Looro)</span>
+                                    <span class="lang-en">Cooperation Lighthouse</span>
+                                </h4>
+                                <p class="nav-strip-meta">
+                                    <span class="lang-es">2022 / Concurso / Kaira Looro, Senegal</span>
+                                    <span class="lang-en">2022 / Competition / Kaira Looro, Senegal</span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="nav-strip-center">
+                            <img src="assets/Autocad Logo ONG.png" alt="Autocad Logo ONG" class="nav-strip-logo">
+                        </div>
+                        <div class="nav-strip-right">
+                            <img src="assets/3_Render 01.jpg" alt="Cooperation Lighthouse" class="nav-strip-thumb">
+                        </div>
+                    </div>
+
+                    <!-- Project 4: Barbate -->
+                    <div class="nav-strip-item" data-scroll-to="barbate">
+                        <div class="nav-strip-left">
+                            <span class="nav-strip-num">04 //</span>
+                            <div class="nav-strip-text">
+                                <h4 class="nav-strip-title">
+                                    <span class="lang-es">Torre en Barbate</span>
+                                    <span class="lang-en">Barbate Tower</span>
+                                </h4>
+                                <p class="nav-strip-meta">
+                                    <span class="lang-es">Arquitectura Residencial / Costa de Barbate, España</span>
+                                    <span class="lang-en">Residential Architecture / Coast of Barbate, Spain</span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="nav-strip-center">
+                            <img src="assets/Logo- CIP ARQUITECTOS.png" alt="CIP Arquitectos" class="nav-strip-logo">
+                        </div>
+                        <div class="nav-strip-right">
+                            <img src="assets/TorreEntera-enhanced.png" alt="Barbate Tower" class="nav-strip-thumb">
+                        </div>
+                    </div>
+
+                    <!-- Project 5: TFM -->
+                    <div class="nav-strip-item" data-scroll-to="tfm">
+                        <div class="nav-strip-left">
+                            <span class="nav-strip-num">05 //</span>
+                            <div class="nav-strip-text">
+                                <h4 class="nav-strip-title">
+                                    <span class="lang-es">Erosión / Oasis (TFM)</span>
+                                    <span class="lang-en">Erosion / Oasis (Master Thesis)</span>
+                                </h4>
+                                <p class="nav-strip-meta">
+                                    <span class="lang-es">TFM / Vivienda & Termalismo / Sierra Calderona, España</span>
+                                    <span class="lang-en">Master Thesis / Housing & Thermal Baths</span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="nav-strip-center">
+                            <img src="assets/Revit Logo.jpg" alt="Autodesk Revit" class="nav-strip-logo">
+                        </div>
+                        <div class="nav-strip-right">
+                            <img src="assets/R2_Oasis.jpg" alt="Erosion Oasis TFM" class="nav-strip-thumb">
+                        </div>
+                    </div>
+
+                    <!-- Project 6: Campillos -->
+                    <div class="nav-strip-item" data-scroll-to="campillos">
+                        <div class="nav-strip-left">
+                            <span class="nav-strip-num">06 //</span>
+                            <div class="nav-strip-text">
+                                <h4 class="nav-strip-title">
+                                    <span class="lang-es">Rehabilitación en Campillos</span>
+                                    <span class="lang-en">Campillos Rehabilitation</span>
+                                </h4>
+                                <p class="nav-strip-meta">
+                                    <span class="lang-es">2024 / Anteproyecto / Campillos, Málaga</span>
+                                    <span class="lang-en">2024 / Preliminary Project / Campillos, Spain</span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="nav-strip-center">
+                            <img src="assets/Revit Logo.jpg" alt="Autodesk Revit" class="nav-strip-logo">
+                        </div>
+                        <div class="nav-strip-right">
+                            <img src="assets/RenderExterior_Campillos.png" alt="Rehabilitación Campillos" class="nav-strip-thumb">
+                        </div>
+                    </div>
+
+                    <!-- Project 7: Puerto de la Torre -->
+                    <div class="nav-strip-item" data-scroll-to="puerto-torre">
+                        <div class="nav-strip-left">
+                            <span class="nav-strip-num">07 //</span>
+                            <div class="nav-strip-text">
+                                <h4 class="nav-strip-title">
+                                    <span class="lang-es">Puerto de la Torre Suelo</span>
+                                    <span class="lang-en">Puerto de la Torre Land Development</span>
+                                </h4>
+                                <p class="nav-strip-meta">
+                                    <span class="lang-es">2023 / Urbanismo / Los Morales, Málaga</span>
+                                    <span class="lang-en">2023 / Urban Planning / Los Morales, Spain</span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="nav-strip-center">
+                            <img src="assets/Logo-Picharchitects-01.png" alt="Picharchitects" class="nav-strip-logo">
+                        </div>
+                        <div class="nav-strip-right">
+                            <img src="assets/PuertoDeLaTorre.jpg" alt="Puerto de la Torre" class="nav-strip-thumb">
+                        </div>
+                    </div>
+
+                    <!-- Project 8: Colonizar una fábrica -->
+                    <div class="nav-strip-item" data-scroll-to="colonizar-fabrica">
+                        <div class="nav-strip-left">
+                            <span class="nav-strip-num">08 //</span>
+                            <div class="nav-strip-text">
+                                <h4 class="nav-strip-title">
+                                    <span class="lang-es">Cómo colonizar una fábrica (TFM)</span>
+                                    <span class="lang-en">How to Colonize a Factory (Master Thesis)</span>
+                                </h4>
+                                <p class="nav-strip-meta">
+                                    <span class="lang-es">2019 / TFM / Colonia Viladomiu Vell, Llobregat</span>
+                                    <span class="lang-en">2019 / Master Thesis / Viladomiu Vell, Spain</span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="nav-strip-center">
+                            <img src="assets/Revit Logo.jpg" alt="Autodesk Revit" class="nav-strip-logo">
+                        </div>
+                        <div class="nav-strip-right">
+                            <img src="assets/Comocolonizarunafabrica_fotoprincipal.jpg" alt="Cómo colonizar una fábrica" class="nav-strip-thumb">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project Block 1: Waraqa (PROTOTIPO plantilla a sangre .bleed) -->
+                <div class="project-section-block bleed" data-project="waraqa">
+                    <div class="block-slider">
+                        <div class="slider-wrapper">
+                            <div class="slide-item active"><img src="content/arquitectura/waraqa/01.jpg" alt="Waraqa Bioclimatic School"></div>
+                            <div class="slide-item">
+                                <video src="content/arquitectura/waraqa/02.mp4" controls loop muted playsinline style="width: 100%; height: 100%; object-fit: cover;"></video>
+                            </div>
+                            <div class="slide-item">
+                                <video src="content/arquitectura/waraqa/03.mp4" controls loop muted playsinline style="width: 100%; height: 100%; object-fit: cover;"></video>
+                            </div>
+                            <div class="slide-item">
+                                <video src="content/arquitectura/waraqa/04.mp4" controls loop muted playsinline style="width: 100%; height: 100%; object-fit: cover;"></video>
+                            </div>
+                        </div>
+                        <button class="block-arrow arrow-left"><i data-lucide="chevron-left"></i></button>
+                        <button class="block-arrow arrow-right"><i data-lucide="chevron-right"></i></button>
+                    </div>
+                    <div class="pf-scrim"></div>
+                    <div class="pf-overlay">
+                        <div class="pf-info">
+                            <h3 class="pf-name"><span class="lang-es">Escuela Bioclimática Waraqa</span><span class="lang-en">Waraqa Bioclimatic School</span></h3>
+                            <p class="pf-meta"><span class="lang-es">2022 / Mahandougou, Côte d'Ivoire / SUMUM ONG</span><span class="lang-en">2022 / Mahandougou, Ivory Coast / SUMUM NGO</span></p>
+                            <p class="pf-desc"><span class="lang-es">Co-diseño y dirección técnica de una escuela de dos plantas con la comunidad local: muros de Bloques de Tierra Comprimida (BTC), estructura de madera con uniones de caja y espiga y doble cubierta ventilada.</span><span class="lang-en">Co-design and technical management of a two-story school with the local community: Compressed Earth Block (CEB) walls, timber structure with mortise-and-tenon joints, and a double ventilated roof.</span></p>
+                        </div>
+                        <img class="pf-logo" src="content/arquitectura/waraqa/logo.png" alt="Waraqa Bioclimatic School logo">
+                        <div class="block-slide-dots pf-dots"></div>
+                    </div>
+                </div>
+
+                <!-- Project Block 2: Orkide -->
+                <div class="project-section-block bleed" data-project="orkide">
+                    <div class="block-slider">
+                        <div class="slider-wrapper">
+                            <div class="slide-item active"><img src="content/arquitectura/orkide/01.jpg" alt="Orkide Bioclimatic Shelters"></div>
+                            <div class="slide-item"><img src="content/arquitectura/orkide/02.png" alt="Orkide Bioclimatic Shelters"></div>
+                        </div>
+                        <button class="block-arrow arrow-left"><i data-lucide="chevron-left"></i></button>
+                        <button class="block-arrow arrow-right"><i data-lucide="chevron-right"></i></button>
+                    </div>
+                    <div class="pf-scrim"></div>
+                    <div class="pf-overlay">
+                        <div class="pf-info">
+                            <h3 class="pf-name"><span class="lang-es">Refugios Bioclimáticos Orkide</span><span class="lang-en">Orkide Bioclimatic Shelters</span></h3>
+                            <p class="pf-meta"><span class="lang-es">2019 / Concurso / B4H Refugee Camp, Turquía-Siria</span><span class="lang-en">2019 / Competition / B4H Refugee Camp, Turkey-Syria</span></p>
+                            <p class="pf-desc"><span class="lang-es">Refugios temporales para la auto-gestión de refugiados; la sección imita las tradicionales 'casas colmena' y extrae el aire caliente por un óculo superior de forma pasiva.</span><span class="lang-en">Temporary shelters for refugee self-management; the section mimics the traditional 'beehive houses' and passively extracts hot air through an upper oculus.</span></p>
+                        </div>
+                        <img class="pf-logo" src="content/arquitectura/orkide/logo.png" alt="Orkide Bioclimatic Shelters logo">
+                        <div class="block-slide-dots pf-dots"></div>
+                    </div>
+                </div>
+
+                <!-- Project Block 3: Kaira Looro -->
+                <div class="project-section-block bleed" data-project="lighthouse">
+                    <div class="block-slider">
+                        <div class="slider-wrapper">
+                            <div class="slide-item active"><img src="content/arquitectura/lighthouse/01.jpg" alt="Cooperation Lighthouse"></div>
+                            <div class="slide-item"><img src="content/arquitectura/lighthouse/02.jpg" alt="Cooperation Lighthouse"></div>
+                            <div class="slide-item"><img src="content/arquitectura/lighthouse/03.jpg" alt="Cooperation Lighthouse"></div>
+                            <div class="slide-item"><img src="content/arquitectura/lighthouse/04.jpg" alt="Cooperation Lighthouse"></div>
+                            <div class="slide-item">
+                                <video src="content/arquitectura/lighthouse/05.mp4" controls loop muted playsinline style="width: 100%; height: 100%; object-fit: cover;"></video>
+                            </div>
+                            <div class="slide-item">
+                                <video src="content/arquitectura/lighthouse/06.mp4" controls loop muted playsinline style="width: 100%; height: 100%; object-fit: cover;"></video>
+                            </div>
+                        </div>
+                        <button class="block-arrow arrow-left"><i data-lucide="chevron-left"></i></button>
+                        <button class="block-arrow arrow-right"><i data-lucide="chevron-right"></i></button>
+                    </div>
+                    <div class="pf-scrim"></div>
+                    <div class="pf-overlay">
+                        <div class="pf-info">
+                            <h3 class="pf-name"><span class="lang-es">Faro de Cooperación</span><span class="lang-en">Cooperation Lighthouse</span></h3>
+                            <p class="pf-meta"><span class="lang-es">2022 / Concurso / Kaira Looro, Senegal</span><span class="lang-en">2022 / Competition / Kaira Looro, Senegal</span></p>
+                            <p class="pf-desc"><span class="lang-es">Hito de bambú y laterita estabilizada que recoge agua de lluvia; los muros inclinados generan cámaras de aire para potenciar la ventilación natural.</span><span class="lang-en">A bamboo and stabilized-laterite landmark that harvests rainwater; inclined walls create internal air chambers to enhance natural ventilation.</span></p>
+                        </div>
+                        <img class="pf-logo" src="content/arquitectura/lighthouse/logo.png" alt="Cooperation Lighthouse logo">
+                        <div class="block-slide-dots pf-dots"></div>
+                    </div>
+                </div>
+
+                <!-- Project Block 4: Torre en Barbate -->
+                <div class="project-section-block bleed" data-project="barbate">
+                    <div class="block-slider">
+                        <div class="slider-wrapper">
+                            <div class="slide-item active"><img src="content/arquitectura/barbate/01.png" alt="Barbate Tower"></div>
+                        </div>
+                        <button class="block-arrow arrow-left"><i data-lucide="chevron-left"></i></button>
+                        <button class="block-arrow arrow-right"><i data-lucide="chevron-right"></i></button>
+                    </div>
+                    <div class="pf-scrim"></div>
+                    <div class="pf-overlay">
+                        <div class="pf-info">
+                            <h3 class="pf-name"><span class="lang-es">Torre en Barbate</span><span class="lang-en">Barbate Tower</span></h3>
+                            <p class="pf-meta"><span class="lang-es">Arquitectura Residencial / Costa de Barbate, España</span><span class="lang-en">Residential Architecture / Coast of Barbate, Spain</span></p>
+                            <p class="pf-desc"><span class="lang-es">Propuesta residencial costera con control solar pasivo; la modulación de la fachada genera un juego continuo de sombras.</span><span class="lang-en">Coastal residential proposal with passive solar control; facade modulation creates a continuous play of shadows.</span></p>
+                        </div>
+                        <img class="pf-logo" src="content/arquitectura/barbate/logo.png" alt="Barbate Tower logo">
+                        <div class="block-slide-dots pf-dots"></div>
+                    </div>
+                </div>
+
+                <!-- Project Block 5: TFM (Erosión / Oasis) -->
+                <div class="project-section-block bleed" data-project="tfm">
+                    <div class="block-slider">
+                        <div class="slider-wrapper">
+                            <div class="slide-item active"><img src="content/arquitectura/tfm/01.jpg" alt="Erosion / Oasis (Master Thesis)"></div>
+                            <div class="slide-item"><img src="content/arquitectura/tfm/02.jpg" alt="Erosion / Oasis (Master Thesis)"></div>
+                        </div>
+                        <button class="block-arrow arrow-left"><i data-lucide="chevron-left"></i></button>
+                        <button class="block-arrow arrow-right"><i data-lucide="chevron-right"></i></button>
+                    </div>
+                    <div class="pf-scrim"></div>
+                    <div class="pf-overlay">
+                        <div class="pf-info">
+                            <h3 class="pf-name"><span class="lang-es">Erosión / Oasis (TFM)</span><span class="lang-en">Erosion / Oasis (Master Thesis)</span></h3>
+                            <p class="pf-meta"><span class="lang-es">TFM / Vivienda & Termalismo / Sierra Calderona, España</span><span class="lang-en">Master Thesis / Housing & Thermal Baths / Sierra Calderona, Spain</span></p>
+                            <p class="pf-desc"><span class="lang-es">Arquitectura excavada en la roca que combina vivienda de investigación geobiológica y baños termales, integrada en la topografía y los flujos de agua termal.</span><span class="lang-en">Architecture carved into the rock combining geobiological research housing and thermal baths, integrated with topography and thermal water flows.</span></p>
+                        </div>
+                        <img class="pf-logo" src="content/arquitectura/tfm/logo.jpg" alt="Erosion / Oasis (Master Thesis) logo">
+                        <div class="block-slide-dots pf-dots"></div>
+                    </div>
+                </div>
+
+                <!-- Project Block 6: Campillos -->
+                <div class="project-section-block bleed" data-project="campillos">
+                    <div class="block-slider">
+                        <div class="slider-wrapper">
+                            <div class="slide-item active"><img src="content/arquitectura/campillos/01.png" alt="Campillos Rehabilitation"></div>
+                        </div>
+                        <button class="block-arrow arrow-left"><i data-lucide="chevron-left"></i></button>
+                        <button class="block-arrow arrow-right"><i data-lucide="chevron-right"></i></button>
+                    </div>
+                    <div class="pf-scrim"></div>
+                    <div class="pf-overlay">
+                        <div class="pf-info">
+                            <h3 class="pf-name"><span class="lang-es">Rehabilitación en Campillos</span><span class="lang-en">Campillos Rehabilitation</span></h3>
+                            <p class="pf-meta"><span class="lang-es">2024 / Anteproyecto / Campillos, Málaga</span><span class="lang-en">2024 / Preliminary Project / Campillos, Spain</span></p>
+                            <p class="pf-desc"><span class="lang-es">Rehabilitación de un inmueble en el casco histórico conservando fachada y volumetría originales, modelada íntegramente en Revit.</span><span class="lang-en">Restoration of a building in the historic center preserving the original facade and volume, fully modeled in Revit.</span></p>
+                        </div>
+                        <img class="pf-logo" src="content/arquitectura/campillos/logo.jpg" alt="Campillos Rehabilitation logo">
+                        <div class="block-slide-dots pf-dots"></div>
+                    </div>
+                </div>
+
+                <!-- Project Block 7: Puerto de la Torre -->
+                <div class="project-section-block bleed" data-project="puerto-torre">
+                    <div class="block-slider">
+                        <div class="slider-wrapper">
+                            <div class="slide-item active"><img src="content/arquitectura/puerto-torre/01.jpg" alt="Puerto de la Torre Land Development"></div>
+                        </div>
+                        <button class="block-arrow arrow-left"><i data-lucide="chevron-left"></i></button>
+                        <button class="block-arrow arrow-right"><i data-lucide="chevron-right"></i></button>
+                    </div>
+                    <div class="pf-scrim"></div>
+                    <div class="pf-overlay">
+                        <div class="pf-info">
+                            <h3 class="pf-name"><span class="lang-es">Puerto de la Torre Suelo</span><span class="lang-en">Puerto de la Torre Land Development</span></h3>
+                            <p class="pf-meta"><span class="lang-es">2023 / Urbanismo / Los Morales, Málaga</span><span class="lang-en">2023 / Urban Planning / Los Morales, Spain</span></p>
+                            <p class="pf-desc"><span class="lang-es">Ordenación parcelaria de un suelo residencial de 6.670 m² con parque lineal y camino verde de transición al cauce fluvial.</span><span class="lang-en">Master planning of a 6,670 m² residential plot with a linear park and green path transitioning to the riverbed.</span></p>
+                        </div>
+                        <img class="pf-logo" src="content/arquitectura/puerto-torre/logo.png" alt="Puerto de la Torre Land Development logo">
+                        <div class="block-slide-dots pf-dots"></div>
+                    </div>
+                </div>
+
+                <!-- Project Block 8: Cómo colonizar una fábrica -->
+                <div class="project-section-block bleed" data-project="colonizar-fabrica">
+                    <div class="block-slider">
+                        <div class="slider-wrapper">
+                            <div class="slide-item active"><img src="content/arquitectura/colonizar-fabrica/01.jpg" alt="How to Colonize a Factory"></div>
+                            <div class="slide-item"><img src="content/arquitectura/colonizar-fabrica/02.jpeg" alt="How to Colonize a Factory"></div>
+                            <div class="slide-item"><img src="content/arquitectura/colonizar-fabrica/03.jpg" alt="How to Colonize a Factory"></div>
+                            <div class="slide-item"><img src="content/arquitectura/colonizar-fabrica/04.jpeg" alt="How to Colonize a Factory"></div>
+                            <div class="slide-item"><img src="content/arquitectura/colonizar-fabrica/05.jpg" alt="How to Colonize a Factory"></div>
+                            <div class="slide-item"><img src="content/arquitectura/colonizar-fabrica/06.jpg" alt="How to Colonize a Factory"></div>
+                            <div class="slide-item"><img src="content/arquitectura/colonizar-fabrica/07.jpg" alt="How to Colonize a Factory"></div>
+                            <div class="slide-item"><img src="content/arquitectura/colonizar-fabrica/08.jpg" alt="How to Colonize a Factory"></div>
+                            <div class="slide-item"><img src="content/arquitectura/colonizar-fabrica/09.jpg" alt="How to Colonize a Factory"></div>
+                            <div class="slide-item"><img src="content/arquitectura/colonizar-fabrica/10.jpg" alt="How to Colonize a Factory"></div>
+                            <div class="slide-item"><img src="content/arquitectura/colonizar-fabrica/11.jpg" alt="How to Colonize a Factory"></div>
+                        </div>
+                        <button class="block-arrow arrow-left"><i data-lucide="chevron-left"></i></button>
+                        <button class="block-arrow arrow-right"><i data-lucide="chevron-right"></i></button>
+                    </div>
+                    <div class="pf-scrim"></div>
+                    <div class="pf-overlay">
+                        <div class="pf-info">
+                            <h3 class="pf-name"><span class="lang-es">Cómo colonizar una fábrica</span><span class="lang-en">How to Colonize a Factory</span></h3>
+                            <p class="pf-meta"><span class="lang-es">2019 / TFM / Colonia Viladomiu Vell, Llobregat</span><span class="lang-en">2019 / Master Thesis / Viladomiu Vell, Spain</span></p>
+                            <p class="pf-desc"><span class="lang-es">Reactivación de una antigua fábrica textil mediante un modelo de vivienda cooperativa modular regido por un sistema de reglas tridimensionales.</span><span class="lang-en">Reactivation of an old textile factory through a modular co-housing model governed by a 3D parcel rule-set.</span></p>
+                        </div>
+                        <img class="pf-logo" src="content/arquitectura/colonizar-fabrica/logo.jpg" alt="How to Colonize a Factory logo">
+                        <div class="block-slide-dots pf-dots"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- PANEL 2: VISUALIZATION (Renders de todo tipo - Estructura tipo play-time.es) -->
+            <section class="tab-panel" id="panel-visualization">
+                
+                <!-- Service Introduction Block -->
+                <div class="tab-intro-block">
+                    <div class="intro-content-wrapper">
+                        <span class="intro-tag">02 // Visual Work</span>
+                        <h2 class="intro-title">
+                            <span class="lang-es">Medios Inmersivos & Renders de Alta Fidelidad</span>
+                            <span class="lang-en">Immersive Media & High-Fidelity Rendering</span>
+                        </h2>
+                        <p class="intro-desc">
+                            <span class="lang-es">Creación de narrativas visuales que dotan de alma al espacio arquitectónico. Desarrollo de renders fotorrealistas, cinemáticas y recorridos interactivos en Unreal Engine 5 y Twinmotion. Especialista en el estudio del comportamiento de la luz natural y respuesta de materiales físicos para fases de concurso y proyectos ejecutivos.</span>
+                            <span class="lang-en">Creating visual narratives that give soul to architectural spaces. Development of photorealistic renders, cinematics, and interactive walk-throughs in Unreal Engine 5 and Twinmotion. Specialist in the study of natural light behavior and physical materials for competitions and executive projects.</span>
+                        </p>
+                        <div class="logo-band">
+                            <button class="logo-band-item" data-scroll-to="caixaforum" aria-label="CaixaForum Málaga"><img src="assets/CXF_MLG_Marca.png" alt="CaixaForum"><span class="logo-band-label">CaixaForum</span></button>
+                            <button class="logo-band-item" data-scroll-to="csic" aria-label="CSIC Research Center"><img src="assets/Logo-Picharchitects-01.png" alt="CSIC"><span class="logo-band-label">CSIC</span></button>
+                            <button class="logo-band-item" data-scroll-to="sem" aria-label="SEM HQ"><img src="assets/Logo-Picharchitects-01.png" alt="SEM"><span class="logo-band-label">SEM</span></button>
+                            <button class="logo-band-item" data-scroll-to="tec" aria-label="Tennis Empowerment Center"><img src="assets/Logo-Picharchitects-01.png" alt="TEC"><span class="logo-band-label">TEC</span></button>
+                            <button class="logo-band-item" data-scroll-to="kaira-looro" aria-label="Cooperation Lighthouse"><img src="assets/Autocad Logo ONG.png" alt="Kaira Looro"><span class="logo-band-label">Kaira Looro</span></button>
+                            <button class="logo-band-item" data-scroll-to="waraqa-school" aria-label="Waraqa School"><img src="assets/Autocad Logo ONG.png" alt="Waraqa"><span class="logo-band-label">Waraqa</span></button>
+                            <button class="logo-band-item" data-scroll-to="carrer-marroc" aria-label="Carrer Marroc Housing"><img src="assets/Logo-Picharchitects-01.png" alt="Carrer Marroc"><span class="logo-band-label">Carrer Marroc</span></button>
+                            <button class="logo-band-item" data-scroll-to="barajas" aria-label="Barajas Housing"><img src="assets/Logo-Picharchitects-01.png" alt="Barajas"><span class="logo-band-label">Barajas</span></button>
+                            <button class="logo-band-item" data-scroll-to="barcelona-housing" aria-label="Barcelona Housing"><img src="assets/Logo-Picharchitects-01.png" alt="Barcelona"><span class="logo-band-label">Barcelona</span></button>
+                            <button class="logo-band-item" data-scroll-to="monterrey" aria-label="Monterrey Housing"><img src="assets/Logo-Picharchitects-01.png" alt="Monterrey"><span class="logo-band-label">Monterrey</span></button>
+                        </div>
+                        <div class="intro-scroll-hint">
+                            <span class="lang-es">Desliza para explorar el catálogo IMAGERY</span>
+                            <span class="lang-en">Scroll to explore the IMAGERY portfolio</span>
+                            <i data-lucide="arrow-down"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Projects Navigation Strip (Visual Index) -->
+                <div class="projects-nav-strip">
+                    <!-- Project 1: CaixaForum Málaga -->
+                    <div class="nav-strip-item" data-scroll-to="caixaforum">
+                        <div class="nav-strip-left">
+                            <span class="nav-strip-num">01 //</span>
+                            <div class="nav-strip-text">
+                                <h4 class="nav-strip-title">CaixaForum Málaga</h4>
+                                <p class="nav-strip-meta">
+                                    <span class="lang-es">2025 / Cultural / Málaga, España / Picharchitects</span>
+                                    <span class="lang-en">2025 / Cultural / Málaga, Spain / Picharchitects</span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="nav-strip-center">
+                            <img src="assets/CXF_MLG_Marca.png" alt="CaixaForum Málaga" class="nav-strip-logo">
+                        </div>
+                        <div class="nav-strip-right">
+                            <img src="assets/00_RenderExterior.png" alt="CaixaForum Málaga" class="nav-strip-thumb">
+                        </div>
+                    </div>
+
+                    <!-- Project 2: CSIC Research Center -->
+                    <div class="nav-strip-item" data-scroll-to="csic">
+                        <div class="nav-strip-left">
+                            <span class="nav-strip-num">02 //</span>
+                            <div class="nav-strip-text">
+                                <h4 class="nav-strip-title">CSIC Research Center</h4>
+                                <p class="nav-strip-meta">
+                                    <span class="lang-es">2021 / Laboratorios / Madrid, España / Picharchitects + MADC</span>
+                                    <span class="lang-en">2021 / Research Labs / Madrid, Spain / Picharchitects + MADC</span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="nav-strip-center">
+                            <img src="assets/Logo-Picharchitects-01.png" alt="Picharchitects" class="nav-strip-logo">
+                        </div>
+                        <div class="nav-strip-right">
+                            <img src="assets/Dossier Renders PichArchitects_Página_11.png" alt="CSIC Research Center" class="nav-strip-thumb">
+                        </div>
+                    </div>
+
+                    <!-- Project 3: SEM -->
+                    <div class="nav-strip-item" data-scroll-to="sem">
+                        <div class="nav-strip-left">
+                            <span class="nav-strip-num">03 //</span>
+                            <div class="nav-strip-text">
+                                <h4 class="nav-strip-title">Medical Emergency Services HQ (SEM)</h4>
+                                <p class="nav-strip-meta">
+                                    <span class="lang-es">2022 / Equipamiento / Barcelona, España / Picharchitects</span>
+                                    <span class="lang-en">2022 / Healthcare / Barcelona, Spain / Picharchitects</span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="nav-strip-center">
+                            <img src="assets/Logo-Picharchitects-01.png" alt="Picharchitects" class="nav-strip-logo">
+                        </div>
+                        <div class="nav-strip-right">
+                            <img src="assets/SeccionLongSEM.png" alt="SEM Section" class="nav-strip-thumb">
+                        </div>
+                    </div>
+
+                    <!-- Project 4: TEC -->
+                    <div class="nav-strip-item" data-scroll-to="tec">
+                        <div class="nav-strip-left">
+                            <span class="nav-strip-num">04 //</span>
+                            <div class="nav-strip-text">
+                                <h4 class="nav-strip-title">Tennis Empowerment Center (TEC)</h4>
+                                <p class="nav-strip-meta">
+                                    <span class="lang-es">2025 / Deportivo / Collserola, Barcelona / Picharchitects</span>
+                                    <span class="lang-en">2025 / Sports / Collserola, Barcelona / Picharchitects</span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="nav-strip-center">
+                            <img src="assets/Logo-Picharchitects-01.png" alt="Picharchitects" class="nav-strip-logo">
+                        </div>
+                        <div class="nav-strip-right">
+                            <img src="assets/Dossier Renders PichArchitects_Página_27.png" alt="TEC Center" class="nav-strip-thumb">
+                        </div>
+                    </div>
+
+                    <!-- Project 5: Cooperation Lighthouse -->
+                    <div class="nav-strip-item" data-scroll-to="kaira-looro">
+                        <div class="nav-strip-left">
+                            <span class="nav-strip-num">05 //</span>
+                            <div class="nav-strip-text">
+                                <h4 class="nav-strip-title">
+                                    <span class="lang-es">Faro de Cooperación (Kaira Looro)</span>
+                                    <span class="lang-en">Cooperation Lighthouse</span>
+                                </h4>
+                                <p class="nav-strip-meta">
+                                    <span class="lang-es">2022 / Cooperación / Kaira Looro Competition</span>
+                                    <span class="lang-en">2022 / Cooperation / Kaira Looro Competition</span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="nav-strip-center">
+                            <img src="assets/Autocad Logo ONG.png" alt="Autocad Logo ONG" class="nav-strip-logo">
+                        </div>
+                        <div class="nav-strip-right">
+                            <img src="assets/KairaLooroNoche-enhanced.png" alt="Cooperation Lighthouse" class="nav-strip-thumb">
+                        </div>
+                    </div>
+
+                    <!-- Project 6: Waraqa School -->
+                    <div class="nav-strip-item" data-scroll-to="waraqa-school">
+                        <div class="nav-strip-left">
+                            <span class="nav-strip-num">06 //</span>
+                            <div class="nav-strip-text">
+                                <h4 class="nav-strip-title">
+                                    <span class="lang-es">Escuela Waraqa</span>
+                                    <span class="lang-en">Waraqa School</span>
+                                </h4>
+                                <p class="nav-strip-meta">
+                                    <span class="lang-es">2022 / Educación / Mahandougou, Côte d'Ivoire / Miguel Suárez</span>
+                                    <span class="lang-en">2022 / Educational / Mahandougou, Ivory Coast / Miguel Suárez</span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="nav-strip-center">
+                            <img src="assets/Autocad Logo ONG.png" alt="Autocad Logo ONG" class="nav-strip-logo">
+                        </div>
+                        <div class="nav-strip-right">
+                            <img src="assets/Escuela.jpg" alt="Waraqa School" class="nav-strip-thumb">
+                        </div>
+                    </div>
+
+                    <!-- Project 7: Carrer Marroc -->
+                    <div class="nav-strip-item" data-scroll-to="carrer-marroc">
+                        <div class="nav-strip-left">
+                            <span class="nav-strip-num">07 //</span>
+                            <div class="nav-strip-text">
+                                <h4 class="nav-strip-title">Carrer Marroc Housing</h4>
+                                <p class="nav-strip-meta">
+                                    <span class="lang-es">2021 / Residencial / Barcelona, España / Picharchitects</span>
+                                    <span class="lang-en">2021 / Residential / Barcelona, Spain / Picharchitects</span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="nav-strip-center">
+                            <img src="assets/Logo-Picharchitects-01.png" alt="Picharchitects" class="nav-strip-logo">
+                        </div>
+                        <div class="nav-strip-right">
+                            <img src="assets/Render_A_20copia-enhanced.png" alt="Carrer Marroc Housing" class="nav-strip-thumb">
+                        </div>
+                    </div>
+
+                    <!-- Project 8: Barajas -->
+                    <div class="nav-strip-item" data-scroll-to="barajas">
+                        <div class="nav-strip-left">
+                            <span class="nav-strip-num">08 //</span>
+                            <div class="nav-strip-text">
+                                <h4 class="nav-strip-title">Barajas Housing</h4>
+                                <p class="nav-strip-meta">
+                                    <span class="lang-es">2024 / Residencial / Barajas, Madrid, España / Picharchitects</span>
+                                    <span class="lang-en">2024 / Residential / Barajas, Madrid, Spain / Picharchitects</span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="nav-strip-center">
+                            <img src="assets/Logo-Picharchitects-01.png" alt="Picharchitects" class="nav-strip-logo">
+                        </div>
+                        <div class="nav-strip-right">
+                            <img src="assets/Render_D copia.jpg" alt="Barajas Housing" class="nav-strip-thumb">
+                        </div>
+                    </div>
+
+                    <!-- Project 9: Barcelona Housing -->
+                    <div class="nav-strip-item" data-scroll-to="barcelona-housing">
+                        <div class="nav-strip-left">
+                            <span class="nav-strip-num">09 //</span>
+                            <div class="nav-strip-text">
+                                <h4 class="nav-strip-title">Barcelona Housing</h4>
+                                <p class="nav-strip-meta">
+                                    <span class="lang-es">2024 / Residencial / Barcelona, España / Picharchitects</span>
+                                    <span class="lang-en">2024 / Residential / Barcelona, Spain / Picharchitects</span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="nav-strip-center">
+                            <img src="assets/Logo-Picharchitects-01.png" alt="Picharchitects" class="nav-strip-logo">
+                        </div>
+                        <div class="nav-strip-right">
+                            <img src="assets/Vista_A_4k.png" alt="Barcelona Housing" class="nav-strip-thumb">
+                        </div>
+                    </div>
+
+                    <!-- Project 10: Monterrey -->
+                    <div class="nav-strip-item" data-scroll-to="monterrey">
+                        <div class="nav-strip-left">
+                            <span class="nav-strip-num">10 //</span>
+                            <div class="nav-strip-text">
+                                <h4 class="nav-strip-title">Monterrey Housing</h4>
+                                <p class="nav-strip-meta">
+                                    <span class="lang-es">2023 / Residencial / Monterrey, México / Picharchitects</span>
+                                    <span class="lang-en">2023 / Residential / Monterrey, Mexico / Picharchitects</span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="nav-strip-center">
+                            <img src="assets/Logo-Picharchitects-01.png" alt="Picharchitects" class="nav-strip-logo">
+                        </div>
+                        <div class="nav-strip-right">
+                            <img src="assets/Vista_C_4k.png" alt="Monterrey Housing" class="nav-strip-thumb">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project Block 1: CaixaForum Málaga (plantilla a sangre .bleed) -->
+                <div class="project-section-block bleed" data-project="caixaforum">
+                    <div class="block-slider">
+                        <div class="slider-wrapper">
+                            <div class="slide-item active"><img src="content/visualizacion/caixaforum/01.jpg" alt="CaixaForum Málaga"></div>
+                            <div class="slide-item"><img src="content/visualizacion/caixaforum/02.jpg" alt="CaixaForum Málaga"></div>
+                            <div class="slide-item">
+                                <video src="content/visualizacion/caixaforum/03.mp4" controls loop muted playsinline style="width: 100%; height: 100%; object-fit: cover;"></video>
+                            </div>
+                        </div>
+                        <button class="block-arrow arrow-left"><i data-lucide="chevron-left"></i></button>
+                        <button class="block-arrow arrow-right"><i data-lucide="chevron-right"></i></button>
+                    </div>
+                    <div class="pf-scrim"></div>
+                    <div class="pf-overlay">
+                        <div class="pf-info">
+                            <h3 class="pf-name">CaixaForum Málaga</h3>
+                            <p class="pf-meta"><span class="lang-es">2025 / Cultural / Málaga, España / Picharchitects</span><span class="lang-en">2025 / Cultural / Málaga, Spain / Picharchitects</span></p>
+                            <p class="pf-desc"><span class="lang-es">Propuesta ganadora de concurso. El edificio, como una traza de luz sobre el parque natural, propone nuevas formas de diálogo entre la naturaleza y la ciudad.</span><span class="lang-en">Competition-winning proposal. The building, like a trace of light over the natural park, proposes new forms of dialogue between nature and the city.</span></p>
+                        </div>
+                        <img class="pf-logo" src="content/visualizacion/caixaforum/logo.png" alt="CaixaForum Málaga logo">
+                        <div class="block-slide-dots pf-dots"></div>
+                    </div>
+                </div>
+
+                <!-- Project Block 2: CSIC -->
+                <div class="project-section-block bleed" data-project="csic">
+                    <div class="block-slider">
+                        <div class="slider-wrapper">
+                            <div class="slide-item active"><img src="content/visualizacion/csic/01.png" alt="CSIC Research Center"></div>
+                            <div class="slide-item"><img src="content/visualizacion/csic/02.png" alt="CSIC Research Center"></div>
+                            <div class="slide-item"><img src="content/visualizacion/csic/03.png" alt="CSIC Research Center"></div>
+                        </div>
+                        <button class="block-arrow arrow-left"><i data-lucide="chevron-left"></i></button>
+                        <button class="block-arrow arrow-right"><i data-lucide="chevron-right"></i></button>
+                    </div>
+                    <div class="pf-scrim"></div>
+                    <div class="pf-overlay">
+                        <div class="pf-info">
+                            <h3 class="pf-name">CSIC Research Center</h3>
+                            <p class="pf-meta"><span class="lang-es">2021 / Laboratorios / Madrid, España / Picharchitects + MADC</span><span class="lang-en">2021 / Research Labs / Madrid, Spain / Picharchitects + MADC</span></p>
+                            <p class="pf-desc"><span class="lang-es">Representación fotorrealista de conductos de laboratorio expuestos y fachada metálica perforada, con sincronización paramétrica en Revit.</span><span class="lang-en">Photorealistic representation of exposed laboratory ducts and perforated metal facade, with parametric synchronization in Revit.</span></p>
+                        </div>
+                        <img class="pf-logo" src="content/visualizacion/csic/logo.png" alt="CSIC Research Center logo">
+                        <div class="block-slide-dots pf-dots"></div>
+                    </div>
+                </div>
+
+                <!-- Project Block 3: SEM -->
+                <div class="project-section-block bleed" data-project="sem">
+                    <div class="block-slider">
+                        <div class="slider-wrapper">
+                            <div class="slide-item active"><img src="content/visualizacion/sem/01.png" alt="Medical Emergency Services HQ (SEM)"></div>
+                            <div class="slide-item"><img src="content/visualizacion/sem/02.png" alt="Medical Emergency Services HQ (SEM)"></div>
+                            <div class="slide-item"><img src="content/visualizacion/sem/03.png" alt="Medical Emergency Services HQ (SEM)"></div>
+                            <div class="slide-item"><img src="content/visualizacion/sem/04.png" alt="Medical Emergency Services HQ (SEM)"></div>
+                        </div>
+                        <button class="block-arrow arrow-left"><i data-lucide="chevron-left"></i></button>
+                        <button class="block-arrow arrow-right"><i data-lucide="chevron-right"></i></button>
+                    </div>
+                    <div class="pf-scrim"></div>
+                    <div class="pf-overlay">
+                        <div class="pf-info">
+                            <h3 class="pf-name">Medical Emergency Services HQ (SEM)</h3>
+                            <p class="pf-meta"><span class="lang-es">2022 / Equipamiento / Barcelona, España / Picharchitects</span><span class="lang-en">2022 / Healthcare / Barcelona, Spain / Picharchitects</span></p>
+                            <p class="pf-desc"><span class="lang-es">Infoarquitectura de la modulación industrial de fachadas, la iluminación nocturna de helipuerto y la sobriedad volumétrica del hormigón.</span><span class="lang-en">Archviz of the industrial facade modularity, the night-time helipad lighting, and the raw volumetric concrete.</span></p>
+                        </div>
+                        <img class="pf-logo" src="content/visualizacion/sem/logo.png" alt="Medical Emergency Services HQ (SEM) logo">
+                        <div class="block-slide-dots pf-dots"></div>
+                    </div>
+                </div>
+
+                <!-- EDITORIAL BREAK 1: Philosophy (Page 16) -->
+                <div class="editorial-section-block full-bleed-page">
+                    <img src="assets/Portfolio_Imagery_MIIM_Página_16.png" alt="Philosophy Editorial Break">
+                </div>
+
+                <!-- Project Block 4: TEC -->
+                <div class="project-section-block bleed" data-project="tec">
+                    <div class="block-slider">
+                        <div class="slider-wrapper">
+                            <div class="slide-item active"><img src="content/visualizacion/tec/01.png" alt="Tennis Empowerment Center (TEC)"></div>
+                            <div class="slide-item"><img src="content/visualizacion/tec/02.png" alt="Tennis Empowerment Center (TEC)"></div>
+                            <div class="slide-item"><img src="content/visualizacion/tec/03.png" alt="Tennis Empowerment Center (TEC)"></div>
+                            <div class="slide-item"><img src="content/visualizacion/tec/04.png" alt="Tennis Empowerment Center (TEC)"></div>
+                            <div class="slide-item">
+                                <video src="content/visualizacion/tec/05.mp4" controls loop muted playsinline style="width: 100%; height: 100%; object-fit: cover;"></video>
+                            </div>
+                            <div class="slide-item">
+                                <video src="content/visualizacion/tec/06.mp4" controls loop muted playsinline style="width: 100%; height: 100%; object-fit: cover;"></video>
+                            </div>
+                        </div>
+                        <button class="block-arrow arrow-left"><i data-lucide="chevron-left"></i></button>
+                        <button class="block-arrow arrow-right"><i data-lucide="chevron-right"></i></button>
+                    </div>
+                    <div class="pf-scrim"></div>
+                    <div class="pf-overlay">
+                        <div class="pf-info">
+                            <h3 class="pf-name">Tennis Empowerment Center (TEC)</h3>
+                            <p class="pf-meta"><span class="lang-es">2025 / Deportivo / Collserola, Barcelona / Picharchitects</span><span class="lang-en">2025 / Sports / Collserola, Barcelona / Picharchitects</span></p>
+                            <p class="pf-desc"><span class="lang-es">Cubiertas vegetales, canchas con reflectividad de bruma y estructura textil tensada bajo los pinares de la Sierra de Collserola.</span><span class="lang-en">Vegetated roofs, courts with misty reflectivity, and tensile fabric structure under the Collserola pine forest.</span></p>
+                        </div>
+                        <img class="pf-logo" src="content/visualizacion/tec/logo.png" alt="Tennis Empowerment Center (TEC) logo">
+                        <div class="block-slide-dots pf-dots"></div>
+                    </div>
+                </div>
+
+                <!-- EDITORIAL BREAK 2: Light and Texture (Page 21) -->
+                <div class="editorial-section-block full-bleed-page">
+                    <img src="assets/Portfolio_Imagery_MIIM_Página_21.png" alt="Light and Texture Editorial Break">
+                </div>
+
+                <!-- Project Block 5: Kaira Looro Lighthouse -->
+                <div class="project-section-block bleed" data-project="kaira-looro">
+                    <div class="block-slider">
+                        <div class="slider-wrapper">
+                            <div class="slide-item active"><img src="content/visualizacion/kaira-looro/01.png" alt="Cooperation Lighthouse"></div>
+                            <div class="slide-item"><img src="content/visualizacion/kaira-looro/02.png" alt="Cooperation Lighthouse"></div>
+                            <div class="slide-item">
+                                <video src="content/visualizacion/kaira-looro/03.mp4" controls loop muted playsinline style="width: 100%; height: 100%; object-fit: cover;"></video>
+                            </div>
+                            <div class="slide-item">
+                                <video src="content/visualizacion/kaira-looro/04.mp4" controls loop muted playsinline style="width: 100%; height: 100%; object-fit: cover;"></video>
+                            </div>
+                        </div>
+                        <button class="block-arrow arrow-left"><i data-lucide="chevron-left"></i></button>
+                        <button class="block-arrow arrow-right"><i data-lucide="chevron-right"></i></button>
+                    </div>
+                    <div class="pf-scrim"></div>
+                    <div class="pf-overlay">
+                        <div class="pf-info">
+                            <h3 class="pf-name">Cooperation Lighthouse</h3>
+                            <p class="pf-meta"><span class="lang-es">2022 / Cooperación / Kaira Looro Competition / Miguel Suárez</span><span class="lang-en">2022 / Cooperation / Kaira Looro Competition / Miguel Suárez</span></p>
+                            <p class="pf-desc"><span class="lang-es">El faro como hito de reunión y recolección de agua; la imagen acentúa la calidez del bambú y las envolventes textiles al anochecer.</span><span class="lang-en">The lighthouse as a gathering and water-harvesting landmark; the image highlights the warmth of bamboo and textile wraps at dusk.</span></p>
+                        </div>
+                        <img class="pf-logo" src="content/visualizacion/kaira-looro/logo.png" alt="Cooperation Lighthouse logo">
+                        <div class="block-slide-dots pf-dots"></div>
+                    </div>
+                </div>
+
+                <!-- EDITORIAL BREAK 3: Bridge and Cooperation (Page 24) -->
+                <div class="editorial-section-block full-bleed-page">
+                    <img src="assets/Portfolio_Imagery_MIIM_Página_24.png" alt="Bridge Editorial Break">
+                </div>
+
+                <!-- Project Block 6: Waraqa School -->
+                <div class="project-section-block bleed" data-project="waraqa-school">
+                    <div class="block-slider">
+                        <div class="slider-wrapper">
+                            <div class="slide-item active"><img src="content/visualizacion/waraqa-school/01.png" alt="Waraqa School"></div>
+                            <div class="slide-item"><img src="content/visualizacion/waraqa-school/02.png" alt="Waraqa School"></div>
+                            <div class="slide-item"><img src="content/visualizacion/waraqa-school/03.png" alt="Waraqa School"></div>
+                            <div class="slide-item">
+                                <video src="content/visualizacion/waraqa-school/04.mp4" controls loop muted playsinline style="width: 100%; height: 100%; object-fit: cover;"></video>
+                            </div>
+                            <div class="slide-item">
+                                <video src="content/visualizacion/waraqa-school/05.mp4" controls loop muted playsinline style="width: 100%; height: 100%; object-fit: cover;"></video>
+                            </div>
+                        </div>
+                        <button class="block-arrow arrow-left"><i data-lucide="chevron-left"></i></button>
+                        <button class="block-arrow arrow-right"><i data-lucide="chevron-right"></i></button>
+                    </div>
+                    <div class="pf-scrim"></div>
+                    <div class="pf-overlay">
+                        <div class="pf-info">
+                            <h3 class="pf-name">Waraqa School</h3>
+                            <p class="pf-meta"><span class="lang-es">2022 / Educación / Mahandougou, Côte d'Ivoire / Miguel Suárez</span><span class="lang-en">2022 / Educational / Mahandougou, Ivory Coast / Miguel Suárez</span></p>
+                            <p class="pf-desc"><span class="lang-es">Visualización del juego de luz a través de la celosía de madera, las texturas de tierra (BTC) y la vida comunitaria.</span><span class="lang-en">Visualization of the play of light through the wood lattice, earth (CEB) textures, and community life.</span></p>
+                        </div>
+                        <img class="pf-logo" src="content/visualizacion/waraqa-school/logo.png" alt="Waraqa School logo">
+                        <div class="block-slide-dots pf-dots"></div>
+                    </div>
+                </div>
+
+                <!-- EDITORIAL BREAK 4: Residential (Page 28) -->
+                <div class="editorial-section-block full-bleed-page">
+                    <img src="assets/Portfolio_Imagery_MIIM_Página_28.png" alt="Residential Editorial Break">
+                </div>
+
+                <!-- Project Block 7: Carrer Marroc -->
+                <div class="project-section-block bleed" data-project="carrer-marroc">
+                    <div class="block-slider">
+                        <div class="slider-wrapper">
+                            <div class="slide-item active"><img src="content/visualizacion/carrer-marroc/01.png" alt="Carrer Marroc Housing"></div>
+                            <div class="slide-item"><img src="content/visualizacion/carrer-marroc/02.png" alt="Carrer Marroc Housing"></div>
+                            <div class="slide-item"><img src="content/visualizacion/carrer-marroc/03.png" alt="Carrer Marroc Housing"></div>
+                        </div>
+                        <button class="block-arrow arrow-left"><i data-lucide="chevron-left"></i></button>
+                        <button class="block-arrow arrow-right"><i data-lucide="chevron-right"></i></button>
+                    </div>
+                    <div class="pf-scrim"></div>
+                    <div class="pf-overlay">
+                        <div class="pf-info">
+                            <h3 class="pf-name">Carrer Marroc Housing</h3>
+                            <p class="pf-meta"><span class="lang-es">2021 / Residencial / Barcelona, España / Picharchitects</span><span class="lang-en">2021 / Residential / Barcelona, Spain / Picharchitects</span></p>
+                            <p class="pf-desc"><span class="lang-es">Interiores en madera contralaminada (CLT) y estudio solar para un entorno doméstico sostenible y de bienestar pasivo.</span><span class="lang-en">Cross-laminated timber (CLT) interiors and solar study for a sustainable, passive-wellbeing home.</span></p>
+                        </div>
+                        <img class="pf-logo" src="content/visualizacion/carrer-marroc/logo.png" alt="Carrer Marroc Housing logo">
+                        <div class="block-slide-dots pf-dots"></div>
+                    </div>
+                </div>
+
+                <!-- Project Block 8: Barajas -->
+                <div class="project-section-block bleed" data-project="barajas">
+                    <div class="block-slider">
+                        <div class="slider-wrapper">
+                            <div class="slide-item active"><img src="content/visualizacion/barajas/01.png" alt="Barajas Housing"></div>
+                            <div class="slide-item"><img src="content/visualizacion/barajas/02.png" alt="Barajas Housing"></div>
+                        </div>
+                        <button class="block-arrow arrow-left"><i data-lucide="chevron-left"></i></button>
+                        <button class="block-arrow arrow-right"><i data-lucide="chevron-right"></i></button>
+                    </div>
+                    <div class="pf-scrim"></div>
+                    <div class="pf-overlay">
+                        <div class="pf-info">
+                            <h3 class="pf-name">Barajas Housing</h3>
+                            <p class="pf-meta"><span class="lang-es">2024 / Residencial / Barajas, Madrid, España / Picharchitects</span><span class="lang-en">2024 / Residential / Barajas, Madrid, Spain / Picharchitects</span></p>
+                            <p class="pf-desc"><span class="lang-es">Renders de fachadas y zonas comunes centrados en la calidez material, las texturas pulidas y la vegetación integrada en terrazas.</span><span class="lang-en">Renders of facades and common areas focused on material warmth, polished textures, and vegetation integrated on terraces.</span></p>
+                        </div>
+                        <img class="pf-logo" src="content/visualizacion/barajas/logo.png" alt="Barajas Housing logo">
+                        <div class="block-slide-dots pf-dots"></div>
+                    </div>
+                </div>
+
+                <!-- Project Block 9: Barcelona Housing -->
+                <div class="project-section-block bleed" data-project="barcelona-housing">
+                    <div class="block-slider">
+                        <div class="slider-wrapper">
+                            <div class="slide-item active"><img src="content/visualizacion/barcelona-housing/01.png" alt="Barcelona Housing"></div>
+                            <div class="slide-item"><img src="content/visualizacion/barcelona-housing/02.png" alt="Barcelona Housing"></div>
+                        </div>
+                        <button class="block-arrow arrow-left"><i data-lucide="chevron-left"></i></button>
+                        <button class="block-arrow arrow-right"><i data-lucide="chevron-right"></i></button>
+                    </div>
+                    <div class="pf-scrim"></div>
+                    <div class="pf-overlay">
+                        <div class="pf-info">
+                            <h3 class="pf-name">Barcelona Housing</h3>
+                            <p class="pf-meta"><span class="lang-es">2024 / Residencial / Barcelona, España / Picharchitects</span><span class="lang-en">2024 / Residential / Barcelona, Spain / Picharchitects</span></p>
+                            <p class="pf-desc"><span class="lang-es">Renders de fachadas y zonas comunes centrados en la calidez material, las texturas pulidas y la vegetación integrada en terrazas.</span><span class="lang-en">Renders of facades and common areas focused on material warmth, polished textures, and vegetation integrated on terraces.</span></p>
+                        </div>
+                        <img class="pf-logo" src="content/visualizacion/barcelona-housing/logo.png" alt="Barcelona Housing logo">
+                        <div class="block-slide-dots pf-dots"></div>
+                    </div>
+                </div>
+
+                <!-- Project Block 10: Monterrey -->
+                <div class="project-section-block bleed" data-project="monterrey">
+                    <div class="block-slider">
+                        <div class="slider-wrapper">
+                            <div class="slide-item active"><img src="content/visualizacion/monterrey/01.png" alt="Monterrey Housing"></div>
+                            <div class="slide-item"><img src="content/visualizacion/monterrey/02.png" alt="Monterrey Housing"></div>
+                            <div class="slide-item"><img src="content/visualizacion/monterrey/03.png" alt="Monterrey Housing"></div>
+                        </div>
+                        <button class="block-arrow arrow-left"><i data-lucide="chevron-left"></i></button>
+                        <button class="block-arrow arrow-right"><i data-lucide="chevron-right"></i></button>
+                    </div>
+                    <div class="pf-scrim"></div>
+                    <div class="pf-overlay">
+                        <div class="pf-info">
+                            <h3 class="pf-name">Monterrey Housing</h3>
+                            <p class="pf-meta"><span class="lang-es">2023 / Residencial / Monterrey, México / Picharchitects</span><span class="lang-en">2023 / Residential / Monterrey, Mexico / Picharchitects</span></p>
+                            <p class="pf-desc"><span class="lang-es">Torre plurifamiliar bajo el sol desértico de Monterrey, simulando el comportamiento térmico pasivo en terrazas profundas.</span><span class="lang-en">Multifamily tower under Monterrey's desert sun, simulating passive thermal behavior on deep terraces.</span></p>
+                        </div>
+                        <img class="pf-logo" src="content/visualizacion/monterrey/logo.png" alt="Monterrey Housing logo">
+                        <div class="block-slide-dots pf-dots"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- PANEL 3: TECHNOLOGY (BIM, Algoritmos, Python y Revit API) -->
+            <section class="tab-panel" id="panel-technology">
+                
+                <!-- Service Introduction Block -->
+                <div class="tab-intro-block">
+                    <div class="intro-content-wrapper">
+                        <span class="intro-tag">03 // Computational Systems</span>
+                        <h2 class="intro-title">
+                            <span class="lang-es">Sistemas Computacionales & Optimización BIM</span>
+                            <span class="lang-en">Computational Systems & BIM Optimization</span>
+                        </h2>
+                        <p class="intro-desc">
+                            <span class="lang-es">Estructuración de datos y programación aplicadas a la ingeniería y optimización geométrica. Desarrollo de plugins en C# (.NET 8) para Revit, algoritmos de optimización de trayectorias CNC en Python, puentes de inyección presupuestaria y metodologías avanzadas de automatización y diseño adaptadas a la industria AECO.</span>
+                            <span class="lang-en">Data structures and programming applied to engineering and geometric optimization. Revit C# (.NET 8) plugin development, Python path routing optimization algorithms for CNC, budget integration bridges, and advanced automation pipelines tailored to the AECO industry.</span>
+                        </p>
+                        <div class="intro-scroll-hint">
+                            <span class="lang-es">Desliza para explorar la consola y servicios</span>
+                            <span class="lang-en">Scroll to explore console and services</span>
+                            <i data-lucide="arrow-down"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="page-container">
+                    <div class="bim-grid">
+                        <div class="bim-intro-col">
+                            <h3 class="bim-sub">
+                                <span class="lang-es">Ingeniería de Software & Automatización AECO</span>
+                                <span class="lang-en">Software Engineering & AECO Automation</span>
+                            </h3>
+                            <div class="lang-es">
+                                <p>
+                                    Desarrollo soluciones de software robustas compitiendo con estándares de mercado. Programo addins unificados en C# .NET y scripts Python integrados mediante la Revit API nativa, además de algoritmos matemáticos y automatizaciones de flujos de trabajo.
+                                </p>
+                                <p>
+                                    Especialista en resolver problemas complejos de manufactura (algoritmos convex hull, regresión lineal de mínimos cuadrados para alineación geométrica y validación de ligamentos de perforación) y estructuración de flujos ágiles multi-IA.
+                                </p>
+                            </div>
+                            <div class="lang-en">
+                                <p>
+                                    I develop robust software solutions competing with market standards. I program unified addins in C# .NET and integrated Python scripts utilizing the native Revit API, alongside mathematical optimization algorithms and workflow automation pipelines.
+                                </p>
+                                <p>
+                                    Specialist in solving complex manufacturing issues (convex hull algorithms, least squares linear regression for geometric alignment, and ligament safety distance calculations) and structuring agile multi-AI pipelines.
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="bim-grid-console">
+                            <!-- Elegant Revit Script console -->
+                            <div class="minimal-console">
+                                <div class="console-header">
+                                    <div class="console-bullets">
+                                        <span class="c-dot"></span>
+                                        <span class="c-dot"></span>
+                                        <span class="c-dot"></span>
+                                    </div>
+                                    <span class="console-label">mst_revit_api.py</span>
+                                </div>
+                                <div class="console-body" id="console-body">
+                                    <div class="console-line"><span class="c-prompt">C:\RevitPythonShell></span> run metalperfil_cad_sync.py</div>
+                                    <div class="console-line c-output">Iniciando lectura de bases de datos Metalperfil...</div>
+                                    <div class="console-line c-output">Procesando 18 perfiles metálicos y chapas desde DXF/CAD...</div>
+                                    <div class="console-line c-output">Generando familias (.rfa) paramétricas automáticamente... OK</div>
+                                    <div class="console-line c-success">Proceso finalizado. 18 familias cargadas en el catálogo.</div>
+                                    <div class="console-line"><span class="c-prompt">C:\RevitPythonShell></span> <span class="console-cursor"></span></div>
+                                </div>
+                                <div class="console-controls">
+                                    <button class="console-btn" data-run="metalperfil">Catalogo Metalperfil</button>
+                                    <button class="console-btn" data-run="canopy">Cúpula Paramétrica</button>
+                                    <button class="console-btn" data-run="audit">Auditoría Geometría</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tech-cards-grid">
+                        <!-- Tech Card 1: Revit Plugins -->
+                        <div class="tech-card">
+                            <div class="tech-card-header">
+                                <i data-lucide="puzzle"></i>
+                                <h4>
+                                    <span class="lang-es">Plugins Revit (C# / .NET 8)</span>
+                                    <span class="lang-en">Revit Plugins (C# / .NET 8)</span>
+                                </h4>
+                            </div>
+                            <div class="lang-es">
+                                <p class="tech-card-desc">Compilación y empaquetado de plugins de alto rendimiento integrados en el Ribbon nativo de Revit mediante la pestaña `Metalperfil Tech`.</p>
+                                <ul class="tech-card-list">
+                                    <li><strong>Generador de Familias:</strong> Conversión directa de vectores de corte DXF/DWG en archivos de familia `.rfa` paramétricos con `ACadSharp` y `netDxf`.</li>
+                                    <li><strong>Alineación y Enderezado:</strong> Algoritmo `AlignToBaseLine` basado en regresión lineal para anular el sesgo de rotación (0.0000° de desviación).</li>
+                                    <li><strong>Curtain Wall Randomizer:</strong> Módulo de aleatorización dinámica de paneles modulares para estudios visuales rápidos en muros cortina.</li>
+                                </ul>
+                            </div>
+                            <div class="lang-en">
+                                <p class="tech-card-desc">Compilation and packaging of high-performance plugins integrated into Revit's Ribbon under the custom `Metalperfil Tech` tab.</p>
+                                <ul class="tech-card-list">
+                                    <li><strong>Family Generator:</strong> Direct translation of DXF/DWG vector curves into parametric `.rfa` files using `ACadSharp` and `netDxf`.</li>
+                                    <li><strong>Valleys Alignment:</strong> Regression-based `AlignToBaseLine` algorithm that cancels rotation tilts (0.0000° error margin).</li>
+                                    <li><strong>Curtain Wall Randomizer:</strong> Dynamic panel randomizer module for curtain walls to check modular facade compositions.</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Tech Card 2: CNC Optimization -->
+                        <div class="tech-card">
+                            <div class="tech-card-header">
+                                <i data-lucide="cpu"></i>
+                                <h4>
+                                    <span class="lang-es">Optimización CNC (Python)</span>
+                                    <span class="lang-en">CNC Optimization (Python)</span>
+                                </h4>
+                            </div>
+                            <div class="lang-es">
+                                <p class="tech-card-desc">Scripts matemáticos en Python enfocados en acelerar y validar los procesos de maquinado de chapas y perfiles del catálogo.</p>
+                                <ul class="tech-card-list">
+                                    <li><strong>Snake-Path Routing:</strong> Algoritmo de trayectoria en zigzag para el cabezal de punzonado, reduciendo tiempos muertos de desplazamiento.</li>
+                                    <li><strong>Cálculo de Ligamentos:</strong> Validación por código de la distancia de seguridad entre taladros para evitar desgarros del material.</li>
+                                    <li><strong>DXF R12 Writer:</strong> Escritor binario/ASCII ligero de círculos a DXF para control directo de maquinaria sin librerías pesadas de terceros.</li>
+                                </ul>
+                            </div>
+                            <div class="lang-en">
+                                <p class="tech-card-desc">Mathematical Python scripting to accelerate and validate drilling and cutting toolpaths for catalogs.</p>
+                                <ul class="tech-card-list">
+                                    <li><strong>Snake-Path Routing:</strong> Travel path algorithm that reduces idle machine head movements in sheet punchers.</li>
+                                    <li><strong>Ligament Distance:</strong> Validation of the minimum safety thickness between holes to avoid metal tearing.</li>
+                                    <li><strong>DXF R12 Writer:</strong> Native ASCII/binary circle exporter to generate tool paths without third-party dependencies.</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Tech Card 3: Revit-Presto -->
+                        <div class="tech-card">
+                            <div class="tech-card-header">
+                                <i data-lucide="database"></i>
+                                <h4>
+                                    <span class="lang-es">Revit-to-Presto Bridge</span>
+                                    <span class="lang-en">Revit-to-Presto Bridge</span>
+                                </h4>
+                            </div>
+                            <div class="lang-es">
+                                <p class="tech-card-desc">Sincronización bidireccional y automatización de mediciones de obra desde el modelo tridimensional de Revit a las bases de datos de Presto.</p>
+                                <ul class="tech-card-list">
+                                    <li><strong>Mapeo de Parámetros:</strong> Inyección automatizada de parámetros compartidos (`CIP_CodigoUO`, `CIP_Capitulo`, `CIP_Unidad`).</li>
+                                    <li><strong>Cómputo en Tiempo Real:</strong> Extracción directa de volumen/área del elemento y traducción a metros cúbicos, lineales o cuadrados según Unidad de Obra (UO).</li>
+                                </ul>
+                            </div>
+                            <div class="lang-en">
+                                <p class="tech-card-desc">Bidirectional synchronization and automated quantity takeoffs mapping metadata from 3D Revit models to Presto databases.</p>
+                                <ul class="tech-card-list">
+                                    <li><strong>Parameter Mapping:</strong> Automatic assignment and injection of shared parameters (`CIP_CodigoUO`, `CIP_Capitulo`, `CIP_Unidad`).</li>
+                                    <li><strong>Real-time Takeoff:</strong> Conversion of structural and MEP element volumes/areas directly to cubic, linear, or square meters.</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Tech Card 4: WPF / XAML Branding -->
+                        <div class="tech-card">
+                            <div class="tech-card-header">
+                                <i data-lucide="palette"></i>
+                                <h4>
+                                    <span class="lang-es">Diseño de Interfaces & Branding</span>
+                                    <span class="lang-en">UI/UX Design & Branding</span>
+                                </h4>
+                            </div>
+                            <div class="lang-es">
+                                <p class="tech-card-desc">Diseño editorial e identidad corporativa aplicados a herramientas de software y plugins. Cuidado del look and feel del producto digital.</p>
+                                <ul class="tech-card-list">
+                                    <li><strong>UI Oscura Premium:</strong> Hojas de estilo XAML unificadas (fondos antracita, tarjetas redondeadas e iconografía corporativa en Rojo Granate `#9E272C`).</li>
+                                    <li><strong>Canvas Dinámico:</strong> Controles WPF con previsualización vectorial interactiva de perfiles que recalculan escala y márgenes dinámicamente al redimensionar.</li>
+                                </ul>
+                            </div>
+                            <div class="lang-en">
+                                <p class="tech-card-desc">Editorial design and corporate identity applied to tools and plugins. Creating premium looks and feels for digital products.</p>
+                                <ul class="tech-card-list">
+                                    <li><strong>Dark UI styling:</strong> Unified XAML stylesheets (anthracite panels, rounded borders, and custom brand accents in Deep Red `#9E272C`).</li>
+                                    <li><strong>Dynamic Canvas:</strong> WPF preview controls featuring interactive profile paths scaling dynamically without layout overflows.</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Tech Card 5: Mobile App -->
+                        <div class="tech-card">
+                            <div class="tech-card-header">
+                                <i data-lucide="smartphone"></i>
+                                <h4>
+                                    <span class="lang-es">Apps Móviles & Geolocalización</span>
+                                    <span class="lang-en">Mobile Apps & Geolocation</span>
+                                </h4>
+                            </div>
+                            <div class="lang-es">
+                                <p class="tech-card-desc">Desarrollo de aplicaciones de interactividad geográfica y sincronización de bases de datos móviles mediante infraestructuras ágiles.</p>
+                                <ul class="tech-card-list">
+                                    <li><strong>FestCompass:</strong> Aplicación móvil nativa en Flutter/Dart que implementa una brújula de geolocalización en tiempo real para festivales.</li>
+                                    <li><strong>Supabase Backend:</strong> Sincronización en la nube de perfiles de usuario, bases de datos geográficas y flujos reactivos de datos en vivo.</li>
+                                </ul>
+                            </div>
+                            <div class="lang-en">
+                                <p class="tech-card-desc">Development of geographic interactivity mobile apps and cloud database integrations using agile frameworks.</p>
+                                <ul class="tech-card-list">
+                                    <li><strong>FestCompass:</strong> Native mobile app in Flutter/Dart implementing a real-time geolocation compass for event-goers.</li>
+                                    <li><strong>Supabase Cloud:</strong> Real-time syncing of user profiles, coordinates database, and reactive stream pipelines.</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Tech Card 6: AI Collaboration Workflows -->
+                        <div class="tech-card">
+                            <div class="tech-card-header">
+                                <i data-lucide="bot"></i>
+                                <h4>
+                                    <span class="lang-es">IA Aplicada & Automatización</span>
+                                    <span class="lang-en">Applied AI & Automation</span>
+                                </h4>
+                            </div>
+                            <div class="lang-es">
+                                <p class="tech-card-desc">Estructuración y diseño de metodologías de trabajo potenciadas por Inteligencias Artificiales de última generación en el sector AECO.</p>
+                                <ul class="tech-card-list">
+                                    <li><strong>Sinergia Multi-IA:</strong> Pipeline coordinado de desarrollo donde Gemini ejecuta tareas técnicas de código y Claude refactoriza y diseña la UI.</li>
+                                    <li><strong>Gemelos Digitales & IA:</strong> Modelado paramétrico y mapeo automático de bases de datos físicas a instancias digitales mediante machine learning.</li>
+                                </ul>
+                            </div>
+                            <div class="lang-en">
+                                <p class="tech-card-desc">Structuring and design of collaborative workflow methodologies enhanced by state-of-the-art AI systems in AECO.</p>
+                                <ul class="tech-card-list">
+                                    <li><strong>Multi-AI Synergy:</strong> Coordinated software development pipeline combining Gemini's technical execution with Claude's refactoring and UI skills.</li>
+                                    <li><strong>Digital Twins:</strong> Parametric modeling and automated mapping of physical databases to digital models using machine learning techniques.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Technology Case Studies -->
+                    <div class="tech-cases-section">
+                        <div class="tech-cases-header">
+                            <span class="tech-cases-tag">
+                                <span class="lang-es">Casos de Estudio</span><span class="lang-en">Case Studies</span>
+                            </span>
+                            <h3 class="tech-cases-title">
+                                <span class="lang-es">Desarrollos de Software y Proyectos Aplicados</span>
+                                <span class="lang-en">Applied Software Developments & Projects</span>
+                            </h3>
+                        </div>
+                        
+                        <div class="tech-cases-list">
+                            <!-- Case 1: Metalperfil Sync -->
+                            <div class="tech-case-item">
+                                <div class="case-image-wrapper">
+                                    <img src="assets/tech_metalperfil_sync.jpg" alt="Metalperfil Sync Architecture & Facades">
+                                </div>
+                                <div class="case-info">
+                                    <span class="case-tag">C# / .NET 8 / Revit API / ACadSharp</span>
+                                    <h4>
+                                        <span class="lang-es">Integración de Catálogo y Familias Paramétricas (Metalperfil)</span>
+                                        <span class="lang-en">Catalog Integration & Parametric Families (Metalperfil)</span>
+                                    </h4>
+                                    <div class="lang-es">
+                                        <p>Desarrollo de un plugin integrado en Revit que lee perfiles metálicos directamente desde bases de datos vectoriales CAD/DXF de Metalperfil y automatiza la generación de familias 3D (.rfa) paramétricas de alta precisión.</p>
+                                        <p>Incluye un Curtain Wall Randomizer que permite modular y aleatorizar composiciones de fachada en tiempo real.</p>
+                                    </div>
+                                    <div class="lang-en">
+                                        <p>Development of a custom Revit plugin that parses metal profiles directly from vector CAD/DXF databases and automates the creation of high-precision parametric 3D family (.rfa) files.</p>
+                                        <p>Includes a Curtain Wall Randomizer feature allowing designers to modulate and randomize facade components dynamically.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Case 2: Parametric Canopy -->
+                            <div class="tech-case-item inverse">
+                                <div class="case-image-wrapper">
+                                    <img src="assets/tech_parametric_canopy.jpg" alt="Parametric Canopy Generative Design">
+                                </div>
+                                <div class="case-info">
+                                    <span class="case-tag">Python / Dynamo / OpenAI API / Generative Design</span>
+                                    <h4>
+                                        <span class="lang-es">Diseño Generativo de Fachadas con Inteligencia Artificial</span>
+                                        <span class="lang-en">Generative Facade Design using Artificial Intelligence</span>
+                                    </h4>
+                                    <div class="lang-es">
+                                        <p>Un conector que vincula el modelo espacial tridimensional de Revit con redes neuronales generativas mediante Python. Permite traducir patrones de luz y sombras analizados por IA en paneles con espesores y perforaciones físicas de fachada.</p>
+                                    </div>
+                                    <div class="lang-en">
+                                        <p>A computational connector linking Revit 3D spatial models to generative neural networks via Python. It translates lighting and shading patterns analyzed by AI into physical facade panel thicknesses and perforation sizes.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Case 3: CNC Snake-Path Optimization -->
+                            <div class="tech-case-item">
+                                <div class="case-image-wrapper">
+                                    <img src="assets/tech_cnc_path.jpg" alt="CNC Snake Path Optimization">
+                                </div>
+                                <div class="case-info">
+                                    <span class="case-tag">Python / NumPy / netDxf / G-Code CNC</span>
+                                    <h4>
+                                        <span class="lang-es">Algoritmo de Trayectorias Snake-Path para Punzonado</span>
+                                        <span class="lang-en">Snake-Path Pathfinding Algorithm for CNC Tooling</span>
+                                    </h4>
+                                    <div class="lang-es">
+                                        <p>Optimización matemática del recorrido del cabezal CNC para el punzonado de chapas de Metalperfil. Implementa un recorrido en zigzag que reduce en un 38% los movimientos inactivos y realiza un control de ligamentos de seguridad (distancia mínima de metal entre perforaciones).</p>
+                                    </div>
+                                    <div class="lang-en">
+                                        <p>Mathematical path routing optimization of CNC punching machines for Metalperfil sheet metal fabrication. It implements a zigzag pathing that decreases idle tool travel by 38% while checking safety distance clearances between holes to avoid material tearing.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Case 4: VR Compressor Digital Twin (Gagn) -->
+                            <div class="tech-case-item inverse">
+                                <div class="case-image-wrapper">
+                                    <img src="assets/CompressorVibTemp.JPG" alt="VR Compressor Digital Twin">
+                                </div>
+                                <div class="case-info">
+                                    <span class="case-tag">Unreal Engine 5 / VR / JSON Telemetry / Dynamo</span>
+                                    <h4>
+                                        <span class="lang-es">Gemelo Digital en VR de Compresor Industrial (Gagn)</span>
+                                        <span class="lang-en">VR Compressor Digital Twin (Gagn Project)</span>
+                                    </h4>
+                                    <div class="lang-es">
+                                        <p>Desarrollo de un gemelo digital interactivo y transfronterizo (España - Noruega) para la supervisión remota de compresores industriales. Combina el motor gráfico de Unreal Engine para la inmersión en realidad virtual (VR) con scripts de Dynamo que parsean telemetría en formato JSON (datos de temperatura y vibraciones) y animan las partes mecánicas en tiempo real.</p>
+                                    </div>
+                                    <div class="lang-en">
+                                        <p>Cross-border interactive digital twin development (Spain - Norway) for remote industrial compressor monitoring. It merges Unreal Engine's graphics for VR immersion with Dynamo scripts that parse JSON telemetric logs (vibrations & temperature) to animate mechanical parts in real time.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Case 5: Dynamo Automation Library -->
+                            <div class="tech-case-item">
+                                <div class="case-image-wrapper">
+                                    <img src="assets/tech_dynamo_nodes.jpg" alt="Dynamo Automation Nodes">
+                                </div>
+                                <div class="case-info">
+                                    <span class="case-tag">Python / Dynamo Scripts / Revit API / OSM</span>
+                                    <h4>
+                                        <span class="lang-es">Suite de Automatización BIM & Generación Procedimental</span>
+                                        <span class="lang-en">BIM Automation Suite & Procedural Generation</span>
+                                    </h4>
+                                    <div class="lang-es">
+                                        <p>Biblioteca de scripts computacionales integrados en Dynamo para la oficina técnica de Picharchitects. Optimiza la generación procedimental de planos y colocación de vistas en planos (`GenerarPlanos1`), alineación automática de marcas de detalle, modelado de redes viales ajustadas a topografías tridimensionales y reconstrucción de volumetrías urbanas a partir de datos de OpenStreetMap.</p>
+                                    </div>
+                                    <div class="lang-en">
+                                        <p>A library of computational Dynamo scripts developed to optimize technical office tasks at Picharchitects. It automates sheet layout generation and view placement (`GenerarPlanos1`), smart detail tag alignment, road network mapping conforming to 3D topographies, and urban volume reconstruction using OpenStreetMap (OSM) databases.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- PANEL 4: QUIÉN SOY (About Me - Estructura editorial elegante) -->
+            <section class="tab-panel" id="panel-about">
+                <div class="page-container">
+                    <div class="section-header">
+                        <span class="section-tag">
+                            <span class="lang-es">04 / Trayectoria</span><span class="lang-en">04 / Trajectory</span>
+                        </span>
+                        <h2 class="section-title">
+                            <span class="lang-es">Sobre Mí & Carrera</span><span class="lang-en">About Me & Career</span>
+                        </h2>
+                    </div>
+
+                    <div class="about-grid">
+                        <div class="about-image-col">
+                            <div class="about-img-container">
+                                <img src="assets/Perifl Foto.jpg" alt="Miguel Suárez Torres">
+                            </div>
+                        </div>
+                        <div class="about-text-col">
+                            <h3 class="about-name">MSTos</h3>
+                            <p class="about-subtitle">
+                                <span class="lang-es">Arquitecto bioclimático, artista visual 3D y programador de sistemas BIM.</span>
+                                <span class="lang-en">Bioclimatic architect, 3D visual artist, and BIM systems developer.</span>
+                            </p>
+                            
+                            <div class="about-bio">
+                                <div class="lang-es">
+                                    <p>
+                                        Mi trayectoria profesional fusiona la rigurosidad del diseño de bajo impacto ambiental con la potencia de la visualización en tiempo real y la automatización por código. Creo firmemente que la innovación tecnológica debe estar al servicio de la sostenibilidad.
+                                    </p>
+                                    <p>
+                                        Comencé mi carrera colaborando en **Celobert (2018-2019)**, especializándome en vivienda ecológica y arquitectura social de cooperación. Posteriormente, me incorporé a **Picharchitects (2019-2025)**, donde asumí el rol de **Office Manager de la oficina de Madrid** y lideré el departamento de visualización fotorrealista en Unreal Engine 5 y Twinmotion, además de coordinar la ingeniería de datos BIM.
+                                    </p>
+                                    <p>
+                                        Actualmente dirijo **DEMI Studio**, una firma independiente dedicada a la infoarquitectura de alta fidelidad, y desarrollo scripts a medida (Python, C#, Grasshopper) para automatizar la fabricación CNC de componentes de fachada y auditar modelos BIM complejos.
+                                    </p>
+                                </div>
+                                <div class="lang-en">
+                                    <p>
+                                        My professional trajectory merges the rigor of low-impact environmental design with the power of real-time rendering and computational automation. I firmly believe that technological innovation must serve sustainability.
+                                    </p>
+                                    <p>
+                                        I started my career collaborating with **Celobert (2018-2019)**, specializing in ecological housing and social cooperation architecture. Later, I joined **Picharchitects (2019-2025)**, where I served as the **Madrid Office Manager** and led the fotorrealistic visualization department in Unreal Engine 5 and Twinmotion, as well as coordinating BIM database integration.
+                                    </p>
+                                    <p>
+                                        Currently, I direct **DEMI Studio**, an independent firm dedicated to high-fidelity architectural rendering, while developing custom computational scripts (Python, C#, Grasshopper) to automate CNC fabrication of facade systems and audit complex BIM models.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="about-cv-platforms">
+                                <span class="platforms-title">
+                                    <span class="lang-es">Perfiles Profesionales</span><span class="lang-en">Professional Profiles</span>
+                                </span>
+                                <div class="platforms-links">
+                                    <a href="https://www.behance.net/miguelsurez1" target="_blank" rel="noopener" class="platform-btn">
+                                        <i data-lucide="external-link"></i>
+                                        <span>Behance</span>
+                                    </a>
+                                    <a href="https://www.linkedin.com/in/miguel-su%C3%A1rez-torres" target="_blank" rel="noopener" class="platform-btn">
+                                        <i data-lucide="linkedin"></i>
+                                        <span>LinkedIn</span>
+                                    </a>
+                                    <a href="https://issuu.com/miguelsuareztorres/docs/portfolio" target="_blank" rel="noopener" class="platform-btn">
+                                        <i data-lucide="book-open"></i>
+                                        <span>Issuu Portfolio</span>
+                                    </a>
+                                    <a href="https://github.com/Ashromer" target="_blank" rel="noopener" class="platform-btn">
+                                        <i data-lucide="github"></i>
+                                        <span>GitHub</span>
+                                    </a>
+                                </div>
+                            </div>
+                            
+                            <!-- TFG Academic Research Subsection -->
+                            <div class="about-tfg-section" style="margin-top: 2.5rem; border-top: 1px solid var(--border-color); padding-top: 2rem;">
+                                <h4 class="platforms-title" style="margin-bottom: 0.8rem;">
+                                    <span class="lang-es">Trabajo Fin de Grado (TFG)</span>
+                                    <span class="lang-en">Bachelor's Thesis (TFG)</span>
+                                </h4>
+                                <div style="display: flex; gap: 1.5rem; align-items: flex-start; margin-top: 1rem;">
+                                    <img src="assets/TFG_cover.jpg" alt="TFG Cover" style="width: 100px; height: auto; border: 1px solid var(--border-color); box-shadow: 0 4px 10px rgba(0,0,0,0.05);">
+                                    <div>
+                                        <h5 style="font-family: var(--font-sans); font-size: 0.9rem; font-weight: 600; color: var(--text-primary); margin-bottom: 0.4rem;">
+                                            <span class="lang-es">El espacio público y las dinámicas de flujo en la manifestación ciudadana</span>
+                                            <span class="lang-en">Public space and flow dynamics in citizen demonstration</span>
+                                        </h5>
+                                        <p style="font-family: var(--font-sans); font-size: 0.82rem; font-weight: 300; line-height: 1.5; color: var(--text-secondary); margin-bottom: 1rem;">
+                                            <span class="lang-es">Investigación académica desarrollada en la ETSAM (UPM). Un análisis urbano de la morfología del espacio público de Madrid (Alcalá, Callao, Sol) y su respuesta ante manifestaciones masivas mediante simulaciones y dinámicas de flujos peatonales.</span>
+                                            <span class="lang-en">Academic research conducted at ETSAM (UPM). An urban analysis of the morphology of Madrid's public spaces (Alcalá, Callao, Sol) and their response to mass demonstrations through pedestrian flow simulations.</span>
+                                        </p>
+                                        <a href="assets/TFG_2018_Suarez_Torres_Miguel.pdf" target="_blank" rel="noopener" class="platform-btn" style="display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.72rem; padding: 0.4rem 0.8rem; margin: 0;">
+                                            <i data-lucide="download"></i>
+                                            <span class="lang-es">Descargar TFG (PDF)</span>
+                                            <span class="lang-en">Download Thesis (PDF)</span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- PANEL 5: CONTACTO (Contact Page - Limpio y con formulario) -->
+            <section class="tab-panel" id="panel-contact-page">
+                <div class="page-container">
+                    <div class="section-header">
+                        <span class="section-tag">
+                            <span class="lang-es">05 / Contacto</span><span class="lang-en">05 / Contact</span>
+                        </span>
+                        <h2 class="section-title">
+                            <span class="lang-es">Hablemos de tu Proyecto</span><span class="lang-en">Let's Talk About Your Project</span>
+                        </h2>
+                    </div>
+
+                    <div class="contact-page-grid">
+                        <div class="contact-info-col">
+                            <h3 class="contact-subtitle">
+                                <span class="lang-es">Colaboraciones y Soluciones Técnicas</span>
+                                <span class="lang-en">Collaborations & Technical Solutions</span>
+                            </h3>
+                            <p class="contact-desc">
+                                <span class="lang-es">Si deseas optimizar tus flujos BIM, necesitas renders fotorrealistas de gran nivel, o quieres colaborar en proyectos bioclimáticos, no dudes en escribirme.</span>
+                                <span class="lang-en">If you want to optimize your BIM workflows, need high-level photorealistic renders, or want to collaborate on bioclimatic projects, feel free to reach out.</span>
+                            </p>
+                            
+                            <div class="contact-details-list">
+                                <div class="contact-detail-item">
+                                    <span class="detail-label">
+                                        <span class="lang-es">Correo Electrónico</span><span class="lang-en">Email Address</span>
+                                    </span>
+                                    <a href="mailto:miguel.suarez.torres.25@gmail.com" class="detail-value">miguel.suarez.torres.25@gmail.com</a>
+                                </div>
+                                <div class="contact-detail-item">
+                                    <span class="detail-label">
+                                        <span class="lang-es">Teléfono</span><span class="lang-en">Phone Number</span>
+                                    </span>
+                                    <a href="tel:+34691533425" class="detail-value">(+34) 691 533 425</a>
+                                </div>
+                                <div class="contact-detail-item">
+                                    <span class="detail-label">
+                                        <span class="lang-es">Ubicación</span><span class="lang-en">Location</span>
+                                    </span>
+                                    <span class="detail-value">Madrid / Barcelona, España</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-form-col">
+                            <!-- Clean Minimal Form -->
+                            <form class="minimal-contact-form" onsubmit="event.preventDefault(); alert(document.body.classList.contains('lang-en') ? 'Message successfully sent!' : '¡Mensaje enviado con éxito!'); this.reset();">
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="form-name">
+                                            <span class="lang-es">Nombre Completo</span><span class="lang-en">Full Name</span>
+                                        </label>
+                                        <input type="text" id="form-name" required placeholder="p. ej. Renzo Piano">
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="form-email">
+                                            <span class="lang-es">Correo de Contacto</span><span class="lang-en">Email Address</span>
+                                        </label>
+                                        <input type="email" id="form-email" required placeholder="correo@ejemplo.com">
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="form-type">
+                                            <span class="lang-es">Área de Interés</span><span class="lang-en">Area of Interest</span>
+                                        </label>
+                                        <select id="form-type">
+                                            <option value="arch" data-es="Arquitectura Bioclimática" data-en="Bioclimatic Architecture">Arquitectura Bioclimática</option>
+                                            <option value="viz" data-es="Visualización Inmersiva (UE5)" data-en="Immersive Rendering (UE5)">Visualización Inmersiva (UE5)</option>
+                                            <option value="tech" data-es="Desarrollo de Código BIM" data-en="BIM Computational Code">Desarrollo de Código BIM</option>
+                                            <option value="other" data-es="Otro tipo de Colaboración" data-en="Other Collaboration">Otro tipo de Colaboración</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="form-message">
+                                            <span class="lang-es">Mensaje</span><span class="lang-en">Message</span>
+                                        </label>
+                                        <textarea id="form-message" rows="5" required placeholder="Escribe los detalles aquí..."></textarea>
+                                    </div>
+                                </div>
+                                <button type="submit" class="submit-form-btn">
+                                    <span class="lang-es">Enviar Mensaje</span><span class="lang-en">Send Message</span>
+                                    <i data-lucide="arrow-right"></i>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+        <!-- Footer -->
+        <footer>
+            <div class="footer-container">
+                <span class="footer-copy">
+                    <span class="lang-es">&copy; 2026 MSTos. Todos los derechos reservados.</span>
+                    <span class="lang-en">&copy; 2026 MSTos. All rights reserved.</span>
+                </span>
+                <span class="footer-philosophy">Where Innovation Meets Imagery.</span>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- Web App Script -->
+    <script src="script.js"></script>
+</body>
+</html>
