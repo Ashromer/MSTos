@@ -15,3 +15,6 @@ scratch_*.py
 
 # Backups locales
 _backup_*/
+
+# Clon vacío redundante creado por GitHub Desktop
+/MSTos/
