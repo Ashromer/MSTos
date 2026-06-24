@@ -1,0 +1,487 @@
+{
+  "Uuid": "515df76a-d5be-4050-bc73-3f44cc543013",
+  "IsCustomNode": false,
+  "Description": "",
+  "Name": "OpenAI DALL-E Demo",
+  "ElementResolver": {
+    "ResolutionMap": {}
+  },
+  "Inputs": [],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
+      "NodeType": "PythonScriptNode",
+      "Code": "import json\r\nfrom System.Net import WebClient\r\nfrom System import Convert\r\nfrom System.IO import MemoryStream\r\nfrom System.Drawing import Bitmap\r\n\r\n\r\nif IN[0]:\r\n\r\n    webClient = WebClient()\r\n    webClient.Headers.Add(\"Content-Type\", \"application/json\")\r\n    webClient.Headers.Add(\"Authorization\", \"Bearer \" + IN[1])\r\n    \r\n    url = \"https://api.openai.com/v1/images/generations\";\r\n    \r\n    parameters = json.dumps({\r\n        \"model\": \"image-alpha-001\",\r\n        \"prompt\": IN[2],\r\n        \"size\": IN[3],\r\n        \"n\": IN[4],\r\n        \"response_format\": \"b64_json\"})\r\n\r\n    \r\n    response = json.loads(webClient.UploadString(url, parameters))\r\n   \r\n    #Extract the bitmap images from the web response:\r\n\r\n    bitmaps = []\r\n    \r\n    for i, imageData in enumerate(response[\"data\"]):\r\n        memoryStream = MemoryStream(Convert.FromBase64String(imageData[\"b64_json\"]));\r\n        bitmaps.append(Bitmap.FromStream(memoryStream))\r\n        memoryStream.Close();\r\n   \r\n    OUT = bitmaps\r\n\r\n",
+      "Engine": "CPython3",
+      "EngineName": "CPython3",
+      "VariableInputPorts": true,
+      "Id": "ff85acb03fc344039b0f7b02184fc263",
+      "Inputs": [
+        {
+          "Id": "0844cd0d18c24962bb6cce98d8506d14",
+          "Name": "IN[0]",
+          "Description": "Input #0",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "dd977bcf08c940b7bcaff14bc4a62478",
+          "Name": "IN[1]",
+          "Description": "Input #1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "4b8ea1516258450689d53f68a246058e",
+          "Name": "IN[2]",
+          "Description": "Input #2",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "1d0969ab3ed64ba58be98c1ed26a726f",
+          "Name": "IN[3]",
+          "Description": "Input #3",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "7a82ff2c7ddf459a8c504fc6c0cfdf91",
+          "Name": "IN[4]",
+          "Description": "Input #4",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "444fb2d57ba9400bb763130ee06a8838",
+          "Name": "OUT",
+          "Description": "Result of the python script",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Runs an embedded Python script."
+    },
+    {
+      "ConcreteType": "CoreNodeModels.WatchImageCore, CoreNodeModels",
+      "NodeType": "ExtensionNode",
+      "Id": "cee28e22861e4091af166b5cdaad2001",
+      "Inputs": [
+        {
+          "Id": "890dac2cf6b643c2bfcb6ad13306d02f",
+          "Name": "image",
+          "Description": "Image for visualization",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "6a09027a7d3f49ffad1d6ffa9746efce",
+          "Name": "image",
+          "Description": "Image for visualization",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Previews an image"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.StringInput, CoreNodeModels",
+      "NodeType": "StringInputNode",
+      "InputValue": "",
+      "Id": "bd99377f49d74f6599f990ab7beb0d27",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "6d5cf65f0c8e48daa0c9d508e44f6c7c",
+          "Name": "",
+          "Description": "String",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Creates a string"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.BoolSelector, CoreNodeModels",
+      "NodeType": "BooleanInputNode",
+      "InputValue": true,
+      "Id": "0f83b69e482442018e511c97b25c82aa",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "61463d2d1d3a46de9ac65f164f47ecef",
+          "Name": "",
+          "Description": "Boolean",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Enables selection between True and False"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.StringInput, CoreNodeModels",
+      "NodeType": "StringInputNode",
+      "InputValue": "A cute corgi using AutoCAD, 3D art, ultra detailed, dramatic lighting",
+      "Id": "efbe72b02744400e8aace0e8fd9ba170",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "076ebb612d3d41729d9c8015d6e705a8",
+          "Name": "",
+          "Description": "String",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Creates a string"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.DoubleInput, CoreNodeModels",
+      "NodeType": "NumberInputNode",
+      "NumberType": "Double",
+      "InputValue": 1.0,
+      "Id": "494278e4447a4b81b3f5f792d4b33114",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "1efb283400a54b9a8a58b66cdc0f1491",
+          "Name": "",
+          "Description": "Double",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Creates a number"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.IntegerSlider, CoreNodeModels",
+      "NodeType": "NumberInputNode",
+      "NumberType": "Integer",
+      "InputValue": 0,
+      "MaximumValue": 100,
+      "MinimumValue": 0,
+      "StepValue": 1,
+      "Id": "c61cac32c05f4717926e81af7aab4916",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "e1a1872924dc4c24950352a389001f8e",
+          "Name": "",
+          "Description": "Int64",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Produces integer values"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "DSCore.List.GetItemAtIndex@var[]..[],int",
+      "Id": "a2b5f71c321e4a52b6bda28fa0aac820",
+      "Inputs": [
+        {
+          "Id": "3f8b6364a10344e78eb9d856518e4648",
+          "Name": "list",
+          "Description": "List to fetch an item from.\n\nvar[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "2d1a9d98cade41dbbf4cf61b9898f1d4",
+          "Name": "index",
+          "Description": "Index of the item to be fetched.\n\nint",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "f8244bfeea654f23bb40097ed14867bc",
+          "Name": "item",
+          "Description": "Item in the list at the given index.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Returns an item from the given list that's located at the specified index.\n\nList.GetItemAtIndex (list: var[]..[], index: int): var[]..[]"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.StringInput, CoreNodeModels",
+      "NodeType": "StringInputNode",
+      "InputValue": "256x256",
+      "Id": "9cae200f2abf477db847732860a24144",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "54fa782575444991adbbee8fc121ec15",
+          "Name": "",
+          "Description": "String",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Creates a string"
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "444fb2d57ba9400bb763130ee06a8838",
+      "End": "3f8b6364a10344e78eb9d856518e4648",
+      "Id": "0269453410ae480faff31241e808cdcf",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "6d5cf65f0c8e48daa0c9d508e44f6c7c",
+      "End": "dd977bcf08c940b7bcaff14bc4a62478",
+      "Id": "1cd5359429d749789802f908e2cd94fc",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "61463d2d1d3a46de9ac65f164f47ecef",
+      "End": "0844cd0d18c24962bb6cce98d8506d14",
+      "Id": "aae874cf996044ba8c0d17bcf3f92653",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "076ebb612d3d41729d9c8015d6e705a8",
+      "End": "4b8ea1516258450689d53f68a246058e",
+      "Id": "aff6781025c44f9f9425bf2b2614b74d",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "1efb283400a54b9a8a58b66cdc0f1491",
+      "End": "7a82ff2c7ddf459a8c504fc6c0cfdf91",
+      "Id": "4221f98d9e7a49f48f679fd51363b842",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "e1a1872924dc4c24950352a389001f8e",
+      "End": "2d1a9d98cade41dbbf4cf61b9898f1d4",
+      "Id": "ba0b03c9bc8a4e3fa20696e08d506d93",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "f8244bfeea654f23bb40097ed14867bc",
+      "End": "890dac2cf6b643c2bfcb6ad13306d02f",
+      "Id": "34ba15a150ba432b9a741c0d4771947b",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "54fa782575444991adbbee8fc121ec15",
+      "End": "1d0969ab3ed64ba58be98c1ed26a726f",
+      "Id": "5ba66e31d45f445b8bb2ebf2218867ab",
+      "IsHidden": "False"
+    }
+  ],
+  "Dependencies": [],
+  "NodeLibraryDependencies": [],
+  "Thumbnail": "",
+  "GraphDocumentationURL": null,
+  "ExtensionWorkspaceData": [
+    {
+      "ExtensionGuid": "28992e1d-abb9-417f-8b1b-05e053bee670",
+      "Name": "Properties",
+      "Version": "2.17",
+      "Data": {}
+    }
+  ],
+  "Author": "",
+  "Linting": {
+    "activeLinter": "None",
+    "activeLinterId": "7b75fb44-43fd-4631-a878-29f4d5d8399a",
+    "warningCount": 0,
+    "errorCount": 0
+  },
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": true,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.17.0.3236",
+      "RunType": "Automatic",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "_Background Preview",
+      "EyeX": -17.0,
+      "EyeY": 24.0,
+      "EyeZ": 50.0,
+      "LookX": 12.0,
+      "LookY": -13.0,
+      "LookZ": -58.0,
+      "UpX": 0.0,
+      "UpY": 1.0,
+      "UpZ": 0.0
+    },
+    "ConnectorPins": [],
+    "NodeViews": [
+      {
+        "Name": "Python Script",
+        "ShowGeometry": true,
+        "Id": "ff85acb03fc344039b0f7b02184fc263",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 304.51620495394707,
+        "Y": 162.99579147155822
+      },
+      {
+        "Name": "Watch Image",
+        "ShowGeometry": true,
+        "Id": "cee28e22861e4091af166b5cdaad2001",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 948.22202241586911,
+        "Y": 329.44681752019716
+      },
+      {
+        "Name": "OpenAI API Key",
+        "ShowGeometry": true,
+        "Id": "bd99377f49d74f6599f990ab7beb0d27",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -367.45691728601594,
+        "Y": 255.97907574580563
+      },
+      {
+        "Name": "Activate",
+        "ShowGeometry": true,
+        "Id": "0f83b69e482442018e511c97b25c82aa",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -51.745839065639871,
+        "Y": 43.452429774063773
+      },
+      {
+        "Name": "Prompt",
+        "ShowGeometry": true,
+        "Id": "efbe72b02744400e8aace0e8fd9ba170",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -80.462977125724478,
+        "Y": 233.05630341993202
+      },
+      {
+        "Name": "Number of Images",
+        "ShowGeometry": true,
+        "Id": "494278e4447a4b81b3f5f792d4b33114",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -57.776386348862275,
+        "Y": 620.44713110597218
+      },
+      {
+        "Name": "Integer Slider",
+        "ShowGeometry": true,
+        "Id": "c61cac32c05f4717926e81af7aab4916",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 279.7299576002091,
+        "Y": 477.28774177958212
+      },
+      {
+        "Name": "List.GetItemAtIndex",
+        "ShowGeometry": true,
+        "Id": "a2b5f71c321e4a52b6bda28fa0aac820",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 693.01630462051151,
+        "Y": 330.6585700836448
+      },
+      {
+        "Name": "Image size (string)",
+        "ShowGeometry": true,
+        "Id": "9cae200f2abf477db847732860a24144",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -58.130383873082224,
+        "Y": 451.45065861970716
+      }
+    ],
+    "Annotations": [
+      {
+        "Id": "d3595945c93440f4b859d44afe381776",
+        "Title": "You need to have an OpenAI API Key to run this demo\r\n",
+        "DescriptionText": "An API key is like a fixed unique \"password\" that is associated with your OpenAI account. It allows you to access the OpenAI services from programming code.\r\n\r\nHow to obtain an API key:\r\n\r\n1. If you don't have an OpenAI account yet, register for one at: https://beta.openai.com/signup\r\n\r\n(Each new account will get 18 US Dollars worth of free credits, valid for 3 months. \r\nGenerating texts and/or images WILL cost credits) \r\n\r\n2. Log-in to your account \r\n\r\n4. Go to your account settings and look for the API Key session, and create a new API key.\r\n\r\n6. Copy and Paste the API key here in Grasshopper\r\n\r\n(IMPORTANT: Keep your API key private, otherwise other people may use it to access your OpenAI account and credits!)",
+        "IsExpanded": true,
+        "WidthAdjustment": 0.0,
+        "HeightAdjustment": 0.0,
+        "Nodes": [
+          "bd99377f49d74f6599f990ab7beb0d27"
+        ],
+        "HasNestedGroups": false,
+        "Left": -377.45691728601594,
+        "Top": -344.52092425419437,
+        "Width": 210.0,
+        "Height": 732.5,
+        "FontSize": 18.0,
+        "GroupStyleId": "883066aa-1fe2-44a4-9bd1-c3df86bfe9f6",
+        "InitialTop": 255.97907574580563,
+        "InitialHeight": 145.0,
+        "TextblockHeight": 590.5,
+        "Background": "#FFFFB8D8"
+      }
+    ],
+    "X": 446.70926572563519,
+    "Y": 388.5592268177495,
+    "Zoom": 0.88426358728515375
+  }
+}

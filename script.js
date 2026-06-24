@@ -7,6 +7,10 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- CUSTOM MINIMAL CURSOR ---
     const cursor = document.querySelector('.custom-cursor');
     const follower = document.querySelector('.custom-cursor-follower');
+    // Only hide the native cursor on fine pointers once the custom one exists
+    if (cursor && follower && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+        document.documentElement.classList.add('cursor-ready');
+    }
     let mouseX = 0, mouseY = 0;
     let cursorX = 0, cursorY = 0;
     let followerX = 0, followerY = 0;
@@ -103,6 +107,16 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // Tech "Tell me your workflow" CTA -> Contact, pre-selecting the BIM/code interest
+    document.querySelectorAll('[data-go-contact]').forEach(btn => {
+        btn.addEventListener('click', () => {
+            switchTab('contact-page');
+            const typeSelect = document.getElementById('form-type');
+            if (typeSelect) typeSelect.value = 'tech';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    });
+
     // Back to Landing Selector on Logo Click
     if (logoBack) {
         logoBack.addEventListener('click', (e) => {
@@ -143,10 +157,29 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         // Scroll-snap por proyecto solo en architecture/visualization (no romper páginas de texto)
-        if (tabId === 'architecture' || tabId === 'visualization') {
+        // Visualization keeps full-bleed snap; Architecture is moving to an
+        // editorial (El Croquis-style) scroll, so it no longer snaps.
+        if (tabId === 'visualization') {
             document.documentElement.classList.add('snap-mode');
         } else {
             document.documentElement.classList.remove('snap-mode');
+        }
+
+        // Entering Architecture always lands on the project index
+        if (tabId === 'architecture') {
+            document.querySelectorAll('.arch-view.active').forEach(v => v.classList.remove('active'));
+            const ai = document.getElementById('arch-index');
+            if (ai) ai.classList.remove('hidden');
+        }
+
+        // Replay the CNC toolpath draw each time Technology becomes visible
+        if (tabId === 'technology') {
+            const sig = document.querySelector('.tech-signature');
+            if (sig) {
+                sig.classList.remove('animate');
+                void sig.offsetWidth; // force reflow so the animation restarts
+                sig.classList.add('animate');
+            }
         }
 
         if (window.lucide) {
@@ -561,6 +594,59 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    // --- CONTACT FORM (opens the user's mail client, pre-filled) ---
+    const contactForm = document.getElementById('contact-form');
+    if (contactForm) {
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const isEN = document.body.classList.contains('lang-en');
+            const name = (document.getElementById('form-name').value || '').trim();
+            const email = (document.getElementById('form-email').value || '').trim();
+            const typeSel = document.getElementById('form-type');
+            const typeOpt = typeSel.options[typeSel.selectedIndex];
+            const area = typeOpt.getAttribute(isEN ? 'data-en' : 'data-es') || typeOpt.text;
+            const message = (document.getElementById('form-message').value || '').trim();
+
+            const subject = `[Portfolio] ${area} — ${name}`;
+            const body =
+                (isEN ? 'Name: ' : 'Nombre: ') + name + '\n' +
+                (isEN ? 'Email: ' : 'Correo: ') + email + '\n' +
+                (isEN ? 'Area: ' : 'Área: ') + area + '\n\n' +
+                message;
+
+            window.location.href = 'mailto:miguel.suarez.torres.25@gmail.com'
+                + '?subject=' + encodeURIComponent(subject)
+                + '&body=' + encodeURIComponent(body);
+
+            contactForm.reset();
+        });
+    }
+
+    // --- ARCHITECTURE: index <-> project view router (no infinite scroll) ---
+    const archIndex = document.getElementById('arch-index');
+    const archViews = document.querySelectorAll('.arch-view');
+
+    function openArchProject(slug) {
+        archViews.forEach(v => v.classList.toggle('active', v.getAttribute('data-arch-view') === slug));
+        if (archIndex) archIndex.classList.add('hidden');
+        window.scrollTo({ top: 0, behavior: 'auto' });
+        if (window.lucide) window.lucide.createIcons();
+        refreshCursorHoverListeners();
+    }
+
+    function closeArchProject() {
+        archViews.forEach(v => v.classList.remove('active'));
+        if (archIndex) archIndex.classList.remove('hidden');
+        window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+
+    document.querySelectorAll('[data-arch-open]').forEach(btn => {
+        btn.addEventListener('click', () => openArchProject(btn.getAttribute('data-arch-open')));
+    });
+    document.querySelectorAll('[data-arch-close]').forEach(btn => {
+        btn.addEventListener('click', closeArchProject);
+    });
+
     // --- SCROLL COLLAPSE STATE FOR HEADER ---
     const header = document.querySelector('header');
     
@@ -592,7 +678,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // --- PROJECTS NAVIGATION STRIP SMOOTH SCROLL ---
-    const navStripItems = document.querySelectorAll('.nav-strip-item, .logo-band-item');
+    const navStripItems = document.querySelectorAll('.nav-strip-item, .logo-band-item, .arch-logo[data-scroll-to]');
     navStripItems.forEach(item => {
         item.addEventListener('click', (e) => {
             const targetProj = item.getAttribute('data-scroll-to');

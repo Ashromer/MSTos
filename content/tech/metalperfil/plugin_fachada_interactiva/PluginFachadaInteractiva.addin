@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RevitAddIns>
+  <AddIn Type="Application">
+    <Name>Metalperfil Fachada Interactiva</Name>
+    <Assembly>D:\Arquitectura\W_TRABAJOS\12_IA_OPT\2601_METALPERFIL_Catalogo\02_PROYECTO\01_Familias de Piezas metálicas\plugin_fachada_interactiva\src\bin\Release\net8.0-windows\win-x64\PluginFachadaInteractiva.dll</Assembly>
+    <FullClassName>PluginFachadaInteractiva.Core.App</FullClassName>
+    <ClientId>B28C2B3E-7D4F-4C9A-BD8D-68B7A1C2E3D4</ClientId>
+    <VendorId>Metalperfil</VendorId>
+    <VendorDescription>Metalperfil Catalogo Interactivo</VendorDescription>
+  </AddIn>
+</RevitAddIns>

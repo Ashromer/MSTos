@@ -1,0 +1,269 @@
+<Window x:Class="PluginAleatorizar.UI.RandomizerWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Aleatorizar Paneles — Metalperfil Tech"
+        Height="720" Width="560" MinHeight="620" MinWidth="480"
+        WindowStartupLocation="CenterScreen"
+        Background="#1E1E1E" Topmost="True">
+
+    <Window.Resources>
+        <!-- Estilos de Marca Premium Oscuro -->
+        <Style x:Key="ActionButton" TargetType="Button">
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="bd" Background="{TemplateBinding Background}" CornerRadius="4">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"
+                                               Margin="{TemplateBinding Padding}"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="bd" Property="Opacity" Value="0.88"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter TargetName="bd" Property="Opacity" Value="0.35"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="SmallButton" TargetType="Button">
+            <Setter Property="Padding" Value="10,4"/>
+            <Setter Property="Margin" Value="6,0,0,0"/>
+            <Setter Property="Background" Value="#333333"/>
+            <Setter Property="Foreground" Value="#E0E0E0"/>
+            <Setter Property="BorderBrush" Value="#444444"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" 
+                                BorderBrush="{TemplateBinding BorderBrush}" 
+                                BorderThickness="{TemplateBinding BorderThickness}" 
+                                CornerRadius="3">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="Card" TargetType="Border">
+            <Setter Property="Background" Value="#252526"/>
+            <Setter Property="CornerRadius" Value="6"/>
+            <Setter Property="BorderBrush" Value="#333337"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Padding" Value="12"/>
+        </Style>
+
+        <Style x:Key="CardTitle" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="11"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Foreground" Value="#888888"/>
+            <Setter Property="Margin" Value="2,0,0,6"/>
+        </Style>
+
+        <!-- Estilos de DataGrid Dark -->
+        <Style TargetType="DataGrid">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="RowBackground" Value="#1E1E1E"/>
+            <Setter Property="AlternatingRowBackground" Value="#252526"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="GridLinesVisibility" Value="Horizontal"/>
+            <Setter Property="HorizontalGridLinesBrush" Value="#333337"/>
+            <Setter Property="VerticalGridLinesBrush" Value="Transparent"/>
+            <Setter Property="Foreground" Value="#E0E0E0"/>
+        </Style>
+        
+        <Style TargetType="DataGridColumnHeader">
+            <Setter Property="Background" Value="#2D2D30"/>
+            <Setter Property="Foreground" Value="#CCCCCC"/>
+            <Setter Property="Padding" Value="8,6"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="BorderThickness" Value="0,0,0,1"/>
+            <Setter Property="BorderBrush" Value="#333337"/>
+        </Style>
+
+        <Style TargetType="DataGridCell">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Style.Triggers>
+                <Trigger Property="IsSelected" Value="True">
+                    <Setter Property="Background" Value="#3F3F46"/>
+                    <Setter Property="Foreground" Value="White"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style TargetType="CheckBox">
+            <Setter Property="Foreground" Value="#E0E0E0"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+        </Style>
+
+        <Style TargetType="TextBox">
+            <Setter Property="Background" Value="#1A1A1A"/>
+            <Setter Property="Foreground" Value="#E0E0E0"/>
+            <Setter Property="BorderBrush" Value="#444444"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Padding" Value="4,2"/>
+        </Style>
+    </Window.Resources>
+
+    <Grid Margin="16">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Cabecera Editorial -->
+        <Border Grid.Row="0" Background="#252526" CornerRadius="6" BorderBrush="#9E272C" BorderThickness="2,0,0,0" Padding="14,10" Margin="0,0,0,12">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Image Grid.Column="0" x:Name="imgLogo" Width="36" Height="36" VerticalAlignment="Center"/>
+                <StackPanel Grid.Column="1" Margin="12,0,0,0" VerticalAlignment="Center">
+                    <TextBlock Text="METALPERFIL TECH" FontFamily="Georgia" FontSize="18" FontWeight="Bold" Foreground="#9E272C"/>
+                    <TextBlock Text="Distribución aleatoria inteligente de paneles en muros cortina" FontFamily="Segoe UI" FontSize="11" Foreground="#999999"/>
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <!-- Selección de Muros -->
+        <Border Grid.Row="1" Style="{StaticResource Card}">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <DockPanel Grid.Row="0">
+                    <Button x:Name="btnPick" Content="Seleccionar muros en el modelo…"
+                            Style="{StaticResource ActionButton}" Background="#9E272C"
+                            Padding="14,7" DockPanel.Dock="Left" Click="btnPick_Click"
+                            ToolTip="Activa la selección de muros cortina en Revit. Pulse Finalizar (Enter) al terminar."/>
+                    <TextBlock x:Name="txtWallCount" Text="0 muros" VerticalAlignment="Center"
+                               HorizontalAlignment="Right" Foreground="#999999" FontSize="12" FontWeight="SemiBold"/>
+                </DockPanel>
+
+                <ListBox Grid.Row="1" x:Name="lstWalls" MaxHeight="100" Margin="0,8,0,0"
+                         BorderThickness="0" Background="Transparent" Foreground="#E0E0E0"
+                         HorizontalContentAlignment="Stretch"
+                         ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <DockPanel Margin="0,2">
+                                <Button DockPanel.Dock="Right" Content="✕" Width="20" Height="20"
+                                        FontSize="9" Background="#3A1C1C" Foreground="#FFA5A5" BorderBrush="#5C2525"
+                                        Cursor="Hand" Tag="{Binding}" Click="btnRemoveWall_Click"
+                                        ToolTip="Quitar este muro de la selección"/>
+                                <TextBlock Text="{Binding Display}" VerticalAlignment="Center" FontSize="11" Foreground="#CCCCCC"/>
+                            </DockPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </Grid>
+        </Border>
+
+        <!-- Tipos y Pesos -->
+        <Border Grid.Row="2" Style="{StaticResource Card}" Margin="0,12,0,0">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Grid.Row="0" Text="TIPOS DE PANEL Y PESOS DE DISTRIBUCIÓN" Style="{StaticResource CardTitle}"/>
+
+                <DataGrid Grid.Row="1" x:Name="dgTypes" ItemsSource="{Binding TypeItems}"
+                          AutoGenerateColumns="False" CanUserAddRows="False"
+                          SelectionMode="Extended" HeadersVisibility="Column"
+                          GridLinesVisibility="Horizontal" HorizontalGridLinesBrush="#333337"
+                          Background="Transparent" BorderThickness="0" RowHeight="28">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Nombre" Binding="{Binding Name}" IsReadOnly="True" Width="*"/>
+                        <DataGridTextColumn Header="Ancho (mm)" Binding="{Binding WidthMm, StringFormat={}{0:F1}}" IsReadOnly="True" Width="95"/>
+                        <DataGridTemplateColumn Header="Peso (%)" Width="85">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBox Text="{Binding Weight, UpdateSourceTrigger=PropertyChanged}"
+                                             TextAlignment="Center" BorderThickness="0" Background="#1A1A1A" Foreground="White"
+                                             VerticalContentAlignment="Center" Height="22"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+
+                <DockPanel Grid.Row="2" Margin="0,8,0,0">
+                    <Button x:Name="btnDistribute" Content="Repartir uniforme"
+                            Style="{StaticResource SmallButton}" Margin="0" Click="btnDistribute_Click"
+                            ToolTip="Reparte el 100% a partes iguales entre las filas seleccionadas (o todas si no hay selección)"/>
+                    <Button x:Name="btnReloadTypes" Content="Recargar tipos"
+                            Style="{StaticResource SmallButton}" Click="btnReloadTypes_Click"
+                            ToolTip="Vuelve a leer los tipos de panel cargados en el proyecto"/>
+                    <TextBlock x:Name="txtTotal" Text="Total: 0.0 %" HorizontalAlignment="Right"
+                               VerticalAlignment="Center" FontWeight="Bold" FontSize="13" Foreground="#FF4545"/>
+                </DockPanel>
+            </Grid>
+        </Border>
+
+        <!-- Semilla y Solape -->
+        <Border Grid.Row="3" Style="{StaticResource Card}" Margin="0,12,0,0" Padding="12,8">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <CheckBox Grid.Column="0" Content="Semilla fija:" IsChecked="{Binding IsFixedSeed}" VerticalAlignment="Center"
+                          ToolTip="Con semilla fija el resultado es reproducible" Foreground="#CCCCCC"/>
+                <TextBox Grid.Column="1" Text="{Binding SeedText}" Width="60" Margin="8,0,0,0" Height="24"
+                         VerticalContentAlignment="Center" TextAlignment="Center" IsEnabled="{Binding IsFixedSeed}"/>
+
+                <TextBlock Grid.Column="3" Text="Solape de montaje (mm):" VerticalAlignment="Center" Margin="24,0,0,0" FontWeight="SemiBold" Foreground="#CCCCCC"
+                           ToolTip="Solape entre chapas metálicas. Reduce el ancho de la celda de rejilla para forzar el montaje."/>
+                <TextBox Grid.Column="4" Text="{Binding SolapeText}" Width="60" Margin="8,0,0,0" Height="24"
+                         VerticalContentAlignment="Center" TextAlignment="Center"/>
+            </Grid>
+        </Border>
+
+        <!-- Registro de Ejecución -->
+        <Border Grid.Row="4" Style="{StaticResource Card}" Margin="0,12,0,0" Padding="8">
+            <DockPanel>
+                <TextBlock DockPanel.Dock="Top" Text="Registro de Actividad" Style="{StaticResource CardTitle}"/>
+                <TextBox x:Name="txtLog" IsReadOnly="True" Height="70" BorderThickness="0"
+                         VerticalScrollBarVisibility="Auto" FontSize="10" FontFamily="Consolas"
+                         Background="Transparent" Foreground="#CCCCCC"/>
+            </DockPanel>
+        </Border>
+
+        <!-- Barra de Progreso -->
+        <StackPanel Grid.Row="5" Margin="0,10,0,0">
+            <ProgressBar x:Name="pbProgress" Height="6" Minimum="0" Maximum="100" Value="0"
+                         Foreground="#9E272C" Background="#333337" BorderThickness="0"/>
+            <TextBlock x:Name="txtStatus" Text="Listo" FontSize="11" Foreground="#CCCCCC" Margin="2,4,0,0"/>
+        </StackPanel>
+
+        <!-- Ejecutar -->
+        <Button Grid.Row="6" x:Name="btnExecute" Content="ALEATORIZAR PANELES"
+                Style="{StaticResource ActionButton}" Background="#9E272C"
+                Height="40" FontSize="13" Margin="0,12,0,0" Click="btnExecute_Click"/>
+    </Grid>
+</Window>

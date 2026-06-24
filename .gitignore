@@ -18,3 +18,24 @@ _backup_*/
 
 # Clon vacío redundante creado por GitHub Desktop
 /MSTos/
+
+# Visual Studio & .NET build outputs/caches
+[Bb]in/
+[Oo]bj/
+.vs/
+*.suo
+*.user
+*.useros
+*.suo
+*.suo.tmp
+*.sln.docstates
+.vs/
+*.cache
+*.FileListAbsolute.txt
+*.g.resources
+*.AssemblyAttributes.cs
+*.AssemblyInfoInputs.cache
+*.csproj.AssemblyReference.cache
+*.csproj.CoreCompileInputs.cache
+*.MarkupCompile.cache
+

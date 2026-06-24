@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RevitAddIns>
+  <AddIn Type="Application">
+    <Name>Aleatorizar Paneles Metalperfil</Name>
+    <Assembly>D:\Arquitectura\W_TRABAJOS\12_IA_OPT\2601_METALPERFIL_Catalogo\02_PROYECTO\01_Familias de Piezas metálicas\Plugin Aleatorización Paneles\src\bin\Release\net8.0-windows\win-x64\PluginAleatorizar.dll</Assembly>
+    <AddInId>F5A3C8D1-29E4-4B6F-A7D2-8C91E30F4B52</AddInId>
+    <FullClassName>PluginAleatorizar.Core.App</FullClassName>
+    <VendorId>METALPERFIL</VendorId>
+    <VendorDescription>Metalperfil — Aleatorización de paneles de fachada</VendorDescription>
+  </AddIn>
+</RevitAddIns>

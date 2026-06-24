@@ -22,7 +22,7 @@ content/
 ## Proyectos por sección
 
 **arquitectura/**: waraqa · orkide · lighthouse · barbate · tfm · campillos · puerto-torre · colonizar-fabrica
-**visualizacion/**: caixaforum · csic · sem · tec · kaira-looro · waraqa-school · carrer-marroc · barajas · barcelona-housing · monterrey
+**visualizacion/**: caixaforum · csic · sem · tec · kaira-looro · waraqa-school · vivienda exterior · vivienda interior
 **tech/**: metalperfil · canopy-ia · cnc-snake-path · gagn-gemelo-digital · dynamo-suite
 
 ## Estado del cableado (código → carpeta)

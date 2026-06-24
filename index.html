@@ -29,7 +29,7 @@
         <div class="selector-grid">
             <!-- Column 1: Architecture -->
             <div class="selector-panel" data-tab="architecture">
-                <div class="panel-bg" style="background-image: url('assets/project_09.png');"></div>
+                <div class="panel-bg" style="background-image: url('content/arquitectura/lighthouse/KairaLooroNoche_enhanced.jpg');"></div>
                 <div class="panel-overlay"></div>
                 <div class="panel-content">
                     <span class="panel-num">01 // SPATIAL</span>
@@ -49,7 +49,7 @@
 
             <!-- Column 2: Visualization -->
             <div class="selector-panel" data-tab="visualization">
-                <div class="panel-bg" style="background-image: url('assets/00_RenderExterior.png');"></div>
+                <div class="panel-bg" style="background-image: url('content/visualizacion/sem/01.jpg');"></div>
                 <div class="panel-overlay"></div>
                 <div class="panel-content">
                     <span class="panel-num">02 // VISUAL</span>
@@ -69,7 +69,7 @@
 
             <!-- Column 3: Technology -->
             <div class="selector-panel" data-tab="technology">
-                <div class="panel-bg" style="background-image: url('assets/project_17.png');"></div>
+                <div class="panel-bg" style="background-image: url('content/tech/cnc-snake-path/01.jpg');"></div>
                 <div class="panel-overlay"></div>
                 <div class="panel-content">
                     <span class="panel-num">03 // COMPUTATIONAL</span>
@@ -135,455 +135,585 @@
             
             <!-- PANEL 1: ARCHITECTURE (Concursos y Cooperación - Estructura tipo play-time.es) -->
             <section class="tab-panel" id="panel-architecture">
-                
-                <!-- Service Introduction Block -->
-                <div class="tab-intro-block">
-                    <div class="intro-content-wrapper">
-                        <span class="intro-tag">01 // Spatial Design</span>
-                        <h2 class="intro-title">
-                            <span class="lang-es">Arquitectura Bioclimática & Obra Social</span>
-                            <span class="lang-en">Bioclimatic Architecture & Social Work</span>
+
+                <!-- ÍNDICE: manifiesto + 7 logos de proyecto -->
+                <div class="arch-index" id="arch-index">
+                    <div class="arch-manifesto">
+                        <span class="arch-eyebrow">01 — Arquitectura</span>
+                        <h2 class="arch-statement">
+                            <span class="lang-es">Arquitectura <em>social</em> y <em>bioclimática</em>: construir con el clima, con el lugar y con quien lo habita.</span>
+                            <span class="lang-en">Architecture that is <em>social</em> and <em>bioclimatic</em>: building with the climate, the place and the people who inhabit it.</span>
                         </h2>
-                        <p class="intro-desc">
-                            <span class="lang-es">Diseño pasivo de bajo impacto ambiental y alta inercia térmica. Especializado en concursos internacionales y proyectos de cooperación comunitaria. Utilización de materiales locales (tierra, bambú, madera) combinados con uniones tradicionales y simulaciones termodinámicas avanzadas para eliminar el acondicionamiento artificial.</span>
-                            <span class="lang-en">Low-impact passive design and high thermal inertia. Specializing in international competitions and community cooperation projects. Using local materials (earth, bamboo, timber) combined with traditional joinery and advanced thermodynamic simulations to eliminate artificial climate systems.</span>
+                        <p class="arch-lead">
+                            <span class="lang-es">Concursos internacionales, cooperación y proyectos residenciales que comparten un método: diseño pasivo de baja energía, materiales locales y procesos en los que la comunidad participa. Elige un proyecto para entrar.</span>
+                            <span class="lang-en">International competitions, cooperation work and residential projects sharing one method: low-energy passive design, local materials and community-driven processes. Pick a project to enter.</span>
                         </p>
-                        <div class="logo-band">
-                            <button class="logo-band-item" data-scroll-to="waraqa" aria-label="Escuela Waraqa"><img src="content/arquitectura/waraqa/logo.png" alt="Waraqa"><span class="logo-band-label">Waraqa</span></button>
-                            <button class="logo-band-item" data-scroll-to="orkide" aria-label="Refugios Orkide"><img src="content/arquitectura/orkide/logo.png" alt="Orkide"><span class="logo-band-label">Orkide</span></button>
-                            <button class="logo-band-item" data-scroll-to="lighthouse" aria-label="Faro de Cooperación"><img src="content/arquitectura/lighthouse/logo.png" alt="Kaira Looro"><span class="logo-band-label">Kaira Looro</span></button>
-                            <button class="logo-band-item" data-scroll-to="barbate" aria-label="Torre en Barbate"><img src="content/arquitectura/barbate/logo.png" alt="Barbate"><span class="logo-band-label">Barbate</span></button>
-                            <button class="logo-band-item" data-scroll-to="tfm" aria-label="Erosión / Oasis"><img src="content/arquitectura/tfm/logo.jpg" alt="TFM"><span class="logo-band-label">Erosión / Oasis</span></button>
-                            <button class="logo-band-item" data-scroll-to="campillos" aria-label="Rehabilitación Campillos"><img src="content/arquitectura/campillos/logo.jpg" alt="Campillos"><span class="logo-band-label">Campillos</span></button>
-                            <button class="logo-band-item" data-scroll-to="puerto-torre" aria-label="Puerto de la Torre"><img src="content/arquitectura/puerto-torre/logo.png" alt="Puerto de la Torre"><span class="logo-band-label">Puerto de la Torre</span></button>
-                            <button class="logo-band-item" data-scroll-to="colonizar-fabrica" aria-label="Cómo colonizar una fábrica"><img src="content/arquitectura/colonizar-fabrica/logo.jpg" alt="Colonizar Fábrica"><span class="logo-band-label">Colonizar Fábrica</span></button>
-                        </div>
-                        <div class="intro-scroll-hint">
-                            <span class="lang-es">Desliza para explorar proyectos</span>
-                            <span class="lang-en">Scroll to explore projects</span>
-                            <i data-lucide="arrow-down"></i>
-                        </div>
+                    </div>
+
+                    <div class="arch-logos">
+                        <button class="arch-logo" data-arch-open="waraqa" aria-label="Waraqa">
+                            <span class="arch-logo-imgwrap"><img src="content/arquitectura/waraqa/Logo.jpg" alt="Waraqa"></span>
+                            <span class="arch-logo-name">Waraqa</span>
+                            <span class="arch-logo-meta"><span class="lang-es">Escuela · Côte d'Ivoire</span><span class="lang-en">School · Ivory Coast</span></span>
+                        </button>
+                        <button class="arch-logo" data-arch-open="lighthouse" aria-label="Kaira Looro">
+                            <span class="arch-logo-imgwrap"><img src="content/arquitectura/lighthouse/Logo.jpg" alt="Kaira Looro"></span>
+                            <span class="arch-logo-name">Kaira Looro</span>
+                            <span class="arch-logo-meta"><span class="lang-es">Concurso · Senegal</span><span class="lang-en">Competition · Senegal</span></span>
+                        </button>
+                        <button class="arch-logo" data-arch-open="orkide" aria-label="Orkide">
+                            <span class="arch-logo-imgwrap"><img src="content/arquitectura/orkide/Logo.jpg" alt="Orkide"></span>
+                            <span class="arch-logo-name">Orkide</span>
+                            <span class="arch-logo-meta"><span class="lang-es">Concurso · B4H Camp</span><span class="lang-en">Competition · B4H Camp</span></span>
+                        </button>
+                        <button class="arch-logo" data-arch-open="barbate" aria-label="Torre en Barbate">
+                            <span class="arch-logo-imgwrap"><img src="content/arquitectura/barbate/Logo.jpg" alt="Torre en Barbate"></span>
+                            <span class="arch-logo-name">Erosión</span>
+                            <span class="arch-logo-meta"><span class="lang-es">Torre eólica · Cádiz</span><span class="lang-en">Wind tower · Cádiz</span></span>
+                        </button>
+                        <button class="arch-logo" data-arch-open="campillos" aria-label="Rehabilitación Campillos">
+                            <span class="arch-logo-imgwrap"><svg class="arch-logo-glyph" viewBox="0 0 64 48" aria-hidden="true"><path d="M6,44 L6,22 L20,10 L34,22 L34,44 Z M34,44 L34,26 L46,16 L58,26 L58,44 Z"/></svg></span>
+                            <span class="arch-logo-name">Campillos</span>
+                            <span class="arch-logo-meta"><span class="lang-es">Rehabilitación · Málaga</span><span class="lang-en">Refurbishment · Málaga</span></span>
+                        </button>
+                        <button class="arch-logo" data-arch-open="colonizar-fabrica" aria-label="Cómo colonizar una fábrica">
+                            <span class="arch-logo-imgwrap"><img src="content/arquitectura/colonizar-fabrica/logo.jpg" alt="Cómo colonizar una fábrica"></span>
+                            <span class="arch-logo-name"><span class="lang-es">Colonizar una fábrica</span><span class="lang-en">Colonizing a factory</span></span>
+                            <span class="arch-logo-meta"><span class="lang-es">TFM · Berga</span><span class="lang-en">Thesis · Berga</span></span>
+                        </button>
+                        <button class="arch-logo" data-arch-open="casa-antequera" aria-label="L-House, Casa en Antequera">
+                            <span class="arch-logo-imgwrap"><img src="content/arquitectura/Casa%20Antequera/C_Users_Misut_Desktop_250409_CasaL_Página_01.jpg" alt="L-House"></span>
+                            <span class="arch-logo-name">L-House</span>
+                            <span class="arch-logo-meta"><span class="lang-es">Vivienda · Antequera</span><span class="lang-en">House · Antequera</span></span>
+                        </button>
                     </div>
                 </div>
 
-                <!-- Projects Navigation Strip (Visual Index) -->
-                <div class="projects-nav-strip">
-                    <!-- Project 1: Waraqa -->
-                    <div class="nav-strip-item" data-scroll-to="waraqa">
-                        <div class="nav-strip-left">
-                            <span class="nav-strip-num">01 //</span>
-                            <div class="nav-strip-text">
-                                <h4 class="nav-strip-title">
-                                    <span class="lang-es">Escuela Bioclimática Waraqa</span>
-                                    <span class="lang-en">Waraqa Bioclimatic School</span>
-                                </h4>
-                                <p class="nav-strip-meta">
-                                    <span class="lang-es">2022 / Cooperación / Mahandougou, Côte d'Ivoire</span>
-                                    <span class="lang-en">2022 / Cooperation / Mahandougou, Ivory Coast</span>
-                                </p>
+                <!-- VISTAS DE PROYECTO (estilo MVRDV, una cada vez) -->
+                <div class="arch-projects">
+
+                    <!-- WARAQA -->
+                    <article class="arch-view" data-arch-view="waraqa">
+                        <button class="arch-back" data-arch-close><i data-lucide="arrow-left"></i><span class="lang-es">Proyectos</span><span class="lang-en">Projects</span></button>
+                        <figure class="mv-hero"><img src="content/arquitectura/waraqa/5_Fotomontaje%201_enhanced.jpg" alt="Escuela Bioclimática Waraqa"></figure>
+                        <div class="mv-intro">
+                            <span class="mv-num">01 / <span class="lang-es">Cooperación</span><span class="lang-en">Cooperation</span></span>
+                            <h3 class="mv-title"><span class="lang-es">Escuela Waraqa</span><span class="lang-en">Waraqa School</span></h3>
+                            <p class="mv-sub"><span class="lang-es">Una escuela construida con su propia comunidad, con la tierra de su propio suelo.</span><span class="lang-en">A school built with its own community, from the earth of its own ground.</span></p>
+                        </div>
+                        <div class="mv-grid">
+                            <div class="mv-text">
+                                <p class="mv-lead lang-es">En Mahandougou, en el centro de Costa de Marfil, el proyecto parte de una idea sencilla: la mejor tecnología es la que la comunidad puede mantener.</p>
+                                <p class="mv-lead lang-en">In Mahandougou, in central Ivory Coast, the project starts from one simple idea: the best technology is the one the community can maintain.</p>
+                                <p class="lang-es">En lugar de importar una solución cerrada, la escuela ordena y pone en valor saberes constructivos locales. Sus dos plantas se levantan con muros de Bloque de Tierra Comprimida (BTC) fabricados in situ y una estructura de madera ensamblada mediante uniones de caja y espiga, prácticamente sin acero.</p>
+                                <p class="lang-en">Rather than importing a finished solution, the school organises and gives value to local building knowledge. Its two storeys rise with on-site Compressed Earth Block (CEB) walls and a timber structure assembled with mortise-and-tenon joints, with almost no steel.</p>
+                                <p class="lang-es">La sección funciona como una máquina climática: una doble cubierta ventilada y la inercia de la tierra mantienen las aulas frescas en las horas de más calor, sin acondicionamiento mecánico.</p>
+                                <p class="lang-en">The section works as a climatic machine: a double ventilated roof and the thermal mass of the earth keep classrooms cool through the hottest hours, with no mechanical conditioning.</p>
+                            </div>
+                            <dl class="mv-facts">
+                                <div><dt><span class="lang-es">Ubicación</span><span class="lang-en">Location</span></dt><dd>Mahandougou, Côte d'Ivoire</dd></div>
+                                <div><dt><span class="lang-es">Año</span><span class="lang-en">Year</span></dt><dd>2022</dd></div>
+                                <div><dt><span class="lang-es">Programa</span><span class="lang-en">Programme</span></dt><dd><span class="lang-es">Escuela · 2 plantas</span><span class="lang-en">School · 2 storeys</span></dd></div>
+                                <div><dt><span class="lang-es">Promotor</span><span class="lang-en">Client</span></dt><dd>SUMUM ONG</dd></div>
+                                <div><dt><span class="lang-es">Materiales</span><span class="lang-en">Materials</span></dt><dd><span class="lang-es">BTC · madera</span><span class="lang-en">CEB · timber</span></dd></div>
+                                <div><dt><span class="lang-es">Rol</span><span class="lang-en">Role</span></dt><dd><span class="lang-es">Co-diseño · dirección técnica</span><span class="lang-en">Co-design · site management</span></dd></div>
+                            </dl>
+                        </div>
+                        <div class="mv-split">
+                            <figure class="mv-split-media"><img src="content/arquitectura/waraqa/5_Fotomontaje%203_enhanced.jpg" alt="La escuela en su paisaje, con la comunidad" loading="lazy"><figcaption><span class="fc-num">01</span><span class="lang-es">Aproximación: la escuela en su paisaje, a la escala de quien la habita</span><span class="lang-en">Approach: the school in its landscape, at the scale of those who use it</span></figcaption></figure>
+                            <div class="mv-split-text">
+                                <p class="lead lang-es">La escuela no se impone sobre el lugar: crece desde él.</p>
+                                <p class="lead lang-en">The school does not impose itself on the place: it grows from it.</p>
+                                <p class="lang-es">La tierra de las propias aulas se extrae del solar, los aleros profundos dan sombra a las galerías y el agua de lluvia se recoge para los meses secos. Todo el conjunto se piensa a la altura de los niños y de la comunidad que lo levanta y lo cuida.</p>
+                                <p class="lang-en">The very earth of the classrooms comes from the plot, the deep eaves shade the galleries and rainwater is harvested for the dry months. The whole is conceived at the scale of the children and the community that builds and cares for it.</p>
                             </div>
                         </div>
-                        <div class="nav-strip-center">
-                            <img src="assets/Autocad Logo ONG.png" alt="Autocad Logo ONG" class="nav-strip-logo">
+                        <div class="mv-block">
+                            <p class="lang-es">Construir se convierte en un acto pedagógico: la obra se organiza por fases junto a la comunidad, que aporta mano de obra y conocimiento. Cada elemento —del bloque de tierra a la cercha de madera— se piensa para poder repararse localmente, de modo que la escuela siga siendo suya mucho después de la inauguración.</p>
+                            <p class="lang-en">Building becomes a teaching act: the work is staged together with the community, which provides labour and knowledge. Every element —from the earth block to the timber truss— is designed to be repaired locally, so the school stays theirs long after the opening day.</p>
                         </div>
-                        <div class="nav-strip-right">
-                            <img src="assets/Escuela.jpg" alt="Waraqa School" class="nav-strip-thumb">
+                        <div class="mv-duo">
+                            <figure><img src="content/arquitectura/waraqa/01.jpg" alt="Obra: muros de BTC" loading="lazy"><figcaption><span class="fc-num">02</span><span class="lang-es">Obra: los muros de tierra compactada (BTC) y la cubierta en construcción</span><span class="lang-en">On site: the compressed earth (CEB) walls and roof under construction</span></figcaption></figure>
+                            <figure class="offset"><img src="content/arquitectura/waraqa/IMG_20211224_114814.jpg" alt="Obra: estructura de madera" loading="lazy"><figcaption><span class="fc-num">03</span><span class="lang-es">Obra: estructura y encofrados de madera ensamblados in situ</span><span class="lang-en">On site: timber structure and formwork assembled on site</span></figcaption></figure>
                         </div>
-                    </div>
-                    
-                    <!-- Project 2: Orkide -->
-                    <div class="nav-strip-item" data-scroll-to="orkide">
-                        <div class="nav-strip-left">
-                            <span class="nav-strip-num">02 //</span>
-                            <div class="nav-strip-text">
-                                <h4 class="nav-strip-title">
-                                    <span class="lang-es">Refugios Bioclimáticos Orkide</span>
-                                    <span class="lang-en">Orkide Bioclimatic Shelters</span>
-                                </h4>
-                                <p class="nav-strip-meta">
-                                    <span class="lang-es">2019 / Concurso / B4H Refugee Camp, Turquía-Siria</span>
-                                    <span class="lang-en">2019 / Competition / B4H Refugee Camp, Turkey-Syria</span>
-                                </p>
+                        <div class="mv-split flip">
+                            <figure class="mv-split-media"><video src="content/arquitectura/waraqa/02.web.mp4" controls loop muted playsinline></video><figcaption><span class="fc-num">04</span><span class="lang-es">Recorrido del proyecto</span><span class="lang-en">Project walkthrough</span></figcaption></figure>
+                            <div class="mv-split-text">
+                                <p class="lead lang-es">Una máquina climática de tierra y madera.</p>
+                                <p class="lead lang-en">A climatic machine of earth and timber.</p>
+                                <p class="lang-es">La doble cubierta ventilada y la inercia de los muros de BTC mantienen frescas las aulas en las horas de más calor, sin equipos mecánicos. El recorrido muestra cómo encajan sección, estructura y patios.</p>
+                                <p class="lang-en">The double ventilated roof and the thermal mass of the CEB walls keep the classrooms cool through the hottest hours, with no mechanical equipment. The walkthrough shows how section, structure and courtyards fit together.</p>
                             </div>
                         </div>
-                        <div class="nav-strip-center">
-                            <img src="assets/Autocad Logo.png" alt="Autocad Logo" class="nav-strip-logo">
-                        </div>
-                        <div class="nav-strip-right">
-                            <img src="assets/4_Interior orquidea.png" alt="Orkide Shelter" class="nav-strip-thumb">
-                        </div>
-                    </div>
+                        <figure class="mv-fig"><img src="content/arquitectura/waraqa/5_Fotomontaje%202_enhanced.jpg" alt="La escuela bajo la doble cubierta ventilada" loading="lazy"><figcaption><span class="fc-num">05</span><span class="lang-es">El volumen terminado bajo la doble cubierta ventilada</span><span class="lang-en">The finished volume under the double ventilated roof</span></figcaption></figure>
+                    </article>
 
-                    <!-- Project 3: Lighthouse -->
-                    <div class="nav-strip-item" data-scroll-to="lighthouse">
-                        <div class="nav-strip-left">
-                            <span class="nav-strip-num">03 //</span>
-                            <div class="nav-strip-text">
-                                <h4 class="nav-strip-title">
-                                    <span class="lang-es">Faro de Cooperación (Kaira Looro)</span>
-                                    <span class="lang-en">Cooperation Lighthouse</span>
-                                </h4>
-                                <p class="nav-strip-meta">
-                                    <span class="lang-es">2022 / Concurso / Kaira Looro, Senegal</span>
-                                    <span class="lang-en">2022 / Competition / Kaira Looro, Senegal</span>
-                                </p>
+                    <!-- KAIRA LOORO -->
+                    <article class="arch-view" data-arch-view="lighthouse">
+                        <button class="arch-back" data-arch-close><i data-lucide="arrow-left"></i><span class="lang-es">Proyectos</span><span class="lang-en">Projects</span></button>
+                        <figure class="mv-hero"><img src="content/arquitectura/lighthouse/3_KailaLooroFotomon_enhanced.jpg" alt="Pabellón Kaira Looro día y noche"></figure>
+                        <div class="mv-intro">
+                            <span class="mv-num">02 / <span class="lang-es">Concurso</span><span class="lang-en">Competition</span></span>
+                            <h3 class="mv-title">Kaira Looro</h3>
+                            <p class="mv-sub"><span class="lang-es">Un faro que se mimetiza de día y resplandece de noche: una casa común de bambú para una aldea senegalesa.</span><span class="lang-en">A beacon that blends in by day and glows by night: a bamboo common house for a Senegalese village.</span></p>
+                        </div>
+                        <div class="mv-grid">
+                            <div class="mv-text">
+                                <p class="mv-lead lang-es">El proyecto entiende el encargo del concurso Kaira Looro como una infraestructura social mínima: sombra, agua y un lugar de reunión.</p>
+                                <p class="mv-lead lang-en">The project reads the Kaira Looro brief as minimal social infrastructure: shade, water and a place to gather.</p>
+                                <p class="lang-es">Es un pabellón comunitario de una sola planta levantado sobre una plataforma de madera que lo despega del terreno, estacionalmente inundable. Una estructura ligera de bambú sostiene una cubierta de paja que vuela para dar sombra profunda, y los cerramientos son celosías trenzadas translúcidas montadas con mano de obra local, sin maquinaria pesada.</p>
+                                <p class="lang-en">It is a single-storey community pavilion raised on a timber platform that lifts it off the seasonally flooded ground. A lightweight bamboo structure carries a thatched roof that cantilevers for deep shade, while the enclosures are translucent woven screens assembled by local labour, without heavy machinery.</p>
+                                <p class="lang-es">De día, el edificio se mimetiza con la sabana. Al caer la noche, esas mismas celosías filtran la luz interior y el pabellón se transforma en una linterna —un faro de cooperación— que señala el punto de encuentro de la comunidad.</p>
+                                <p class="lang-en">By day the building blends into the savanna. As night falls, those same screens filter the interior light and the pavilion turns into a lantern —a lighthouse of cooperation— marking the community's meeting point.</p>
+                            </div>
+                            <dl class="mv-facts">
+                                <div><dt><span class="lang-es">Ubicación</span><span class="lang-en">Location</span></dt><dd>Senegal</dd></div>
+                                <div><dt><span class="lang-es">Año</span><span class="lang-en">Year</span></dt><dd>2022</dd></div>
+                                <div><dt><span class="lang-es">Tipo</span><span class="lang-en">Type</span></dt><dd><span class="lang-es">Concurso Kaira Looro</span><span class="lang-en">Kaira Looro competition</span></dd></div>
+                                <div><dt><span class="lang-es">Programa</span><span class="lang-en">Programme</span></dt><dd><span class="lang-es">Pabellón comunitario</span><span class="lang-en">Community pavilion</span></dd></div>
+                                <div><dt><span class="lang-es">Estructura</span><span class="lang-en">Structure</span></dt><dd><span class="lang-es">Bambú · paja</span><span class="lang-en">Bamboo · thatch</span></dd></div>
+                                <div><dt><span class="lang-es">Rol</span><span class="lang-en">Role</span></dt><dd><span class="lang-es">Diseño</span><span class="lang-en">Design</span></dd></div>
+                            </dl>
+                        </div>
+                        <figure class="mv-fig"><img src="content/arquitectura/lighthouse/KairaLooroNoche_enhanced.jpg" alt="El conjunto flotando sobre el agua de noche" loading="lazy"><figcaption><span class="fc-num">01</span><span class="lang-es">En la estación húmeda el conjunto flota sobre el agua y resplandece como una linterna</span><span class="lang-en">In the wet season the ensemble floats on the water and glows like a lantern</span></figcaption></figure>
+                        <div class="mv-block">
+                            <p class="lang-es">El sistema es anfibio: la plataforma de madera apoya en tierra firme durante la estación seca y queda rodeada por el agua cuando suben las crecidas, conectando los módulos con pequeñas embarcaciones. El agua de lluvia recogida de la cubierta y la sombra del gran alero hacen del pabellón un oasis climático: un punto fresco al que acudir cuando el sol aprieta.</p>
+                            <p class="lang-en">The system is amphibious: the timber platform rests on dry ground through the dry season and is surrounded by water when the floods rise, linking the modules with small boats. Rainwater collected from the roof and the deep eave's shade turn the pavilion into a climatic oasis: a cool place to go when the sun is harsh.</p>
+                        </div>
+                        <div class="mv-split">
+                            <figure class="mv-split-media"><img src="content/arquitectura/lighthouse/01.jpg" alt="Acceso bajo la estructura de bambú" loading="lazy"><figcaption><span class="fc-num">02</span><span class="lang-es">Acceso: la pasarela bajo la celosía y la cercha de bambú</span><span class="lang-en">Access: the walkway under the bamboo screen and truss</span></figcaption></figure>
+                            <div class="mv-split-text">
+                                <p class="lead lang-es">Se entra por debajo de la estructura, en sombra.</p>
+                                <p class="lead lang-en">One enters from beneath the structure, in shade.</p>
+                                <p class="lang-es">La cercha de bambú y la celosía trenzada filtran la luz y enmarcan el agua al final del recorrido. La construcción es ligera y reversible: piezas que la propia comunidad puede montar, reparar y, llegado el caso, desmontar.</p>
+                                <p class="lang-en">The bamboo truss and woven screen filter the light and frame the water at the end of the path. Construction is light and reversible: parts the community itself can assemble, repair and, if needed, take apart.</p>
                             </div>
                         </div>
-                        <div class="nav-strip-center">
-                            <img src="assets/Autocad Logo ONG.png" alt="Autocad Logo ONG" class="nav-strip-logo">
-                        </div>
-                        <div class="nav-strip-right">
-                            <img src="assets/3_Render 01.jpg" alt="Cooperation Lighthouse" class="nav-strip-thumb">
-                        </div>
-                    </div>
-
-                    <!-- Project 4: Barbate -->
-                    <div class="nav-strip-item" data-scroll-to="barbate">
-                        <div class="nav-strip-left">
-                            <span class="nav-strip-num">04 //</span>
-                            <div class="nav-strip-text">
-                                <h4 class="nav-strip-title">
-                                    <span class="lang-es">Torre en Barbate</span>
-                                    <span class="lang-en">Barbate Tower</span>
-                                </h4>
-                                <p class="nav-strip-meta">
-                                    <span class="lang-es">Arquitectura Residencial / Costa de Barbate, España</span>
-                                    <span class="lang-en">Residential Architecture / Coast of Barbate, Spain</span>
-                                </p>
+                        <div class="mv-split flip">
+                            <figure class="mv-split-media"><img src="content/arquitectura/lighthouse/02.jpg" alt="Espacio común bajo la cubierta" loading="lazy"><figcaption><span class="fc-num">03</span><span class="lang-es">Espacio común diáfano bajo la cubierta ligera</span><span class="lang-en">Open shared space under the lightweight roof</span></figcaption></figure>
+                            <div class="mv-split-text">
+                                <p class="lead lang-es">Una única sala que la comunidad hace suya.</p>
+                                <p class="lead lang-en">A single room the community makes its own.</p>
+                                <p class="lang-es">El interior es un espacio diáfano y flexible: hoy una asamblea, mañana un aula o un mercado. La planta libre y las celosías permiten que cada uso encuentre su sitio sin levantar tabiques.</p>
+                                <p class="lang-en">The interior is one open, flexible space: today an assembly, tomorrow a classroom or a market. The free plan and the screens let each use find its place without raising partitions.</p>
                             </div>
                         </div>
-                        <div class="nav-strip-center">
-                            <img src="assets/Logo- CIP ARQUITECTOS.png" alt="CIP Arquitectos" class="nav-strip-logo">
+                        <div class="mv-duo right">
+                            <figure class="offset"><img src="content/arquitectura/lighthouse/03.jpg" alt="Zona de trabajo y aprendizaje" loading="lazy"><figcaption><span class="fc-num">04</span><span class="lang-es">Zona de trabajo y aprendizaje</span><span class="lang-en">Work and learning area</span></figcaption></figure>
+                            <figure><img src="content/arquitectura/lighthouse/04.jpg" alt="Zona de descanso y reunión" loading="lazy"><figcaption><span class="fc-num">05</span><span class="lang-es">Zona de descanso y reunión</span><span class="lang-en">Rest and gathering area</span></figcaption></figure>
                         </div>
-                        <div class="nav-strip-right">
-                            <img src="assets/TorreEntera-enhanced.png" alt="Barbate Tower" class="nav-strip-thumb">
-                        </div>
-                    </div>
-
-                    <!-- Project 5: TFM -->
-                    <div class="nav-strip-item" data-scroll-to="tfm">
-                        <div class="nav-strip-left">
-                            <span class="nav-strip-num">05 //</span>
-                            <div class="nav-strip-text">
-                                <h4 class="nav-strip-title">
-                                    <span class="lang-es">Erosión / Oasis (TFM)</span>
-                                    <span class="lang-en">Erosion / Oasis (Master Thesis)</span>
-                                </h4>
-                                <p class="nav-strip-meta">
-                                    <span class="lang-es">TFM / Vivienda & Termalismo / Sierra Calderona, España</span>
-                                    <span class="lang-en">Master Thesis / Housing & Thermal Baths</span>
-                                </p>
+                        <div class="mv-split">
+                            <figure class="mv-split-media"><img src="content/arquitectura/lighthouse/Foundation%20Axo2.png" alt="Esquema del sistema anfibio" loading="lazy"><figcaption><span class="fc-num">06</span><span class="lang-es">Esquema del sistema: módulos en seco sobre la plataforma y flotando sobre el agua</span><span class="lang-en">System diagram: modules on the dry platform and floating on the water</span></figcaption></figure>
+                            <div class="mv-split-text">
+                                <p class="lead lang-es">Un mismo módulo para dos estaciones.</p>
+                                <p class="lead lang-en">One module for two seasons.</p>
+                                <p class="lang-es">El esquema explica la doble vida del pabellón: en seco se monta sobre la plataforma; con las crecidas, flota. La cooperación —técnica y social— es la verdadera estructura del proyecto.</p>
+                                <p class="lang-en">The diagram explains the pavilion's double life: in the dry season it sits on the platform; with the floods, it floats. Cooperation —technical and social— is the project's real structure.</p>
                             </div>
                         </div>
-                        <div class="nav-strip-center">
-                            <img src="assets/Revit Logo.jpg" alt="Autodesk Revit" class="nav-strip-logo">
-                        </div>
-                        <div class="nav-strip-right">
-                            <img src="assets/R2_Oasis.jpg" alt="Erosion Oasis TFM" class="nav-strip-thumb">
-                        </div>
-                    </div>
+                    </article>
 
-                    <!-- Project 6: Campillos -->
-                    <div class="nav-strip-item" data-scroll-to="campillos">
-                        <div class="nav-strip-left">
-                            <span class="nav-strip-num">06 //</span>
-                            <div class="nav-strip-text">
-                                <h4 class="nav-strip-title">
-                                    <span class="lang-es">Rehabilitación en Campillos</span>
-                                    <span class="lang-en">Campillos Rehabilitation</span>
-                                </h4>
-                                <p class="nav-strip-meta">
-                                    <span class="lang-es">2024 / Anteproyecto / Campillos, Málaga</span>
-                                    <span class="lang-en">2024 / Preliminary Project / Campillos, Spain</span>
-                                </p>
+                    <!-- ORKIDE -->
+                    <article class="arch-view" data-arch-view="orkide">
+                        <button class="arch-back" data-arch-close><i data-lucide="arrow-left"></i><span class="lang-es">Proyectos</span><span class="lang-en">Projects</span></button>
+                        <figure class="mv-hero contain"><img src="content/arquitectura/orkide/board_02.jpg" alt="Orkide — agregación de módulos"></figure>
+                        <div class="mv-intro">
+                            <span class="mv-num">03 / <span class="lang-es">Concurso</span><span class="lang-en">Competition</span></span>
+                            <h3 class="mv-title">Orkide</h3>
+                            <p class="mv-sub"><span class="lang-es">Un refugio que se refrigera solo, que crece como una colmena y que tejen sus propios habitantes.</span><span class="lang-en">A shelter that cools itself, grows like a beehive and is woven by its own inhabitants.</span></p>
+                        </div>
+                        <div class="mv-grid">
+                            <div class="mv-text">
+                                <p class="mv-lead lang-es">Propuesta para el campo de refugiados B4H, junto a Reyhanli en la frontera entre Turquía y Siria, Orkide repiensa el refugio de emergencia como un tejido capaz de consolidarse en el tiempo.</p>
+                                <p class="mv-lead lang-en">A proposal for the B4H refugee camp near Reyhanli, on the Turkey–Syria border, Orkide rethinks emergency shelter as a fabric able to consolidate over time.</p>
+                                <p class="lang-es">El módulo es una célula hexagonal con estructura de bambú y una cubierta de tela tensada sobre un anillo superior, inspirada en la sección de las tradicionales 'casas colmena': la geometría y un óculo cenital favorecen la ventilación y mantienen el interior fresco. Las telas las elaboran mujeres refugiadas sirias en Reyhanli, incorporando una economía social al propio proyecto.</p>
+                                <p class="lang-en">The module is a hexagonal cell with a bamboo structure and a fabric roof tensioned over an upper ring, inspired by the section of the traditional 'beehive houses': its geometry and a top oculus aid ventilation and keep the interior cool. The fabrics are made by Syrian refugee women in Reyhanli, building a social economy into the project itself.</p>
+                                <p class="lang-es">Materiales y técnicas son deliberadamente accesibles —bambú, tela, anclajes sencillos— para que sean los propios refugiados quienes levanten y mantengan sus viviendas.</p>
+                                <p class="lang-en">Materials and techniques are deliberately accessible —bamboo, fabric, simple anchors— so the refugees themselves raise and maintain their homes.</p>
+                            </div>
+                            <dl class="mv-facts">
+                                <div><dt><span class="lang-es">Ubicación</span><span class="lang-en">Location</span></dt><dd><span class="lang-es">Reyhanli (Turquía–Siria)</span><span class="lang-en">Reyhanli (Turkey–Syria)</span></dd></div>
+                                <div><dt><span class="lang-es">Año</span><span class="lang-en">Year</span></dt><dd>2019</dd></div>
+                                <div><dt><span class="lang-es">Tipo</span><span class="lang-en">Type</span></dt><dd><span class="lang-es">Concurso · B4H</span><span class="lang-en">Competition · B4H</span></dd></div>
+                                <div><dt><span class="lang-es">Programa</span><span class="lang-en">Programme</span></dt><dd><span class="lang-es">Refugio + comunidad</span><span class="lang-en">Shelter + community</span></dd></div>
+                                <div><dt><span class="lang-es">Materiales</span><span class="lang-en">Materials</span></dt><dd><span class="lang-es">Bambú · textil</span><span class="lang-en">Bamboo · fabric</span></dd></div>
+                                <div><dt><span class="lang-es">Rol</span><span class="lang-en">Role</span></dt><dd><span class="lang-es">Diseño</span><span class="lang-en">Design</span></dd></div>
+                            </dl>
+                        </div>
+                        <div class="mv-block">
+                            <p class="lang-es">El sistema crece por agregación: módulos familiares que se enganchan formando racimos, y racimos que forman barrio, dejando entre ellos patios y espacios para educación, salud y reunión. El campo deja de ser una solución provisional para convertirse en el germen de un asentamiento.</p>
+                            <p class="lang-en">The system grows by aggregation: family modules clip together into clusters, and clusters into a neighbourhood, leaving courtyards and spaces for education, health and gathering between them. The camp stops being a provisional fix and becomes the seed of a settlement.</p>
+                        </div>
+                        <figure class="mv-fig"><img src="content/arquitectura/orkide/board_01.jpg" alt="Orkide — programa, bioclima y agregación" loading="lazy"><figcaption><span class="fc-num">01</span><span class="lang-es">Programa comunitario (educación, salud, reunión), condiciones bioclimáticas y agregación de módulos sobre el terreno</span><span class="lang-en">Community programme (education, health, gathering), bioclimatic conditions and aggregation of modules over the terrain</span></figcaption></figure>
+                        <div class="mv-block right">
+                            <p class="lang-es">La célula hexagonal toma su forma de las 'casas colmena' tradicionales: un anillo superior tensa la cubierta de tela y abre un óculo cenital que extrae el aire caliente. Geometría y ventilación trabajan juntas para mantener fresco el interior sin energía.</p>
+                            <p class="lang-en">The hexagonal cell takes its form from the traditional 'beehive houses': an upper ring tensions the fabric roof and opens a top oculus that draws hot air out. Geometry and ventilation work together to keep the interior cool with no energy.</p>
+                        </div>
+                        <figure class="mv-fig"><img src="content/arquitectura/orkide/board_03.jpg" alt="Orkide — despiece, detalles y vistas" loading="lazy"><figcaption><span class="fc-num">02</span><span class="lang-es">Despiece del módulo, detalles constructivos en bambú (anillo, muro y cimiento) y vistas interior y exterior</span><span class="lang-en">Module exploded view, bamboo construction details (ring, wall and footing) and interior and exterior views</span></figcaption></figure>
+                        <div class="mv-block">
+                            <p class="lang-es">Las telas que cierran y cubren los módulos las elaboran mujeres refugiadas sirias en Reyhanli: el refugio incorpora así una economía social que da trabajo y arraigo. Bambú, tela y anclajes sencillos hacen que sean los propios habitantes quienes levanten y mantengan sus casas.</p>
+                            <p class="lang-en">The fabrics that enclose and roof the modules are made by Syrian refugee women in Reyhanli: the shelter thus builds in a social economy that gives work and roots. Bamboo, fabric and simple anchors mean the inhabitants themselves raise and maintain their homes.</p>
+                        </div>
+                    </article>
+
+                    <!-- TORRE EN BARBATE -->
+                    <article class="arch-view" data-arch-view="barbate">
+                        <button class="arch-back" data-arch-close><i data-lucide="arrow-left"></i><span class="lang-es">Proyectos</span><span class="lang-en">Projects</span></button>
+                        <figure class="mv-hero contain"><img src="content/arquitectura/barbate/01.png" alt="Torre en Barbate sobre el acantilado"></figure>
+                        <div class="mv-intro">
+                            <span class="mv-num">04 / <span class="lang-es">Proyecto académico</span><span class="lang-en">Academic project</span></span>
+                            <h3 class="mv-title">Erosión</h3>
+                            <p class="mv-sub"><span class="lang-es">Una torre que habita el viento: un observatorio para investigadores eólicos, tallado —como el propio acantilado— por la erosión.</span><span class="lang-en">A tower that inhabits the wind: an observatory for wind researchers, carved —like the cliff itself— by erosion.</span></p>
+                        </div>
+                        <div class="mv-grid">
+                            <div class="mv-text">
+                                <p class="mv-lead lang-es">En los acantilados de Barbate, sobre el Atlántico, la torre nace de un doble fenómeno del lugar: el viento y la erosión.</p>
+                                <p class="mv-lead lang-en">On the cliffs of Barbate, above the Atlantic, the tower springs from a double phenomenon of the place: wind and erosion.</p>
+                                <p class="lang-es">El proyecto propone una Torre de Investigadores Eólicos: un lugar para estudiar y aprovechar el viento de la costa. Su volumen se concibe como una roca más del acantilado, horadada por huecos que captan el aire; en su interior, turbinas y generadores convierten ese viento en la energía que alimenta el propio centro.</p>
+                                <p class="lang-en">The project proposes a Wind Researchers' Tower: a place to study and harness the coastal wind. Its volume is conceived as one more rock of the cliff, pierced by openings that capture the air; inside, turbines and generators turn that wind into the energy that powers the centre itself.</p>
+                                <p class="lang-es">La silueta facetada y escalonada reproduce la lógica de la erosión: el edificio parece desgastado por el mismo aire y agua que investiga, mimetizándose con la roca. Proyecto académico tutelado por el profesor Luis Palacios.</p>
+                                <p class="lang-en">The faceted, stepped silhouette reproduces the logic of erosion: the building looks worn by the very air and water it studies, blending into the rock. Academic project tutored by professor Luis Palacios.</p>
+                            </div>
+                            <dl class="mv-facts">
+                                <div><dt><span class="lang-es">Ubicación</span><span class="lang-en">Location</span></dt><dd><span class="lang-es">Barbate, Cádiz</span><span class="lang-en">Barbate, Cádiz</span></dd></div>
+                                <div><dt><span class="lang-es">Programa</span><span class="lang-en">Programme</span></dt><dd><span class="lang-es">Torre de investigadores eólicos</span><span class="lang-en">Wind researchers' tower</span></dd></div>
+                                <div><dt><span class="lang-es">Tema</span><span class="lang-en">Theme</span></dt><dd><span class="lang-es">Erosión · energía eólica</span><span class="lang-en">Erosion · wind energy</span></dd></div>
+                                <div><dt><span class="lang-es">Tipo</span><span class="lang-en">Type</span></dt><dd><span class="lang-es">Proyecto académico</span><span class="lang-en">Academic project</span></dd></div>
+                                <div><dt><span class="lang-es">Tutor</span><span class="lang-en">Tutor</span></dt><dd>Luis Palacios</dd></div>
+                                <div><dt><span class="lang-es">Rol</span><span class="lang-en">Role</span></dt><dd><span class="lang-es">Autor</span><span class="lang-en">Author</span></dd></div>
+                            </dl>
+                        </div>
+                        <div class="mv-block">
+                            <p class="lang-es">El edificio se entiende como un instrumento: capta el viento por sus huecos, lo conduce por su interior y lo devuelve convertido en energía. Investigar el viento y habitarlo son, aquí, la misma acción.</p>
+                            <p class="lang-en">The building works as an instrument: it captures the wind through its openings, leads it through its interior and gives it back as energy. Researching the wind and inhabiting it are, here, the same act.</p>
+                        </div>
+                        <figure class="mv-fig tall"><img src="content/arquitectura/barbate/A1-1_c.jpg" alt="Emplazamiento en el frente costero" loading="lazy"><figcaption><span class="fc-num">01</span><span class="lang-es">Ubicación: emplazamiento en el frente costero de Barbate</span><span class="lang-en">Location: site on the Barbate coastline</span></figcaption></figure>
+                        <div class="mv-block">
+                            <p class="lang-es">El emplazamiento elige el borde mismo del acantilado, donde el viento atlántico es más constante y la erosión más visible. La torre se planta en ese límite entre tierra y mar, allí donde el fenómeno que estudia ocurre con más fuerza.</p>
+                            <p class="lang-en">The site picks the very edge of the cliff, where the Atlantic wind is most constant and erosion most visible. The tower stands on that threshold between land and sea, exactly where the phenomenon it studies happens most strongly.</p>
+                        </div>
+                        <figure class="mv-fig tall"><img src="content/arquitectura/barbate/A1-2_c.jpg" alt="Erosión — lámina de concepto" loading="lazy"><figcaption><span class="fc-num">02</span><span class="lang-es">Concepto: objetivo, ubicación, aprovechamiento y erosión; huecos, turbina y generador eólico</span><span class="lang-en">Concept: aim, site, harnessing and erosion; openings, turbine and wind generator</span></figcaption></figure>
+                        <div class="mv-block right">
+                            <p class="lang-es">El concepto se resume en cuatro pasos —objetivo, ubicación, aprovechamiento y erosión— y en tres piezas: los huecos que captan el aire, la turbina que lo aprovecha y el generador que lo convierte en energía. El edificio es, literalmente, un instrumento del viento.</p>
+                            <p class="lang-en">The concept is summed up in four steps —aim, site, harnessing and erosion— and three pieces: the openings that capture the air, the turbine that uses it and the generator that turns it into energy. The building is, literally, an instrument of the wind.</p>
+                        </div>
+                        <figure class="mv-fig tall"><img src="content/arquitectura/barbate/A1-3_c.jpg" alt="Plantas apiladas de la torre" loading="lazy"><figcaption><span class="fc-num">03</span><span class="lang-es">Plantas apiladas: la torre nivel a nivel</span><span class="lang-en">Stacked floor plans: the tower level by level</span></figcaption></figure>
+                        <div class="mv-block">
+                            <p class="lang-es">Las plantas, leídas en pila, muestran cómo el programa de investigación se enrosca alrededor del núcleo: laboratorios, talleres y miradores se desplazan ligeramente en cada nivel, generando los retranqueos que quiebran la silueta.</p>
+                            <p class="lang-en">Read as a stack, the plans show how the research programme coils around the core: labs, workshops and lookouts shift slightly at each level, producing the setbacks that break the silhouette.</p>
+                        </div>
+                        <figure class="mv-fig tall"><img src="content/arquitectura/barbate/A1-4_c.jpg" alt="Axonometría y perspectivas interiores" loading="lazy"><figcaption><span class="fc-num">04</span><span class="lang-es">Axonometría desvelada de la torre y perspectivas interiores</span><span class="lang-en">Cutaway axonometric of the tower and interior perspectives</span></figcaption></figure>
+                        <div class="mv-block right">
+                            <p class="lang-es">La axonometría desvelada y las perspectivas interiores enseñan el detalle de fachada: una doble piel de vidrio facetado que protege del temporal y, a la vez, deja que el aire recorra el interior. Cada estancia se asoma al horizonte atlántico.</p>
+                            <p class="lang-en">The cutaway axonometric and interior perspectives reveal the façade detail: a faceted double glass skin that shields from the storm while letting air run through the interior. Every room leans out toward the Atlantic horizon.</p>
+                        </div>
+                        <figure class="mv-fig tall"><img src="content/arquitectura/barbate/A1-5_c.jpg" alt="Sección longitudinal sobre el acantilado" loading="lazy"><figcaption><span class="fc-num">05</span><span class="lang-es">Sección longitudinal de la torre sobre el acantilado</span><span class="lang-en">Longitudinal section of the tower on the cliff</span></figcaption></figure>
+                        <div class="mv-block">
+                            <p class="lang-es">La sección longitudinal fija la relación con la roca: la torre apenas toca el suelo, se ancla en el acantilado y asciende. El corte muestra el recorrido vertical del viento captado y la continuidad entre el frente marino y los espacios de investigación.</p>
+                            <p class="lang-en">The longitudinal section fixes the relationship with the rock: the tower barely touches the ground, anchors into the cliff and climbs. The cut shows the vertical path of the captured wind and the continuity between the sea front and the research spaces.</p>
+                        </div>
+                    </article>
+
+                    <!-- REHABILITACIÓN CAMPILLOS -->
+                    <article class="arch-view" data-arch-view="campillos">
+                        <button class="arch-back" data-arch-close><i data-lucide="arrow-left"></i><span class="lang-es">Proyectos</span><span class="lang-en">Projects</span></button>
+                        <figure class="mv-hero"><img src="content/arquitectura/campillos/01.png" alt="Rehabilitación Campillos — patio"></figure>
+                        <div class="mv-intro">
+                            <span class="mv-num">05 / <span class="lang-es">Rehabilitación</span><span class="lang-en">Refurbishment</span></span>
+                            <h3 class="mv-title"><span class="lang-es">Casa en Campillos</span><span class="lang-en">House in Campillos</span></h3>
+                            <p class="mv-sub"><span class="lang-es">Una casa que mira hacia dentro, a un patio de agua y sombra.</span><span class="lang-en">A house that looks inward, to a courtyard of water and shade.</span></p>
+                        </div>
+                        <div class="mv-grid">
+                            <div class="mv-text">
+                                <p class="mv-lead lang-es">La rehabilitación de esta vivienda en Campillos (Málaga) reorganiza la casa alrededor de un patio-jardín con una lámina de agua de geometría orgánica.</p>
+                                <p class="mv-lead lang-en">The refurbishment of this house in Campillos (Málaga) reorganises the home around a garden-courtyard with an organic water surface.</p>
+                                <p class="lang-es">Dos crujías con cubierta inclinada de teja abrazan ese vacío central, y una celosía de madera envuelve las galerías filtrando el sol y favoreciendo la ventilación cruzada. La intervención conserva la huella y los muros existentes y les suma una segunda piel ligera de madera.</p>
+                                <p class="lang-en">Two bays with pitched tile roofs embrace that central void, and a timber lattice wraps the galleries, filtering the sun and encouraging cross-ventilation. The intervention keeps the existing footprint and walls and adds a lightweight timber second skin.</p>
+                                <p class="lang-es">La vegetación y el agua climatizan de forma pasiva el corazón de la casa, que pasa de ser una sucesión de habitaciones a un recorrido en torno al patio.</p>
+                                <p class="lang-en">Planting and water passively temper the heart of the house, which turns from a string of rooms into a route around the courtyard.</p>
+                            </div>
+                            <dl class="mv-facts">
+                                <div><dt><span class="lang-es">Ubicación</span><span class="lang-en">Location</span></dt><dd><span class="lang-es">Campillos, Málaga</span><span class="lang-en">Campillos, Málaga</span></dd></div>
+                                <div><dt><span class="lang-es">Programa</span><span class="lang-en">Programme</span></dt><dd><span class="lang-es">Rehabilitación de vivienda</span><span class="lang-en">House refurbishment</span></dd></div>
+                                <div><dt><span class="lang-es">Tipo</span><span class="lang-en">Type</span></dt><dd><span class="lang-es">Anteproyecto</span><span class="lang-en">Schematic design</span></dd></div>
+                                <div><dt><span class="lang-es">Materiales</span><span class="lang-en">Materials</span></dt><dd><span class="lang-es">Ladrillo · madera · teja</span><span class="lang-en">Brick · timber · tile</span></dd></div>
+                                <div><dt><span class="lang-es">Rol</span><span class="lang-en">Role</span></dt><dd><span class="lang-es">Proyecto</span><span class="lang-en">Project</span></dd></div>
+                            </dl>
+                        </div>
+                        <figure class="mv-fig"><img src="content/arquitectura/campillos/sheet_09_c.jpg" alt="Render del patio con agua y celosías" loading="lazy"><figcaption><span class="fc-num">01</span><span class="lang-es">El patio: lámina de agua, vegetación y celosías de madera</span><span class="lang-en">The courtyard: water, planting and timber screens</span></figcaption></figure>
+                        <div class="mv-split">
+                            <figure class="mv-split-media"><img src="content/arquitectura/campillos/sheet_06_c.jpg" alt="Axonometría seccionada del conjunto" loading="lazy"><figcaption><span class="fc-num">02</span><span class="lang-es">Axonometría seccionada: las dos crujías en torno al patio</span><span class="lang-en">Cutaway axonometric: the two bays around the courtyard</span></figcaption></figure>
+                            <div class="mv-split-text">
+                                <p class="lead lang-es">Toda la casa gira en torno a un vacío.</p>
+                                <p class="lead lang-en">The whole house turns around a void.</p>
+                                <p class="lang-es">Dos crujías con cubierta de teja abrazan el patio; una es la vivienda existente, la otra de nueva planta. La axonometría seccionada deja ver cómo se enlazan a través del jardín de agua.</p>
+                                <p class="lang-en">Two bays with tile roofs embrace the courtyard; one is the existing house, the other newly built. The cutaway axonometric shows how they link through the water garden.</p>
                             </div>
                         </div>
-                        <div class="nav-strip-center">
-                            <img src="assets/Revit Logo.jpg" alt="Autodesk Revit" class="nav-strip-logo">
-                        </div>
-                        <div class="nav-strip-right">
-                            <img src="assets/RenderExterior_Campillos.png" alt="Rehabilitación Campillos" class="nav-strip-thumb">
-                        </div>
-                    </div>
-
-                    <!-- Project 7: Puerto de la Torre -->
-                    <div class="nav-strip-item" data-scroll-to="puerto-torre">
-                        <div class="nav-strip-left">
-                            <span class="nav-strip-num">07 //</span>
-                            <div class="nav-strip-text">
-                                <h4 class="nav-strip-title">
-                                    <span class="lang-es">Puerto de la Torre Suelo</span>
-                                    <span class="lang-en">Puerto de la Torre Land Development</span>
-                                </h4>
-                                <p class="nav-strip-meta">
-                                    <span class="lang-es">2023 / Urbanismo / Los Morales, Málaga</span>
-                                    <span class="lang-en">2023 / Urban Planning / Los Morales, Spain</span>
-                                </p>
+                        <div class="mv-split flip">
+                            <figure class="mv-split-media"><img src="content/arquitectura/campillos/sheet_08_c.jpg" alt="Perspectiva seccionada hacia el patio" loading="lazy"><figcaption><span class="fc-num">03</span><span class="lang-es">Perspectiva seccionada hacia el patio y la lámina de agua</span><span class="lang-en">Sectioned perspective toward the courtyard and the water</span></figcaption></figure>
+                            <div class="mv-split-text">
+                                <p class="lead lang-es">Una segunda piel de madera filtra el sur.</p>
+                                <p class="lead lang-en">A timber second skin filters the south.</p>
+                                <p class="lang-es">La celosía envuelve las galerías, tamiza el sol y favorece la ventilación cruzada; la vegetación y el agua refrescan el aire antes de que entre en las estancias.</p>
+                                <p class="lang-en">The lattice wraps the galleries, sieves the sun and aids cross-ventilation; planting and water cool the air before it reaches the rooms.</p>
                             </div>
                         </div>
-                        <div class="nav-strip-center">
-                            <img src="assets/Logo-Picharchitects-01.png" alt="Picharchitects" class="nav-strip-logo">
+                        <div class="mv-block">
+                            <p class="lang-es">La sección demuestra cómo el patio organiza luz, ventilación y vistas, y cómo las dos crujías —una existente, otra de nueva planta— se enlazan a través de él.</p>
+                            <p class="lang-en">The section shows how the courtyard organises light, ventilation and views, and how the two bays —one existing, one new— are tied together through it.</p>
                         </div>
-                        <div class="nav-strip-right">
-                            <img src="assets/PuertoDeLaTorre.jpg" alt="Puerto de la Torre" class="nav-strip-thumb">
+                        <div class="mv-duo">
+                            <figure><img src="content/arquitectura/campillos/sheet_05_c.jpg" alt="Sección por el patio" loading="lazy"><figcaption><span class="fc-num">04</span><span class="lang-es">Sección por el patio</span><span class="lang-en">Section through the courtyard</span></figcaption></figure>
+                            <figure class="offset"><img src="content/arquitectura/campillos/sheet_01_c.jpg" alt="Emplazamiento" loading="lazy"><figcaption><span class="fc-num">05</span><span class="lang-es">Emplazamiento: patio de agua, jardín y acceso</span><span class="lang-en">Site plan: water courtyard, garden and access</span></figcaption></figure>
                         </div>
-                    </div>
+                    </article>
 
-                    <!-- Project 8: Colonizar una fábrica -->
-                    <div class="nav-strip-item" data-scroll-to="colonizar-fabrica">
-                        <div class="nav-strip-left">
-                            <span class="nav-strip-num">08 //</span>
-                            <div class="nav-strip-text">
-                                <h4 class="nav-strip-title">
-                                    <span class="lang-es">Cómo colonizar una fábrica (TFM)</span>
-                                    <span class="lang-en">How to Colonize a Factory (Master Thesis)</span>
-                                </h4>
-                                <p class="nav-strip-meta">
-                                    <span class="lang-es">2019 / TFM / Colonia Viladomiu Vell, Llobregat</span>
-                                    <span class="lang-en">2019 / Master Thesis / Viladomiu Vell, Spain</span>
-                                </p>
+                    <!-- CÓMO COLONIZAR UNA FÁBRICA -->
+                    <article class="arch-view" data-arch-view="colonizar-fabrica">
+                        <button class="arch-back" data-arch-close><i data-lucide="arrow-left"></i><span class="lang-es">Proyectos</span><span class="lang-en">Projects</span></button>
+                        <figure class="mv-hero"><img src="content/arquitectura/colonizar-fabrica/Comocolonizarunafabrica_ejecucion2_c.jpg" alt="Cómo colonizar una fábrica — fotomontaje interior"></figure>
+                        <div class="mv-intro">
+                            <span class="mv-num">06 / TFM</span>
+                            <h3 class="mv-title"><span class="lang-es">Colonizar una fábrica</span><span class="lang-en">Colonizing a Factory</span></h3>
+                            <p class="mv-sub"><span class="lang-es">No el dibujo de un edificio, sino las reglas para habitarlo.</span><span class="lang-en">Not the drawing of a building, but the rules to inhabit it.</span></p>
+                        </div>
+                        <div class="mv-grid">
+                            <div class="mv-text">
+                                <p class="mv-lead lang-es">Trabajo Fin de Máster (Marqv · ETSAV, 2019), el proyecto reactiva la colonia textil abandonada de Viladomiu Vell.</p>
+                                <p class="mv-lead lang-en">A Master's thesis (Marqv · ETSAV, 2019), the project reactivates the abandoned textile colony of Viladomiu Vell.</p>
+                                <p class="lang-es">En lugar de proyectar una forma final, define un sistema de reglas tridimensionales que reparte el volumen de la antigua fábrica en parcelas cooperativas: a cada familia se le asigna un volumen de aire y unas normas de ocupación. La suma de decisiones individuales, fase a fase —desde los derribos previos hasta la consolidación de las viviendas—, produce un conjunto siempre incompleto y vivo.</p>
+                                <p class="lang-en">Instead of designing a final form, it defines a set of three-dimensional rules that divide the old factory's volume into cooperative plots: each family is allotted a volume of air and a set of occupation rules. The sum of individual decisions, phase by phase —from early demolitions to consolidated dwellings— produces an ensemble that is always incomplete and alive.</p>
+                                <p class="lang-es">La fábrica se 'coloniza' como un ecosistema, mezclando vivienda, producción y espacio común dentro de la nave existente.</p>
+                                <p class="lang-en">The factory is 'colonized' like an ecosystem, mixing housing, production and shared space within the existing hall.</p>
+                            </div>
+                            <dl class="mv-facts">
+                                <div><dt><span class="lang-es">Ubicación</span><span class="lang-en">Location</span></dt><dd><span class="lang-es">Viladomiu Vell, Berga</span><span class="lang-en">Viladomiu Vell, Berga</span></dd></div>
+                                <div><dt><span class="lang-es">Año</span><span class="lang-en">Year</span></dt><dd>2019</dd></div>
+                                <div><dt><span class="lang-es">Programa</span><span class="lang-en">Programme</span></dt><dd><span class="lang-es">Vivienda cooperativa</span><span class="lang-en">Co-housing</span></dd></div>
+                                <div><dt><span class="lang-es">Tipo</span><span class="lang-en">Type</span></dt><dd><span class="lang-es">TFM · ETSAV</span><span class="lang-en">Thesis · ETSAV</span></dd></div>
+                                <div><dt><span class="lang-es">Co-autor</span><span class="lang-en">Co-author</span></dt><dd>Pablo Lluch Morales</dd></div>
+                                <div><dt><span class="lang-es">Rol</span><span class="lang-en">Role</span></dt><dd><span class="lang-es">Autor</span><span class="lang-en">Author</span></dd></div>
+                            </dl>
+                        </div>
+                        <figure class="mv-fig"><img src="content/arquitectura/colonizar-fabrica/Comocolonizarunafabrica_imagenproyecto2_c.jpg" alt="Sección transversal de la nave colonizada" loading="lazy"><figcaption><span class="fc-num">01</span><span class="lang-es">Sección transversal: las viviendas colonizan el interior de la nave y la torre</span><span class="lang-en">Cross-section: dwellings colonize the interior of the hall and the tower</span></figcaption></figure>
+                        <div class="mv-block">
+                            <p class="lang-es">El proyecto se documenta como un manual: diagramas de reglas, fases y escenarios posibles, más que una imagen única y definitiva. Lo que se diseña no es la fábrica colonizada, sino el procedimiento que permitiría llegar a ella.</p>
+                            <p class="lang-en">The project is documented like a manual: rule diagrams, phases and possible scenarios rather than a single, definitive image. What is designed is not the colonized factory but the procedure that would let one reach it.</p>
+                        </div>
+                        <div class="mv-split">
+                            <figure class="mv-split-media"><img src="content/arquitectura/colonizar-fabrica/Comocolonizarunafabrica_ejecucion1_c.jpg" alt="Fotomontaje de la planta baja habitada" loading="lazy"><figcaption><span class="fc-num">02</span><span class="lang-es">Fotomontaje: la planta baja reocupada como espacio común</span><span class="lang-en">Photomontage: the ground floor re-occupied as shared space</span></figcaption></figure>
+                            <div class="mv-split-text">
+                                <p class="lead lang-es">La planta baja es de todos.</p>
+                                <p class="lead lang-en">The ground floor belongs to everyone.</p>
+                                <p class="lang-es">El nivel de acceso se libera como zócalo comunitario: juego, encuentro y producción comparten la nave bajo la luz cenital. Las reglas reservan este suelo al uso colectivo antes de repartir el aire de arriba.</p>
+                                <p class="lang-en">The entrance level is freed as a community plinth: play, gathering and making share the hall under the top light. The rules reserve this floor for collective use before dividing the air above.</p>
                             </div>
                         </div>
-                        <div class="nav-strip-center">
-                            <img src="assets/Revit Logo.jpg" alt="Autodesk Revit" class="nav-strip-logo">
-                        </div>
-                        <div class="nav-strip-right">
-                            <img src="assets/Comocolonizarunafabrica_fotoprincipal.jpg" alt="Cómo colonizar una fábrica" class="nav-strip-thumb">
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project Block 1: Waraqa (PROTOTIPO plantilla a sangre .bleed) -->
-                <div class="project-section-block bleed" data-project="waraqa">
-                    <div class="block-slider">
-                        <div class="slider-wrapper">
-                            <div class="slide-item active"><img src="content/arquitectura/waraqa/01.jpg" alt="Waraqa Bioclimatic School"></div>
-                            <div class="slide-item">
-                                <video src="content/arquitectura/waraqa/02.web.mp4" controls loop muted playsinline style="width: 100%; height: 100%; object-fit: cover;"></video>
-                            </div>
-                            <div class="slide-item">
-                                <video src="content/arquitectura/waraqa/03.web.mp4" controls loop muted playsinline style="width: 100%; height: 100%; object-fit: cover;"></video>
-                            </div>
-                            <div class="slide-item">
-                                <video src="content/arquitectura/waraqa/04.web.mp4" controls loop muted playsinline style="width: 100%; height: 100%; object-fit: cover;"></video>
+                        <div class="mv-split flip">
+                            <figure class="mv-split-media"><img src="content/arquitectura/colonizar-fabrica/Comocolonizarunafabrica_ejecucion3_c.jpg" alt="Fotomontaje de la planta segunda" loading="lazy"><figcaption><span class="fc-num">03</span><span class="lang-es">Fotomontaje: planta segunda, bajo las cerchas originales de la nave</span><span class="lang-en">Photomontage: second floor, under the hall's original trusses</span></figcaption></figure>
+                            <div class="mv-split-text">
+                                <p class="lead lang-es">Arriba, cada familia construye su trozo de fábrica.</p>
+                                <p class="lead lang-en">Above, each family builds its piece of factory.</p>
+                                <p class="lang-es">Bajo las cerchas originales, las viviendas se autoconstruyen dentro del volumen asignado. La estructura industrial permanece a la vista; lo nuevo se reconoce siempre como un añadido reversible.</p>
+                                <p class="lang-en">Under the original trusses, the dwellings are self-built within the allotted volume. The industrial structure stays exposed; the new is always legible as a reversible addition.</p>
                             </div>
                         </div>
-                        <button class="block-arrow arrow-left"><i data-lucide="chevron-left"></i></button>
-                        <button class="block-arrow arrow-right"><i data-lucide="chevron-right"></i></button>
-                    </div>
-                    <div class="pf-scrim"></div>
-                    <div class="pf-overlay">
-                        <div class="pf-info">
-                            <h3 class="pf-name"><span class="lang-es">Escuela Bioclimática Waraqa</span><span class="lang-en">Waraqa Bioclimatic School</span></h3>
-                            <p class="pf-meta"><span class="lang-es">2022 / Mahandougou, Côte d'Ivoire / SUMUM ONG</span><span class="lang-en">2022 / Mahandougou, Ivory Coast / SUMUM NGO</span></p>
-                            <p class="pf-desc"><span class="lang-es">Co-diseño y dirección técnica de una escuela de dos plantas con la comunidad local: muros de Bloques de Tierra Comprimida (BTC), estructura de madera con uniones de caja y espiga y doble cubierta ventilada.</span><span class="lang-en">Co-design and technical management of a two-story school with the local community: Compressed Earth Block (CEB) walls, timber structure with mortise-and-tenon joints, and a double ventilated roof.</span></p>
+                        <figure class="mv-fig tall"><img src="content/arquitectura/colonizar-fabrica/Comocolonizarunafabrica_imagenproyecto5_c.jpg" alt="Axonometría explotada de la colonia" loading="lazy"><figcaption><span class="fc-num">04</span><span class="lang-es">Axonometría explotada: el sistema de reglas repartiendo el volumen de la nave en parcelas</span><span class="lang-en">Exploded axonometric: the rule system dividing the hall's volume into plots</span></figcaption></figure>
+                        <div class="mv-block right">
+                            <p class="lang-es">La axonometría explotada es la clave del proyecto: descompone la nave en capas —suelo común, parcelas de aire, núcleos, cubierta existente— y enseña cómo el sistema de reglas, y no un plano cerrado, es lo que da forma al conjunto.</p>
+                            <p class="lang-en">The exploded axonometric is the key to the project: it breaks the hall into layers —shared floor, plots of air, cores, existing roof— and shows how the rule system, not a fixed plan, is what gives the whole its shape.</p>
                         </div>
-                        <img class="pf-logo" src="content/arquitectura/waraqa/logo.png" alt="Waraqa Bioclimatic School logo">
-                        <div class="block-slide-dots pf-dots"></div>
-                    </div>
-                </div>
-
-                <!-- Project Block 2: Orkide -->
-                <div class="project-section-block bleed" data-project="orkide">
-                    <div class="block-slider">
-                        <div class="slider-wrapper">
-                            <div class="slide-item active"><img src="content/arquitectura/orkide/01.jpg" alt="Orkide Bioclimatic Shelters"></div>
-                            <div class="slide-item"><img src="content/arquitectura/orkide/02.png" alt="Orkide Bioclimatic Shelters"></div>
+                        <div class="mv-duo">
+                            <figure><img src="content/arquitectura/colonizar-fabrica/Comocolonizarunafabrica_analisis%201_c.jpg" alt="Diagramas conceptuales" loading="lazy"><figcaption><span class="fc-num">05</span><span class="lang-es">Diagramas conceptuales: huecos, demolición de fachadas, prototipo e instalaciones</span><span class="lang-en">Conceptual diagrams: openings, façade demolition, prototype and services</span></figcaption></figure>
+                            <figure class="offset"><img src="content/arquitectura/colonizar-fabrica/Comocolonizarunafabrica_analisis%202_c.jpg" alt="Diagramas: dimensiones y circulaciones" loading="lazy"><figcaption><span class="fc-num">06</span><span class="lang-es">Diagramas: dimensiones, propiedad, crecimiento de las viviendas y circulaciones</span><span class="lang-en">Diagrams: dimensions, ownership, dwelling growth and circulation</span></figcaption></figure>
                         </div>
-                        <button class="block-arrow arrow-left"><i data-lucide="chevron-left"></i></button>
-                        <button class="block-arrow arrow-right"><i data-lucide="chevron-right"></i></button>
-                    </div>
-                    <div class="pf-scrim"></div>
-                    <div class="pf-overlay">
-                        <div class="pf-info">
-                            <h3 class="pf-name"><span class="lang-es">Refugios Bioclimáticos Orkide</span><span class="lang-en">Orkide Bioclimatic Shelters</span></h3>
-                            <p class="pf-meta"><span class="lang-es">2019 / Concurso / B4H Refugee Camp, Turquía-Siria</span><span class="lang-en">2019 / Competition / B4H Refugee Camp, Turkey-Syria</span></p>
-                            <p class="pf-desc"><span class="lang-es">Refugios temporales para la auto-gestión de refugiados; la sección imita las tradicionales 'casas colmena' y extrae el aire caliente por un óculo superior de forma pasiva.</span><span class="lang-en">Temporary shelters for refugee self-management; the section mimics the traditional 'beehive houses' and passively extracts hot air through an upper oculus.</span></p>
-                        </div>
-                        <img class="pf-logo" src="content/arquitectura/orkide/logo.png" alt="Orkide Bioclimatic Shelters logo">
-                        <div class="block-slide-dots pf-dots"></div>
-                    </div>
-                </div>
-
-                <!-- Project Block 3: Kaira Looro -->
-                <div class="project-section-block bleed" data-project="lighthouse">
-                    <div class="block-slider">
-                        <div class="slider-wrapper">
-                            <div class="slide-item active"><img src="content/arquitectura/lighthouse/01.jpg" alt="Cooperation Lighthouse"></div>
-                            <div class="slide-item"><img src="content/arquitectura/lighthouse/02.jpg" alt="Cooperation Lighthouse"></div>
-                            <div class="slide-item"><img src="content/arquitectura/lighthouse/03.jpg" alt="Cooperation Lighthouse"></div>
-                            <div class="slide-item"><img src="content/arquitectura/lighthouse/04.jpg" alt="Cooperation Lighthouse"></div>
-                            <div class="slide-item">
-                                <video src="content/arquitectura/lighthouse/05.web.mp4" controls loop muted playsinline style="width: 100%; height: 100%; object-fit: cover;"></video>
-                            </div>
-                            <div class="slide-item">
-                                <video src="content/arquitectura/lighthouse/06.web.mp4" controls loop muted playsinline style="width: 100%; height: 100%; object-fit: cover;"></video>
+                        <div class="mv-split">
+                            <figure class="mv-split-media"><img src="content/arquitectura/colonizar-fabrica/6_Derribos%20previos_c.jpg" alt="Estudio de derribos y aberturas" loading="lazy"><figcaption><span class="fc-num">07</span><span class="lang-es">Estudio de derribos y aberturas sobre la nave existente</span><span class="lang-en">Study of demolitions and openings on the existing hall</span></figcaption></figure>
+                            <div class="mv-split-text">
+                                <p class="lead lang-es">Primero, decidir qué se quita.</p>
+                                <p class="lead lang-en">First, decide what to remove.</p>
+                                <p class="lang-es">Antes de añadir, el proyecto define los derribos selectivos y las aberturas que llevan luz y acceso al interior profundo de la nave, partiendo del estado real del complejo fabril.</p>
+                                <p class="lang-en">Before adding, the project defines the selective demolitions and openings that bring light and access deep into the hall, starting from the real state of the industrial complex.</p>
                             </div>
                         </div>
-                        <button class="block-arrow arrow-left"><i data-lucide="chevron-left"></i></button>
-                        <button class="block-arrow arrow-right"><i data-lucide="chevron-right"></i></button>
-                    </div>
-                    <div class="pf-scrim"></div>
-                    <div class="pf-overlay">
-                        <div class="pf-info">
-                            <h3 class="pf-name"><span class="lang-es">Faro de Cooperación</span><span class="lang-en">Cooperation Lighthouse</span></h3>
-                            <p class="pf-meta"><span class="lang-es">2022 / Concurso / Kaira Looro, Senegal</span><span class="lang-en">2022 / Competition / Kaira Looro, Senegal</span></p>
-                            <p class="pf-desc"><span class="lang-es">Hito de bambú y laterita estabilizada que recoge agua de lluvia; los muros inclinados generan cámaras de aire para potenciar la ventilación natural.</span><span class="lang-en">A bamboo and stabilized-laterite landmark that harvests rainwater; inclined walls create internal air chambers to enhance natural ventilation.</span></p>
+                        <div class="mv-duo right">
+                            <figure class="offset"><img src="content/arquitectura/colonizar-fabrica/Comocolonizarunafabrica_imagenproyecto1_c.jpeg" alt="Acondicionamiento estructural de la nave" loading="lazy"><figcaption><span class="fc-num">08</span><span class="lang-es">Acondicionamiento de la nave: comprobación estructural y detalles constructivos</span><span class="lang-en">Refitting the hall: structural check and construction details</span></figcaption></figure>
+                            <figure><img src="content/arquitectura/colonizar-fabrica/Comocolonizarunafabrica_imagenproyecto4_c.jpg" alt="Métodos de construcción del módulo" loading="lazy"><figcaption><span class="fc-num">09</span><span class="lang-es">Métodos de construcción del módulo: despiece y detalles de madera</span><span class="lang-en">Module construction methods: timber breakdown and details</span></figcaption></figure>
                         </div>
-                        <img class="pf-logo" src="content/arquitectura/lighthouse/logo.png" alt="Cooperation Lighthouse logo">
-                        <div class="block-slide-dots pf-dots"></div>
-                    </div>
-                </div>
+                        <div class="mv-block">
+                            <p class="lang-es">El sistema baja al detalle constructivo: una estructura ligera de madera, repetible y de montaje en seco, que cualquier familia puede levantar por fases dentro de su parcela sin tocar la nave que la cobija.</p>
+                            <p class="lang-en">The system comes down to construction detail: a light, repeatable, dry-assembled timber structure that any family can raise in phases within its plot without touching the hall that shelters it.</p>
+                        </div>
+                        <div class="mv-duo">
+                            <figure><img src="content/arquitectura/colonizar-fabrica/Comocolonizarunafabrica_imagenproyecto3a_c.jpg" alt="Planta de ocupación — baja" loading="lazy"><figcaption><span class="fc-num">10</span><span class="lang-es">Planta baja: ocupación y espacio común</span><span class="lang-en">Ground floor: occupation and shared space</span></figcaption></figure>
+                            <figure class="offset"><img src="content/arquitectura/colonizar-fabrica/Comocolonizarunafabrica_imagenproyecto3b_c.jpg" alt="Planta de ocupación — primera" loading="lazy"><figcaption><span class="fc-num">11</span><span class="lang-es">Planta primera: viviendas y patios</span><span class="lang-en">First floor: dwellings and courtyards</span></figcaption></figure>
+                        </div>
+                        <figure class="mv-fig"><img src="content/arquitectura/colonizar-fabrica/Comocolonizarunafabrica_imagenproyecto3c_c.jpg" alt="Planta de ocupación — segunda" loading="lazy"><figcaption><span class="fc-num">12</span><span class="lang-es">Planta segunda: viviendas bajo cubierta</span><span class="lang-en">Second floor: dwellings under the roof</span></figcaption></figure>
+                        <figure class="mv-fig"><img src="content/arquitectura/colonizar-fabrica/Comocolonizarunafabrica_planodesituacion_c.jpeg" alt="Entorno de Viladomiu Vell" loading="lazy"><figcaption><span class="fc-num">13</span><span class="lang-es">Entorno de Viladomiu Vell: estudio de vivienda y empleo en la colonia</span><span class="lang-en">Viladomiu Vell context: study of housing and employment in the colony</span></figcaption></figure>
+                        <figure class="mv-fig"><img src="content/arquitectura/colonizar-fabrica/Comocolonizarunafabrica_fotoprincipal_c.jpg" alt="Sección longitudinal de la colonia habitada" loading="lazy"><figcaption><span class="fc-num">14</span><span class="lang-es">Sección longitudinal: la colonia habitada de extremo a extremo</span><span class="lang-en">Longitudinal section: the inhabited colony from end to end</span></figcaption></figure>
+                    </article>
 
-                <!-- Project Block 4: Torre en Barbate -->
-                <div class="project-section-block bleed" data-project="barbate">
-                    <div class="block-slider">
-                        <div class="slider-wrapper">
-                            <div class="slide-item active"><img src="content/arquitectura/barbate/01.png" alt="Barbate Tower"></div>
+                    <!-- L-HOUSE / CASA ANTEQUERA -->
+                    <article class="arch-view" data-arch-view="casa-antequera">
+                        <button class="arch-back" data-arch-close><i data-lucide="arrow-left"></i><span class="lang-es">Proyectos</span><span class="lang-en">Projects</span></button>
+                        <figure class="mv-hero"><img src="content/arquitectura/Casa%20Antequera/C_Users_Misut_Desktop_250409_CasaL_Página_21_c.jpg" alt="L-House — jardín y piscina"></figure>
+                        <div class="mv-intro">
+                            <span class="mv-num">07 / <span class="lang-es">Vivienda</span><span class="lang-en">House</span></span>
+                            <h3 class="mv-title">L-House</h3>
+                            <p class="mv-sub"><span class="lang-es">Una vivienda que hace de la pendiente su proyecto.</span><span class="lang-en">A house that turns the slope into its project.</span></p>
                         </div>
-                        <button class="block-arrow arrow-left"><i data-lucide="chevron-left"></i></button>
-                        <button class="block-arrow arrow-right"><i data-lucide="chevron-right"></i></button>
-                    </div>
-                    <div class="pf-scrim"></div>
-                    <div class="pf-overlay">
-                        <div class="pf-info">
-                            <h3 class="pf-name"><span class="lang-es">Torre en Barbate</span><span class="lang-en">Barbate Tower</span></h3>
-                            <p class="pf-meta"><span class="lang-es">Arquitectura Residencial / Costa de Barbate, España</span><span class="lang-en">Residential Architecture / Coast of Barbate, Spain</span></p>
-                            <p class="pf-desc"><span class="lang-es">Propuesta residencial costera con control solar pasivo; la modulación de la fachada genera un juego continuo de sombras.</span><span class="lang-en">Coastal residential proposal with passive solar control; facade modulation creates a continuous play of shadows.</span></p>
+                        <div class="mv-grid">
+                            <div class="mv-text">
+                                <p class="mv-lead lang-es">En una parcela en esquina y en pendiente sobre el valle de Antequera, L-House se organiza en sección.</p>
+                                <p class="mv-lead lang-en">On a sloping corner plot above the valley of Antequera, L-House is organised in section.</p>
+                                <p class="lang-es">Dos volúmenes a dos aguas se escalonan siguiendo la topografía, de modo que cada nivel se asienta en una cota distinta del terreno. El desnivel, lejos de ser un problema, ordena el recorrido doméstico y encadena estancias, terrazas y una lámina de agua en la cota más baja.</p>
+                                <p class="lang-en">Two gabled volumes step down with the topography, so each level sits on a different ground height. The slope, far from a problem, organises the domestic route and chains together rooms, terraces and a water surface on the lowest level.</p>
+                                <p class="lang-es">Cada espacio se abre a una vista distinta del paisaje, y la cubierta inclinada reinterpreta la imagen de la arquitectura tradicional del entorno en clave contemporánea.</p>
+                                <p class="lang-en">Each space opens to a different view of the landscape, and the pitched roof reinterprets the image of the area's traditional architecture in a contemporary key.</p>
+                                <p class="lang-es">En el interior, la madera de las cubiertas inclinadas queda vista y marca el carácter de cada estancia: salón, cocina, despacho y dormitorios se ordenan en torno a grandes huecos que enmarcan el valle y la lámina de agua. La paleta —enfoscado claro, roble y carpintería oscura— mantiene el conjunto cálido y sobrio.</p>
+                                <p class="lang-en">Inside, the timber of the pitched roofs is left exposed and sets the character of each room: living room, kitchen, study and bedrooms are arranged around large openings that frame the valley and the water. The palette —pale render, oak and dark joinery— keeps the whole warm and restrained.</p>
+                            </div>
+                            <dl class="mv-facts">
+                                <div><dt><span class="lang-es">Ubicación</span><span class="lang-en">Location</span></dt><dd><span class="lang-es">Antequera, Málaga</span><span class="lang-en">Antequera, Málaga</span></dd></div>
+                                <div><dt><span class="lang-es">Año</span><span class="lang-en">Year</span></dt><dd>2025</dd></div>
+                                <div><dt><span class="lang-es">Programa</span><span class="lang-en">Programme</span></dt><dd><span class="lang-es">Vivienda unifamiliar</span><span class="lang-en">Single-family house</span></dd></div>
+                                <div><dt><span class="lang-es">Tipo</span><span class="lang-en">Type</span></dt><dd><span class="lang-es">Anteproyecto</span><span class="lang-en">Schematic design</span></dd></div>
+                                <div><dt><span class="lang-es">Rol</span><span class="lang-en">Role</span></dt><dd><span class="lang-es">Diseño</span><span class="lang-en">Design</span></dd></div>
+                            </dl>
                         </div>
-                        <img class="pf-logo" src="content/arquitectura/barbate/logo.png" alt="Barbate Tower logo">
-                        <div class="block-slide-dots pf-dots"></div>
-                    </div>
-                </div>
+                        <div class="mv-block">
+                            <p class="lang-es">La piscina y las terrazas escalonadas prolongan la vivienda hacia el paisaje, difuminando el límite entre casa y ladera; el agua de la cota baja devuelve, reflejado, el cielo del valle.</p>
+                            <p class="lang-en">The pool and stepped terraces extend the house into the landscape, blurring the line between dwelling and hillside; the water on the lower level gives back the valley's sky, reflected.</p>
+                        </div>
+                        <figure class="mv-fig"><img src="content/arquitectura/Casa%20Antequera/C_Users_Misut_Desktop_250409_CasaL_Página_20_c.jpg" alt="L-House — fachada exterior" loading="lazy"><figcaption><span class="fc-num">01</span><span class="lang-es">Imagen exterior de la fachada</span><span class="lang-en">Exterior view of the façade</span></figcaption></figure>
+                        <div class="mv-block">
+                            <p class="lang-es">El proyecto se construye desde la sección: dos piezas a dos aguas que pisan el terreno en cotas distintas y se enlazan por el núcleo de escaleras. Las axonometrías muestran cómo la planta en «L» abraza el jardín y la piscina, dejando la parcela en pendiente a favor del recorrido.</p>
+                            <p class="lang-en">The project is built from the section: two gabled pieces that meet the ground at different levels and are tied together by the stair core. The axonometrics show how the L-shaped plan wraps around the garden and pool, turning the sloping plot in favour of the route through the house.</p>
+                        </div>
+                        <div class="mv-split">
+                            <figure class="mv-split-media"><img src="content/arquitectura/Casa%20Antequera/C_Users_Misut_Desktop_250409_CasaL_Página_17_c.jpg" alt="L-House — axonometría" loading="lazy"><figcaption><span class="fc-num">02</span><span class="lang-es">Axonometría general del conjunto</span><span class="lang-en">General axonometric of the whole</span></figcaption></figure>
+                            <div class="mv-split-text">
+                                <p class="lead lang-es">La pendiente no se vence: se habita.</p>
+                                <p class="lead lang-en">The slope is not overcome: it is inhabited.</p>
+                                <p class="lang-es">Los dos volúmenes a dos aguas se escalonan con la topografía y dibujan la «L» que da nombre a la casa, abrazando el jardín y la piscina en la cota más baja.</p>
+                                <p class="lang-en">The two gabled volumes step down with the topography and trace the «L» that names the house, embracing the garden and pool on the lowest level.</p>
+                            </div>
+                        </div>
+                        <div class="mv-split flip">
+                            <figure class="mv-split-media"><img src="content/arquitectura/Casa%20Antequera/C_Users_Misut_Desktop_250409_CasaL_Página_18_c.jpg" alt="L-House — axonometría desde el jardín" loading="lazy"><figcaption><span class="fc-num">03</span><span class="lang-es">Axonometría desde el jardín</span><span class="lang-en">Axonometric from the garden</span></figcaption></figure>
+                            <div class="mv-split-text">
+                                <p class="lead lang-es">Cada nivel, una cota y una vista.</p>
+                                <p class="lead lang-en">Each level, a height and a view.</p>
+                                <p class="lang-es">Vista desde el jardín, la casa revela su escalonamiento: las terrazas bajan hacia el agua y la cubierta inclinada reinterpreta, en clave contemporánea, la arquitectura tradicional del entorno.</p>
+                                <p class="lang-en">Seen from the garden, the house reveals its stepping: the terraces descend toward the water and the pitched roof reinterprets, in a contemporary key, the area's traditional architecture.</p>
+                            </div>
+                        </div>
+                        <figure class="mv-fig"><img src="content/arquitectura/Casa%20Antequera/C_Users_Misut_Desktop_250409_CasaL_Página_19_c.jpg" alt="L-House — perspectiva seccionada" loading="lazy"><figcaption><span class="fc-num">04</span><span class="lang-es">Perspectiva seccionada: relación entre niveles</span><span class="lang-en">Sectioned perspective: relationship between levels</span></figcaption></figure>
+                        <div class="mv-block">
+                            <p class="lang-es">Dentro, las estancias principales vuelcan al jardín a través de grandes paños de vidrio. La cocina y el salón comparten la planta de acceso, mientras el despacho y los dormitorios buscan las vistas más altas; la madera vista de la cubierta acompaña todo el recorrido doméstico.</p>
+                            <p class="lang-en">Inside, the main rooms open to the garden through large glazed panes. Kitchen and living room share the entrance level, while the study and bedrooms reach for the higher views; the exposed timber of the roof accompanies the whole domestic route.</p>
+                        </div>
+                        <div class="mv-split">
+                            <figure class="mv-split-media"><img src="content/arquitectura/Casa%20Antequera/C_Users_Misut_Desktop_250409_CasaL_Página_22_c.jpg" alt="L-House — salón comedor" loading="lazy"><figcaption><span class="fc-num">05</span><span class="lang-es">Salón comedor abierto al jardín</span><span class="lang-en">Living and dining room open to the garden</span></figcaption></figure>
+                            <div class="mv-split-text">
+                                <p class="lead lang-es">El salón vive hacia la piscina.</p>
+                                <p class="lead lang-en">The living room lives toward the pool.</p>
+                                <p class="lang-es">Un gran ventanal corredero disuelve el límite entre interior y terraza; la paleta de enfoscado claro, roble y carpintería oscura mantiene el ambiente cálido y sereno.</p>
+                                <p class="lang-en">A large sliding window dissolves the line between inside and terrace; the palette of pale render, oak and dark joinery keeps the atmosphere warm and calm.</p>
+                            </div>
+                        </div>
+                        <div class="mv-split flip">
+                            <figure class="mv-split-media"><img src="content/arquitectura/Casa%20Antequera/C_Users_Misut_Desktop_250409_CasaL_Página_24_c.jpg" alt="L-House — cocina" loading="lazy"><figcaption><span class="fc-num">06</span><span class="lang-es">Cocina con ventana corrida al paisaje</span><span class="lang-en">Kitchen with a ribbon window to the landscape</span></figcaption></figure>
+                            <div class="mv-split-text">
+                                <p class="lead lang-es">La luz entra en banda.</p>
+                                <p class="lead lang-en">Light enters as a band.</p>
+                                <p class="lang-es">En la cocina, una ventana horizontal enmarca el valle a la altura de la encimera; el roble continúa de los muebles a la cubierta inclinada, vista también aquí.</p>
+                                <p class="lang-en">In the kitchen, a horizontal window frames the valley at counter height; the oak runs from the units up to the pitched roof, exposed here too.</p>
+                            </div>
+                        </div>
+                        <div class="mv-duo">
+                            <figure><img src="content/arquitectura/Casa%20Antequera/C_Users_Misut_Desktop_250409_CasaL_Página_23_c.jpg" alt="L-House — despacho" loading="lazy"><figcaption><span class="fc-num">07</span><span class="lang-es">Despacho con vistas al jardín</span><span class="lang-en">Study overlooking the garden</span></figcaption></figure>
+                            <figure class="offset"><img src="content/arquitectura/Casa%20Antequera/C_Users_Misut_Desktop_250409_CasaL_Página_25_c.jpg" alt="L-House — dormitorio" loading="lazy"><figcaption><span class="fc-num">08</span><span class="lang-es">Dormitorio principal con la piscina al fondo</span><span class="lang-en">Main bedroom with the pool beyond</span></figcaption></figure>
+                        </div>
+                        <div class="mv-block right">
+                            <p class="lang-es">El conjunto se documenta con planos, alzados y secciones que fijan la geometría escalonada y la relación con la calle y el terreno colindante.</p>
+                            <p class="lang-en">The project is documented with plans, elevations and sections that fix the stepped geometry and its relationship with the street and the surrounding ground.</p>
+                        </div>
+                        <div class="mv-duo right">
+                            <figure class="offset"><img src="content/arquitectura/Casa%20Antequera/C_Users_Misut_Desktop_250409_CasaL_Página_13_c.jpg" alt="L-House — alzado sur" loading="lazy"><figcaption><span class="fc-num">09</span><span class="lang-es">Alzado sur</span><span class="lang-en">South elevation</span></figcaption></figure>
+                            <figure><img src="content/arquitectura/Casa%20Antequera/C_Users_Misut_Desktop_250409_CasaL_Página_09_c.jpg" alt="L-House — sección" loading="lazy"><figcaption><span class="fc-num">10</span><span class="lang-es">Sección longitudinal por el núcleo de escaleras</span><span class="lang-en">Longitudinal section through the stair core</span></figcaption></figure>
+                        </div>
+                        <figure class="mv-fig"><img src="content/arquitectura/Casa%20Antequera/C_Users_Misut_Desktop_250409_CasaL_Página_05_c.jpg" alt="L-House — planta sótano" loading="lazy"><figcaption><span class="fc-num">11</span><span class="lang-es">Planta sótano y encaje en la parcela en esquina</span><span class="lang-en">Basement plan and fit within the corner plot</span></figcaption></figure>
+                    </article>
 
-                <!-- Project Block 5: TFM (Erosión / Oasis) -->
-                <div class="project-section-block bleed" data-project="tfm">
-                    <div class="block-slider">
-                        <div class="slider-wrapper">
-                            <div class="slide-item active"><img src="content/arquitectura/tfm/01.jpg" alt="Erosion / Oasis (Master Thesis)"></div>
-                            <div class="slide-item"><img src="content/arquitectura/tfm/02.jpg" alt="Erosion / Oasis (Master Thesis)"></div>
-                        </div>
-                        <button class="block-arrow arrow-left"><i data-lucide="chevron-left"></i></button>
-                        <button class="block-arrow arrow-right"><i data-lucide="chevron-right"></i></button>
-                    </div>
-                    <div class="pf-scrim"></div>
-                    <div class="pf-overlay">
-                        <div class="pf-info">
-                            <h3 class="pf-name"><span class="lang-es">Erosión / Oasis (TFM)</span><span class="lang-en">Erosion / Oasis (Master Thesis)</span></h3>
-                            <p class="pf-meta"><span class="lang-es">TFM / Vivienda & Termalismo / Sierra Calderona, España</span><span class="lang-en">Master Thesis / Housing & Thermal Baths / Sierra Calderona, Spain</span></p>
-                            <p class="pf-desc"><span class="lang-es">Arquitectura excavada en la roca que combina vivienda de investigación geobiológica y baños termales, integrada en la topografía y los flujos de agua termal.</span><span class="lang-en">Architecture carved into the rock combining geobiological research housing and thermal baths, integrated with topography and thermal water flows.</span></p>
-                        </div>
-                        <img class="pf-logo" src="content/arquitectura/tfm/logo.jpg" alt="Erosion / Oasis (Master Thesis) logo">
-                        <div class="block-slide-dots pf-dots"></div>
-                    </div>
-                </div>
-
-                <!-- Project Block 6: Campillos -->
-                <div class="project-section-block bleed" data-project="campillos">
-                    <div class="block-slider">
-                        <div class="slider-wrapper">
-                            <div class="slide-item active"><img src="content/arquitectura/campillos/01.png" alt="Campillos Rehabilitation"></div>
-                        </div>
-                        <button class="block-arrow arrow-left"><i data-lucide="chevron-left"></i></button>
-                        <button class="block-arrow arrow-right"><i data-lucide="chevron-right"></i></button>
-                    </div>
-                    <div class="pf-scrim"></div>
-                    <div class="pf-overlay">
-                        <div class="pf-info">
-                            <h3 class="pf-name"><span class="lang-es">Rehabilitación en Campillos</span><span class="lang-en">Campillos Rehabilitation</span></h3>
-                            <p class="pf-meta"><span class="lang-es">2024 / Anteproyecto / Campillos, Málaga</span><span class="lang-en">2024 / Preliminary Project / Campillos, Spain</span></p>
-                            <p class="pf-desc"><span class="lang-es">Rehabilitación de un inmueble en el casco histórico conservando fachada y volumetría originales, modelada íntegramente en Revit.</span><span class="lang-en">Restoration of a building in the historic center preserving the original facade and volume, fully modeled in Revit.</span></p>
-                        </div>
-                        <img class="pf-logo" src="content/arquitectura/campillos/logo.jpg" alt="Campillos Rehabilitation logo">
-                        <div class="block-slide-dots pf-dots"></div>
-                    </div>
-                </div>
-
-                <!-- Project Block 7: Puerto de la Torre -->
-                <div class="project-section-block bleed" data-project="puerto-torre">
-                    <div class="block-slider">
-                        <div class="slider-wrapper">
-                            <div class="slide-item active"><img src="content/arquitectura/puerto-torre/01.jpg" alt="Puerto de la Torre Land Development"></div>
-                        </div>
-                        <button class="block-arrow arrow-left"><i data-lucide="chevron-left"></i></button>
-                        <button class="block-arrow arrow-right"><i data-lucide="chevron-right"></i></button>
-                    </div>
-                    <div class="pf-scrim"></div>
-                    <div class="pf-overlay">
-                        <div class="pf-info">
-                            <h3 class="pf-name"><span class="lang-es">Puerto de la Torre Suelo</span><span class="lang-en">Puerto de la Torre Land Development</span></h3>
-                            <p class="pf-meta"><span class="lang-es">2023 / Urbanismo / Los Morales, Málaga</span><span class="lang-en">2023 / Urban Planning / Los Morales, Spain</span></p>
-                            <p class="pf-desc"><span class="lang-es">Ordenación parcelaria de un suelo residencial de 6.670 m² con parque lineal y camino verde de transición al cauce fluvial.</span><span class="lang-en">Master planning of a 6,670 m² residential plot with a linear park and green path transitioning to the riverbed.</span></p>
-                        </div>
-                        <img class="pf-logo" src="content/arquitectura/puerto-torre/logo.png" alt="Puerto de la Torre Land Development logo">
-                        <div class="block-slide-dots pf-dots"></div>
-                    </div>
-                </div>
-
-                <!-- Project Block 8: Cómo colonizar una fábrica -->
-                <div class="project-section-block bleed" data-project="colonizar-fabrica">
-                    <div class="block-slider">
-                        <div class="slider-wrapper">
-                            <div class="slide-item active"><img src="content/arquitectura/colonizar-fabrica/01.jpg" alt="How to Colonize a Factory"></div>
-                            <div class="slide-item"><img src="content/arquitectura/colonizar-fabrica/02.jpeg" alt="How to Colonize a Factory"></div>
-                            <div class="slide-item"><img src="content/arquitectura/colonizar-fabrica/03.jpg" alt="How to Colonize a Factory"></div>
-                            <div class="slide-item"><img src="content/arquitectura/colonizar-fabrica/04.jpeg" alt="How to Colonize a Factory"></div>
-                            <div class="slide-item"><img src="content/arquitectura/colonizar-fabrica/05.jpg" alt="How to Colonize a Factory"></div>
-                            <div class="slide-item"><img src="content/arquitectura/colonizar-fabrica/06.jpg" alt="How to Colonize a Factory"></div>
-                            <div class="slide-item"><img src="content/arquitectura/colonizar-fabrica/07.jpg" alt="How to Colonize a Factory"></div>
-                            <div class="slide-item"><img src="content/arquitectura/colonizar-fabrica/08.jpg" alt="How to Colonize a Factory"></div>
-                            <div class="slide-item"><img src="content/arquitectura/colonizar-fabrica/09.jpg" alt="How to Colonize a Factory"></div>
-                            <div class="slide-item"><img src="content/arquitectura/colonizar-fabrica/10.jpg" alt="How to Colonize a Factory"></div>
-                            <div class="slide-item"><img src="content/arquitectura/colonizar-fabrica/11.jpg" alt="How to Colonize a Factory"></div>
-                        </div>
-                        <button class="block-arrow arrow-left"><i data-lucide="chevron-left"></i></button>
-                        <button class="block-arrow arrow-right"><i data-lucide="chevron-right"></i></button>
-                    </div>
-                    <div class="pf-scrim"></div>
-                    <div class="pf-overlay">
-                        <div class="pf-info">
-                            <h3 class="pf-name"><span class="lang-es">Cómo colonizar una fábrica</span><span class="lang-en">How to Colonize a Factory</span></h3>
-                            <p class="pf-meta"><span class="lang-es">2019 / TFM / Colonia Viladomiu Vell, Llobregat</span><span class="lang-en">2019 / Master Thesis / Viladomiu Vell, Spain</span></p>
-                            <p class="pf-desc"><span class="lang-es">Reactivación de una antigua fábrica textil mediante un modelo de vivienda cooperativa modular regido por un sistema de reglas tridimensionales.</span><span class="lang-en">Reactivation of an old textile factory through a modular co-housing model governed by a 3D parcel rule-set.</span></p>
-                        </div>
-                        <img class="pf-logo" src="content/arquitectura/colonizar-fabrica/logo.jpg" alt="How to Colonize a Factory logo">
-                        <div class="block-slide-dots pf-dots"></div>
-                    </div>
                 </div>
             </section>
 
             <!-- PANEL 2: VISUALIZATION (Renders de todo tipo - Estructura tipo play-time.es) -->
             <section class="tab-panel" id="panel-visualization">
                 
-                <!-- Service Introduction Block -->
-                <div class="tab-intro-block">
-                    <div class="intro-content-wrapper">
-                        <span class="intro-tag">02 // Visual Work</span>
-                        <h2 class="intro-title">
-                            <span class="lang-es">Medios Inmersivos & Renders de Alta Fidelidad</span>
-                            <span class="lang-en">Immersive Media & High-Fidelity Rendering</span>
+                <!-- ÍNDICE: manifiesto + logos (mismo formato que Arquitectura; aquí navegan por scroll) -->
+                <div class="arch-index">
+                    <div class="arch-manifesto">
+                        <span class="arch-eyebrow">02 — Visualización</span>
+                        <h2 class="arch-statement">
+                            <span class="lang-es">Imágenes que le dan <em>alma</em> al espacio: renders, cinemáticas y tiempo real.</span>
+                            <span class="lang-en">Images that give the space its <em>soul</em>: renders, cinematics and real-time.</span>
                         </h2>
-                        <p class="intro-desc">
-                            <span class="lang-es">Creación de narrativas visuales que dotan de alma al espacio arquitectónico. Desarrollo de renders fotorrealistas, cinemáticas y recorridos interactivos en Unreal Engine 5 y Twinmotion. Especialista en el estudio del comportamiento de la luz natural y respuesta de materiales físicos para fases de concurso y proyectos ejecutivos.</span>
-                            <span class="lang-en">Creating visual narratives that give soul to architectural spaces. Development of photorealistic renders, cinematics, and interactive walk-throughs in Unreal Engine 5 and Twinmotion. Specialist in the study of natural light behavior and physical materials for competitions and executive projects.</span>
+                        <p class="arch-lead">
+                            <span class="lang-es">Visualización fotorrealista y entornos interactivos en Unreal Engine 5 y Twinmotion, con atención especial a la luz natural y al comportamiento de los materiales. Elige un proyecto para saltar a él.</span>
+                            <span class="lang-en">Photorealistic visualization and interactive environments in Unreal Engine 5 and Twinmotion, with special attention to natural light and material behaviour. Pick a project to jump to it.</span>
                         </p>
-                        <div class="logo-band">
-                            <button class="logo-band-item" data-scroll-to="caixaforum" aria-label="CaixaForum Málaga"><img src="assets/CXF_MLG_Marca.png" alt="CaixaForum"><span class="logo-band-label">CaixaForum</span></button>
-                            <button class="logo-band-item" data-scroll-to="csic" aria-label="CSIC Research Center"><img src="assets/Logo-Picharchitects-01.png" alt="CSIC"><span class="logo-band-label">CSIC</span></button>
-                            <button class="logo-band-item" data-scroll-to="sem" aria-label="SEM HQ"><img src="assets/Logo-Picharchitects-01.png" alt="SEM"><span class="logo-band-label">SEM</span></button>
-                            <button class="logo-band-item" data-scroll-to="tec" aria-label="Tennis Empowerment Center"><img src="assets/Logo-Picharchitects-01.png" alt="TEC"><span class="logo-band-label">TEC</span></button>
-                            <button class="logo-band-item" data-scroll-to="kaira-looro" aria-label="Cooperation Lighthouse"><img src="assets/Autocad Logo ONG.png" alt="Kaira Looro"><span class="logo-band-label">Kaira Looro</span></button>
-                            <button class="logo-band-item" data-scroll-to="waraqa-school" aria-label="Waraqa School"><img src="assets/Autocad Logo ONG.png" alt="Waraqa"><span class="logo-band-label">Waraqa</span></button>
-                            <button class="logo-band-item" data-scroll-to="carrer-marroc" aria-label="Carrer Marroc Housing"><img src="assets/Logo-Picharchitects-01.png" alt="Carrer Marroc"><span class="logo-band-label">Carrer Marroc</span></button>
-                            <button class="logo-band-item" data-scroll-to="barajas" aria-label="Barajas Housing"><img src="assets/Logo-Picharchitects-01.png" alt="Barajas"><span class="logo-band-label">Barajas</span></button>
-                            <button class="logo-band-item" data-scroll-to="barcelona-housing" aria-label="Barcelona Housing"><img src="assets/Logo-Picharchitects-01.png" alt="Barcelona"><span class="logo-band-label">Barcelona</span></button>
-                            <button class="logo-band-item" data-scroll-to="monterrey" aria-label="Monterrey Housing"><img src="assets/Logo-Picharchitects-01.png" alt="Monterrey"><span class="logo-band-label">Monterrey</span></button>
-                        </div>
-                        <div class="intro-scroll-hint">
-                            <span class="lang-es">Desliza para explorar el catálogo IMAGERY</span>
-                            <span class="lang-en">Scroll to explore the IMAGERY portfolio</span>
-                            <i data-lucide="arrow-down"></i>
-                        </div>
+                    </div>
+
+                    <div class="arch-logos">
+                        <button class="arch-logo" data-scroll-to="caixaforum" aria-label="CaixaForum Málaga">
+                            <span class="arch-logo-imgwrap"><img src="content/visualizacion/caixaforum/Logo.jpg" alt="CaixaForum"></span>
+                            <span class="arch-logo-name">CaixaForum</span>
+                            <span class="arch-logo-meta">Málaga · 2025</span>
+                        </button>
+                        <button class="arch-logo" data-scroll-to="csic" aria-label="CSIC Research Center">
+                            <span class="arch-logo-imgwrap"><img src="content/visualizacion/csic/Logo.jpg" alt="CSIC"></span>
+                            <span class="arch-logo-name">CSIC</span>
+                            <span class="arch-logo-meta">Madrid · 2021</span>
+                        </button>
+                        <button class="arch-logo" data-scroll-to="sem" aria-label="SEM HQ">
+                            <span class="arch-logo-imgwrap"><img src="content/visualizacion/sem/Logo.png" alt="SEM"></span>
+                            <span class="arch-logo-name">SEM</span>
+                            <span class="arch-logo-meta"><span class="lang-es">Sede emergencias</span><span class="lang-en">Emergency HQ</span></span>
+                        </button>
+                        <button class="arch-logo" data-scroll-to="tec" aria-label="Tennis Empowerment Center">
+                            <span class="arch-logo-imgwrap"><img src="content/visualizacion/tec/Logo.png" alt="TEC"></span>
+                            <span class="arch-logo-name">TEC</span>
+                            <span class="arch-logo-meta">Collserola</span>
+                        </button>
+                        <button class="arch-logo" data-scroll-to="kaira-looro" aria-label="Cooperation Lighthouse">
+                            <span class="arch-logo-imgwrap"><img src="content/visualizacion/kaira-looro/Logo.jpg" alt="Kaira Looro"></span>
+                            <span class="arch-logo-name">Kaira Looro</span>
+                            <span class="arch-logo-meta">Senegal</span>
+                        </button>
+                        <button class="arch-logo" data-scroll-to="waraqa-school" aria-label="Waraqa School">
+                            <span class="arch-logo-imgwrap"><img src="content/visualizacion/waraqa-school/Logo.jpg" alt="Waraqa"></span>
+                            <span class="arch-logo-name">Waraqa</span>
+                            <span class="arch-logo-meta">Côte d'Ivoire</span>
+                        </button>
+                        <button class="arch-logo" data-scroll-to="vivienda-exterior" aria-label="Vivienda Exteriores">
+                            <span class="arch-logo-imgwrap"><img src="content/visualizacion/vivienda%20exterior/logo.png" alt="Vivienda"></span>
+                            <span class="arch-logo-name"><span class="lang-es">Vivienda · Exteriores</span><span class="lang-en">Housing · Exteriors</span></span>
+                            <span class="arch-logo-meta">Barcelona</span>
+                        </button>
+                        <button class="arch-logo" data-scroll-to="vivienda-interior" aria-label="Vivienda Interiores">
+                            <span class="arch-logo-imgwrap"><img src="content/visualizacion/vivienda%20interior/logo.png" alt="Vivienda"></span>
+                            <span class="arch-logo-name"><span class="lang-es">Vivienda · Interiores</span><span class="lang-en">Housing · Interiors</span></span>
+                            <span class="arch-logo-meta">Monterrey</span>
+                        </button>
+                    </div>
+
+                    <div class="intro-scroll-hint">
+                        <span class="lang-es">Desliza para explorar el catálogo IMAGERY</span>
+                        <span class="lang-en">Scroll to explore the IMAGERY portfolio</span>
+                        <i data-lucide="arrow-down"></i>
                     </div>
                 </div>
 
@@ -805,6 +935,10 @@
                             <div class="slide-item">
                                 <video src="content/visualizacion/caixaforum/03.web.mp4" controls loop muted playsinline style="width: 100%; height: 100%; object-fit: cover;"></video>
                             </div>
+                            <div class="slide-item"><img src="content/visualizacion/caixaforum/04.jpg" alt="CaixaForum Málaga"></div>
+                            <div class="slide-item"><img src="content/visualizacion/caixaforum/05.jpg" alt="CaixaForum Málaga"></div>
+                            <div class="slide-item"><img src="content/visualizacion/caixaforum/06.jpg" alt="CaixaForum Málaga"></div>
+                            <div class="slide-item"><img src="content/visualizacion/caixaforum/07.jpg" alt="CaixaForum Málaga"></div>
                         </div>
                         <button class="block-arrow arrow-left"><i data-lucide="chevron-left"></i></button>
                         <button class="block-arrow arrow-right"><i data-lucide="chevron-right"></i></button>
@@ -816,7 +950,7 @@
                             <p class="pf-meta"><span class="lang-es">2025 / Cultural / Málaga, España / Picharchitects</span><span class="lang-en">2025 / Cultural / Málaga, Spain / Picharchitects</span></p>
                             <p class="pf-desc"><span class="lang-es">Propuesta ganadora de concurso. El edificio, como una traza de luz sobre el parque natural, propone nuevas formas de diálogo entre la naturaleza y la ciudad.</span><span class="lang-en">Competition-winning proposal. The building, like a trace of light over the natural park, proposes new forms of dialogue between nature and the city.</span></p>
                         </div>
-                        <img class="pf-logo" src="content/visualizacion/caixaforum/logo.png" alt="CaixaForum Málaga logo">
+                        <img class="pf-logo" src="content/visualizacion/caixaforum/Logo.jpg" alt="CaixaForum Málaga logo">
                         <div class="block-slide-dots pf-dots"></div>
                     </div>
                 </div>
@@ -825,9 +959,9 @@
                 <div class="project-section-block bleed" data-project="csic">
                     <div class="block-slider">
                         <div class="slider-wrapper">
-                            <div class="slide-item active"><img src="content/visualizacion/csic/01.png" alt="CSIC Research Center"></div>
-                            <div class="slide-item"><img src="content/visualizacion/csic/02.png" alt="CSIC Research Center"></div>
-                            <div class="slide-item"><img src="content/visualizacion/csic/03.png" alt="CSIC Research Center"></div>
+                            <div class="slide-item active"><img src="content/visualizacion/csic/01.jpg" alt="CSIC Research Center"></div>
+                            <div class="slide-item"><img src="content/visualizacion/csic/02.jpg" alt="CSIC Research Center"></div>
+                            <div class="slide-item"><img src="content/visualizacion/csic/03.jpg" alt="CSIC Research Center"></div>
                         </div>
                         <button class="block-arrow arrow-left"><i data-lucide="chevron-left"></i></button>
                         <button class="block-arrow arrow-right"><i data-lucide="chevron-right"></i></button>
@@ -839,7 +973,7 @@
                             <p class="pf-meta"><span class="lang-es">2021 / Laboratorios / Madrid, España / Picharchitects + MADC</span><span class="lang-en">2021 / Research Labs / Madrid, Spain / Picharchitects + MADC</span></p>
                             <p class="pf-desc"><span class="lang-es">Representación fotorrealista de conductos de laboratorio expuestos y fachada metálica perforada, con sincronización paramétrica en Revit.</span><span class="lang-en">Photorealistic representation of exposed laboratory ducts and perforated metal facade, with parametric synchronization in Revit.</span></p>
                         </div>
-                        <img class="pf-logo" src="content/visualizacion/csic/logo.png" alt="CSIC Research Center logo">
+                        <img class="pf-logo" src="content/visualizacion/csic/Logo.jpg" alt="CSIC Research Center logo">
                         <div class="block-slide-dots pf-dots"></div>
                     </div>
                 </div>
@@ -848,9 +982,9 @@
                 <div class="project-section-block bleed" data-project="sem">
                     <div class="block-slider">
                         <div class="slider-wrapper">
-                            <div class="slide-item active"><img src="content/visualizacion/sem/01.png" alt="Medical Emergency Services HQ (SEM)"></div>
+                            <div class="slide-item active"><img src="content/visualizacion/sem/01.jpg" alt="Medical Emergency Services HQ (SEM)"></div>
                             <div class="slide-item"><img src="content/visualizacion/sem/02.png" alt="Medical Emergency Services HQ (SEM)"></div>
-                            <div class="slide-item"><img src="content/visualizacion/sem/03.png" alt="Medical Emergency Services HQ (SEM)"></div>
+                            <div class="slide-item"><img src="content/visualizacion/sem/03.jpg" alt="Medical Emergency Services HQ (SEM)"></div>
                             <div class="slide-item"><img src="content/visualizacion/sem/04.png" alt="Medical Emergency Services HQ (SEM)"></div>
                         </div>
                         <button class="block-arrow arrow-left"><i data-lucide="chevron-left"></i></button>
@@ -863,13 +997,13 @@
                             <p class="pf-meta"><span class="lang-es">2022 / Equipamiento / Barcelona, España / Picharchitects</span><span class="lang-en">2022 / Healthcare / Barcelona, Spain / Picharchitects</span></p>
                             <p class="pf-desc"><span class="lang-es">Infoarquitectura de la modulación industrial de fachadas, la iluminación nocturna de helipuerto y la sobriedad volumétrica del hormigón.</span><span class="lang-en">Archviz of the industrial facade modularity, the night-time helipad lighting, and the raw volumetric concrete.</span></p>
                         </div>
-                        <img class="pf-logo" src="content/visualizacion/sem/logo.png" alt="Medical Emergency Services HQ (SEM) logo">
+                        <img class="pf-logo" src="content/visualizacion/sem/Logo.png" alt="Medical Emergency Services HQ (SEM) logo">
                         <div class="block-slide-dots pf-dots"></div>
                     </div>
                 </div>
 
                 <!-- EDITORIAL BREAK 1: Philosophy (Page 16) -->
-                <div class="editorial-section-block full-bleed-page">
+                <div class="editorial-section-block full-bleed-page" style="background-color:#E9F2F1;">
                     <img src="assets/Portfolio_Imagery_MIIM_Página_16.png" alt="Philosophy Editorial Break">
                 </div>
 
@@ -898,13 +1032,13 @@
                             <p class="pf-meta"><span class="lang-es">2025 / Deportivo / Collserola, Barcelona / Picharchitects</span><span class="lang-en">2025 / Sports / Collserola, Barcelona / Picharchitects</span></p>
                             <p class="pf-desc"><span class="lang-es">Cubiertas vegetales, canchas con reflectividad de bruma y estructura textil tensada bajo los pinares de la Sierra de Collserola.</span><span class="lang-en">Vegetated roofs, courts with misty reflectivity, and tensile fabric structure under the Collserola pine forest.</span></p>
                         </div>
-                        <img class="pf-logo" src="content/visualizacion/tec/logo.png" alt="Tennis Empowerment Center (TEC) logo">
+                        <img class="pf-logo" src="content/visualizacion/tec/Logo.png" alt="Tennis Empowerment Center (TEC) logo">
                         <div class="block-slide-dots pf-dots"></div>
                     </div>
                 </div>
 
                 <!-- EDITORIAL BREAK 2: Light and Texture (Page 21) -->
-                <div class="editorial-section-block full-bleed-page">
+                <div class="editorial-section-block full-bleed-page" style="background-color:#FFFFFF;">
                     <img src="assets/Portfolio_Imagery_MIIM_Página_21.png" alt="Light and Texture Editorial Break">
                 </div>
 
@@ -912,13 +1046,12 @@
                 <div class="project-section-block bleed" data-project="kaira-looro">
                     <div class="block-slider">
                         <div class="slider-wrapper">
-                            <div class="slide-item active"><img src="content/visualizacion/kaira-looro/01.png" alt="Cooperation Lighthouse"></div>
-                            <div class="slide-item"><img src="content/visualizacion/kaira-looro/02.png" alt="Cooperation Lighthouse"></div>
+                            <div class="slide-item active"><img src="content/visualizacion/kaira-looro/01.jpg" alt="Cooperation Lighthouse"></div>
+                            <div class="slide-item"><img src="content/visualizacion/kaira-looro/02.jpg" alt="Cooperation Lighthouse"></div>
+                            <div class="slide-item"><img src="content/visualizacion/kaira-looro/03.jpg" alt="Cooperation Lighthouse"></div>
+                            <div class="slide-item"><img src="content/visualizacion/kaira-looro/04.jpg" alt="Cooperation Lighthouse"></div>
                             <div class="slide-item">
-                                <video src="content/visualizacion/kaira-looro/03.web.mp4" controls loop muted playsinline style="width: 100%; height: 100%; object-fit: cover;"></video>
-                            </div>
-                            <div class="slide-item">
-                                <video src="content/visualizacion/kaira-looro/04.web.mp4" controls loop muted playsinline style="width: 100%; height: 100%; object-fit: cover;"></video>
+                                <video src="content/visualizacion/kaira-looro/04.mp4" controls loop muted playsinline style="width: 100%; height: 100%; object-fit: cover;"></video>
                             </div>
                         </div>
                         <button class="block-arrow arrow-left"><i data-lucide="chevron-left"></i></button>
@@ -931,13 +1064,13 @@
                             <p class="pf-meta"><span class="lang-es">2022 / Cooperación / Kaira Looro Competition / Miguel Suárez</span><span class="lang-en">2022 / Cooperation / Kaira Looro Competition / Miguel Suárez</span></p>
                             <p class="pf-desc"><span class="lang-es">El faro como hito de reunión y recolección de agua; la imagen acentúa la calidez del bambú y las envolventes textiles al anochecer.</span><span class="lang-en">The lighthouse as a gathering and water-harvesting landmark; the image highlights the warmth of bamboo and textile wraps at dusk.</span></p>
                         </div>
-                        <img class="pf-logo" src="content/visualizacion/kaira-looro/logo.png" alt="Cooperation Lighthouse logo">
+                        <img class="pf-logo" src="content/visualizacion/kaira-looro/Logo.jpg" alt="Cooperation Lighthouse logo">
                         <div class="block-slide-dots pf-dots"></div>
                     </div>
                 </div>
 
                 <!-- EDITORIAL BREAK 3: Bridge and Cooperation (Page 24) -->
-                <div class="editorial-section-block full-bleed-page">
+                <div class="editorial-section-block full-bleed-page" style="background-color:#EAE2D8;">
                     <img src="assets/Portfolio_Imagery_MIIM_Página_24.png" alt="Bridge Editorial Break">
                 </div>
 
@@ -965,23 +1098,29 @@
                             <p class="pf-meta"><span class="lang-es">2022 / Educación / Mahandougou, Côte d'Ivoire / Miguel Suárez</span><span class="lang-en">2022 / Educational / Mahandougou, Ivory Coast / Miguel Suárez</span></p>
                             <p class="pf-desc"><span class="lang-es">Visualización del juego de luz a través de la celosía de madera, las texturas de tierra (BTC) y la vida comunitaria.</span><span class="lang-en">Visualization of the play of light through the wood lattice, earth (CEB) textures, and community life.</span></p>
                         </div>
-                        <img class="pf-logo" src="content/visualizacion/waraqa-school/logo.png" alt="Waraqa School logo">
+                        <img class="pf-logo" src="content/visualizacion/waraqa-school/Logo.jpg" alt="Waraqa School logo">
                         <div class="block-slide-dots pf-dots"></div>
                     </div>
                 </div>
 
                 <!-- EDITORIAL BREAK 4: Residential (Page 28) -->
-                <div class="editorial-section-block full-bleed-page">
+                <div class="editorial-section-block full-bleed-page" style="background-color:#E7E6E6;">
                     <img src="assets/Portfolio_Imagery_MIIM_Página_28.png" alt="Residential Editorial Break">
                 </div>
 
-                <!-- Project Block 7: Carrer Marroc -->
-                <div class="project-section-block bleed" data-project="carrer-marroc">
+                <!-- Project Block 7: Vivienda — Exteriores (Carrer Marroc, Barcelona) -->
+                <div class="project-section-block bleed" data-project="vivienda-exterior">
                     <div class="block-slider">
                         <div class="slider-wrapper">
-                            <div class="slide-item active"><img src="content/visualizacion/carrer-marroc/01.png" alt="Carrer Marroc Housing"></div>
-                            <div class="slide-item"><img src="content/visualizacion/carrer-marroc/02.png" alt="Carrer Marroc Housing"></div>
-                            <div class="slide-item"><img src="content/visualizacion/carrer-marroc/03.png" alt="Carrer Marroc Housing"></div>
+                            <div class="slide-item active"><img src="content/visualizacion/vivienda%20exterior/01.png" alt="Vivienda — Exteriores"></div>
+                            <div class="slide-item"><img src="content/visualizacion/vivienda%20exterior/02.png" alt="Vivienda — Exteriores"></div>
+                            <div class="slide-item"><img src="content/visualizacion/vivienda%20exterior/03.png" alt="Vivienda — Exteriores"></div>
+                            <div class="slide-item"><img src="content/visualizacion/vivienda%20exterior/04.jpg" alt="Vivienda — Exteriores"></div>
+                            <div class="slide-item"><img src="content/visualizacion/vivienda%20exterior/05.jpg" alt="Vivienda — Exteriores"></div>
+                            <div class="slide-item"><img src="content/visualizacion/vivienda%20exterior/06.jpg" alt="Vivienda — Exteriores"></div>
+                            <div class="slide-item"><img src="content/visualizacion/vivienda%20exterior/07.jpg" alt="Vivienda — Exteriores"></div>
+                            <div class="slide-item"><img src="content/visualizacion/vivienda%20exterior/08.jpg" alt="Vivienda — Exteriores"></div>
+                            <div class="slide-item"><img src="content/visualizacion/vivienda%20exterior/09.jpg" alt="Vivienda — Exteriores"></div>
                         </div>
                         <button class="block-arrow arrow-left"><i data-lucide="chevron-left"></i></button>
                         <button class="block-arrow arrow-right"><i data-lucide="chevron-right"></i></button>
@@ -989,21 +1128,22 @@
                     <div class="pf-scrim"></div>
                     <div class="pf-overlay">
                         <div class="pf-info">
-                            <h3 class="pf-name">Carrer Marroc Housing</h3>
-                            <p class="pf-meta"><span class="lang-es">2021 / Residencial / Barcelona, España / Picharchitects</span><span class="lang-en">2021 / Residential / Barcelona, Spain / Picharchitects</span></p>
-                            <p class="pf-desc"><span class="lang-es">Interiores en madera contralaminada (CLT) y estudio solar para un entorno doméstico sostenible y de bienestar pasivo.</span><span class="lang-en">Cross-laminated timber (CLT) interiors and solar study for a sustainable, passive-wellbeing home.</span></p>
+                            <h3 class="pf-name"><span class="lang-es">Vivienda Colectiva · Exteriores</span><span class="lang-en">Collective Housing · Exteriors</span></h3>
+                            <p class="pf-meta"><span class="lang-es">Residencial / Barcelona, España / Picharchitects</span><span class="lang-en">Residential / Barcelona, Spain / Picharchitects</span></p>
+                            <p class="pf-desc"><span class="lang-es">Renders de exterior del edificio residencial: fachada de madera, terrazas ajardinadas y estudio de luz al anochecer que integra el bloque en la trama urbana de Barcelona.</span><span class="lang-en">Exterior renders of the residential building: timber facade, planted terraces and a dusk light study weaving the block into Barcelona's urban fabric.</span></p>
                         </div>
-                        <img class="pf-logo" src="content/visualizacion/carrer-marroc/logo.png" alt="Carrer Marroc Housing logo">
+                        <img class="pf-logo" src="content/visualizacion/vivienda%20exterior/logo.png" alt="Vivienda — Exteriores logo">
                         <div class="block-slide-dots pf-dots"></div>
                     </div>
                 </div>
 
-                <!-- Project Block 8: Barajas -->
-                <div class="project-section-block bleed" data-project="barajas">
+                <!-- Project Block 8: Vivienda — Interiores (Monterrey) -->
+                <div class="project-section-block bleed" data-project="vivienda-interior">
                     <div class="block-slider">
                         <div class="slider-wrapper">
-                            <div class="slide-item active"><img src="content/visualizacion/barajas/01.png" alt="Barajas Housing"></div>
-                            <div class="slide-item"><img src="content/visualizacion/barajas/02.png" alt="Barajas Housing"></div>
+                            <div class="slide-item active"><img src="content/visualizacion/vivienda%20interior/01.jpg" alt="Vivienda — Interiores"></div>
+                            <div class="slide-item"><img src="content/visualizacion/vivienda%20interior/02.png" alt="Vivienda — Interiores"></div>
+                            <div class="slide-item"><img src="content/visualizacion/vivienda%20interior/03.png" alt="Vivienda — Interiores"></div>
                         </div>
                         <button class="block-arrow arrow-left"><i data-lucide="chevron-left"></i></button>
                         <button class="block-arrow arrow-right"><i data-lucide="chevron-right"></i></button>
@@ -1011,56 +1151,11 @@
                     <div class="pf-scrim"></div>
                     <div class="pf-overlay">
                         <div class="pf-info">
-                            <h3 class="pf-name">Barajas Housing</h3>
-                            <p class="pf-meta"><span class="lang-es">2024 / Residencial / Barajas, Madrid, España / Picharchitects</span><span class="lang-en">2024 / Residential / Barajas, Madrid, Spain / Picharchitects</span></p>
-                            <p class="pf-desc"><span class="lang-es">Renders de fachadas y zonas comunes centrados en la calidez material, las texturas pulidas y la vegetación integrada en terrazas.</span><span class="lang-en">Renders of facades and common areas focused on material warmth, polished textures, and vegetation integrated on terraces.</span></p>
+                            <h3 class="pf-name"><span class="lang-es">Vivienda Colectiva · Interiores</span><span class="lang-en">Collective Housing · Interiors</span></h3>
+                            <p class="pf-meta"><span class="lang-es">Residencial / Monterrey, México / Picharchitects</span><span class="lang-en">Residential / Monterrey, Mexico / Picharchitects</span></p>
+                            <p class="pf-desc"><span class="lang-es">Interiores domésticos con la calidez de la madera y grandes ventanales que enmarcan el paisaje montañoso; estudio de luz natural y confort en la vida cotidiana.</span><span class="lang-en">Domestic interiors with warm timber and large windows framing the mountain landscape; a study of natural light and everyday comfort.</span></p>
                         </div>
-                        <img class="pf-logo" src="content/visualizacion/barajas/logo.png" alt="Barajas Housing logo">
-                        <div class="block-slide-dots pf-dots"></div>
-                    </div>
-                </div>
-
-                <!-- Project Block 9: Barcelona Housing -->
-                <div class="project-section-block bleed" data-project="barcelona-housing">
-                    <div class="block-slider">
-                        <div class="slider-wrapper">
-                            <div class="slide-item active"><img src="content/visualizacion/barcelona-housing/01.png" alt="Barcelona Housing"></div>
-                            <div class="slide-item"><img src="content/visualizacion/barcelona-housing/02.png" alt="Barcelona Housing"></div>
-                        </div>
-                        <button class="block-arrow arrow-left"><i data-lucide="chevron-left"></i></button>
-                        <button class="block-arrow arrow-right"><i data-lucide="chevron-right"></i></button>
-                    </div>
-                    <div class="pf-scrim"></div>
-                    <div class="pf-overlay">
-                        <div class="pf-info">
-                            <h3 class="pf-name">Barcelona Housing</h3>
-                            <p class="pf-meta"><span class="lang-es">2024 / Residencial / Barcelona, España / Picharchitects</span><span class="lang-en">2024 / Residential / Barcelona, Spain / Picharchitects</span></p>
-                            <p class="pf-desc"><span class="lang-es">Renders de fachadas y zonas comunes centrados en la calidez material, las texturas pulidas y la vegetación integrada en terrazas.</span><span class="lang-en">Renders of facades and common areas focused on material warmth, polished textures, and vegetation integrated on terraces.</span></p>
-                        </div>
-                        <img class="pf-logo" src="content/visualizacion/barcelona-housing/logo.png" alt="Barcelona Housing logo">
-                        <div class="block-slide-dots pf-dots"></div>
-                    </div>
-                </div>
-
-                <!-- Project Block 10: Monterrey -->
-                <div class="project-section-block bleed" data-project="monterrey">
-                    <div class="block-slider">
-                        <div class="slider-wrapper">
-                            <div class="slide-item active"><img src="content/visualizacion/monterrey/01.png" alt="Monterrey Housing"></div>
-                            <div class="slide-item"><img src="content/visualizacion/monterrey/02.png" alt="Monterrey Housing"></div>
-                            <div class="slide-item"><img src="content/visualizacion/monterrey/03.png" alt="Monterrey Housing"></div>
-                        </div>
-                        <button class="block-arrow arrow-left"><i data-lucide="chevron-left"></i></button>
-                        <button class="block-arrow arrow-right"><i data-lucide="chevron-right"></i></button>
-                    </div>
-                    <div class="pf-scrim"></div>
-                    <div class="pf-overlay">
-                        <div class="pf-info">
-                            <h3 class="pf-name">Monterrey Housing</h3>
-                            <p class="pf-meta"><span class="lang-es">2023 / Residencial / Monterrey, México / Picharchitects</span><span class="lang-en">2023 / Residential / Monterrey, Mexico / Picharchitects</span></p>
-                            <p class="pf-desc"><span class="lang-es">Torre plurifamiliar bajo el sol desértico de Monterrey, simulando el comportamiento térmico pasivo en terrazas profundas.</span><span class="lang-en">Multifamily tower under Monterrey's desert sun, simulating passive thermal behavior on deep terraces.</span></p>
-                        </div>
-                        <img class="pf-logo" src="content/visualizacion/monterrey/logo.png" alt="Monterrey Housing logo">
+                        <img class="pf-logo" src="content/visualizacion/vivienda%20interior/logo.png" alt="Vivienda — Interiores logo">
                         <div class="block-slide-dots pf-dots"></div>
                     </div>
                 </div>
@@ -1142,9 +1237,41 @@
                         </div>
                     </div>
 
+                    <!-- Signature: CNC snake-path toolpath + key metrics -->
+                    <div class="tech-signature">
+                        <div class="tech-sheet">
+                            <svg class="tech-sheet-svg" viewBox="0 0 1000 300" preserveAspectRatio="xMidYMid meet" role="img" aria-label="CNC snake-path toolpath">
+                                <g class="sheet-holes">
+                                    <circle cx="100" cy="80" r="5"/><circle cx="300" cy="80" r="5"/><circle cx="500" cy="80" r="5"/><circle cx="700" cy="80" r="5"/><circle cx="900" cy="80" r="5"/>
+                                    <circle cx="100" cy="150" r="5"/><circle cx="300" cy="150" r="5"/><circle cx="500" cy="150" r="5"/><circle cx="700" cy="150" r="5"/><circle cx="900" cy="150" r="5"/>
+                                    <circle cx="100" cy="220" r="5"/><circle cx="300" cy="220" r="5"/><circle cx="500" cy="220" r="5"/><circle cx="700" cy="220" r="5"/><circle cx="900" cy="220" r="5"/>
+                                </g>
+                                <path class="snake-path" d="M100,80 L100,220 L300,220 L300,80 L500,80 L500,220 L700,220 L700,80 L900,80 L900,220"/>
+                            </svg>
+                            <span class="tech-sheet-label">snake_path_routing.py · CNC toolpath</span>
+                        </div>
+                        <div class="tech-metrics">
+                            <div class="tech-metric">
+                                <span class="metric-num">38<span class="metric-unit">%</span></span>
+                                <span class="metric-label"><span class="lang-es">menos recorrido del cabezal</span><span class="lang-en">less head travel</span></span>
+                            </div>
+                            <div class="tech-metric">
+                                <span class="metric-num">0.0000<span class="metric-unit">°</span></span>
+                                <span class="metric-label"><span class="lang-es">desviación de enderezado</span><span class="lang-en">straightening error</span></span>
+                            </div>
+                            <div class="tech-metric">
+                                <span class="metric-num">18</span>
+                                <span class="metric-label"><span class="lang-es">familias .rfa automatizadas</span><span class="lang-en">automated .rfa families</span></span>
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="tech-cards-grid">
                         <!-- Tech Card 1: Revit Plugins -->
                         <div class="tech-card">
+                            <div class="tech-card-media" aria-hidden="true">
+                                <svg viewBox="0 0 120 60" preserveAspectRatio="xMidYMid meet"><path d="M6,46 L21,14 L36,46 L51,14 L66,46 L81,14 L96,46 L111,14"/></svg>
+                            </div>
                             <div class="tech-card-header">
                                 <i data-lucide="puzzle"></i>
                                 <h4>
@@ -1172,6 +1299,9 @@
 
                         <!-- Tech Card 2: CNC Optimization -->
                         <div class="tech-card">
+                            <div class="tech-card-media" aria-hidden="true">
+                                <svg viewBox="0 0 120 60" preserveAspectRatio="xMidYMid meet"><path class="m-path" d="M18,16 L18,44 L42,44 L42,16 L66,16 L66,44 L90,44 L90,16 L102,16"/><g class="m-dots"><circle cx="18" cy="16" r="2.5"/><circle cx="42" cy="16" r="2.5"/><circle cx="66" cy="16" r="2.5"/><circle cx="90" cy="16" r="2.5"/><circle cx="18" cy="44" r="2.5"/><circle cx="42" cy="44" r="2.5"/><circle cx="66" cy="44" r="2.5"/><circle cx="90" cy="44" r="2.5"/></g></svg>
+                            </div>
                             <div class="tech-card-header">
                                 <i data-lucide="cpu"></i>
                                 <h4>
@@ -1199,6 +1329,9 @@
 
                         <!-- Tech Card 3: Revit-Presto -->
                         <div class="tech-card">
+                            <div class="tech-card-media" aria-hidden="true">
+                                <svg viewBox="0 0 120 60" preserveAspectRatio="xMidYMid meet"><rect x="14" y="12" width="92" height="36"/><line x1="14" y1="24" x2="106" y2="24"/><line x1="14" y1="36" x2="106" y2="36"/><line x1="78" y1="12" x2="78" y2="48"/></svg>
+                            </div>
                             <div class="tech-card-header">
                                 <i data-lucide="database"></i>
                                 <h4>
@@ -1224,6 +1357,9 @@
 
                         <!-- Tech Card 4: WPF / XAML Branding -->
                         <div class="tech-card">
+                            <div class="tech-card-media" aria-hidden="true">
+                                <svg viewBox="0 0 120 60" preserveAspectRatio="xMidYMid meet"><rect x="14" y="10" width="92" height="40"/><line x1="14" y1="20" x2="106" y2="20"/><line x1="46" y1="20" x2="46" y2="50"/><circle cx="20" cy="15" r="1.6"/><circle cx="26" cy="15" r="1.6"/><circle cx="32" cy="15" r="1.6"/></svg>
+                            </div>
                             <div class="tech-card-header">
                                 <i data-lucide="palette"></i>
                                 <h4>
@@ -1249,6 +1385,9 @@
 
                         <!-- Tech Card 5: Mobile App -->
                         <div class="tech-card">
+                            <div class="tech-card-media" aria-hidden="true">
+                                <svg viewBox="0 0 120 60" preserveAspectRatio="xMidYMid meet"><rect x="48" y="6" width="24" height="48" rx="3"/><circle cx="60" cy="30" r="9"/><path d="M60,23 L64,33 L60,30 L56,33 Z" class="m-fill"/></svg>
+                            </div>
                             <div class="tech-card-header">
                                 <i data-lucide="smartphone"></i>
                                 <h4>
@@ -1274,6 +1413,9 @@
 
                         <!-- Tech Card 6: AI Collaboration Workflows -->
                         <div class="tech-card">
+                            <div class="tech-card-media" aria-hidden="true">
+                                <svg viewBox="0 0 120 60" preserveAspectRatio="xMidYMid meet"><g class="m-net"><line x1="22" y1="16" x2="60" y2="30"/><line x1="22" y1="44" x2="60" y2="30"/><line x1="60" y1="30" x2="98" y2="16"/><line x1="60" y1="30" x2="98" y2="44"/><line x1="22" y1="16" x2="22" y2="44"/><line x1="98" y1="16" x2="98" y2="44"/></g><circle cx="22" cy="16" r="3"/><circle cx="22" cy="44" r="3"/><circle cx="60" cy="30" r="3.5"/><circle cx="98" cy="16" r="3"/><circle cx="98" cy="44" r="3"/></svg>
+                            </div>
                             <div class="tech-card-header">
                                 <i data-lucide="bot"></i>
                                 <h4>
@@ -1310,11 +1452,35 @@
                             </h3>
                         </div>
                         
+                        <!-- Featured pipeline: DXF -> algorithm -> .rfa family -->
+                        <div class="tech-pipeline">
+                            <div class="pipe-stage">
+                                <div class="pipe-art"><svg viewBox="0 0 120 80" preserveAspectRatio="xMidYMid meet"><path d="M12,60 L30,20 L48,60 L66,20 L84,60 L102,20"/></svg></div>
+                                <span class="pipe-step">01</span>
+                                <span class="pipe-label">DXF / DWG</span>
+                                <span class="pipe-sub"><span class="lang-es">vectores de corte</span><span class="lang-en">cut vectors</span></span>
+                            </div>
+                            <span class="pipe-arrow" aria-hidden="true"><svg viewBox="0 0 40 24" preserveAspectRatio="xMidYMid meet"><path d="M2,12 L34,12 M26,5 L34,12 L26,19"/></svg></span>
+                            <div class="pipe-stage">
+                                <div class="pipe-art"><svg viewBox="0 0 120 80" preserveAspectRatio="xMidYMid meet"><circle cx="60" cy="40" r="22"/><circle cx="60" cy="40" r="7"/><path d="M60,18 L60,11 M60,69 L60,62 M38,40 L31,40 M89,40 L82,40 M44,24 L39,19 M81,61 L76,56 M81,19 L76,24 M44,56 L39,61"/></svg></div>
+                                <span class="pipe-step">02</span>
+                                <span class="pipe-label">AlignToBaseLine</span>
+                                <span class="pipe-sub"><span class="lang-es">regresión + offset</span><span class="lang-en">regression + offset</span></span>
+                            </div>
+                            <span class="pipe-arrow" aria-hidden="true"><svg viewBox="0 0 40 24" preserveAspectRatio="xMidYMid meet"><path d="M2,12 L34,12 M26,5 L34,12 L26,19"/></svg></span>
+                            <div class="pipe-stage">
+                                <div class="pipe-art"><svg viewBox="0 0 120 80" preserveAspectRatio="xMidYMid meet"><path d="M35,32 L80,32 L80,67 L35,67 Z M55,18 L100,18 L100,53 L55,53 M35,32 L55,18 M80,32 L100,18 M80,67 L100,53 M35,67 L55,53"/></svg></div>
+                                <span class="pipe-step">03</span>
+                                <span class="pipe-label"><span class="lang-es">Familia .rfa</span><span class="lang-en">.rfa family</span></span>
+                                <span class="pipe-sub"><span class="lang-es">paramétrica 3D</span><span class="lang-en">parametric 3D</span></span>
+                            </div>
+                        </div>
+
                         <div class="tech-cases-list">
                             <!-- Case 1: Metalperfil Sync -->
                             <div class="tech-case-item">
                                 <div class="case-image-wrapper">
-                                    <img src="assets/tech_metalperfil_sync.jpg" alt="Metalperfil Sync Architecture & Facades">
+                                    <img src="content/tech/metalperfil/01.jpg" alt="Metalperfil Sync Architecture & Facades" loading="lazy">
                                 </div>
                                 <div class="case-info">
                                     <span class="case-tag">C# / .NET 8 / Revit API / ACadSharp</span>
@@ -1323,12 +1489,12 @@
                                         <span class="lang-en">Catalog Integration & Parametric Families (Metalperfil)</span>
                                     </h4>
                                     <div class="lang-es">
-                                        <p>Desarrollo de un plugin integrado en Revit que lee perfiles metálicos directamente desde bases de datos vectoriales CAD/DXF de Metalperfil y automatiza la generación de familias 3D (.rfa) paramétricas de alta precisión.</p>
-                                        <p>Incluye un Curtain Wall Randomizer que permite modular y aleatorizar composiciones de fachada en tiempo real.</p>
+                                        <p>Suite de tres plugins integrados en una misma pestaña del Ribbon de Revit. El <strong>Generador de Familias</strong> lee perfiles metálicos directamente desde bases de datos vectoriales CAD/DXF y automatiza la creación de familias 3D (.rfa) paramétricas de alta precisión.</p>
+                                        <p>El <strong>Aleatorizador de Paneles</strong> reparte tipos de perfil por porcentajes y regenera las rejillas del muro cortina con el ancho real de cada pieza (sin huecos ni solapes), y la <strong>Fachada Interactiva</strong> aplica la distribución y los materiales en tiempo real, sincronizando con Twinmotion vía Direct Link.</p>
                                     </div>
                                     <div class="lang-en">
-                                        <p>Development of a custom Revit plugin that parses metal profiles directly from vector CAD/DXF databases and automates the creation of high-precision parametric 3D family (.rfa) files.</p>
-                                        <p>Includes a Curtain Wall Randomizer feature allowing designers to modulate and randomize facade components dynamically.</p>
+                                        <p>A suite of three plugins unified under a single Revit Ribbon tab. The <strong>Family Generator</strong> parses metal profiles directly from vector CAD/DXF databases and automates the creation of high-precision parametric 3D family (.rfa) files.</p>
+                                        <p>The <strong>Panel Randomizer</strong> distributes profile types by percentage and rebuilds the curtain-wall grid using each piece's real width (no gaps, no overlaps), while the <strong>Interactive Facade</strong> tool applies layout and materials in real time, syncing to Twinmotion through Direct Link.</p>
                                     </div>
                                 </div>
                             </div>
@@ -1336,7 +1502,7 @@
                             <!-- Case 2: Parametric Canopy -->
                             <div class="tech-case-item inverse">
                                 <div class="case-image-wrapper">
-                                    <img src="assets/tech_parametric_canopy.jpg" alt="Parametric Canopy Generative Design">
+                                    <img src="content/tech/canopy-ia/01.jpg" alt="Parametric Canopy Generative Design" loading="lazy">
                                 </div>
                                 <div class="case-info">
                                     <span class="case-tag">Python / Dynamo / OpenAI API / Generative Design</span>
@@ -1356,7 +1522,7 @@
                             <!-- Case 3: CNC Snake-Path Optimization -->
                             <div class="tech-case-item">
                                 <div class="case-image-wrapper">
-                                    <img src="assets/tech_cnc_path.jpg" alt="CNC Snake Path Optimization">
+                                    <img src="content/tech/cnc-snake-path/01.jpg" alt="CNC Snake Path Optimization" loading="lazy">
                                 </div>
                                 <div class="case-info">
                                     <span class="case-tag">Python / NumPy / netDxf / G-Code CNC</span>
@@ -1376,7 +1542,7 @@
                             <!-- Case 4: VR Compressor Digital Twin (Gagn) -->
                             <div class="tech-case-item inverse">
                                 <div class="case-image-wrapper">
-                                    <img src="assets/CompressorVibTemp.JPG" alt="VR Compressor Digital Twin">
+                                    <video src="content/tech/gagn-gemelo-digital/VRCOMP.web.mp4" poster="content/tech/gagn-gemelo-digital/01.JPG" autoplay loop muted playsinline preload="none" controls style="width: 100%; height: 100%; object-fit: cover;"></video>
                                 </div>
                                 <div class="case-info">
                                     <span class="case-tag">Unreal Engine 5 / VR / JSON Telemetry / Dynamo</span>
@@ -1396,7 +1562,7 @@
                             <!-- Case 5: Dynamo Automation Library -->
                             <div class="tech-case-item">
                                 <div class="case-image-wrapper">
-                                    <img src="assets/tech_dynamo_nodes.jpg" alt="Dynamo Automation Nodes">
+                                    <img src="content/tech/dynamo-suite/01.jpg" alt="Dynamo Automation Nodes" loading="lazy">
                                 </div>
                                 <div class="case-info">
                                     <span class="case-tag">Python / Dynamo Scripts / Revit API / OSM</span>
@@ -1412,6 +1578,100 @@
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+
+                    <!-- Contratable services + conversion CTA -->
+                    <div class="tech-services">
+                        <div class="tech-cases-header">
+                            <span class="tech-cases-tag">
+                                <span class="lang-es">Cómo trabajo contigo</span><span class="lang-en">How we work together</span>
+                            </span>
+                            <h3 class="tech-cases-title">
+                                <span class="lang-es">Lo que puedo hacer por ti</span>
+                                <span class="lang-en">What I can build for you</span>
+                            </h3>
+                            <p class="tech-services-lead">
+                                <span class="lang-es">No vendo tecnología, vendo horas recuperadas y errores que dejan de ocurrir. Cada servicio nace de un desarrollo real ya en producción.</span>
+                                <span class="lang-en">I don't sell technology — I sell hours recovered and errors that stop happening. Each service comes from real work already in production.</span>
+                            </p>
+                        </div>
+
+                        <div class="tech-services-grid">
+                            <div class="tech-service">
+                                <div class="tech-service-head">
+                                    <i data-lucide="puzzle"></i>
+                                    <h4><span class="lang-es">Plugin de Revit a medida</span><span class="lang-en">Custom Revit plugin</span></h4>
+                                </div>
+                                <p class="tech-service-desc">
+                                    <span class="lang-es">Esa tarea que repites a mano cada semana —de CAD/DXF a familias paramétricas, validar geometría, asignar parámetros— la convierto en un botón en tu cinta de Revit.</span>
+                                    <span class="lang-en">That task you repeat by hand every week —from CAD/DXF to parametric families, validating geometry, assigning parameters— becomes a single button in your Revit ribbon.</span>
+                                </p>
+                                <span class="tech-service-proof">
+                                    <span class="lang-es">Prueba: 3 plugins en producción · 18 familias .rfa generadas solas</span>
+                                    <span class="lang-en">Proof: 3 plugins in production · 18 .rfa families generated automatically</span>
+                                </span>
+                            </div>
+
+                            <div class="tech-service">
+                                <div class="tech-service-head">
+                                    <i data-lucide="cpu"></i>
+                                    <h4><span class="lang-es">Fabricación CNC optimizada</span><span class="lang-en">Optimized CNC fabrication</span></h4>
+                                </div>
+                                <p class="tech-service-desc">
+                                    <span class="lang-es">Llevo el diseño a la máquina: trayectorias de punzonado más cortas, validación de ligamentos de seguridad y exportación lista para producción.</span>
+                                    <span class="lang-en">I take design to the machine: shorter punching toolpaths, safety-ligament validation, and production-ready export.</span>
+                                </p>
+                                <span class="tech-service-proof">
+                                    <span class="lang-es">Prueba: −38% de recorrido del cabezal · 0.0000° de error de enderezado</span>
+                                    <span class="lang-en">Proof: −38% head travel · 0.0000° straightening error</span>
+                                </span>
+                            </div>
+
+                            <div class="tech-service">
+                                <div class="tech-service-head">
+                                    <i data-lucide="box"></i>
+                                    <h4><span class="lang-es">Gemelo digital & visualización interactiva</span><span class="lang-en">Digital twin & interactive viz</span></h4>
+                                </div>
+                                <p class="tech-service-desc">
+                                    <span class="lang-es">Tu producto o instalación, explorable en tiempo real con datos en vivo: inmersión VR en Unreal Engine conectada a telemetría real.</span>
+                                    <span class="lang-en">Your product or facility, explorable in real time with live data: VR immersion in Unreal Engine wired to real telemetry.</span>
+                                </p>
+                                <span class="tech-service-proof">
+                                    <span class="lang-es">Prueba: gemelo del compresor Gagn, telemetría JSON en vivo (España–Noruega)</span>
+                                    <span class="lang-en">Proof: Gagn compressor twin, live JSON telemetry (Spain–Norway)</span>
+                                </span>
+                            </div>
+
+                            <div class="tech-service">
+                                <div class="tech-service-head">
+                                    <i data-lucide="database"></i>
+                                    <h4><span class="lang-es">Datos BIM → presupuesto</span><span class="lang-en">BIM data → cost estimate</span></h4>
+                                </div>
+                                <p class="tech-service-desc">
+                                    <span class="lang-es">Conecto tu modelo de Revit con tus mediciones y presupuesto, mapeando parámetros y volúmenes sin recuento manual ni dobles tablas.</span>
+                                    <span class="lang-en">I connect your Revit model to your quantities and budget, mapping parameters and volumes with no manual takeoff and no duplicate spreadsheets.</span>
+                                </p>
+                                <span class="tech-service-proof">
+                                    <span class="lang-es">Prueba: puente Revit → Presto en tiempo real</span>
+                                    <span class="lang-en">Proof: real-time Revit → Presto bridge</span>
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="tech-cta">
+                            <h3 class="tech-cta-title">
+                                <span class="lang-es">¿Tienes un proceso que se repite cada semana?</span>
+                                <span class="lang-en">Got a process you repeat every week?</span>
+                            </h3>
+                            <p class="tech-cta-sub">
+                                <span class="lang-es">Si lo haces a mano, casi siempre se puede automatizar. Cuéntame tu flujo y te digo qué se puede ganar —sin compromiso.</span>
+                                <span class="lang-en">If you do it by hand, it can almost always be automated. Tell me your workflow and I'll tell you what's possible —no strings attached.</span>
+                            </p>
+                            <button class="tech-cta-btn" type="button" data-go-contact>
+                                <span class="lang-es">Cuéntame tu flujo</span><span class="lang-en">Tell me your workflow</span>
+                                <i data-lucide="arrow-right"></i>
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -1568,7 +1828,7 @@
                         
                         <div class="contact-form-col">
                             <!-- Clean Minimal Form -->
-                            <form class="minimal-contact-form" onsubmit="event.preventDefault(); alert(document.body.classList.contains('lang-en') ? 'Message successfully sent!' : '¡Mensaje enviado con éxito!'); this.reset();">
+                            <form class="minimal-contact-form" id="contact-form">
                                 <div class="form-row">
                                     <div class="form-group">
                                         <label for="form-name">
