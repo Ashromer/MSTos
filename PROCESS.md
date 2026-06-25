@@ -137,3 +137,18 @@ En la última sesión se consolidó la integración de todos los requerimientos 
 5. **Auditoría e Integridad del Código:**
    * Se ejecutó un script en Python que auditó las etiquetas de apertura y cierre HTML para garantizar un DOM 100% libre de errores.
    * Se comprobó la existencia e integridad de todos los archivos de assets y enlaces enlazados en el código, confirmando el perfecto funcionamiento bilingüe (ES/EN) del portafolio.
+
+---
+
+## 🩹 7. Revisión de Consistencia UI y Correcciones de Maquetación (commit `a373fd9`)
+
+Revisión profesional (web / arquitecto / diseñador) en busca de inconsistencias. Cambios aplicados en `index.html` y `styles.css`:
+
+1. **El header fijo tapaba el inicio de Arquitectura y Visualización.** El `<header>` es `position: fixed` (~88px; su propio botón "volver" usa `top: 104px`), pero `.arch-index` solo reservaba `5rem` (80px) arriba → el rótulo de sección quedaba debajo. Subido a `120px`, igual que `.tab-intro-block` (Tecnología, que no sufría). En móvil ya estaba cubierto por la regla `@media (max-width: 768px)` con `100px !important`.
+2. **Tecnología no estaba centrada como las otras dos.** `.arch-manifesto` (Arq/Viz) usa `text-align: center; margin: 0 auto`, mientras Tecnología usaba `.intro-content-wrapper` a la izquierda. Centrado: `.tab-intro-block` → `justify-content: center`; `.intro-content-wrapper` → `text-align/align-items: center` + `margin: 0 auto`. (La diferencia estructural de fondo —Tecnología es intro `100vh`, Arq/Viz son manifiesto+logos— se mantiene; solo se centró.)
+3. **Separadores de numeración unificados a `//`** en los cinco rótulos de sección (antes mezclaban `—`, `//` y `/`). Convención: `NN // Etiqueta`. (Los `.mv-num` internos de cada proyecto mantienen su propio formato `NN /`, ya coherente entre sí.)
+4. **Rótulos de sección ahora bilingües.** Los eyebrows de Arquitectura, Visualización y el `intro-tag` de Tecnología estaban escritos a pelo (sin `lang-es`/`lang-en`) y no cambiaban con el toggle ES/EN; envueltos en sus spans como el resto.
+5. **`.intro-scroll-hint` centrado** (`align-items: center`), que en Visualización quedaba pegado a la izquierda dentro del bloque centrado.
+6. **Cache-busting:** `styles.css?v=1.0.5 → 1.0.6` para forzar recarga del CSS en GitHub Pages.
+
+**Pendiente documentado (no abordado por decisión del usuario):** igualar el patrón de entrada de las tres secciones de portfolio (Tecnología sigue siendo intro a pantalla completa frente a manifiesto+logos de Arq/Viz).
