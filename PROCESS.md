@@ -82,7 +82,7 @@ Los archivos del portafolio se estructuraron de la siguiente manera:
   * *Integración de Catálogo Metalperfil:* Generación automática de familias paramétricas 3D (.rfa) desde planos vectoriales DXF.
   * *Diseño Paramétrico & IA:* Mapeo automático de volumetrías físicas y espesores en Revit mediante APIs de redes neuronales generativas.
   * *Optimización de Punzonado CNC:* Reducción del 38% del recorrido del cabezal CNC aplicando algoritmos Snake-Path.
-* **Pestaña Quién Soy (About):** Grid editorial con fotografía de perfil oficial (`Perifl Foto.jpg`), biografía cronológica (Celobert, Picharchitects, DEMI Studio) y enlaces de perfiles a Behance, LinkedIn e Issuu.
+* **Pestaña Quién Soy (About):** Grid editorial con fotografía de perfil oficial en B/N (`MiguelS_BW.jpg`), biografía cronológica (Celobert, Picharchitects, DEMI Studio), enlaces de perfiles a Behance, LinkedIn e Issuu, y sección aparte de Publicaciones (TFG).
 * **Pestaña Contacto:** Ficha de datos directos (Email, Teléfono, Ubicación) y formulario minimalista para envío de propuestas.
 
 #### 🎨 [styles.css](file:///D:/Arquitectura/W_TRABAJOS/C_CV_Web/styles.css)

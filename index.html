@@ -3,15 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MSTos — Architecture, Visual & BIM Systems</title>
-    <meta name="description" content="Portfolio profesional de MSTos. Obra de arquitectura bioclimática, visualización avanzada en Unreal Engine 5 y programación de automatizaciones BIM.">
+    <title>MSTos — Arquitectura Bioclimática, Visualización UE5 & Automatización BIM</title>
+    <meta name="description" content="Portfolio de Miguel Suárez Torres (MSTos): arquitectura bioclimática y de cooperación, visualización fotorrealista en Unreal Engine 5 y desarrollo de plugins/automatización BIM en C# (.NET 8) y Python para Revit.">
+    <meta name="author" content="Miguel Suárez Torres">
+    <meta name="theme-color" content="#111111">
+    <link rel="canonical" href="https://ashromer.github.io/MSTos/">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+    <!-- Open Graph / social sharing -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="MSTos Portfolio">
+    <meta property="og:title" content="MSTos — Arquitectura, Visualización UE5 & Automatización BIM">
+    <meta property="og:description" content="Arquitectura bioclimática, visualización fotorrealista en Unreal Engine 5 y desarrollo de plugins de automatización BIM (C# / Python / Revit API).">
+    <meta property="og:url" content="https://ashromer.github.io/MSTos/">
+    <meta property="og:image" content="https://ashromer.github.io/MSTos/assets/00_RenderExterior.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="MSTos — Arquitectura, Visualización UE5 & Automatización BIM">
+    <meta name="twitter:description" content="Arquitectura bioclimática, visualización fotorrealista en Unreal Engine 5 y automatización BIM (C# / Python / Revit API).">
+    <meta name="twitter:image" content="https://ashromer.github.io/MSTos/assets/00_RenderExterior.png">
+
     <!-- Google Fonts: Cormorant Garamond (Serif) & Montserrat (Sans-Serif) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Montserrat:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
-    <!-- Lucide Icons -->
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <link rel="stylesheet" href="styles.css?v=1.0.2">
+    <!-- Lucide Icons (versión fijada para evitar roturas de @latest) -->
+    <script src="https://unpkg.com/lucide@1.21.0"></script>
+    <link rel="stylesheet" href="styles.css?v=1.0.5">
 </head>
 <body class="lang-es">
 
@@ -1256,8 +1275,8 @@
                                 <span class="metric-label"><span class="lang-es">menos recorrido del cabezal</span><span class="lang-en">less head travel</span></span>
                             </div>
                             <div class="tech-metric">
-                                <span class="metric-num">0.0000<span class="metric-unit">°</span></span>
-                                <span class="metric-label"><span class="lang-es">desviación de enderezado</span><span class="lang-en">straightening error</span></span>
+                                <span class="metric-num">42</span>
+                                <span class="metric-label"><span class="lang-es">perfiles enderezados y validados</span><span class="lang-en">profiles straightened &amp; validated</span></span>
                             </div>
                             <div class="tech-metric">
                                 <span class="metric-num">18</span>
@@ -1496,9 +1515,39 @@
                                         <p>A suite of three plugins unified under a single Revit Ribbon tab. The <strong>Family Generator</strong> parses metal profiles directly from vector CAD/DXF databases and automates the creation of high-precision parametric 3D family (.rfa) files.</p>
                                         <p>The <strong>Panel Randomizer</strong> distributes profile types by percentage and rebuilds the curtain-wall grid using each piece's real width (no gaps, no overlaps), while the <strong>Interactive Facade</strong> tool applies layout and materials in real time, syncing to Twinmotion through Direct Link.</p>
                                     </div>
+
+                                    <figure class="code-proof">
+                                        <figcaption>
+                                            <span class="code-proof-file">offset_polyline() · create_revit_families.py</span>
+                                            <span class="code-proof-note"><span class="lang-es">código real en producción</span><span class="lang-en">real production code</span></span>
+                                        </figcaption>
+<pre><code>def offset_polyline(vertices, distance):
+    """Contorno paralelo que genera el grosor real de la chapa."""
+    seg_normals = []
+    for i in range(len(vertices) - 1):
+        dx = vertices[i+1][0] - vertices[i][0]
+        dy = vertices[i+1][1] - vertices[i][1]
+        length = math.hypot(dx, dy)
+        seg_normals.append((-dy/length, dx/length))   # normal del segmento
+    # cada vértice se desplaza por la bisectriz de las dos normales
+    return [(v[0] + distance*nx, v[1] + distance*ny)
+            for v, (nx, ny) in zip(vertices, vertex_normals(seg_normals))]</code></pre>
+                                    </figure>
+
+                                    <div class="case-proof">
+                                        <a class="case-proof-link" href="content/tech/metalperfil/Plugin%20Familias%20rfa/src/Core/FamilyGenerator.cs" target="_blank" rel="noopener">
+                                            <i data-lucide="file-code"></i><span>FamilyGenerator.cs</span>
+                                        </a>
+                                        <a class="case-proof-link" href="content/tech/metalperfil/Plugin%20Familias%20rfa/DOCUMENTACION.md" target="_blank" rel="noopener">
+                                            <i data-lucide="file-text"></i><span class="lang-es">Documentación</span><span class="lang-en">Documentation</span>
+                                        </a>
+                                        <a class="case-proof-link" href="content/tech/metalperfil/scripts_python/create_revit_families.py" target="_blank" rel="noopener">
+                                            <i data-lucide="file-code-2"></i><span>create_revit_families.py</span>
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
-                            
+
                             <!-- Case 2: Parametric Canopy -->
                             <div class="tech-case-item inverse">
                                 <div class="case-image-wrapper">
@@ -1515,6 +1564,14 @@
                                     </div>
                                     <div class="lang-en">
                                         <p>A computational connector linking Revit 3D spatial models to generative neural networks via Python. It translates lighting and shading patterns analyzed by AI into physical facade panel thicknesses and perforation sizes.</p>
+                                    </div>
+                                    <div class="case-proof">
+                                        <a class="case-proof-link" href="content/tech/dynamo-suite/DYNAMO/OpenAI%20DALL-E%20Demo.dyn" download>
+                                            <i data-lucide="download"></i><span>OpenAI DALL-E Demo.dyn</span>
+                                        </a>
+                                        <a class="case-proof-link" href="content/tech/dynamo-suite/DYNAMO/OpenAI%20Language%20Demo%20-%20Single%20Answer.dyn" download>
+                                            <i data-lucide="download"></i><span>OpenAI Language Demo.dyn</span>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
@@ -1535,6 +1592,11 @@
                                     </div>
                                     <div class="lang-en">
                                         <p>Mathematical path routing optimization of CNC punching machines for Metalperfil sheet metal fabrication. It implements a zigzag pathing that decreases idle tool travel by 38% while checking safety distance clearances between holes to avoid material tearing.</p>
+                                    </div>
+                                    <div class="case-proof">
+                                        <a class="case-proof-link" href="content/tech/dynamo-suite/DYNAMO/Perforaciones.dyn" download>
+                                            <i data-lucide="download"></i><span>Perforaciones.dyn</span>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
@@ -1575,6 +1637,17 @@
                                     </div>
                                     <div class="lang-en">
                                         <p>A library of computational Dynamo scripts developed to optimize technical office tasks at Picharchitects. It automates sheet layout generation and view placement (`GenerarPlanos1`), smart detail tag alignment, road network mapping conforming to 3D topographies, and urban volume reconstruction using OpenStreetMap (OSM) databases.</p>
+                                    </div>
+                                    <div class="case-proof">
+                                        <a class="case-proof-link" href="content/tech/dynamo-suite/DYNAMO/GenerarPlanos1_CrearPlanosColocarVistas.dyn" download>
+                                            <i data-lucide="download"></i><span>GenerarPlanos1.dyn</span>
+                                        </a>
+                                        <a class="case-proof-link" href="content/tech/dynamo-suite/DYNAMO/Hacer%20camino%20sobre%20topografia.dyn" download>
+                                            <i data-lucide="download"></i><span>Camino sobre topografía.dyn</span>
+                                        </a>
+                                        <a class="case-proof-link" href="https://github.com/Ashromer" target="_blank" rel="noopener">
+                                            <i data-lucide="github"></i><span>GitHub</span>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
@@ -1623,8 +1696,8 @@
                                     <span class="lang-en">I take design to the machine: shorter punching toolpaths, safety-ligament validation, and production-ready export.</span>
                                 </p>
                                 <span class="tech-service-proof">
-                                    <span class="lang-es">Prueba: −38% de recorrido del cabezal · 0.0000° de error de enderezado</span>
-                                    <span class="lang-en">Proof: −38% head travel · 0.0000° straightening error</span>
+                                    <span class="lang-es">Prueba: −38% de recorrido del cabezal · enderezado por mínimos cuadrados (42 perfiles)</span>
+                                    <span class="lang-en">Proof: −38% head travel · least-squares straightening (42 profiles)</span>
                                 </span>
                             </div>
 
@@ -1692,37 +1765,37 @@
                     <div class="about-grid">
                         <div class="about-image-col">
                             <div class="about-img-container">
-                                <img src="assets/Perifl Foto.jpg" alt="Miguel Suárez Torres">
+                                <img src="assets/MiguelS_BW.jpg" alt="Miguel Suárez Torres">
                             </div>
                         </div>
                         <div class="about-text-col">
                             <h3 class="about-name">MSTos</h3>
                             <p class="about-subtitle">
-                                <span class="lang-es">Arquitecto bioclimático, artista visual 3D y programador de sistemas BIM.</span>
-                                <span class="lang-en">Bioclimatic architect, 3D visual artist, and BIM systems developer.</span>
+                                <span class="lang-es">Arquitecto · Project Manager · 9+ años de experiencia internacional en diseño sostenible, coordinación BIM y programación arquitectónica.</span>
+                                <span class="lang-en">Architect · Project Manager · 9+ years of international experience in sustainable design, BIM coordination, and architectural programming.</span>
                             </p>
-                            
+
                             <div class="about-bio">
                                 <div class="lang-es">
                                     <p>
-                                        Mi trayectoria profesional fusiona la rigurosidad del diseño de bajo impacto ambiental con la potencia de la visualización en tiempo real y la automatización por código. Creo firmemente que la innovación tecnológica debe estar al servicio de la sostenibilidad.
+                                        Arquitecto por la <strong>ETSAM (UPM)</strong> y la <strong>UPC ETSA Vallès</strong>, con más de 9 años de experiencia internacional liderando proyectos públicos y privados desde el concepto hasta la ejecución. Mi trabajo fusiona el diseño sostenible de bajo impacto, la coordinación BIM y la automatización por código, convencido de que la innovación tecnológica debe estar al servicio de un diseño con impacto social.
                                     </p>
                                     <p>
-                                        Comencé mi carrera colaborando en <strong>Celobert (2018-2019)</strong>, especializándome en vivienda ecológica y arquitectura social de cooperación. Posteriormente, me incorporé a <strong>Picharchitects (2019-2025)</strong>, donde asumí el rol de <strong>Office Manager de la oficina de Madrid</strong> y lideré el departamento de visualización fotorrealista en Unreal Engine 5 y Twinmotion, además de coordinar la ingeniería de datos BIM.
+                                        Comencé colaborando en <strong>Celobert (2018-2020)</strong>, especializándome en vivienda ecológica y arquitectura social de cooperación, y participé en <strong>SUMUM NGO (2019-2022)</strong> en el diseño y construcción de una escuela bioclimática y social en Mahandougou (Costa de Marfil). Más tarde me incorporé a <strong>PichArchitects (2020-2025)</strong> como <strong>Office Manager de Madrid y Project Manager</strong>, coordinando la ingeniería de datos BIM y dirigiendo el departamento de concursos.
                                     </p>
                                     <p>
-                                        Actualmente dirijo <strong>DEMI Studio</strong>, una firma independiente dedicada a la infoarquitectura de alta fidelidad, y desarrollo scripts a medida (Python, C#, Grasshopper) para automatizar la fabricación CNC de componentes de fachada y auditar modelos BIM complejos.
+                                        Actualmente trabajo de forma independiente como <strong>DEMI Studio (2025-presente)</strong>, mejorando flujos de trabajo y visualizaciones para estudios de arquitectura mediante BIM y programación: scripts a medida (Python, C#, Grasshopper, Dynamo) para automatizar la fabricación CNC de componentes de fachada, auditar modelos complejos y producir infoarquitectura de alta fidelidad en Unreal Engine 5.
                                     </p>
                                 </div>
                                 <div class="lang-en">
                                     <p>
-                                        My professional trajectory merges the rigor of low-impact environmental design with the power of real-time rendering and computational automation. I firmly believe that technological innovation must serve sustainability.
+                                        Architect trained at <strong>ETSAM (UPM)</strong> and <strong>UPC ETSA Vallès</strong>, with 9+ years of international experience leading public and private projects from concept to construction. My work merges low-impact sustainable design, BIM coordination, and computational automation, driven by the belief that technological innovation must serve design with a real social impact.
                                     </p>
                                     <p>
-                                        I started my career collaborating with <strong>Celobert (2018-2019)</strong>, specializing in ecological housing and social cooperation architecture. Later, I joined <strong>Picharchitects (2019-2025)</strong>, where I served as the <strong>Madrid Office Manager</strong> and led the photorealistic visualization department in Unreal Engine 5 and Twinmotion, as well as coordinating BIM database integration.
+                                        I started at <strong>Celobert (2018-2020)</strong>, specializing in ecological housing and social cooperation architecture, and worked with <strong>SUMUM NGO (2019-2022)</strong> on the design and construction of a bioclimatic, social school in Mahandougou (Ivory Coast). I later joined <strong>PichArchitects (2020-2025)</strong> as <strong>Madrid Office Manager and Project Manager</strong>, coordinating BIM data engineering and leading the competitions department.
                                     </p>
                                     <p>
-                                        Currently, I direct <strong>DEMI Studio</strong>, an independent firm dedicated to high-fidelity architectural rendering, while developing custom computational scripts (Python, C#, Grasshopper) to automate CNC fabrication of facade systems and audit complex BIM models.
+                                        I currently work independently as <strong>DEMI Studio (2025-present)</strong>, improving workflows and visualizations for architecture firms through BIM and programming: custom scripts (Python, C#, Grasshopper, Dynamo) to automate CNC fabrication of facade components, audit complex models, and produce high-fidelity architectural visualization in Unreal Engine 5.
                                     </p>
                                 </div>
                             </div>
@@ -1750,33 +1823,46 @@
                                     </a>
                                 </div>
                             </div>
-                            
-                            <!-- TFG Academic Research Subsection -->
-                            <div class="about-tfg-section" style="margin-top: 2.5rem; border-top: 1px solid var(--border-color); padding-top: 2rem;">
-                                <h4 class="platforms-title" style="margin-bottom: 0.8rem;">
-                                    <span class="lang-es">Trabajo Fin de Grado (TFG)</span>
-                                    <span class="lang-en">Bachelor's Thesis (TFG)</span>
-                                </h4>
-                                <div style="display: flex; gap: 1.5rem; align-items: flex-start; margin-top: 1rem;">
-                                    <img src="assets/TFG_cover.jpg" alt="TFG Cover" style="width: 100px; height: auto; border: 1px solid var(--border-color); box-shadow: 0 4px 10px rgba(0,0,0,0.05);">
-                                    <div>
-                                        <h5 style="font-family: var(--font-sans); font-size: 0.9rem; font-weight: 600; color: var(--text-primary); margin-bottom: 0.4rem;">
-                                            <span class="lang-es">El espacio público y las dinámicas de flujo en la manifestación ciudadana</span>
-                                            <span class="lang-en">Public space and flow dynamics in citizen demonstration</span>
-                                        </h5>
-                                        <p style="font-family: var(--font-sans); font-size: 0.82rem; font-weight: 300; line-height: 1.5; color: var(--text-secondary); margin-bottom: 1rem;">
-                                            <span class="lang-es">Investigación académica desarrollada en la ETSAM (UPM). Un análisis urbano de la morfología del espacio público de Madrid (Alcalá, Callao, Sol) y su respuesta ante manifestaciones masivas mediante simulaciones y dinámicas de flujos peatonales.</span>
-                                            <span class="lang-en">Academic research conducted at ETSAM (UPM). An urban analysis of the morphology of Madrid's public spaces (Alcalá, Callao, Sol) and their response to mass demonstrations through pedestrian flow simulations.</span>
-                                        </p>
-                                        <a href="assets/TFG_2018_Suarez_Torres_Miguel.pdf" target="_blank" rel="noopener" class="platform-btn" style="display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.72rem; padding: 0.4rem 0.8rem; margin: 0;">
-                                            <i data-lucide="download"></i>
-                                            <span class="lang-es">Descargar TFG (PDF)</span>
-                                            <span class="lang-en">Download Thesis (PDF)</span>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
+                    </div>
+
+                    <!-- PUBLICACIONES / PUBLICATIONS -->
+                    <div class="publications-section">
+                        <div class="publications-header">
+                            <span class="section-tag">
+                                <span class="lang-es">Publicaciones</span><span class="lang-en">Publications</span>
+                            </span>
+                            <h3 class="publications-title">
+                                <span class="lang-es">Investigación Académica</span>
+                                <span class="lang-en">Academic Research</span>
+                            </h3>
+                        </div>
+
+                        <article class="publication-card">
+                            <div class="publication-cover">
+                                <img src="assets/TFG_cover.jpg" alt="TFG Cover">
+                            </div>
+                            <div class="publication-body">
+                                <span class="publication-meta">
+                                    <i data-lucide="graduation-cap"></i>
+                                    <span class="lang-es">Trabajo Fin de Grado · ETSAM (UPM) · 2018</span>
+                                    <span class="lang-en">Bachelor's Thesis · ETSAM (UPM) · 2018</span>
+                                </span>
+                                <h4 class="publication-name">
+                                    <span class="lang-es">El espacio público y las dinámicas de flujo en la manifestación ciudadana</span>
+                                    <span class="lang-en">Public space and flow dynamics in citizen demonstration</span>
+                                </h4>
+                                <p class="publication-desc">
+                                    <span class="lang-es">Investigación académica desarrollada en la ETSAM (UPM). Un análisis urbano de la morfología del espacio público de Madrid (Alcalá, Callao, Sol) y su respuesta ante manifestaciones masivas mediante simulaciones y dinámicas de flujos peatonales.</span>
+                                    <span class="lang-en">Academic research conducted at ETSAM (UPM). An urban analysis of the morphology of Madrid's public spaces (Alcalá, Callao, Sol) and their response to mass demonstrations through pedestrian flow simulations.</span>
+                                </p>
+                                <a href="assets/TFG_2018_Suarez_Torres_Miguel.pdf" target="_blank" rel="noopener" class="platform-btn publication-btn">
+                                    <i data-lucide="file-text"></i>
+                                    <span class="lang-es">Leer / Descargar (PDF)</span>
+                                    <span class="lang-en">Read / Download (PDF)</span>
+                                </a>
+                            </div>
+                        </article>
                     </div>
                 </div>
             </section>
@@ -1892,6 +1978,6 @@
     </div>
 
     <!-- Web App Script -->
-    <script src="script.js?v=1.0.2"></script>
+    <script src="script.js?v=1.0.4"></script>
 </body>
 </html>

@@ -19,6 +19,18 @@ _backup_*/
 # Clon vacío redundante creado por GitHub Desktop
 /MSTos/
 
+# Binarios pesados de proyecto (modelos / GIS / backups) — no deben ir a Pages
+*.rvt
+*.tif
+*.bil
+*.hdr
+*.blw
+*.prj
+*.osm
+*.backup
+*.pdb
+*.vsidx
+
 # Visual Studio & .NET build outputs/caches
 [Bb]in/
 [Oo]bj/

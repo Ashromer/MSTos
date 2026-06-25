@@ -208,6 +208,7 @@ document.addEventListener('DOMContentLoaded', () => {
             document.body.classList.remove('lang-en');
             document.body.classList.add('lang-es');
         }
+        document.documentElement.lang = (lang === 'en') ? 'en' : 'es';
 
         langButtons.forEach(b => {
             if (b.getAttribute('data-lang') === lang) {
@@ -594,10 +595,24 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // --- CONTACT FORM (opens the user's mail client, pre-filled) ---
+    // --- CONTACT FORM (Web3Forms async send + mailto fallback) ---
+    // Pega aquí tu Access Key gratuita de https://web3forms.com (verificación por email).
+    // Mientras esté vacía, el formulario abre el cliente de correo como respaldo.
+    const WEB3FORMS_ACCESS_KEY = '';
+    const CONTACT_EMAIL = 'miguel.suarez.torres.25@gmail.com';
+
     const contactForm = document.getElementById('contact-form');
     if (contactForm) {
-        contactForm.addEventListener('submit', (e) => {
+        const statusEl = document.createElement('p');
+        statusEl.className = 'form-status';
+        statusEl.setAttribute('role', 'status');
+        statusEl.setAttribute('aria-live', 'polite');
+        contactForm.appendChild(statusEl);
+        const submitBtn = contactForm.querySelector('.submit-form-btn');
+
+        const t = (es, en) => document.body.classList.contains('lang-en') ? en : es;
+
+        contactForm.addEventListener('submit', async (e) => {
             e.preventDefault();
             const isEN = document.body.classList.contains('lang-en');
             const name = (document.getElementById('form-name').value || '').trim();
@@ -606,19 +621,57 @@ document.addEventListener('DOMContentLoaded', () => {
             const typeOpt = typeSel.options[typeSel.selectedIndex];
             const area = typeOpt.getAttribute(isEN ? 'data-en' : 'data-es') || typeOpt.text;
             const message = (document.getElementById('form-message').value || '').trim();
-
             const subject = `[Portfolio] ${area} — ${name}`;
-            const body =
-                (isEN ? 'Name: ' : 'Nombre: ') + name + '\n' +
-                (isEN ? 'Email: ' : 'Correo: ') + email + '\n' +
-                (isEN ? 'Area: ' : 'Área: ') + area + '\n\n' +
-                message;
 
-            window.location.href = 'mailto:miguel.suarez.torres.25@gmail.com'
-                + '?subject=' + encodeURIComponent(subject)
-                + '&body=' + encodeURIComponent(body);
+            const openMailto = () => {
+                const body =
+                    (isEN ? 'Name: ' : 'Nombre: ') + name + '\n' +
+                    (isEN ? 'Email: ' : 'Correo: ') + email + '\n' +
+                    (isEN ? 'Area: ' : 'Área: ') + area + '\n\n' + message;
+                window.location.href = 'mailto:' + CONTACT_EMAIL
+                    + '?subject=' + encodeURIComponent(subject)
+                    + '&body=' + encodeURIComponent(body);
+            };
 
-            contactForm.reset();
+            // Sin clave configurada → respaldo mailto inmediato
+            if (!WEB3FORMS_ACCESS_KEY) {
+                statusEl.className = 'form-status';
+                statusEl.textContent = t('Abriendo tu cliente de correo…', 'Opening your email client…');
+                openMailto();
+                return;
+            }
+
+            statusEl.className = 'form-status';
+            statusEl.textContent = t('Enviando…', 'Sending…');
+            if (submitBtn) submitBtn.disabled = true;
+
+            try {
+                const res = await fetch('https://api.web3forms.com/submit', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                    body: JSON.stringify({
+                        access_key: WEB3FORMS_ACCESS_KEY,
+                        subject, name, email,
+                        area, message,
+                        from_name: name,
+                        replyto: email
+                    })
+                });
+                const data = await res.json();
+                if (data.success) {
+                    statusEl.className = 'form-status is-ok';
+                    statusEl.textContent = t('¡Mensaje enviado! Te responderé pronto.', 'Message sent! I\'ll get back to you soon.');
+                    contactForm.reset();
+                } else {
+                    throw new Error(data.message || 'send failed');
+                }
+            } catch (err) {
+                statusEl.className = 'form-status is-err';
+                statusEl.textContent = t('No se pudo enviar. Abriendo tu correo…', 'Couldn\'t send. Opening your email…');
+                openMailto();
+            } finally {
+                if (submitBtn) submitBtn.disabled = false;
+            }
         });
     }
 
