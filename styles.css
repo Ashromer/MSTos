@@ -1966,7 +1966,7 @@ body.lang-en .lang-es { display: none !important; }
     height: 100vh;
     display: flex;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: center;
     background-color: var(--bg-base);
     border-bottom: 1px solid var(--border-color);
     padding: 120px clamp(2.5rem, 9vw, 9rem) 4rem; /* Top padding shifts content below fixed header */
@@ -1975,10 +1975,11 @@ body.lang-en .lang-es { display: none !important; }
 .intro-content-wrapper {
     max-width: 1080px;
     width: 100%;
-    text-align: left;
+    margin: 0 auto;
+    text-align: center;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     gap: 1.8rem;
 }
 
@@ -2035,7 +2036,7 @@ body.lang-en .lang-es { display: none !important; }
     color: var(--text-muted);
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     gap: 0.8rem;
     animation: bounce 2s infinite;
 }
@@ -2992,7 +2993,7 @@ html.snap-mode .editorial-section-block.full-bleed-page {
 }
 
 /* === ARQUITECTURA: índice (manifiesto + 7 logos) + vistas de proyecto === */
-.arch-index { max-width: 1180px; margin: 0 auto; padding: 5rem 2.5rem 7rem; }
+.arch-index { max-width: 1180px; margin: 0 auto; padding: 120px 2.5rem 7rem; }
 .arch-index.hidden { display: none; }
 
 .arch-manifesto { max-width: 840px; margin: 0 auto 4.5rem; text-align: center; }
@@ -3097,7 +3098,7 @@ html.snap-mode .editorial-section-block.full-bleed-page {
 
 @media (max-width: 700px) {
     .arch-logo { width: 44%; }
-    .arch-index { padding: 3rem 1.5rem 5rem; }
+    .arch-index { padding: 104px 1.5rem 5rem; }
 }
 
 .arch-view { display: none; position: relative; padding-bottom: 7rem; }
