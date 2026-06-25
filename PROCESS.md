@@ -17,7 +17,7 @@ Al iniciar la sesión, se detectó el cierre de la terminal previa. Se procedió
 
 El usuario estableció una directiva crítica respecto a la clasificación de sus trabajos:
 * **Proyectos de Arquitectura:** No se deben mostrar como obras propias los proyectos desarrollados bajo el sello de *Picharchitects* (como CaixaForum Málaga, TEC Collserola, Viviendas Carrer Marroc). Por tanto, la sección de arquitectura se compone exclusivamente de **concursos independientes y proyectos de cooperación**.
-* **Proyectos de Visualización (Renders e Infoarquitectura):** Se permite mostrar libremente cualquier render o imagen tridimensional fotorrealista realizada por el autor (incluyendo los de Picharchitects o su estudio independiente *DEMI Studio*).
+* **Proyectos de Visualización (Renders e Infoarquitectura):** Se permite mostrar libremente cualquier render o imagen tridimensional fotorrealista realizada por el autor (incluyendo los de Picharchitects o su estudio independiente *MSTos*).
 
 ---
 
@@ -61,7 +61,7 @@ Los archivos del portafolio se estructuraron de la siguiente manera:
   * *Escuela Bioclimática Waraqa* (Mahandougou, Côte d'Ivoire).
   * *Refugios Bioclimáticos Orkide* (B4H Camp, Turquía-Siria).
   * *Faro de Cooperación (Kaira Looro)* (Senegal/África Central).
-  * *Torre en Barbate* (Residencial costero, DEMI Studio).
+  * *Torre en Barbate* (Residencial costero, MSTos).
   * *Erosión / Oasis (TFM)* (Vivienda colectiva y termalismo, ETSAM).
 * **Pestaña Visualización (Estructura IMAGERY 2025):** Replicación exacta página por página (páginas 4 a 38) del portfolio físico de visualización, incluyendo sus portadas divisorias y filosofía editorial como pausas a pantalla completa:
   1. *CaixaForum Málaga (2025)* (Picharchitects) - Páginas 4-8.
@@ -82,7 +82,7 @@ Los archivos del portafolio se estructuraron de la siguiente manera:
   * *Integración de Catálogo Metalperfil:* Generación automática de familias paramétricas 3D (.rfa) desde planos vectoriales DXF.
   * *Diseño Paramétrico & IA:* Mapeo automático de volumetrías físicas y espesores en Revit mediante APIs de redes neuronales generativas.
   * *Optimización de Punzonado CNC:* Reducción del 38% del recorrido del cabezal CNC aplicando algoritmos Snake-Path.
-* **Pestaña Quién Soy (About):** Grid editorial con fotografía de perfil oficial en B/N (`MiguelS_BW.jpg`), biografía cronológica (Celobert, Picharchitects, DEMI Studio), enlaces de perfiles a Behance, LinkedIn e Issuu, y sección aparte de Publicaciones (TFG).
+* **Pestaña Quién Soy (About):** Grid editorial con fotografía de perfil oficial en B/N (`MiguelS_BW.jpg`), biografía cronológica (Celobert, Picharchitects, MSTos), enlaces de perfiles a Behance, LinkedIn e Issuu, y sección aparte de Publicaciones (TFG).
 * **Pestaña Contacto:** Ficha de datos directos (Email, Teléfono, Ubicación) y formulario minimalista para envío de propuestas.
 
 #### 🎨 [styles.css](file:///D:/Arquitectura/W_TRABAJOS/C_CV_Web/styles.css)
