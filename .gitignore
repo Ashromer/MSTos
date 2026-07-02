@@ -13,6 +13,22 @@
 # Temporales de trabajo
 scratch_*.py
 
+# Documentación interna de trabajo — no publicar en Pages
+PROCESS.md
+DOCUMENTACION_FUENTES.md
+Estructura Pagina Web.rtf
+Ultimas accionesç.txt
+Captura_*.JPG
+Perifl Foto.jpg
+
+# Código fuente de plugins y scripts (trabajo de cliente) — solo local
+content/tech/dynamo-suite/DYNAMO/
+content/tech/metalperfil/Plugin Aleatorización Paneles/
+content/tech/metalperfil/Plugin Familias rfa/
+content/tech/metalperfil/plugin_fachada_interactiva/
+content/tech/metalperfil/scripts_python/
+content/tech/py production/
+
 # Backups locales
 _backup_*/
 
