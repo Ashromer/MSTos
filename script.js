@@ -435,38 +435,19 @@ document.addEventListener('DOMContentLoaded', () => {
             if (arrowRight) arrowRight.style.display = 'none';
         }
 
-        // Proximity hover for arrows (reveal when cursor is near left/right zones)
-        if (totalSlides > 1 && arrowLeft && arrowRight) {
-            block.addEventListener('mousemove', (e) => {
-                const rect = block.getBoundingClientRect();
-                const mouseX = e.clientX - rect.left;
-                const blockWidth = rect.width;
-                
-                // Show left arrow if mouse is within 150px of left edge
-                if (mouseX < 150) {
-                    arrowLeft.classList.add('visible');
-                } else {
-                    arrowLeft.classList.remove('visible');
-                }
-                
-                // Show right arrow if mouse is within 150px of right edge
-                if (mouseX > blockWidth - 150) {
-                    arrowRight.classList.add('visible');
-                } else {
-                    arrowRight.classList.remove('visible');
-                }
-            });
-            
-            block.addEventListener('mouseleave', () => {
-                arrowLeft.classList.remove('visible');
-                arrowRight.classList.remove('visible');
-            });
+        function updateArrowVisibility() {
+            // Permanent arrows: only hide the one pointing where there is no slide
+            if (arrowLeft) arrowLeft.classList.toggle('edge-hidden', currentSlide === 0);
+            if (arrowRight) arrowRight.classList.toggle('edge-hidden', currentSlide === totalSlides - 1);
         }
+        updateArrowVisibility();
 
         function updateBlockSlider() {
             // Apply horizontal sliding shift
             sliderWrapper.style.transform = `translateX(-${currentSlide * 100}%)`;
-            
+
+            updateArrowVisibility();
+
             // Update active dot style
             if (dotsContainer) {
                 const dots = dotsContainer.querySelectorAll('.slide-dot');
@@ -489,7 +470,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (arrowLeft) {
             arrowLeft.addEventListener('click', (e) => {
                 e.stopPropagation();
-                currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+                currentSlide = Math.max(currentSlide - 1, 0);
                 updateBlockSlider();
             });
         }
@@ -498,7 +479,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (arrowRight) {
             arrowRight.addEventListener('click', (e) => {
                 e.stopPropagation();
-                currentSlide = (currentSlide + 1) % totalSlides;
+                currentSlide = Math.min(currentSlide + 1, totalSlides - 1);
                 updateBlockSlider();
             });
         }
@@ -532,11 +513,11 @@ document.addEventListener('DOMContentLoaded', () => {
             if (Math.abs(diffX) > threshold) {
                 if (diffX < 0) {
                     // Swipe left -> next slide
-                    currentSlide = (currentSlide + 1) % totalSlides;
+                    currentSlide = Math.min(currentSlide + 1, totalSlides - 1);
                     updateBlockSlider();
                 } else {
                     // Swipe right -> prev slide
-                    currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+                    currentSlide = Math.max(currentSlide - 1, 0);
                     updateBlockSlider();
                 }
             }
@@ -545,11 +526,11 @@ document.addEventListener('DOMContentLoaded', () => {
         // Attach custom slider controls to block object so we can invoke them externally via keyboard
         block.sliderMethods = {
             next: () => {
-                currentSlide = (currentSlide + 1) % totalSlides;
+                currentSlide = Math.min(currentSlide + 1, totalSlides - 1);
                 updateBlockSlider();
             },
             prev: () => {
-                currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+                currentSlide = Math.max(currentSlide - 1, 0);
                 updateBlockSlider();
             },
             closeInfo: () => {
