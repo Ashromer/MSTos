@@ -12,6 +12,8 @@
 
 # Temporales de trabajo
 scratch_*.py
+optimizar_imagenes.ps1
+publicar_imagenes.ps1
 
 # Documentación interna de trabajo — no publicar en Pages
 PROCESS.md
