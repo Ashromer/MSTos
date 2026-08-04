@@ -2382,6 +2382,8 @@ header.scrolled .nav-links.active .lang-btn.active {
     border: 1px solid var(--border-color);
     margin-top: 1rem;
 }
+/* con un numero impar de tarjetas la ultima ocupa el ancho: sin celda hueca */
+.tech-services-grid > .tech-service:last-child:nth-child(odd) { grid-column: 1 / -1; }
 
 .tech-service {
     background: var(--bg-base);
