@@ -1,0 +1,1 @@
+Es un proyecto de una vivienda con espacios para entrenar y realizar eventos. Ponemos la imagen render al principio y luego ponemos las imagenes disponibles y finalmente explicamos le proyecto con un carrete con el contenido del pdf que son las plantas del proyecto

@@ -681,6 +681,66 @@ document.addEventListener('DOMContentLoaded', () => {
         btn.addEventListener('click', closeArchProject);
     });
 
+    // --- ARCHITECTURE: carretes horizontales de laminas (.mv-reel) ---
+    document.querySelectorAll('.mv-reel').forEach(reel => {
+        const track = reel.querySelector('.mv-reel-track');
+        const slides = reel.querySelectorAll('.mv-reel-track > figure');
+        if (!track || slides.length === 0) return;
+
+        const dotsBox = reel.querySelector('.mv-reel-dots');
+        const counter = reel.querySelector('.mv-reel-count');
+        const prev = reel.querySelector('.mv-reel-arrow.prev');
+        const next = reel.querySelector('.mv-reel-arrow.next');
+        const dots = [];
+        let idx = 0;
+
+        function paint() {
+            dots.forEach((d, i) => d.classList.toggle('active', i === idx));
+            if (counter) {
+                counter.textContent = String(idx + 1).padStart(2, '0') + ' / ' +
+                                      String(slides.length).padStart(2, '0');
+            }
+            if (prev) prev.disabled = (idx === 0);
+            if (next) next.disabled = (idx === slides.length - 1);
+        }
+
+        function goTo(i) {
+            idx = Math.max(0, Math.min(slides.length - 1, i));
+            track.scrollTo({ left: slides[idx].offsetLeft - track.offsetLeft, behavior: 'smooth' });
+            paint();
+        }
+
+        if (dotsBox) {
+            slides.forEach((_, i) => {
+                const d = document.createElement('span');
+                d.className = 'mv-reel-dot';
+                d.addEventListener('click', () => goTo(i));
+                dotsBox.appendChild(d);
+                dots.push(d);
+            });
+        }
+        if (prev) prev.addEventListener('click', () => goTo(idx - 1));
+        if (next) next.addEventListener('click', () => goTo(idx + 1));
+
+        // el indice real lo manda el scroll (tambien con gesto tactil o rueda)
+        let settle;
+        track.addEventListener('scroll', () => {
+            clearTimeout(settle);
+            settle = setTimeout(() => {
+                const center = track.scrollLeft + track.clientWidth / 2;
+                let best = 0, bestDist = Infinity;
+                slides.forEach((s, i) => {
+                    const dist = Math.abs((s.offsetLeft - track.offsetLeft + s.offsetWidth / 2) - center);
+                    if (dist < bestDist) { bestDist = dist; best = i; }
+                });
+                idx = best;
+                paint();
+            }, 90);
+        }, { passive: true });
+
+        paint();
+    });
+
     // --- SCROLL COLLAPSE STATE FOR HEADER ---
     const header = document.querySelector('header');
     
