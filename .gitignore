@@ -69,3 +69,5 @@ _backup_*/
 *.csproj.CoreCompileInputs.cache
 *.MarkupCompile.cache
 
+extraer_paginas_pdf.py
+convertir_png_pesados.py

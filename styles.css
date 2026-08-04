@@ -1963,7 +1963,9 @@ body.lang-en .lang-es { display: none !important; }
 /* --- SERVICE INTRO BLOCKS (Tab Entrances) --- */
 .tab-intro-block {
     width: 100vw;
-    height: 100vh;
+    /* min-height, no height: con height fijo el centrado flex desborda hacia ARRIBA
+       cuando el contenido es mas alto que el hueco y el texto se mete bajo el header negro */
+    min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -3130,10 +3132,14 @@ html.snap-mode .editorial-section-block.full-bleed-page {
 .arch-back:hover { background: #fff; }
 
 /* --- MVRDV-style project page --- */
-.mv-hero { width: 100%; height: 100vh; margin: 0; background: var(--bg-surface); }
+/* El header es fixed y opaco: sin este hueco se come la parte alta de la imagen */
+.mv-hero { width: 100%; height: 100vh; margin: 0; background: var(--bg-surface); padding-top: 120px; box-sizing: border-box; }
 .mv-hero img { width: 100%; height: 100%; object-fit: cover; display: block; border: none; }
 .mv-hero.contain { background: #f0efe9; }
 .mv-hero.contain img { object-fit: contain; padding: 1.5rem; }
+/* hero a sangre SIN recorte: ocupa todo el ancho y crece en alto lo que pida la imagen */
+.mv-hero.full { height: auto; background: transparent; }
+.mv-hero.full img { width: 100%; height: auto; object-fit: fill; }
 
 .mv-intro { max-width: 1100px; margin: 0 auto; padding: 4.5rem 2.5rem 0; }
 .mv-num {
@@ -3247,8 +3253,10 @@ html.snap-mode .editorial-section-block.full-bleed-page {
 .mv-fig.air { margin-top: 4.5rem; margin-bottom: 4.5rem; }
 .mv-block.right p { margin-left: auto; text-align: right; }
 
-/* --- carrete horizontal de laminas (planos, paginas de PDF) --- */
-.mv-reel { max-width: 1100px; margin: 0 auto 2.6rem; padding: 0 2.5rem; }
+/* --- carrete horizontal de laminas (planos, paginas de PDF) ---
+   Ocupa TODO el ancho: los planos necesitan tamano para leerse. El texto que los
+   acompana va siempre encima o debajo, nunca al lado. */
+.mv-reel { max-width: none; margin: 0 auto 3.2rem; padding: 0 clamp(1.5rem, 4vw, 4rem); }
 .mv-reel-viewport { position: relative; }
 .mv-reel-track {
     display: flex; gap: 1.2rem; overflow-x: auto; overscroll-behavior-x: contain;
@@ -3291,8 +3299,21 @@ html.snap-mode .editorial-section-block.full-bleed-page {
     font-family: var(--font-sans); font-size: 0.7rem; font-weight: 400;
     letter-spacing: 0.12em; color: var(--text-muted); margin-left: auto;
 }
-/* carrete dentro de una fila imagen+texto: hereda el ancho de su celda */
-.mv-split .mv-reel { max-width: none; margin: 0; padding: 0; }
+/* rotulo de texto propio del carrete, encima de la tira */
+.mv-reel-head { max-width: 1100px; margin: 0 auto 1.4rem; padding: 0 2.5rem; }
+.mv-reel-head .lead {
+    font-family: var(--font-serif); font-size: 1.3rem; line-height: 1.45;
+    font-weight: 400; color: var(--text-primary); margin-bottom: 0.9rem;
+}
+.mv-reel-head p:not(.lead) {
+    font-family: var(--font-sans); font-size: 0.95rem; font-weight: 300;
+    line-height: 1.8; color: var(--text-secondary); margin-bottom: 1rem; max-width: 760px;
+}
+
+/* figura a sangre, de lado a lado de la pantalla */
+.mv-fig.bleed { max-width: none; padding: 0; margin-bottom: 2.6rem; }
+.mv-fig.bleed img { width: 100%; height: auto; }
+.mv-fig.bleed figcaption { max-width: 1100px; margin: 0.7rem auto 0; padding: 0 2.5rem; }
 
 @media (max-width: 850px) {
     .mv-split, .mv-split.flip { grid-template-columns: 1fr; gap: 1.4rem; }
