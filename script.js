@@ -612,7 +612,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Pega aquí tu Access Key gratuita de https://web3forms.com (verificación por email).
     // Mientras esté vacía, el formulario abre el cliente de correo como respaldo.
     const WEB3FORMS_ACCESS_KEY = '';
-    const CONTACT_EMAIL = 'miguel.suarez.torres.25@gmail.com';
+    const CONTACT_EMAIL = 'MiguelS@MSToslab.com';
 
     const contactForm = document.getElementById('contact-form');
     if (contactForm) {
@@ -714,10 +714,11 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // --- APARTADO 03: MALLA DE PUNTOS DE FONDO ---
-    // Retícula que se deforma muy despacio detras del texto. Reglas que se cumplen
-    // siempre: nunca por encima del contenido, nunca a mas del 5% de tinta, y se
-    // PARA cuando no se ve (otra pestana del sitio, pestana del navegador oculta o
-    // el usuario pide menos movimiento). Si no, es una animacion quemando bateria.
+    // Reticula tenue que reacciona a lo que hace el visitante: el raton empuja los
+    // puntos de alrededor y aviva los hilos, y el scroll la desplaza en parallax con
+    // un rebote proporcional a lo rapido que se baja. Reglas fijas: nunca por encima
+    // del contenido y se PARA cuando no se ve (otro apartado, pestana oculta o
+    // prefers-reduced-motion); si no, es una animacion quemando bateria.
     (function techMesh() {
         const panel = document.getElementById('panel-technology');
         if (!panel) return;
@@ -729,10 +730,17 @@ document.addEventListener('DOMContentLoaded', () => {
         panel.prepend(cv);
         const ctx = cv.getContext('2d');
 
-        const PASO = 62;          // separacion de la reticula, en px
-        const AMPL = 9;           // cuanto se desplaza cada punto
+        const PASO = 62;          // separacion de la reticula
+        const DERIVA = 7;         // vaiven de fondo, en px
+        const RADIO = 230;        // alcance del raton
+        const EMPUJE = 34;        // cuanto se aparta un punto pegado al cursor
         const TINTA = '17, 17, 17';
-        let pts = [], w = 0, h = 0, dpr = 1, raf = 0, t = 0;
+
+        let pts = [], cols = 0, filas = 0;
+        let w = 0, h = 0, dpr = 1, raf = 0, t = 0;
+        let mx = -9999, my = -9999;         // raton destino
+        let cx = -9999, cy = -9999;         // raton suavizado
+        let scrollY = window.scrollY, desl = 0, vel = 0;
 
         function medir() {
             dpr = Math.min(window.devicePixelRatio || 1, 2);
@@ -744,52 +752,109 @@ document.addEventListener('DOMContentLoaded', () => {
             cv.style.height = h + 'px';
             ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 
-            pts = [];
-            const cols = Math.ceil(w / PASO) + 1;
-            const filas = Math.ceil(h / PASO) + 1;
+            // una fila y una columna de mas: al desplazarse en parallax no deja huecos
+            cols = Math.ceil(w / PASO) + 2;
+            filas = Math.ceil(h / PASO) + 3;
+            pts = new Array(cols * filas);
             for (let j = 0; j < filas; j++) {
                 for (let i = 0; i < cols; i++) {
-                    pts.push({ x: i * PASO, y: j * PASO, f: (i * 0.7 + j * 1.3) });
+                    pts[j * cols + i] = {
+                        bx: (i - 1) * PASO, by: (j - 2) * PASO,
+                        f: i * 0.7 + j * 1.3,
+                        x: 0, y: 0, calor: 0
+                    };
                 }
             }
-            pts.cols = cols;
-            pts.filas = filas;
+        }
+
+        function mover() {
+            // el cursor persigue con retardo: el empuje se siente elastico
+            if (mx > -9998) {
+                cx = cx < -9998 ? mx : cx + (mx - cx) * 0.12;
+                cy = cy < -9998 ? my : cy + (my - cy) * 0.12;
+            }
+            const par = (desl * 0.18) % PASO;     // parallax continuo, sin costuras
+
+            for (const p of pts) {
+                let x = p.bx + Math.sin(t + p.f) * DERIVA;
+                let y = p.by + Math.cos(t * 0.8 + p.f * 0.6) * DERIVA + par + vel;
+
+                let calor = 0;
+                if (cx > -9998) {
+                    const dx = x - cx, dy = y - cy;
+                    const d2 = dx * dx + dy * dy;
+                    if (d2 < RADIO * RADIO) {
+                        const d = Math.sqrt(d2) || 0.001;
+                        calor = 1 - d / RADIO;             // 1 pegado al cursor, 0 en el borde
+                        const f = calor * calor * EMPUJE;  // caida suave
+                        x += (dx / d) * f;
+                        y += (dy / d) * f;
+                    }
+                }
+                p.x = x; p.y = y; p.calor = calor;
+            }
         }
 
         function pintar() {
             ctx.clearRect(0, 0, w, h);
-            const cols = pts.cols;
 
-            for (const p of pts) {
-                p.dx = Math.sin(t + p.f) * AMPL;
-                p.dy = Math.cos(t * 0.8 + p.f * 0.6) * AMPL;
-            }
-
-            // hilos al vecino de la derecha y al de abajo
+            // 1) hilos de fondo, todos de un trazo
             ctx.lineWidth = 1;
-            ctx.strokeStyle = 'rgba(' + TINTA + ', 0.10)';
+            ctx.strokeStyle = 'rgba(' + TINTA + ', 0.075)';
             ctx.beginPath();
-            for (let j = 0; j < pts.filas; j++) {
+            for (let j = 0; j < filas; j++) {
                 for (let i = 0; i < cols; i++) {
                     const a = pts[j * cols + i];
                     if (i < cols - 1) {
                         const b = pts[j * cols + i + 1];
-                        ctx.moveTo(a.x + a.dx, a.y + a.dy);
-                        ctx.lineTo(b.x + b.dx, b.y + b.dy);
+                        ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y);
                     }
-                    if (j < pts.filas - 1) {
+                    if (j < filas - 1) {
                         const c = pts[(j + 1) * cols + i];
-                        ctx.moveTo(a.x + a.dx, a.y + a.dy);
-                        ctx.lineTo(c.x + c.dx, c.y + c.dy);
+                        ctx.moveTo(a.x, a.y); ctx.lineTo(c.x, c.y);
                     }
                 }
             }
             ctx.stroke();
 
-            ctx.fillStyle = 'rgba(' + TINTA + ', 0.30)';
+            // 2) los hilos que toca el raton, mas vivos (son pocos: solo el entorno)
+            for (let j = 0; j < filas; j++) {
+                for (let i = 0; i < cols; i++) {
+                    const a = pts[j * cols + i];
+                    if (i < cols - 1) {
+                        const b = pts[j * cols + i + 1];
+                        const k = Math.max(a.calor, b.calor);
+                        if (k > 0.04) {
+                            ctx.strokeStyle = 'rgba(' + TINTA + ', ' + (0.075 + k * 0.30).toFixed(3) + ')';
+                            ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
+                        }
+                    }
+                    if (j < filas - 1) {
+                        const c = pts[(j + 1) * cols + i];
+                        const k = Math.max(a.calor, c.calor);
+                        if (k > 0.04) {
+                            ctx.strokeStyle = 'rgba(' + TINTA + ', ' + (0.075 + k * 0.30).toFixed(3) + ')';
+                            ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(c.x, c.y); ctx.stroke();
+                        }
+                    }
+                }
+            }
+
+            // 3) los puntos: los frios de una tacada, los calientes uno a uno
+            ctx.fillStyle = 'rgba(' + TINTA + ', 0.24)';
+            ctx.beginPath();
             for (const p of pts) {
+                if (p.calor > 0.04) continue;
+                ctx.moveTo(p.x + 1.4, p.y);
+                ctx.arc(p.x, p.y, 1.4, 0, 6.283);
+            }
+            ctx.fill();
+
+            for (const p of pts) {
+                if (p.calor <= 0.04) continue;
+                ctx.fillStyle = 'rgba(' + TINTA + ', ' + (0.24 + p.calor * 0.5).toFixed(3) + ')';
                 ctx.beginPath();
-                ctx.arc(p.x + p.dx, p.y + p.dy, 1.4, 0, 6.283);
+                ctx.arc(p.x, p.y, 1.4 + p.calor * 1.9, 0, 6.283);
                 ctx.fill();
             }
         }
@@ -797,21 +862,16 @@ document.addEventListener('DOMContentLoaded', () => {
         let ultimo = 0;
         function bucle(ms) {
             raf = requestAnimationFrame(bucle);
-            if (ms - ultimo < 40) return;      // ~25 fps, de sobra para algo tan lento
+            if (ms - ultimo < 33) return;      // ~30 fps
             ultimo = ms;
-            t += 0.006;
+            t += 0.035;                        // vaiven perceptible, no un cuadro fijo
+            vel *= 0.9;                        // el rebote del scroll se apaga solo
+            mover();
             pintar();
         }
 
-        function arrancar() {
-            if (raf) return;
-            raf = requestAnimationFrame(bucle);
-        }
-        // al parar se conserva el ultimo fotograma: la malla sigue ahi, quieta.
-        function parar() {
-            cancelAnimationFrame(raf);
-            raf = 0;
-        }
+        function arrancar() { if (!raf) raf = requestAnimationFrame(bucle); }
+        function parar() { cancelAnimationFrame(raf); raf = 0; }   // conserva el ultimo fotograma
 
         function revisar() {
             const enPantalla = panel.classList.contains('active');
@@ -819,9 +879,23 @@ document.addEventListener('DOMContentLoaded', () => {
             if (enPantalla && !document.hidden) arrancar(); else parar();
         }
 
+        window.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; }, { passive: true });
+        window.addEventListener('mouseout', e => { if (!e.relatedTarget) { mx = my = -9999; cx = cy = -9999; } });
+        window.addEventListener('touchmove', e => {
+            if (e.touches && e.touches[0]) { mx = e.touches[0].clientX; my = e.touches[0].clientY; }
+        }, { passive: true });
+
+        window.addEventListener('scroll', () => {
+            const y = window.scrollY;
+            vel = Math.max(-26, Math.min(26, vel + (y - scrollY) * 0.35));
+            desl += (y - scrollY);
+            scrollY = y;
+        }, { passive: true });
+
         medir();
+        mover();
         pintar();
-        window.addEventListener('resize', () => { medir(); pintar(); });
+        window.addEventListener('resize', () => { medir(); mover(); pintar(); });
         document.addEventListener('visibilitychange', revisar);
         new MutationObserver(revisar).observe(panel, { attributes: true, attributeFilter: ['class'] });
         revisar();
