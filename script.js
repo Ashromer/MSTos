@@ -800,7 +800,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // 1) hilos de fondo, todos de un trazo
             ctx.lineWidth = 1;
-            ctx.strokeStyle = 'rgba(' + TINTA + ', 0.075)';
+            ctx.strokeStyle = 'rgba(' + TINTA + ', 0.038)';
             ctx.beginPath();
             for (let j = 0; j < filas; j++) {
                 for (let i = 0; i < cols; i++) {
@@ -825,7 +825,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         const b = pts[j * cols + i + 1];
                         const k = Math.max(a.calor, b.calor);
                         if (k > 0.04) {
-                            ctx.strokeStyle = 'rgba(' + TINTA + ', ' + (0.075 + k * 0.30).toFixed(3) + ')';
+                            ctx.strokeStyle = 'rgba(' + TINTA + ', ' + (0.038 + k * 0.15).toFixed(3) + ')';
                             ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
                         }
                     }
@@ -833,7 +833,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         const c = pts[(j + 1) * cols + i];
                         const k = Math.max(a.calor, c.calor);
                         if (k > 0.04) {
-                            ctx.strokeStyle = 'rgba(' + TINTA + ', ' + (0.075 + k * 0.30).toFixed(3) + ')';
+                            ctx.strokeStyle = 'rgba(' + TINTA + ', ' + (0.038 + k * 0.15).toFixed(3) + ')';
                             ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(c.x, c.y); ctx.stroke();
                         }
                     }
@@ -841,7 +841,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             // 3) los puntos: los frios de una tacada, los calientes uno a uno
-            ctx.fillStyle = 'rgba(' + TINTA + ', 0.24)';
+            ctx.fillStyle = 'rgba(' + TINTA + ', 0.12)';
             ctx.beginPath();
             for (const p of pts) {
                 if (p.calor > 0.04) continue;
@@ -852,7 +852,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             for (const p of pts) {
                 if (p.calor <= 0.04) continue;
-                ctx.fillStyle = 'rgba(' + TINTA + ', ' + (0.24 + p.calor * 0.5).toFixed(3) + ')';
+                ctx.fillStyle = 'rgba(' + TINTA + ', ' + (0.12 + p.calor * 0.25).toFixed(3) + ')';
                 ctx.beginPath();
                 ctx.arc(p.x, p.y, 1.4 + p.calor * 1.9, 0, 6.283);
                 ctx.fill();

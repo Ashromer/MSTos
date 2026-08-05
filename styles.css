@@ -2194,6 +2194,15 @@ header.scrolled .nav-links.active .lang-btn.active {
    que es justo la pantalla donde mas sentido tiene. Se deja transparente. */
 #panel-technology .tab-intro-block { background-color: transparent; }
 
+/* La animacion de entrada de los paneles lleva un translateY, y un ancestro con
+   transform convierte el position:fixed del canvas en relativo a EL: la malla se
+   quedaba clavada arriba y solo salia en la primera pantalla. Este panel entra
+   solo con opacidad, sin transform, y asi la malla acompana a todo el scroll. */
+@keyframes fade-reveal-flat { from { opacity: 0; } to { opacity: 1; } }
+#panel-technology.tab-panel.active {
+    animation: fade-reveal-flat 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
 @media (prefers-reduced-motion: reduce) { .tech-mesh { display: none; } }
 
 /* --- APARTADO 03: ritmo comun de todos los bloques ---
