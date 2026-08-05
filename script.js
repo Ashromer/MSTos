@@ -4,6 +4,25 @@ document.addEventListener('DOMContentLoaded', () => {
         window.lucide.createIcons();
     }
 
+    // --- ALTURA REAL DEL HEADER FIJO ---
+    // El header es fixed y opaco: todo lo que entra por arriba (heroes, indices,
+    // bloques de intro) necesita reservar exactamente su alto. Medirlo evita el
+    // numero magico de 120px, que sobra en movil y se queda corto en pantallas grandes.
+    const siteHeader = document.querySelector('header');
+    function syncHeaderHeight() {
+        if (!siteHeader) return;
+        // Al hacer scroll el header se encoge y se vuelve transparente: hay que medir
+        // SIEMPRE el estado desplegado, que es el que tapa la parte alta de la pagina.
+        const wasScrolled = siteHeader.classList.contains('scrolled');
+        if (wasScrolled) siteHeader.classList.remove('scrolled');
+        const h = Math.round(siteHeader.getBoundingClientRect().height);
+        if (wasScrolled) siteHeader.classList.add('scrolled');
+        if (h > 0) document.documentElement.style.setProperty('--header-h', h + 'px');
+    }
+    syncHeaderHeight();
+    window.addEventListener('resize', syncHeaderHeight);
+    window.addEventListener('load', syncHeaderHeight);
+
     // --- CUSTOM MINIMAL CURSOR ---
     const cursor = document.querySelector('.custom-cursor');
     const follower = document.querySelector('.custom-cursor-follower');
@@ -722,6 +741,39 @@ document.addEventListener('DOMContentLoaded', () => {
         if (prev) prev.addEventListener('click', () => goTo(idx - 1));
         if (next) next.addEventListener('click', () => goTo(idx + 1));
 
+        // Pantalla completa: las laminas no pueden salirse de los margenes de la
+        // pagina, asi que este es el sitio donde un plano se puede leer de verdad.
+        const foot = reel.querySelector('.mv-reel-foot');
+        if (foot && reel.requestFullscreen) {
+            const fsBtn = document.createElement('button');
+            fsBtn.type = 'button';
+            fsBtn.className = 'mv-reel-full';
+            fsBtn.innerHTML =
+                '<i data-lucide="maximize"></i>' +
+                '<span class="lang-es">Pantalla completa</span><span class="lang-en">Full screen</span>';
+            foot.appendChild(fsBtn);
+
+            fsBtn.addEventListener('click', () => {
+                if (document.fullscreenElement === reel) {
+                    document.exitFullscreen();
+                } else {
+                    reel.requestFullscreen().catch(() => {});
+                }
+            });
+
+            // al entrar y salir cambia el ancho del carrete: hay que recolocar la lamina
+            reel.addEventListener('fullscreenchange', () => {
+                const full = document.fullscreenElement === reel;
+                fsBtn.querySelectorAll('span').forEach(s => {
+                    if (s.classList.contains('lang-es')) s.textContent = full ? 'Salir' : 'Pantalla completa';
+                    if (s.classList.contains('lang-en')) s.textContent = full ? 'Exit' : 'Full screen';
+                });
+                requestAnimationFrame(() => {
+                    track.scrollLeft = slides[idx].offsetLeft - track.offsetLeft;
+                });
+            });
+        }
+
         // el indice real lo manda el scroll (tambien con gesto tactil o rueda)
         let settle;
         track.addEventListener('scroll', () => {
@@ -740,6 +792,36 @@ document.addEventListener('DOMContentLoaded', () => {
 
         paint();
     });
+
+    // los botones de pantalla completa se han creado ahora: pintar sus iconos
+    if (window.lucide) window.lucide.createIcons();
+
+    // --- VIDEOS: parar el que no se esta viendo ---
+    // Un video en autoplay seguia sonando y consumiendo al salir de pantalla
+    // (o al cambiar de pestana del sitio). Solo se reproduce lo que se ve.
+    if ('IntersectionObserver' in window) {
+        const videoObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                const v = entry.target;
+                if (entry.isIntersecting) {
+                    // respetar una pausa hecha a mano por el usuario
+                    if (v.dataset.userPaused !== '1') v.play().catch(() => {});
+                } else if (!v.paused) {
+                    v.dataset.autoPaused = '1';
+                    v.pause();
+                }
+            });
+        }, { threshold: 0.25 });
+
+        document.querySelectorAll('video').forEach(v => {
+            v.addEventListener('pause', () => {
+                if (v.dataset.autoPaused === '1') { v.dataset.autoPaused = ''; return; }
+                v.dataset.userPaused = '1';
+            });
+            v.addEventListener('play', () => { v.dataset.userPaused = ''; });
+            videoObserver.observe(v);
+        });
+    }
 
     // --- SCROLL COLLAPSE STATE FOR HEADER ---
     const header = document.querySelector('header');

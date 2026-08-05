@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 170" width="300" height="170" role="img" aria-label="Campillos: dos crujias con cubierta a dos aguas en torno a un patio">
+  <g fill="#000000">
+    <!-- crujia existente: volumen alto con chimenea -->
+    <path d="M24,146 L24,92 L76,40 L128,92 L128,146 Z"/>
+    <rect x="95" y="46" width="12" height="21"/>
+    <!-- crujia nueva: volumen mas bajo y ancho -->
+    <path d="M172,146 L172,104 L224,58 L276,104 L276,146 Z"/>
+    <!-- tapia de la galeria: el patio queda entre las dos crujias -->
+    <rect x="128" y="129" width="44" height="17"/>
+  </g>
+</svg>

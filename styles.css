@@ -13,6 +13,10 @@
 }
 
 :root {
+    /* Alto real del header fijo: script.js lo remide en cada resize.
+       Este valor es solo el fallback antes de que corra el JS. */
+    --header-h: 88px;
+
     --bg-base: #ffffff; /* Pure minimal white */
     --bg-surface: #f7f7f7; /* Very light neutral grey */
     --bg-surface-solid: #ebebeb;
@@ -531,17 +535,17 @@ header {
 
 .section-tag {
     font-family: var(--font-sans);
-    font-size: 0.75rem;
+    font-size: 0.72rem;
     font-weight: 600;
-    letter-spacing: 0.20em;
-    color: var(--accent-color);
+    letter-spacing: 0.22em;
+    color: var(--text-muted);
     text-transform: uppercase;
     margin-bottom: 0.8rem;
 }
 
 .section-title {
     font-family: var(--font-serif);
-    font-size: 3rem;
+    font-size: clamp(2rem, 4vw, 3rem);
     font-weight: 300;
     letter-spacing: -0.01em;
     color: var(--text-primary);
@@ -551,7 +555,8 @@ header {
 /* --- PLAY-TIME.ES FULL SCREEN PROJECTS STACK --- */
 .project-section-block {
     position: relative;
-    width: 100vw;
+    /* 100% y no 100vw: 100vw incluye la barra de scroll y empuja la pagina 6px */
+    width: 100%;
     height: 100vh;
     margin-bottom: 0;
     background-color: #ffffff;
@@ -910,7 +915,7 @@ header {
 
 .bim-sub {
     font-family: var(--font-serif);
-    font-size: 2.2rem;
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
     font-weight: 400;
     margin-bottom: 1.5rem;
 }
@@ -1091,24 +1096,27 @@ header {
     color: var(--text-secondary);
 }
 
-.tech-card-list {
-    font-family: var(--font-sans);
-    font-size: 0.8rem;
-    font-weight: 300;
-    line-height: 1.6;
-    color: var(--text-secondary);
-    list-style-type: none;
+/* etiquetas de tecnologia al pie de cada tarjeta */
+.tech-tags {
+    list-style: none;
     display: flex;
-    flex-direction: column;
-    gap: 0.8rem;
-    margin-top: 0.5rem;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-top: auto;
+    padding-top: 1.3rem;
     border-top: 1px solid var(--border-color);
-    padding-top: 1.2rem;
 }
 
-.tech-card-list li strong {
+.tech-tags li {
+    font-family: var(--font-sans);
+    font-size: 0.64rem;
     font-weight: 500;
-    color: var(--text-primary);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    background: var(--bg-base);
+    border: 1px solid var(--border-color);
+    padding: 0.3rem 0.6rem;
 }
 
 /* --- TECH SIGNATURE: CNC toolpath + key metrics --- */
@@ -1117,7 +1125,7 @@ header {
     grid-template-columns: 1.6fr 1fr;
     gap: 3.5rem;
     align-items: center;
-    margin-top: 4rem;
+    margin: 4rem 0 5rem;
     padding: 3rem;
     background: var(--bg-surface);
     border: 1px solid var(--border-color);
@@ -1169,7 +1177,7 @@ header {
 
 .metric-num {
     font-family: var(--font-serif);
-    font-size: 3.2rem;
+    font-size: clamp(2.4rem, 4vw, 3.2rem);
     font-weight: 400;
     line-height: 1;
     color: var(--text-primary);
@@ -1962,7 +1970,9 @@ body.lang-en .lang-es { display: none !important; }
 
 /* --- SERVICE INTRO BLOCKS (Tab Entrances) --- */
 .tab-intro-block {
-    width: 100vw;
+    /* 100% y no 100vw: con barra de scroll visible, 100vw sobresale ~15px
+       y empuja la pagina a lo ancho */
+    width: 100%;
     /* min-height, no height: con height fijo el centrado flex desborda hacia ARRIBA
        cuando el contenido es mas alto que el hueco y el texto se mete bajo el header negro */
     min-height: 100vh;
@@ -1971,7 +1981,7 @@ body.lang-en .lang-es { display: none !important; }
     justify-content: center;
     background-color: var(--bg-base);
     border-bottom: 1px solid var(--border-color);
-    padding: 120px clamp(2.5rem, 9vw, 9rem) 4rem; /* Top padding shifts content below fixed header */
+    padding: calc(var(--header-h) + 3rem) clamp(2.5rem, 9vw, 9rem) 4rem; /* Top padding shifts content below fixed header */
 }
 
 .intro-content-wrapper {
@@ -1985,38 +1995,25 @@ body.lang-en .lang-es { display: none !important; }
     gap: 1.8rem;
 }
 
+/* Mismo rotulo que .arch-eyebrow / .section-tag: los tres apartados se
+   presentan igual (NN // Etiqueta, gris, sin filete). */
 .intro-tag {
     font-family: var(--font-sans);
-    font-size: 0.8rem;
+    font-size: 0.72rem;
     font-weight: 600;
-    letter-spacing: 0.25em;
-    color: var(--accent-color);
+    letter-spacing: 0.22em;
+    color: var(--text-muted);
     text-transform: uppercase;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.9rem;
-}
-.intro-tag::before {
-    content: "";
-    width: 2.6rem;
-    height: 1px;
-    background: currentColor;
-    opacity: 0.55;
 }
 
 .intro-title {
     font-family: var(--font-serif);
-    font-size: 3.8rem;
+    /* fluido: de movil a television sin saltos ni reglas !important */
+    font-size: clamp(2rem, 5.2vw, 3.8rem);
     font-weight: 300;
     line-height: 1.1;
     color: var(--text-primary);
     max-width: 16ch;
-}
-
-@media (max-width: 768px) {
-    .intro-title {
-        font-size: 2.5rem;
-    }
 }
 
 .intro-desc {
@@ -2051,12 +2048,16 @@ body.lang-en .lang-es { display: none !important; }
 /* --- BOXED LAYOUT CONTAINER FOR TEXT TABS --- */
 .page-container {
     width: 100%;
-    padding: 130px 4rem 6rem;
+    /* Tope de ancho: en monitores grandes y televisores el texto a 2500px es ilegible.
+       En rem para que crezca con el tamano de fuente de las pantallas grandes. */
+    max-width: 94rem;
+    margin: 0 auto;
+    padding: calc(var(--header-h) + 3.5rem) clamp(1.2rem, 4vw, 4rem) 6rem;
 }
 
 /* --- FULL-BLEED EDITORIAL BREAK PAGES --- */
 .editorial-section-block.full-bleed-page {
-    width: 100vw;
+    width: 100%;
     height: 100vh;
     background-color: #0c0c0c;
     display: flex;
@@ -2167,25 +2168,29 @@ header.scrolled .nav-links.active .lang-btn.active {
     color: #ffffff;
 }
 
-/* --- TECHNOLOGY CASE STUDIES SECTION --- */
-.tech-cases-section {
-    margin-top: 6rem;
+/* --- APARTADO 03: ritmo comun de todos los bloques ---
+   Un solo sitio decide cuanto respiran entre si: antes cada bloque traia su
+   propio margin/border y unos se pegaban mientras otros se separaban de mas. */
+.tech-block + .tech-block {
+    margin-top: 7rem;
+    padding-top: 7rem;
     border-top: 1px solid var(--border-color);
-    padding-top: 6rem;
 }
 
-.tech-cases-header {
-    margin-bottom: 4rem;
+.tech-block-head {
+    margin-bottom: 3.5rem;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
 }
 
+.tech-block-head .tech-services-lead { margin-top: 1.2rem; }
+
 .tech-cases-tag {
     font-family: var(--font-sans);
-    font-size: 0.75rem;
+    font-size: 0.72rem;
     font-weight: 600;
-    letter-spacing: 0.20em;
+    letter-spacing: 0.22em;
     color: var(--text-muted);
     text-transform: uppercase;
     margin-bottom: 0.8rem;
@@ -2193,7 +2198,7 @@ header.scrolled .nav-links.active .lang-btn.active {
 
 .tech-cases-title {
     font-family: var(--font-serif);
-    font-size: 2.8rem;
+    font-size: clamp(1.85rem, 3.6vw, 2.8rem);
     font-weight: 300;
     letter-spacing: -0.01em;
     color: var(--text-primary);
@@ -2251,7 +2256,16 @@ header.scrolled .nav-links.active .lang-btn.active {
     display: flex;
     flex-direction: column;
     gap: 1.2rem;
+    /* min-width:auto (el defecto en grid/flex) deja que el bloque de codigo,
+       que no rompe linea, estire la celda y con ella toda la pagina */
+    min-width: 0;
 }
+
+.tech-case-item > *,
+.tech-services-grid > *,
+.tech-cards-grid > *,
+.tech-steps > *,
+.bim-grid > * { min-width: 0; }
 
 .case-tag {
     font-family: var(--font-sans);
@@ -2264,7 +2278,7 @@ header.scrolled .nav-links.active .lang-btn.active {
 
 .case-info h4 {
     font-family: var(--font-serif);
-    font-size: 1.8rem;
+    font-size: clamp(1.35rem, 2.4vw, 1.8rem);
     font-weight: 400;
     color: var(--text-primary);
     line-height: 1.2;
@@ -2284,6 +2298,8 @@ header.scrolled .nav-links.active .lang-btn.active {
     margin: 0.4rem 0 0;
     border: 1px solid var(--border-color);
     background: #0e0e0e;
+    max-width: 100%;
+    overflow: hidden;
 }
 
 .code-proof figcaption {
@@ -2358,12 +2374,6 @@ header.scrolled .nav-links.active .lang-btn.active {
 }
 
 /* --- TECH: contratable services + CTA --- */
-.tech-services {
-    margin-top: 8rem;
-    padding-top: 5rem;
-    border-top: 1px solid var(--border-color);
-}
-
 .tech-services-lead {
     font-family: var(--font-sans);
     font-size: 1rem;
@@ -2414,7 +2424,7 @@ header.scrolled .nav-links.active .lang-btn.active {
 
 .tech-service-head h4 {
     font-family: var(--font-serif);
-    font-size: 1.55rem;
+    font-size: clamp(1.25rem, 2.1vw, 1.55rem);
     font-weight: 400;
     line-height: 1.15;
     color: var(--text-primary);
@@ -2440,7 +2450,7 @@ header.scrolled .nav-links.active .lang-btn.active {
 }
 
 .tech-cta {
-    margin-top: 5rem;
+    margin-top: 7rem;
     padding: 4.5rem 3rem;
     background: var(--text-primary);
     color: #fff;
@@ -2453,7 +2463,7 @@ header.scrolled .nav-links.active .lang-btn.active {
 
 .tech-cta-title {
     font-family: var(--font-serif);
-    font-size: 2.4rem;
+    font-size: clamp(1.7rem, 3.4vw, 2.4rem);
     font-weight: 300;
     line-height: 1.15;
     color: #fff;
@@ -2501,6 +2511,164 @@ header.scrolled .nav-links.active .lang-btn.active {
 
 .tech-cta-btn:hover i {
     transform: translateX(5px);
+}
+
+/* --- TECH: a quien va dirigido (entrada del apartado) --- */
+.intro-audience {
+    list-style: none;
+    width: 100%;
+    max-width: 860px;
+    margin-top: 0.4rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.8rem 3rem;
+    text-align: left;
+}
+
+.intro-audience li {
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border-color);
+}
+
+.ia-key {
+    font-family: var(--font-sans);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text-primary);
+}
+
+.ia-val {
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    font-weight: 300;
+    line-height: 1.7;
+    color: var(--text-secondary);
+}
+
+@media (max-width: 700px) {
+    .intro-audience { grid-template-columns: 1fr; gap: 1.3rem; }
+}
+
+/* --- TECH: los problemas de partida --- */
+.tech-pains {
+    list-style: none;
+    border-top: 1px solid var(--border-color);
+}
+
+.tech-pain {
+    display: grid;
+    grid-template-columns: 4rem 1fr;
+    gap: 1.5rem;
+    align-items: start;
+    padding: 2.4rem 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+/* el ultimo filete sobra: el bloque siguiente ya trae el suyo */
+.tech-pain:last-child { border-bottom: none; }
+
+.pain-num {
+    font-family: var(--font-sans);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    color: var(--text-muted);
+    padding-top: 0.5rem;
+}
+
+.pain-body h4 {
+    font-family: var(--font-serif);
+    font-size: clamp(1.3rem, 2.3vw, 1.6rem);
+    font-weight: 400;
+    line-height: 1.25;
+    color: var(--text-primary);
+    margin-bottom: 0.7rem;
+}
+
+.pain-body p {
+    font-family: var(--font-sans);
+    font-size: 0.92rem;
+    font-weight: 300;
+    line-height: 1.75;
+    color: var(--text-secondary);
+    max-width: 68ch;
+}
+
+@media (max-width: 700px) {
+    .tech-pain { grid-template-columns: 1fr; gap: 0.6rem; padding: 1.8rem 0; }
+    .pain-num { padding-top: 0; }
+}
+
+/* --- TECH: el encargo paso a paso --- */
+.tech-steps {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--border-color);
+    border: 1px solid var(--border-color);
+}
+
+.tech-step {
+    background: var(--bg-base);
+    padding: 2.2rem 1.8rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+}
+
+.step-num {
+    font-family: var(--font-sans);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    color: var(--text-muted);
+}
+
+.tech-step h4 {
+    font-family: var(--font-serif);
+    font-size: 1.45rem;
+    font-weight: 400;
+    line-height: 1.15;
+    color: var(--text-primary);
+}
+
+.tech-step p {
+    font-family: var(--font-sans);
+    font-size: 0.87rem;
+    font-weight: 300;
+    line-height: 1.7;
+    color: var(--text-secondary);
+}
+
+.step-when {
+    margin-top: auto;
+    padding-top: 1.1rem;
+    border-top: 1px solid var(--border-color);
+    font-family: var(--font-sans);
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-primary);
+}
+
+@media (max-width: 1100px) { .tech-steps { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 640px) { .tech-steps { grid-template-columns: 1fr; } }
+
+.tech-note {
+    margin-top: 1.6rem;
+    font-family: var(--font-sans);
+    font-size: 0.82rem;
+    font-weight: 300;
+    line-height: 1.7;
+    color: var(--text-muted);
+    max-width: 70ch;
 }
 
 @media (max-width: 950px) {
@@ -2997,7 +3165,7 @@ html.snap-mode .editorial-section-block.full-bleed-page {
 }
 
 /* === ARQUITECTURA: índice (manifiesto + 7 logos) + vistas de proyecto === */
-.arch-index { max-width: 1180px; margin: 0 auto; padding: 120px 2.5rem 7rem; }
+.arch-index { max-width: 74rem; margin: 0 auto; padding: calc(var(--header-h) + 3rem) 2.5rem 7rem; }
 .arch-index.hidden { display: none; }
 
 .arch-manifesto { max-width: 840px; margin: 0 auto 4.5rem; text-align: center; }
@@ -3049,7 +3217,7 @@ html.snap-mode .editorial-section-block.full-bleed-page {
     flex-direction: column;
     align-items: center;
     gap: 0.9rem;
-    width: 200px;
+    width: 12.5rem;
     padding: 1rem 0.5rem;
     transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
 }
@@ -3102,7 +3270,7 @@ html.snap-mode .editorial-section-block.full-bleed-page {
 
 @media (max-width: 700px) {
     .arch-logo { width: 44%; }
-    .arch-index { padding: 104px 1.5rem 5rem; }
+    .arch-index { padding: calc(var(--header-h) + 2rem) 1.5rem 5rem; }
 }
 
 .arch-view { display: none; position: relative; padding-bottom: 7rem; }
@@ -3111,7 +3279,7 @@ html.snap-mode .editorial-section-block.full-bleed-page {
 /* Back button floats over the hero, clear of the fixed black header */
 .arch-back {
     position: absolute;
-    top: 104px;
+    top: calc(var(--header-h) + 1rem);
     left: 1.6rem;
     z-index: 50;
     display: inline-flex;
@@ -3134,16 +3302,18 @@ html.snap-mode .editorial-section-block.full-bleed-page {
 .arch-back:hover { background: #fff; }
 
 /* --- MVRDV-style project page --- */
-/* El header es fixed y opaco: sin este hueco se come la parte alta de la imagen */
-.mv-hero { width: 100%; height: 100vh; margin: 0; background: var(--bg-surface); padding-top: 120px; box-sizing: border-box; }
+/* El header es fixed y opaco: sin este hueco se come la parte alta de la imagen.
+   El hueco va en NEGRO y del alto exacto del header, para que se lea como
+   continuacion de la banda y no como un margen blanco sobre la imagen. */
+.mv-hero { width: 100%; height: 100vh; margin: 0; background: #000; padding-top: var(--header-h); box-sizing: border-box; }
 .mv-hero img { width: 100%; height: 100%; object-fit: cover; display: block; border: none; }
-.mv-hero.contain { background: #f0efe9; }
-.mv-hero.contain img { object-fit: contain; padding: 1.5rem; }
+.mv-hero.contain { background: #000; }
+.mv-hero.contain img { object-fit: contain; padding: 1.5rem; background: #f0efe9; }
 /* hero a sangre SIN recorte: ocupa todo el ancho y crece en alto lo que pida la imagen */
-.mv-hero.full { height: auto; background: transparent; }
+.mv-hero.full { height: auto; }
 .mv-hero.full img { width: 100%; height: auto; object-fit: fill; }
 
-.mv-intro { max-width: 1100px; margin: 0 auto; padding: 4.5rem 2.5rem 0; }
+.mv-intro { max-width: 69rem; margin: 0 auto; padding: 4.5rem 2.5rem 0; }
 .mv-num {
     font-family: var(--font-sans);
     font-size: 0.72rem; font-weight: 600; letter-spacing: 0.2em;
@@ -3162,7 +3332,7 @@ html.snap-mode .editorial-section-block.full-bleed-page {
 }
 
 .mv-grid {
-    max-width: 1100px; margin: 0 auto; padding: 3.5rem 2.5rem;
+    max-width: 69rem; margin: 0 auto; padding: 3.5rem 2.5rem;
     display: grid; grid-template-columns: 1.7fr 1fr; gap: 4rem; align-items: start;
 }
 @media (max-width: 850px) { .mv-grid { grid-template-columns: 1fr; gap: 2.5rem; } }
@@ -3191,12 +3361,26 @@ html.snap-mode .editorial-section-block.full-bleed-page {
     font-family: var(--font-sans); font-size: 0.8rem; color: var(--text-primary); text-align: right;
 }
 
-.mv-fig { width: 100%; max-width: 1100px; margin: 0 auto 1.5rem; padding: 0 2.5rem; }
-.mv-fig img, .mv-fig video { width: 100%; display: block; background: var(--bg-surface); }
+/* === REGLA DE ORO DE LAS VISTAS DE PROYECTO (norma del autor, 2026-08-05) ===
+   1. NADA sobrepasa los margenes generales de la pagina (69rem): ni planos ni laminas.
+   2. Toda imagen se ve ENTERA en pantalla -> ancho automatico + tope de alto.
+   3. La unica que ocupa la pantalla completa es la imagen de inicio (.mv-hero).
+   Por eso el ancho de la figura es el de la columna y el alto manda cuando la
+   lamina es vertical: una imagen alargada a todo ancho no cabria en pantalla.   */
+.mv-fig { width: 100%; max-width: 69rem; margin: 0 auto 1.5rem; padding: 0 2.5rem; text-align: center; }
+.mv-fig img, .mv-fig video {
+    width: auto;
+    max-width: 100%;
+    max-height: calc(100vh - var(--header-h) - 4rem);
+    margin: 0 auto;
+    display: block;
+    background: var(--bg-surface);
+}
 .mv-fig object { width: 100%; height: 78vh; display: block; border: 1px solid var(--border-color); background: var(--bg-surface); }
 .mv-fig figcaption {
     font-family: var(--font-sans); font-size: 0.72rem; font-weight: 300;
     color: var(--text-muted); margin-top: 0.7rem; display: flex; gap: 0.6rem;
+    text-align: left;
 }
 .mv-fig .fc-num { font-weight: 600; color: var(--text-secondary); }
 
@@ -3204,7 +3388,7 @@ html.snap-mode .editorial-section-block.full-bleed-page {
 .mv-fig-2 figure { margin: 0; }
 @media (max-width: 700px) { .mv-fig-2 { grid-template-columns: 1fr; } }
 
-.mv-block { max-width: 1100px; margin: 0 auto; padding: 2.5rem 2.5rem 0; }
+.mv-block { max-width: 69rem; margin: 0 auto; padding: 2.5rem 2.5rem 0; }
 .mv-block p {
     font-family: var(--font-sans); font-size: 0.98rem; font-weight: 300;
     line-height: 1.85; color: var(--text-secondary); margin-bottom: 1.3rem; max-width: 720px;
@@ -3212,11 +3396,20 @@ html.snap-mode .editorial-section-block.full-bleed-page {
 
 /* --- staggered image+text rows --- */
 .mv-split {
-    max-width: 1100px; margin: 0 auto 2.6rem; padding: 0 2.5rem;
+    max-width: 69rem; margin: 0 auto 2.6rem; padding: 0 2.5rem;
     display: grid; grid-template-columns: 1.55fr 1fr; gap: 2.8rem; align-items: center;
 }
 .mv-split figure { margin: 0; }
-.mv-split img, .mv-split video { width: 100%; display: block; background: var(--bg-surface); }
+/* misma regla que en .mv-fig: la imagen que acompana al texto tambien tiene que
+   verse entera en pantalla (axonometrias de torre, despieces en vertical...) */
+.mv-split img, .mv-split video {
+    width: auto;
+    max-width: 100%;
+    max-height: calc(100vh - var(--header-h) - 6rem);
+    margin: 0 auto;
+    display: block;
+    background: var(--bg-surface);
+}
 .mv-split figcaption {
     font-family: var(--font-sans); font-size: 0.72rem; font-weight: 300;
     color: var(--text-muted); margin-top: 0.7rem; display: flex; gap: 0.6rem;
@@ -3234,9 +3427,19 @@ html.snap-mode .editorial-section-block.full-bleed-page {
 .mv-split.flip .mv-split-media { order: 2; }
 .mv-split.flip .mv-split-text { text-align: right; }
 
+/* esquema pequeno pegado al margen izquierdo, con el texto ocupando el resto:
+   para diagramas que no necesitan tamano pero si una explicacion larga al lado */
+.mv-split.diagram { grid-template-columns: 0.78fr 1.22fr; align-items: start; }
+.mv-split.diagram .mv-split-media { justify-self: start; }
+.mv-split.diagram .mv-split-media img { margin: 0; }
+
+/* NORMA DEL AUTOR (2026-08-05): las laminas van SIEMPRE a todo ancho y nunca
+   con texto al lado. En .mv-split solo quedan fotos, renders y video; cualquier
+   plano, panel de concurso, despiece o detalle va en .mv-fig / .mv-fig.plan. */
+
 /* --- uneven, vertically offset image pair --- */
 .mv-duo {
-    max-width: 1100px; margin: 0 auto 2.6rem; padding: 0 2.5rem;
+    max-width: 69rem; margin: 0 auto 2.6rem; padding: 0 2.5rem;
     display: grid; grid-template-columns: 1.25fr 0.75fr; gap: 1.8rem; align-items: start;
 }
 .mv-duo.right { grid-template-columns: 0.75fr 1.25fr; }
@@ -3254,12 +3457,18 @@ html.snap-mode .editorial-section-block.full-bleed-page {
 /* imagen que necesita respirar: mas aire arriba y abajo */
 .mv-fig.air { margin-top: 4.5rem; margin-bottom: 4.5rem; }
 .mv-block.right p { margin-left: auto; text-align: right; }
+/* entradilla en serif dentro de un bloque de texto (antes vivia solo en .mv-split-text) */
+.mv-block p.lead {
+    font-family: var(--font-serif); font-size: 1.3rem; line-height: 1.45;
+    font-weight: 400; color: var(--text-primary); margin-bottom: 1.1rem;
+}
 
 /* --- carrete horizontal de laminas (planos, paginas de PDF) ---
-   Ocupa TODO el ancho: los planos necesitan tamano para leerse. El texto que los
-   acompana va siempre encima o debajo, nunca al lado. */
-.mv-reel { max-width: none; margin: 0 auto 3.2rem; padding: 0 clamp(1.5rem, 4vw, 4rem); }
+   Dentro de los margenes de la pagina como todo lo demas; para leer un plano
+   de verdad esta el boton de pantalla completa. El texto va encima o debajo. */
+.mv-reel { max-width: 69rem; margin: 0 auto 3.2rem; padding: 0 2.5rem; }
 .mv-reel-viewport { position: relative; }
+.mv-reel-track img { max-height: calc(100vh - var(--header-h) - 8rem); width: auto; max-width: 100%; margin: 0 auto; }
 .mv-reel-track {
     display: flex; gap: 1.2rem; overflow-x: auto; overscroll-behavior-x: contain;
     scroll-snap-type: x mandatory; scroll-behavior: smooth;
@@ -3301,8 +3510,49 @@ html.snap-mode .editorial-section-block.full-bleed-page {
     font-family: var(--font-sans); font-size: 0.7rem; font-weight: 400;
     letter-spacing: 0.12em; color: var(--text-muted); margin-left: auto;
 }
+
+/* --- carrete a pantalla completa: la unica forma de leer un plano sin
+       sacar la lamina de los margenes de la pagina --- */
+.mv-reel-full {
+    display: inline-flex; align-items: center; gap: 0.45rem;
+    padding: 0.35rem 0.75rem; margin-left: 0.9rem;
+    border: 1px solid var(--border-color); background: var(--bg-base);
+    font-family: var(--font-sans); font-size: 0.63rem; font-weight: 600;
+    letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-primary);
+    cursor: pointer; transition: var(--transition-fast);
+}
+.mv-reel-full:hover { background: var(--text-primary); color: #fff; border-color: var(--text-primary); }
+.mv-reel-full i, .mv-reel-full svg { width: 13px; height: 13px; }
+
+.mv-reel:fullscreen {
+    max-width: none; width: 100vw; height: 100vh; margin: 0;
+    padding: 1.2rem clamp(1rem, 3vw, 3rem);
+    background: #0c0c0c;
+    display: flex; flex-direction: column; justify-content: center; gap: 0.8rem;
+}
+.mv-reel:fullscreen .mv-reel-viewport { flex: 1 1 auto; min-height: 0; display: flex; }
+.mv-reel:fullscreen .mv-reel-track { flex: 1 1 auto; align-items: center; padding-bottom: 0; }
+.mv-reel:fullscreen .mv-reel-track > figure {
+    height: 100%; display: flex; flex-direction: column; justify-content: center;
+}
+.mv-reel:fullscreen .mv-reel-track img {
+    max-height: calc(100vh - 7rem); width: auto; max-width: 100%;
+    border-color: rgba(255, 255, 255, 0.12); background: #0c0c0c;
+}
+.mv-reel:fullscreen figcaption,
+.mv-reel:fullscreen .mv-reel-count { color: rgba(255, 255, 255, 0.65); }
+.mv-reel:fullscreen figcaption .fc-num { color: rgba(255, 255, 255, 0.9); }
+.mv-reel:fullscreen .mv-reel-dot { background: rgba(255, 255, 255, 0.25); }
+.mv-reel:fullscreen .mv-reel-dot.active { background: #fff; }
+.mv-reel:fullscreen .mv-reel-full {
+    background: transparent; color: rgba(255, 255, 255, 0.8);
+    border-color: rgba(255, 255, 255, 0.25);
+}
+.mv-reel:fullscreen .mv-reel-full:hover { background: #fff; color: #111; }
+.mv-reel:fullscreen .mv-reel-arrow.prev { left: 6px; }
+.mv-reel:fullscreen .mv-reel-arrow.next { right: 6px; }
 /* rotulo de texto propio del carrete, encima de la tira */
-.mv-reel-head { max-width: 1100px; margin: 0 auto 1.4rem; padding: 0 2.5rem; }
+.mv-reel-head { max-width: 69rem; margin: 0 auto 1.4rem; padding: 0 2.5rem; }
 .mv-reel-head .lead {
     font-family: var(--font-serif); font-size: 1.3rem; line-height: 1.45;
     font-weight: 400; color: var(--text-primary); margin-bottom: 0.9rem;
@@ -3312,15 +3562,27 @@ html.snap-mode .editorial-section-block.full-bleed-page {
     line-height: 1.8; color: var(--text-secondary); margin-bottom: 1rem; max-width: 760px;
 }
 
-/* figura a sangre, de lado a lado de la pantalla */
-.mv-fig.bleed { max-width: none; padding: 0; margin-bottom: 2.6rem; }
-.mv-fig.bleed img { width: 100%; height: auto; }
-.mv-fig.bleed figcaption { max-width: 1100px; margin: 0.7rem auto 0; padding: 0 2.5rem; }
+/* .bleed y .plan quedan como alias historicos: desde la norma del autor NADA
+   sobrepasa los margenes de la pagina, asi que se comportan como .mv-fig normal.
+   La lamina que necesite verse mas grande se abre a pantalla completa desde el carrete. */
+.mv-fig.bleed, .mv-fig.plan { max-width: 69rem; padding: 0 2.5rem; margin-bottom: 2.6rem; }
+
+/* "DE LADO A LADO": la lamina ocupa todo el ancho de los margenes de la pagina y
+   renuncia al tope de alto. El autor la prefiere grande y legible aunque haya que
+   recorrerla (emplazamiento y plantas de Barbate, planta+seccion de Kaira Looro). */
+.mv-fig.full img { width: 100%; max-height: none; }
+
+@media (max-width: 700px) {
+    /* en movil el tope de alto deja la lamina ilegible: manda el ancho y se recorre */
+    .mv-fig img { max-height: none; width: 100%; }
+}
 
 @media (max-width: 850px) {
-    .mv-split, .mv-split.flip { grid-template-columns: 1fr; gap: 1.4rem; }
+    .mv-split, .mv-split.flip, .mv-split.diagram { grid-template-columns: 1fr; gap: 1.4rem; }
     .mv-split.flip .mv-split-media { order: 0; }
     .mv-split.flip .mv-split-text { text-align: left; }
+    /* el esquema pequeno, centrado como el resto cuando ya no hay texto al lado */
+    .mv-split.diagram .mv-split-media img { margin: 0 auto; }
     .mv-duo, .mv-duo.right { grid-template-columns: 1fr; }
     .mv-duo .offset { margin-top: 0; }
     .mv-reel-arrow.prev { left: 4px; }
@@ -3340,18 +3602,15 @@ html.snap-mode .editorial-section-block.full-bleed-page {
 
     /* 2. Main Page Containers & Content Spacing */
     .page-container {
-        padding: 100px 1.2rem 4rem !important;
+        padding: calc(var(--header-h) + 2rem) 1.2rem 4rem !important;
     }
 
     .tab-intro-block {
         height: auto !important;
-        min-height: 100vh !important;
-        padding: 100px 1.2rem 3rem !important;
+        min-height: 100svh !important;
+        padding: calc(var(--header-h) + 2rem) 1.2rem 3rem !important;
     }
 
-    .intro-title {
-        font-size: clamp(2rem, 7vw, 2.8rem) !important;
-    }
 
     /* 3. General Project and Article Paddings */
     .project-article {
@@ -3360,7 +3619,7 @@ html.snap-mode .editorial-section-block.full-bleed-page {
     }
 
     .arch-index {
-        padding: 100px 1.2rem 5rem !important;
+        padding: calc(var(--header-h) + 2rem) 1.2rem 5rem !important;
     }
 
     .mv-intro {
@@ -3494,4 +3753,75 @@ html.snap-mode .editorial-section-block.full-bleed-page {
     .case-image-wrapper {
         order: -1 !important;
     }
+
+    /* Los casos de estudio se quedaban a dos columnas hasta 0px: en un movil
+       el texto caia en una columna de 150px. Aqui pasan a una sola columna. */
+    .tech-case-item,
+    .tech-case-item.inverse {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    .tech-case-item.inverse .case-image-wrapper { order: -1; }
+}
+
+/* =====================================================================
+   9. TABLET Y PORTATIL PEQUENO (769–1100): el hueco entre movil y escritorio
+   ===================================================================== */
+@media (min-width: 769px) and (max-width: 1100px) {
+    .header-container,
+    header.scrolled .header-container { padding: 1.2rem 2rem; }
+
+    .tech-pipeline { padding: 2.2rem 1.2rem; gap: 1rem; }
+    .pipe-stage { flex: 1 1 130px; }
+
+    .arch-logos { gap: 2.2rem 2.5rem; }
+    .arch-logo { width: 10.5rem; }
+}
+
+/* =====================================================================
+   10. MOVIL: alto de ventana estable (Android/iOS esconden la barra de
+   direcciones y 100vh salta al hacer scroll). svh = alto MINIMO visible.
+   ===================================================================== */
+@media (max-width: 768px) {
+    .mv-hero { height: 100svh; }
+    .project-section-block,
+    .editorial-section-block.full-bleed-page { height: 100svh; }
+    .selector-grid { min-height: 100svh !important; }
+
+    /* Dedos, no raton: nada pulsable por debajo de 44px de alto */
+    .console-btn,
+    .mv-reel-arrow,
+    .block-arrow,
+    .tech-cta-btn,
+    .nav-link-btn { min-height: 44px; }
+
+    .tech-block + .tech-block { margin-top: 4.5rem; padding-top: 4.5rem; }
+    .tech-block-head { margin-bottom: 2.2rem; }
+    .tech-cta { margin-top: 4.5rem; }
+    .bim-grid { padding-bottom: 3rem; margin-bottom: 3rem; }
+    .tech-signature { margin: 2.5rem 0 3rem; }
+    .tech-pipeline { margin-bottom: 3rem; padding: 2rem 1rem; }
+    .tech-cases-list { gap: 4rem; }
+
+    /* Ninguna tabla, codigo o carrete puede empujar la pagina a lo ancho */
+    .code-proof pre { max-width: 100%; }
+    .tech-tags li { font-size: 0.6rem; }
+}
+
+/* =====================================================================
+   11. PANTALLAS GRANDES Y TELEVISORES
+   El sitio se maquetaba a 16px pase lo que pase: en un monitor 4K o una tele
+   el texto quedaba diminuto y las lineas larguisimas. Subir la raiz escala
+   tipografia, margenes y anchos maximos a la vez, porque casi todo va en rem.
+   ===================================================================== */
+@media (min-width: 1700px) {
+    html { font-size: 17.5px; }
+}
+
+@media (min-width: 2300px) {
+    html { font-size: 20px; }
+}
+
+@media (min-width: 3000px) {
+    html { font-size: 24px; }
 }
