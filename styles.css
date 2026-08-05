@@ -2190,6 +2190,10 @@ header.scrolled .nav-links.active .lang-btn.active {
 #panel-technology .tab-intro-block,
 #panel-technology .page-container { position: relative; z-index: 1; }
 
+/* el bloque de entrada trae fondo blanco OPACO: sobre el la malla no se veria,
+   que es justo la pantalla donde mas sentido tiene. Se deja transparente. */
+#panel-technology .tab-intro-block { background-color: transparent; }
+
 @media (prefers-reduced-motion: reduce) { .tech-mesh { display: none; } }
 
 /* --- APARTADO 03: ritmo comun de todos los bloques ---
