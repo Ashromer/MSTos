@@ -713,6 +713,120 @@ document.addEventListener('DOMContentLoaded', () => {
         btn.addEventListener('click', closeArchProject);
     });
 
+    // --- APARTADO 03: MALLA DE PUNTOS DE FONDO ---
+    // Retícula que se deforma muy despacio detras del texto. Reglas que se cumplen
+    // siempre: nunca por encima del contenido, nunca a mas del 5% de tinta, y se
+    // PARA cuando no se ve (otra pestana del sitio, pestana del navegador oculta o
+    // el usuario pide menos movimiento). Si no, es una animacion quemando bateria.
+    (function techMesh() {
+        const panel = document.getElementById('panel-technology');
+        if (!panel) return;
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+        const cv = document.createElement('canvas');
+        cv.className = 'tech-mesh';
+        cv.setAttribute('aria-hidden', 'true');
+        panel.prepend(cv);
+        const ctx = cv.getContext('2d');
+
+        const PASO = 62;          // separacion de la reticula, en px
+        const AMPL = 9;           // cuanto se desplaza cada punto
+        const TINTA = '17, 17, 17';
+        let pts = [], w = 0, h = 0, dpr = 1, raf = 0, t = 0;
+
+        function medir() {
+            dpr = Math.min(window.devicePixelRatio || 1, 2);
+            w = window.innerWidth;
+            h = window.innerHeight;
+            cv.width = Math.round(w * dpr);
+            cv.height = Math.round(h * dpr);
+            cv.style.width = w + 'px';
+            cv.style.height = h + 'px';
+            ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+            pts = [];
+            const cols = Math.ceil(w / PASO) + 1;
+            const filas = Math.ceil(h / PASO) + 1;
+            for (let j = 0; j < filas; j++) {
+                for (let i = 0; i < cols; i++) {
+                    pts.push({ x: i * PASO, y: j * PASO, f: (i * 0.7 + j * 1.3) });
+                }
+            }
+            pts.cols = cols;
+            pts.filas = filas;
+        }
+
+        function pintar() {
+            ctx.clearRect(0, 0, w, h);
+            const cols = pts.cols;
+
+            for (const p of pts) {
+                p.dx = Math.sin(t + p.f) * AMPL;
+                p.dy = Math.cos(t * 0.8 + p.f * 0.6) * AMPL;
+            }
+
+            // hilos al vecino de la derecha y al de abajo
+            ctx.lineWidth = 1;
+            ctx.strokeStyle = 'rgba(' + TINTA + ', 0.10)';
+            ctx.beginPath();
+            for (let j = 0; j < pts.filas; j++) {
+                for (let i = 0; i < cols; i++) {
+                    const a = pts[j * cols + i];
+                    if (i < cols - 1) {
+                        const b = pts[j * cols + i + 1];
+                        ctx.moveTo(a.x + a.dx, a.y + a.dy);
+                        ctx.lineTo(b.x + b.dx, b.y + b.dy);
+                    }
+                    if (j < pts.filas - 1) {
+                        const c = pts[(j + 1) * cols + i];
+                        ctx.moveTo(a.x + a.dx, a.y + a.dy);
+                        ctx.lineTo(c.x + c.dx, c.y + c.dy);
+                    }
+                }
+            }
+            ctx.stroke();
+
+            ctx.fillStyle = 'rgba(' + TINTA + ', 0.30)';
+            for (const p of pts) {
+                ctx.beginPath();
+                ctx.arc(p.x + p.dx, p.y + p.dy, 1.4, 0, 6.283);
+                ctx.fill();
+            }
+        }
+
+        let ultimo = 0;
+        function bucle(ms) {
+            raf = requestAnimationFrame(bucle);
+            if (ms - ultimo < 40) return;      // ~25 fps, de sobra para algo tan lento
+            ultimo = ms;
+            t += 0.006;
+            pintar();
+        }
+
+        function arrancar() {
+            if (raf) return;
+            raf = requestAnimationFrame(bucle);
+        }
+        // al parar se conserva el ultimo fotograma: la malla sigue ahi, quieta.
+        function parar() {
+            cancelAnimationFrame(raf);
+            raf = 0;
+        }
+
+        function revisar() {
+            const enPantalla = panel.classList.contains('active');
+            cv.classList.toggle('on', enPantalla);
+            if (enPantalla && !document.hidden) arrancar(); else parar();
+        }
+
+        medir();
+        pintar();
+        window.addEventListener('resize', () => { medir(); pintar(); });
+        document.addEventListener('visibilitychange', revisar);
+        new MutationObserver(revisar).observe(panel, { attributes: true, attributeFilter: ['class'] });
+        revisar();
+    })();
+
     // --- VISOR 3D DE PLANCHAS (caso del catalogo) ---
     // model-viewer pesa lo suyo: solo se carga cuando el visor entra en pantalla,
     // asi el resto del sitio no paga por una pieza que casi nadie llega a ver.

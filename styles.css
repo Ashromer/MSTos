@@ -2171,6 +2171,27 @@ header.scrolled .nav-links.active .lang-btn.active {
     color: #ffffff;
 }
 
+/* --- APARTADO 03: malla de puntos de fondo ---
+   Fondo ambiente, no decoracion: una retícula que se deforma muy despacio, al 5%
+   de opacidad. Va DEBAJO de todo (z-index 0) y el contenido se eleva a 1, para que
+   no pelee ni con el texto ni con las laminas. */
+.tech-mesh {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 1.2s ease;
+}
+.tech-mesh.on { opacity: 1; }
+
+#panel-technology .tab-intro-block,
+#panel-technology .page-container { position: relative; z-index: 1; }
+
+@media (prefers-reduced-motion: reduce) { .tech-mesh { display: none; } }
+
 /* --- APARTADO 03: ritmo comun de todos los bloques ---
    Un solo sitio decide cuanto respiran entre si: antes cada bloque traia su
    propio margin/border y unos se pegaban mientras otros se separaban de mas. */
@@ -2321,18 +2342,26 @@ header.scrolled .nav-links.active .lang-btn.active {
 .sheet3d-hint i, .sheet3d-hint svg { width: 13px; height: 13px; }
 .sheet3d-fallback { width: 100%; height: auto; display: block; }
 
-/* tira de paginas de apoyo dentro del texto del caso */
+/* tira de paginas de apoyo dentro del texto del caso, al tresbolillo */
 .case-strip {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 0.6rem;
-    margin-top: 0.5rem;
+    gap: 0.7rem;
+    align-items: start;
+    margin-top: 0.8rem;
 }
 .case-strip img {
     width: 100%;
     display: block;
     border: 1px solid var(--border-color);
     background: var(--bg-base);
+}
+.case-strip img:nth-child(2) { margin-top: 2.4rem; }
+.case-strip img:nth-child(3) { margin-top: 1.1rem; }
+
+@media (max-width: 700px) {
+    .case-strip img:nth-child(2),
+    .case-strip img:nth-child(3) { margin-top: 0; }
 }
 
 .case-info {
