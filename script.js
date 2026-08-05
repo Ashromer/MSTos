@@ -612,12 +612,15 @@ document.addEventListener('DOMContentLoaded', () => {
     // El visitante escribe y envia SIN que se le abra el cliente de correo.
     // La web es estatica (GitHub Pages, sin servidor), asi que el envio tiene que
     // pasar por un servicio externo. Dos caminos, por orden de preferencia:
-    //   1) Web3Forms, si se pega abajo una Access Key gratuita (https://web3forms.com).
+    //   1) Web3Forms, si hay Access Key. La clave NO se pone aqui: va en el
+    //      <meta name="web3forms-key"> de index.html, porque el HTML no se cachea
+    //      con numero de version y el cambio se ve al instante.
     //   2) FormSubmit, que NO necesita clave. Ojo: la primera vez que alguien envie,
     //      llega un correo de confirmacion a CONTACT_EMAIL y hay que pulsar su enlace
     //      UNA sola vez; hasta entonces los mensajes no se entregan.
     // El mailto queda solo como ultimo recurso si falla la red.
-    const WEB3FORMS_ACCESS_KEY = '';
+    const WEB3FORMS_ACCESS_KEY =
+        (document.querySelector('meta[name="web3forms-key"]') || {}).content || '';
     const CONTACT_EMAIL = 'MiguelS@MSToslab.com';
 
     const contactForm = document.getElementById('contact-form');
