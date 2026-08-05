@@ -205,6 +205,10 @@ document.addEventListener('DOMContentLoaded', () => {
             window.lucide.createIcons();
         }
         refreshCursorHoverListeners();
+
+        // la primera vez que se entra, la primera tarjeta hace un guino
+        if (tabId === 'architecture' && window.__hintFirstLogo) window.__hintFirstLogo('panel-architecture');
+        if (tabId === 'visualization' && window.__hintFirstLogo) window.__hintFirstLogo('panel-visualization');
     }
 
 
@@ -251,8 +255,17 @@ document.addEventListener('DOMContentLoaded', () => {
         refreshCursorHoverListeners();
     }
 
-    // Set default language on load
-    const savedLang = localStorage.getItem('mst_portfolio_lang') || 'es';
+    // Idioma inicial: manda lo que el visitante eligio a mano; si nunca ha elegido,
+    // se mira el idioma del NAVEGADOR (no la IP: no hace falta servicio externo, no
+    // hay latencia ni datos de terceros, y acierta mas — un espanol en Londres sigue
+    // leyendo en castellano). Si no queda claro, ingles.
+    function detectLang() {
+        const list = navigator.languages && navigator.languages.length
+            ? navigator.languages
+            : [navigator.language || ''];
+        return list.some(l => String(l).toLowerCase().startsWith('es')) ? 'es' : 'en';
+    }
+    const savedLang = localStorage.getItem('mst_portfolio_lang') || detectLang();
     setLanguage(savedLang);
 
 
@@ -699,6 +712,109 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('[data-arch-close]').forEach(btn => {
         btn.addEventListener('click', closeArchProject);
     });
+
+    // --- PORTADA: la imagen de cada panel va rotando ---
+    // Solo se usan imagenes que YA estan referenciadas en el HTML, para que sigan
+    // subiendo con publicar_imagenes.ps1 y no haya que mantener una lista aparte.
+    const PANEL_BGS = {
+        architecture: [
+            'content/arquitectura/lighthouse/05_Hero%20shot.jpg',
+            'content/arquitectura/orkide/00_Inicio.jpg',
+            'content/arquitectura/waraqa/5_Fotomontaje%201_enhanced.jpg',
+            'content/arquitectura/barbate/01.jpg'
+        ],
+        visualization: [
+            'content/visualizacion/sem/01.jpg',
+            'content/visualizacion/caixaforum/01.jpg',
+            'content/visualizacion/kaira-looro/01.jpg',
+            'content/visualizacion/tec/01.jpg',
+            'content/visualizacion/csic/02.jpg'
+        ],
+        technology: [
+            'content/tech/cnc-snake-path/01.jpg',
+            'content/tech/metalperfil/01.jpg',
+            'content/tech/canopy-ia/01.jpg',
+            'content/tech/dynamo-suite/01.jpg'
+        ]
+    };
+
+    (function rotatePanelBackgrounds() {
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+        document.querySelectorAll('.selector-panel').forEach(panel => {
+            const pool = PANEL_BGS[panel.getAttribute('data-tab')];
+            if (!pool || pool.length < 2) return;
+
+            const base = panel.querySelector('.panel-bg');
+            if (!base) return;
+
+            // capa gemela por encima: se cruza la opacidad y se intercambian papeles
+            const fader = base.cloneNode(false);
+            fader.classList.add('panel-bg-fade');
+            fader.style.opacity = '0';
+            base.parentNode.insertBefore(fader, base.nextSibling);
+
+            let i = 0;
+            let top = fader;      // capa que entra
+            let bottom = base;    // capa visible
+
+            setInterval(() => {
+                i = (i + 1) % pool.length;
+                const url = pool[i];
+                const pre = new Image();
+                pre.onload = () => {
+                    top.style.backgroundImage = "url('" + url + "')";
+                    top.style.opacity = '1';
+                    setTimeout(() => {
+                        bottom.style.opacity = '0';
+                        const t = top; top = bottom; bottom = t;   // intercambio de papeles
+                    }, 1400);
+                };
+                pre.src = url;
+            }, 30000);
+        });
+    })();
+
+    // --- AFFORDANCE DE LOS LOGOS DE PROYECTO ---
+    // Una rejilla de logos en gris se lee como un muro de clientes y nadie la clica.
+    // Se le anade a cada tarjeta un numero de orden, una flecha permanente y un
+    // rotulo que aparece al pasar por encima. Se inyecta desde aqui para no repetir
+    // el mismo marcado 21 veces en el HTML.
+    document.querySelectorAll('.arch-logos').forEach(grid => {
+        const cards = grid.querySelectorAll('.arch-logo');
+        cards.forEach((card, i) => {
+            if (card.querySelector('.arch-logo-go')) return;
+
+            const num = document.createElement('span');
+            num.className = 'arch-logo-num';
+            num.textContent = String(i + 1).padStart(2, '0');
+            card.prepend(num);
+
+            const go = document.createElement('span');
+            go.className = 'arch-logo-go';
+            go.setAttribute('aria-hidden', 'true');
+            go.innerHTML = '<i data-lucide="arrow-up-right"></i>';
+            card.appendChild(go);
+
+            const cta = document.createElement('span');
+            cta.className = 'arch-logo-cta';
+            cta.innerHTML = '<span class="lang-es">Ver proyecto</span>' +
+                            '<span class="lang-en">View project</span>';
+            card.appendChild(cta);
+        });
+    });
+
+    // guino en la primera tarjeta la primera vez que se abre cada panel
+    const hinted = {};
+    function hintFirstLogo(panelId) {
+        if (hinted[panelId]) return;
+        hinted[panelId] = true;
+        const first = document.querySelector('#' + panelId + ' .arch-logo');
+        if (!first) return;
+        first.classList.add('hint');
+        setTimeout(() => first.classList.remove('hint'), 5000);
+    }
+    window.__hintFirstLogo = hintFirstLogo;
 
     // --- ARCHITECTURE: carretes horizontales de laminas (.mv-reel) ---
     document.querySelectorAll('.mv-reel').forEach(reel => {

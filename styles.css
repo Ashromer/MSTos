@@ -207,9 +207,12 @@ body {
     background-size: cover;
     background-position: center;
     filter: grayscale(90%) contrast(1.05) brightness(0.75);
-    transition: transform 1.5s cubic-bezier(0.16, 1, 0.3, 1), filter 0.8s ease;
+    transition: transform 1.5s cubic-bezier(0.16, 1, 0.3, 1), filter 0.8s ease, opacity 1.4s ease;
     z-index: 1;
 }
+
+/* capa gemela para el relevo de imagen de portada cada 30 s (script.js) */
+.panel-bg-fade { transition: opacity 1.4s ease; }
 
 .panel-overlay {
     position: absolute;
@@ -2252,6 +2255,26 @@ header.scrolled .nav-links.active .lang-btn.active {
     filter: grayscale(0%) contrast(1.02);
 }
 
+/* lamina ancha (comparativa, doble pagina de catalogo): se ve entera, sin recorte
+   ni zoom, porque lo que hay que leer es el dibujo y no la atmosfera */
+.case-image-wrapper.wide { aspect-ratio: auto; background: var(--bg-base); }
+.case-image-wrapper.wide img { height: auto; object-fit: contain; filter: none; }
+.tech-case-item:hover .case-image-wrapper.wide img { transform: none; filter: none; }
+
+/* tira de paginas de apoyo dentro del texto del caso */
+.case-strip {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.6rem;
+    margin-top: 0.5rem;
+}
+.case-strip img {
+    width: 100%;
+    display: block;
+    border: 1px solid var(--border-color);
+    background: var(--bg-base);
+}
+
 .case-info {
     display: flex;
     flex-direction: column;
@@ -2562,11 +2585,38 @@ header.scrolled .nav-links.active .lang-btn.active {
 
 .tech-pain {
     display: grid;
-    grid-template-columns: 4rem 1fr;
-    gap: 1.5rem;
-    align-items: start;
+    grid-template-columns: 3.5rem 1fr 13rem;
+    gap: 1.5rem 2rem;
+    align-items: center;
     padding: 2.4rem 0;
     border-bottom: 1px solid var(--border-color);
+}
+
+/* cada problema con su dibujo a la derecha: se entiende antes de leerlo */
+.pain-art {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.pain-art svg {
+    width: 100%;
+    height: auto;
+    max-width: 190px;
+    fill: none;
+    stroke: var(--text-secondary);
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    transition: stroke 0.35s ease;
+}
+.pain-art svg .p-fill { fill: var(--text-secondary); stroke: none; }
+.pain-art svg .p-soft { stroke: var(--border-color); }
+.tech-pain:hover .pain-art svg { stroke: var(--text-primary); }
+
+@media (max-width: 980px) {
+    .tech-pain { grid-template-columns: 3.5rem 1fr; }
+    .pain-art { grid-column: 2; justify-content: flex-start; margin-top: 0.4rem; }
+    .pain-art svg { max-width: 170px; }
 }
 
 /* el ultimo filete sobra: el bloque siguiente ya trae el suyo */
@@ -3205,24 +3255,129 @@ html.snap-mode .editorial-section-block.full-bleed-page {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 3rem 3.5rem;
+    gap: 1.6rem;
     border-top: 1px solid var(--border-color);
     padding-top: 4rem;
 }
 
+/* Visualizacion tiene DOS caminos (entrar a un proyecto o seguir bajando) y hay
+   que decirlo con iconos, no con un parrafo que nadie lee. */
+.arch-ways {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 0.9rem 1.4rem;
+    margin: 0 auto 2.6rem;
+}
+.arch-way {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    font-family: var(--font-sans);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text-primary);
+}
+.arch-way i, .arch-way svg { width: 15px; height: 15px; stroke-width: 1.6; color: var(--text-muted); }
+.arch-way:last-of-type i { animation: way-bob 2.4s ease-in-out infinite; }
+@keyframes way-bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(3px); } }
+.arch-ways-or {
+    font-family: var(--font-serif);
+    font-size: 0.95rem;
+    font-style: italic;
+    color: var(--text-muted);
+}
+@media (prefers-reduced-motion: reduce) { .arch-way:last-of-type i { animation: none; } }
+
+/* Una fila de logos en gris se lee como un muro de "clientes con los que trabajo"
+   y nadie la clica. Marco de tarjeta + numero + flecha SIEMPRE visible para que
+   se lea como lo que es: la puerta de entrada a cada proyecto. */
 .arch-logo {
-    background: none;
-    border: none;
+    position: relative;
+    background: var(--bg-base);
+    border: 1px solid var(--border-color);
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 0.9rem;
-    width: 12.5rem;
-    padding: 1rem 0.5rem;
-    transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+    gap: 0.75rem;
+    width: 13.5rem;
+    padding: 2.4rem 1rem 1.2rem;
+    cursor: pointer;
+    transition: border-color 0.35s ease, transform 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+                box-shadow 0.35s ease;
 }
 
-.arch-logo:hover { transform: scale(1.07); }
+.arch-logo:hover,
+.arch-logo:focus-visible {
+    border-color: var(--text-primary);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.05);
+    outline: none;
+}
+
+/* numero de orden, arriba a la izquierda: implica secuencia, invita a empezar */
+.arch-logo-num {
+    position: absolute;
+    top: 0.85rem;
+    left: 1rem;
+    font-family: var(--font-sans);
+    font-size: 0.62rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    color: var(--text-muted);
+    transition: color 0.35s ease;
+}
+.arch-logo:hover .arch-logo-num { color: var(--text-primary); }
+
+/* la flecha es el unico "texto" que funciona con quien no lee: siempre visible */
+.arch-logo-go {
+    position: absolute;
+    top: 0.7rem;
+    right: 0.9rem;
+    width: 22px;
+    height: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-muted);
+    transition: color 0.35s ease, transform 0.35s ease;
+}
+.arch-logo-go svg { width: 15px; height: 15px; stroke-width: 1.6; }
+.arch-logo:hover .arch-logo-go { color: var(--text-primary); transform: translateX(3px); }
+
+/* al abrir el panel, la primera tarjeta hace un guino una sola vez */
+.arch-logo.hint .arch-logo-go { animation: logo-hint 1.5s ease-in-out 3; }
+@keyframes logo-hint {
+    0%, 100% { transform: translateX(0); color: var(--text-muted); }
+    50%      { transform: translateX(5px); color: var(--text-primary); }
+}
+
+/* rotulo que aparece al pasar por encima: promete adonde lleva */
+.arch-logo-cta {
+    font-family: var(--font-sans);
+    font-size: 0.58rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--text-primary);
+    opacity: 0;
+    transform: translateY(4px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+.arch-logo:hover .arch-logo-cta,
+.arch-logo:focus-visible .arch-logo-cta { opacity: 1; transform: translateY(0); }
+
+@media (hover: none) {
+    /* sin raton no hay hover: el rotulo se queda puesto */
+    .arch-logo-cta { opacity: 1; transform: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .arch-logo.hint .arch-logo-go { animation: none; }
+}
 
 .arch-logo-imgwrap {
     height: 80px;
