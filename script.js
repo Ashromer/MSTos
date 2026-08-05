@@ -608,9 +608,15 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // --- CONTACT FORM (Web3Forms async send + mailto fallback) ---
-    // Pega aquí tu Access Key gratuita de https://web3forms.com (verificación por email).
-    // Mientras esté vacía, el formulario abre el cliente de correo como respaldo.
+    // --- FORMULARIO DE CONTACTO ---
+    // El visitante escribe y envia SIN que se le abra el cliente de correo.
+    // La web es estatica (GitHub Pages, sin servidor), asi que el envio tiene que
+    // pasar por un servicio externo. Dos caminos, por orden de preferencia:
+    //   1) Web3Forms, si se pega abajo una Access Key gratuita (https://web3forms.com).
+    //   2) FormSubmit, que NO necesita clave. Ojo: la primera vez que alguien envie,
+    //      llega un correo de confirmacion a CONTACT_EMAIL y hay que pulsar su enlace
+    //      UNA sola vez; hasta entonces los mensajes no se entregan.
+    // El mailto queda solo como ultimo recurso si falla la red.
     const WEB3FORMS_ACCESS_KEY = '';
     const CONTACT_EMAIL = 'MiguelS@MSToslab.com';
 
@@ -646,39 +652,52 @@ document.addEventListener('DOMContentLoaded', () => {
                     + '&body=' + encodeURIComponent(body);
             };
 
-            // Sin clave configurada → respaldo mailto inmediato
-            if (!WEB3FORMS_ACCESS_KEY) {
-                statusEl.className = 'form-status';
-                statusEl.textContent = t('Abriendo tu cliente de correo…', 'Opening your email client…');
-                openMailto();
-                return;
-            }
-
             statusEl.className = 'form-status';
             statusEl.textContent = t('Enviando…', 'Sending…');
             if (submitBtn) submitBtn.disabled = true;
 
             try {
-                const res = await fetch('https://api.web3forms.com/submit', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-                    body: JSON.stringify({
-                        access_key: WEB3FORMS_ACCESS_KEY,
-                        subject, name, email,
-                        area, message,
-                        from_name: name,
-                        replyto: email
-                    })
-                });
-                const data = await res.json();
-                if (data.success) {
+                let data;
+                if (WEB3FORMS_ACCESS_KEY) {
+                    const res = await fetch('https://api.web3forms.com/submit', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                        body: JSON.stringify({
+                            access_key: WEB3FORMS_ACCESS_KEY,
+                            subject, name, email,
+                            area, message,
+                            from_name: name,
+                            replyto: email
+                        })
+                    });
+                    data = await res.json();
+                } else {
+                    // sin clave: FormSubmit acepta el envio directamente contra el correo
+                    const res = await fetch('https://formsubmit.co/ajax/' + encodeURIComponent(CONTACT_EMAIL), {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                        body: JSON.stringify({
+                            _subject: subject,
+                            _template: 'table',
+                            _captcha: 'false',
+                            Nombre: name,
+                            Correo: email,
+                            Area: area,
+                            Mensaje: message
+                        })
+                    });
+                    data = await res.json();
+                }
+
+                if (data && String(data.success) === 'true') {
                     statusEl.className = 'form-status is-ok';
                     statusEl.textContent = t('¡Mensaje enviado! Te responderé pronto.', 'Message sent! I\'ll get back to you soon.');
                     contactForm.reset();
                 } else {
-                    throw new Error(data.message || 'send failed');
+                    throw new Error((data && data.message) || 'send failed');
                 }
             } catch (err) {
+                // ultimo recurso: que el mensaje no se pierda aunque falle el servicio
                 statusEl.className = 'form-status is-err';
                 statusEl.textContent = t('No se pudo enviar. Abriendo tu correo…', 'Couldn\'t send. Opening your email…');
                 openMailto();
