@@ -2261,6 +2261,66 @@ header.scrolled .nav-links.active .lang-btn.active {
 .case-image-wrapper.wide img { height: auto; object-fit: contain; filter: none; }
 .tech-case-item:hover .case-image-wrapper.wide img { transform: none; filter: none; }
 
+/* --- VISOR 3D DE PLANCHAS ---
+   El propio proyecto llevaba un visor de perfiles: aqui se reutilizan sus .glb
+   (37 modelos, 0,9 MB en total) para que la plancha se pueda girar en la pagina.
+   model-viewer se carga solo cuando el visor entra en pantalla. */
+.sheet3d {
+    position: relative;
+    border: 1px solid var(--border-color);
+    background: var(--bg-surface);
+    display: flex;
+    flex-direction: column;
+}
+.sheet3d-view {
+    width: 100%;
+    height: clamp(260px, 42vh, 420px);
+    background: var(--bg-surface);
+    --poster-color: transparent;
+}
+/* mientras no ha cargado el modulo, el hueco no salta */
+.sheet3d:not(.ready) .sheet3d-view { display: block; }
+.sheet3d-pick {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1px;
+    background: var(--border-color);
+    border-top: 1px solid var(--border-color);
+}
+.sheet3d-pick button {
+    flex: 1 1 auto;
+    padding: 0.6rem 0.4rem;
+    border: none;
+    background: var(--bg-base);
+    font-family: var(--font-sans);
+    font-size: 0.6rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: background 0.25s ease, color 0.25s ease;
+}
+.sheet3d-pick button:hover { background: var(--bg-surface); color: var(--text-primary); }
+.sheet3d-pick button.active { background: var(--text-primary); color: #fff; }
+.sheet3d-hint {
+    position: absolute;
+    top: 0.7rem;
+    left: 0.9rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-family: var(--font-sans);
+    font-size: 0.58rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    pointer-events: none;
+}
+.sheet3d-hint i, .sheet3d-hint svg { width: 13px; height: 13px; }
+.sheet3d-fallback { width: 100%; height: auto; display: block; }
+
 /* tira de paginas de apoyo dentro del texto del caso */
 .case-strip {
     display: grid;

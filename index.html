@@ -30,7 +30,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <!-- Lucide Icons (versión fijada para evitar roturas de @latest) -->
     <script defer src="https://unpkg.com/lucide@1.21.0"></script>
-    <link rel="stylesheet" href="styles.css?v=1.3.0">
+    <link rel="stylesheet" href="styles.css?v=1.4.0">
 </head>
 <body class="lang-es">
 
@@ -461,6 +461,17 @@
                             <p class="lang-en">Nothing changes between one situation and the other except the water level. That is the whole strategy.</p>
                         </div>
                         <figure class="mv-fig full"><img src="content/arquitectura/lighthouse/08_Axonometria%20Explicacion%20Proyecto.jpg" alt="Esquema del sistema anfibio" loading="lazy"><figcaption><span class="fc-num">10</span><span class="lang-es">Un mismo módulo, dos estaciones: montaje en seco a la derecha, flotando y conectado por barcas a la izquierda</span><span class="lang-en">One module, two seasons: dry assembly on the right, floating and linked by boats on the left</span></figcaption></figure>
+
+                        <div class="mv-block">
+                            <p class="lead lang-es">Lo que de verdad se propone no es un edificio: es un protocolo.</p>
+                            <p class="lead lang-en">What is really being proposed is not a building: it is a protocol.</p>
+                            <p class="lang-es">Cualquiera puede levantarlo. No hace falta un contratista ni una grúa: hacen falta unas cuantas personas, una tarde y una lista de piezas que caben en un camión. Esa es la única forma de que un centro de emergencia llegue a tiempo, porque el momento en que se necesita es exactamente el momento en que no hay medios para construirlo.</p>
+                            <p class="lang-en">Anyone can put it up. No contractor and no crane are needed: what is needed is a handful of people, an afternoon and a parts list that fits in one truck. That is the only way an emergency centre arrives in time, because the moment it is needed is exactly the moment when there are no means to build it.</p>
+                            <p class="lang-es">Por eso todas las decisiones del proyecto van en la misma dirección: ninguna pieza más pesada de lo que levantan dos personas, ninguna unión que exija soldadura, ningún material que no se pueda comprar en un radio corto. El proyecto no termina cuando se monta; termina cuando el siguiente se monta sin nosotros.</p>
+                            <p class="lang-en">That is why every decision in the project points the same way: no part heavier than two people can lift, no joint that requires welding, no material that cannot be bought within a short radius. The project does not end when it goes up; it ends when the next one goes up without us.</p>
+                            <p class="lang-es">Y cuando el agua baja, el faro no se desmonta ni se abandona: se queda ahí, en seco, esperando la siguiente crecida. Un edificio de emergencia que solo sirve durante la emergencia es un edificio a medias.</p>
+                            <p class="lang-en">And when the water recedes, the lighthouse is neither dismantled nor abandoned: it stays there, dry, waiting for the next flood. An emergency building that only works during the emergency is only half a building.</p>
+                        </div>
 
                         <figure class="mv-fig"><img src="content/arquitectura/lighthouse/09_Cierre.jpg" alt="El faro reflejado sobre el agua al atardecer" loading="lazy"><figcaption><span class="fc-num">11</span><span class="lang-es">El faro reflejado sobre el agua al atardecer, con los drones de suministro llegando</span><span class="lang-en">The lighthouse mirrored on the water at dusk, with the supply drones arriving</span></figcaption></figure>
                     </article>
@@ -1088,11 +1099,6 @@
                 <!-- Project Block 1: CaixaForum Málaga -->
                 <!-- Project Block 2: CSIC -->
                 <!-- Project Block 3: SEM -->
-                <!-- EDITORIAL BREAK 1 -->
-                <div class="editorial-section-block full-bleed-page" style="background-color:#E9F2F1;">
-                    <img loading="lazy" decoding="async" src="assets/Portfolio_Imagery_MIIM_Página_16.png" alt="Editorial Break">
-                </div>
-
                 <!-- Project Block 4: Kaira Looro Lighthouse -->
                 <div class="project-section-block bleed" data-project="kaira-looro">
                     <div class="block-slider">
@@ -1202,6 +1208,12 @@
                         <div class="block-slide-dots pf-dots"></div>
                     </div>
                 </div>
+
+                <!-- EDITORIAL BREAK 1 -->
+                <div class="editorial-section-block full-bleed-page" style="background-color:#E9F2F1;">
+                    <img loading="lazy" decoding="async" src="assets/Portfolio_Imagery_MIIM_Página_16.png" alt="Editorial Break">
+                </div>
+
 
                 <div class="project-section-block bleed" data-project="caixaforum">
                     <div class="block-slider">
@@ -1913,8 +1925,28 @@
                             </div>
 
                             <div class="tech-case-item inverse">
-                                <div class="case-image-wrapper wide">
-                                    <img src="content/tech/catalogo-producto/pag_02.jpg" alt="Doble pagina del catalogo: gama de producto y nomenclatura" loading="lazy">
+                                <div class="sheet3d" data-sheet3d>
+                                    <model-viewer class="sheet3d-view"
+                                        src="content/tech/catalogo-producto/models/aceronda.glb"
+                                        alt="Plancha metalica en 3D"
+                                        camera-controls touch-action="pan-y" auto-rotate
+                                        rotation-per-second="12deg"
+                                        shadow-intensity="0.6" exposure="1.05"
+                                        camera-orbit="-35deg 72deg auto"
+                                        interaction-prompt="none"
+                                        loading="lazy"></model-viewer>
+                                    <div class="sheet3d-pick">
+                                        <button type="button" class="active" data-model="content/tech/catalogo-producto/models/aceronda.glb">AcerOnda</button>
+                                        <button type="button" data-model="content/tech/catalogo-producto/models/ritmiko.glb">Ritmiko</button>
+                                        <button type="button" data-model="content/tech/catalogo-producto/models/symetric.glb">Symetric</button>
+                                        <button type="button" data-model="content/tech/catalogo-producto/models/pyramid.glb">Pyramid</button>
+                                        <button type="button" data-model="content/tech/catalogo-producto/models/origami.glb">Origami</button>
+                                        <button type="button" data-model="content/tech/catalogo-producto/models/kubo.glb">Kubo</button>
+                                    </div>
+                                    <span class="sheet3d-hint">
+                                        <i data-lucide="rotate-3d"></i>
+                                        <span class="lang-es">Arrastra para girar la plancha</span><span class="lang-en">Drag to turn the sheet</span>
+                                    </span>
                                 </div>
                                 <div class="case-info">
                                     <span class="case-tag"><span class="lang-es">Consultoría de producto / Diseño editorial / InDesign</span><span class="lang-en">Product consultancy / Editorial design / InDesign</span></span>
@@ -1933,9 +1965,9 @@
                                         <p>Here you cannot split design from engineering: the same person laying out the spread is the one who knows which cover width, which overlap and which tolerance have to be shown for the catalogue to be usable for designing, not just for looking at.</p>
                                     </div>
                                     <div class="case-strip">
-                                        <img src="content/tech/catalogo-producto/pag_01.jpg" alt="Portada del catalogo" loading="lazy">
-                                        <img src="content/tech/catalogo-producto/pag_05.jpg" alt="Doble pagina de sistema" loading="lazy">
-                                        <img src="content/tech/catalogo-producto/pag_07.jpg" alt="Ficha tecnica de producto" loading="lazy">
+                                        <img src="content/tech/catalogo-producto/pag_04.jpg" alt="Indice del catalogo con las siluetas de perfil como hilo conductor" loading="lazy">
+                                        <img src="content/tech/catalogo-producto/pag_06.jpg" alt="Doble pagina de customizacion con obra construida" loading="lazy">
+                                        <img src="content/tech/catalogo-producto/pag_02.jpg" alt="Gama de producto y nomenclatura de sistemas" loading="lazy">
                                     </div>
                                 </div>
                             </div>
@@ -2397,6 +2429,6 @@
     </div>
 
     <!-- Web App Script -->
-    <script src="script.js?v=1.2.0"></script>
+    <script src="script.js?v=1.3.0"></script>
 </body>
 </html>

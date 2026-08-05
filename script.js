@@ -713,6 +713,50 @@ document.addEventListener('DOMContentLoaded', () => {
         btn.addEventListener('click', closeArchProject);
     });
 
+    // --- VISOR 3D DE PLANCHAS (caso del catalogo) ---
+    // model-viewer pesa lo suyo: solo se carga cuando el visor entra en pantalla,
+    // asi el resto del sitio no paga por una pieza que casi nadie llega a ver.
+    document.querySelectorAll('[data-sheet3d]').forEach(box => {
+        const viewer = box.querySelector('model-viewer');
+        const picks = box.querySelectorAll('.sheet3d-pick button');
+        if (!viewer) return;
+
+        picks.forEach(btn => {
+            btn.addEventListener('click', () => {
+                picks.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                viewer.setAttribute('src', btn.getAttribute('data-model'));
+            });
+        });
+
+        if (!('IntersectionObserver' in window)) return;
+        const io = new IntersectionObserver((entries, obs) => {
+            if (!entries.some(e => e.isIntersecting)) return;
+            obs.disconnect();
+            if (!document.querySelector('script[data-model-viewer]')) {
+                const sc = document.createElement('script');
+                sc.type = 'module';
+                sc.dataset.modelViewer = '1';
+                sc.src = 'https://unpkg.com/@google/model-viewer@3.5.0/dist/model-viewer.min.js';
+                document.head.appendChild(sc);
+            }
+            box.classList.add('ready');
+
+            // Red de seguridad: si el modulo no llega (CDN caido, navegador viejo),
+            // el hueco no se queda en gris; se ensena una lamina del catalogo.
+            setTimeout(() => {
+                if (window.customElements && customElements.get('model-viewer')) return;
+                const img = document.createElement('img');
+                img.src = 'content/tech/catalogo-producto/pag_05.jpg';
+                img.alt = 'Doble pagina del catalogo con la gama de perfiles';
+                img.className = 'sheet3d-fallback';
+                viewer.replaceWith(img);
+                box.querySelectorAll('.sheet3d-pick, .sheet3d-hint').forEach(el => el.remove());
+            }, 7000);
+        }, { rootMargin: '400px' });
+        io.observe(box);
+    });
+
     // --- PORTADA: la imagen de cada panel va rotando ---
     // Solo se usan imagenes que YA estan referenciadas en el HTML, para que sigan
     // subiendo con publicar_imagenes.ps1 y no haya que mantener una lista aparte.
