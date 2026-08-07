@@ -1819,6 +1819,13 @@ a.detail-value:hover {
     border-bottom-color: var(--accent-color);
 }
 
+/* Reutiliza .platform-btn (el mismo boton que los perfiles de Quien Soy) dentro
+   de la lista de contacto, que es una columna flex. */
+.contact-wa-btn {
+    align-self: flex-start;
+    margin-top: 0.25rem;
+}
+
 /* Minimal form styling */
 .minimal-contact-form {
     display: flex;
@@ -2120,9 +2127,21 @@ header.scrolled .nav-links:not(.active) {
     display: none !important;
 }
 
+/* Al hacer scroll este logo flota sobre lo que haya debajo: fotos claras, fotos
+   oscuras o fondo blanco. En negro puro desaparecia sobre las imagenes oscuras
+   (el hero de Waraqa, por ejemplo). Se le da la misma chapa que al boton de menu
+   —negro, texto blanco, filo y sombra— para que sea legible sobre cualquier cosa
+   y para que los dos elementos flotantes se lean como pareja. */
 header.scrolled .logo-name.logo-minimal {
     display: block;
     pointer-events: auto;
+    width: fit-content;
+    color: #ffffff;
+    background: #000000;
+    border-left: 3px solid #ffffff;
+    padding: 0.28rem 0.85rem 0.34rem 0.65rem;
+    border-radius: 0 6px 6px 0;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
 }
 
 header.scrolled .mobile-nav-toggle {

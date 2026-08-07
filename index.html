@@ -55,7 +55,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <!-- Lucide Icons (versión fijada para evitar roturas de @latest) -->
     <script defer src="https://unpkg.com/lucide@1.21.0"></script>
-    <link rel="stylesheet" href="styles.css?v=1.7.0">
+    <link rel="stylesheet" href="styles.css?v=1.9.0">
 
     <!-- Datos estructurados: le dicen a Google QUIEN es el autor y a que se dedica,
          en vez de dejarselo adivinar del texto. Es lo que alimenta el panel de
@@ -2422,6 +2422,15 @@
                                         <span class="lang-es">Correo Electrónico</span><span class="lang-en">Email Address</span>
                                     </span>
                                     <a href="mailto:MiguelS@MSToslab.com" class="detail-value">MiguelS@MSToslab.com</a>
+                                </div>
+                                <div class="contact-detail-item">
+                                    <span class="detail-label">WhatsApp</span>
+                                    <!-- Boton, no numero en texto: el telefono sigue estando en el href
+                                         (wa.me lo necesita) pero no queda a la vista ni copiable de un vistazo. -->
+                                    <a href="https://wa.me/34691533425" target="_blank" rel="noopener" class="platform-btn contact-wa-btn">
+                                        <i data-lucide="message-circle"></i>
+                                        <span class="lang-es">Escríbeme por WhatsApp</span><span class="lang-en">Message me on WhatsApp</span>
+                                    </a>
                                 </div>
                                 <div class="contact-detail-item">
                                     <span class="detail-label">
