@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- La web es una sola pagina: los apartados y los proyectos se muestran sin cambiar
+     de URL, asi que no hay mas direcciones que indexar. Si algun dia cada proyecto
+     tiene su propia URL, se añaden aqui. -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://mstoslab.com/</loc>
+    <lastmod>2026-08-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+</urlset>

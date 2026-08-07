@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+# Carpetas de trabajo que no aportan nada a una busqueda y solo gastan rastreo.
+Disallow: /_backup_imagenes_originales_2026-06-24/
+Disallow: /_backup_originales_optim/
+Disallow: /content_backup/
+
+Sitemap: https://mstoslab.com/sitemap.xml

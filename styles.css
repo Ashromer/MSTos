@@ -53,6 +53,21 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 
+/* Contenido solo para buscadores y lectores de pantalla (el h1 de la pagina).
+   No se usa display:none: eso lo borraria tambien del arbol de accesibilidad. */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    white-space: nowrap;
+    border: 0;
+}
+
 /* Scrollbar Customization */
 ::-webkit-scrollbar {
     width: 6px;
@@ -1602,8 +1617,12 @@ footer {
     text-transform: uppercase;
     letter-spacing: 0.05em;
     line-height: 1.6;
+    max-width: 68ch;
 }
 
+/* Este era el unico panel sin tope de ancho: los parrafos llegaban a ~140 caracteres
+   por linea en pantalla grande, el doble de lo comodo. El resto de paneles capan
+   entre 640 y 780px; 68ch deja la medida en linea con ellos. */
 .about-bio p {
     font-family: var(--font-sans);
     font-size: 0.92rem;
@@ -1611,6 +1630,7 @@ footer {
     line-height: 1.8;
     color: var(--text-secondary);
     margin-bottom: 1.2rem;
+    max-width: 68ch;
 }
 .about-bio strong {
     font-weight: 600;
@@ -1924,10 +1944,13 @@ a.detail-value:hover {
     margin-left: 1.5rem;
 }
 
+/* Este selector vive SOLO dentro de la cabecera negra, asi que sus colores tienen
+   que ser claros. Antes usaba --text-primary (#111) para el idioma activo: negro
+   sobre negro, el idioma en el que estabas era literalmente invisible. */
 .lang-btn {
     background: none;
     border: none;
-    color: var(--text-muted);
+    color: rgba(255, 255, 255, 0.6);
     font-weight: 500;
     cursor: none;
     transition: var(--transition-fast);
@@ -1935,16 +1958,16 @@ a.detail-value:hover {
 }
 
 .lang-btn.active {
-    color: var(--text-primary);
+    color: #ffffff;
     font-weight: 700;
 }
 
 .lang-btn:hover {
-    color: var(--accent-color);
+    color: #ffffff;
 }
 
 .lang-separator {
-    color: var(--border-color);
+    color: rgba(255, 255, 255, 0.35);
     font-weight: 300;
     user-select: none;
 }
@@ -2493,9 +2516,14 @@ header.scrolled .nav-links.active .lang-btn.active {
     border-color: var(--accent-color);
 }
 
-.case-proof-link i {
+/* Los iconos de marca (GitHub, LinkedIn) van inline: lucide 1.21 ya no los trae
+   y salian como huecos vacios. Se dimensionan aqui porque el resto de iconos de
+   este bloque se los pone lucide en el propio <svg>. */
+.case-proof-link i,
+.case-proof-link .brand-icon {
     width: 14px;
     height: 14px;
+    flex-shrink: 0;
 }
 
 /* --- TECH: contratable services + CTA --- */
