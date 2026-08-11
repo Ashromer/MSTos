@@ -2130,7 +2130,7 @@ header.scrolled .nav-links:not(.active) {
 /* Al hacer scroll este logo flota sobre lo que haya debajo: fotos claras, fotos
    oscuras o fondo blanco. En negro puro desaparecia sobre las imagenes oscuras
    (el hero de Waraqa, por ejemplo). Se le da la misma chapa que al boton de menu
-   —negro, texto blanco, filo y sombra— para que sea legible sobre cualquier cosa
+   (negro, texto blanco, filo y sombra) para que sea legible sobre cualquier cosa
    y para que los dos elementos flotantes se lean como pareja. */
 header.scrolled .logo-name.logo-minimal {
     display: block;
@@ -4069,7 +4069,7 @@ html.snap-mode .editorial-section-block.full-bleed-page {
 }
 
 /* =====================================================================
-   9. TABLET Y PORTATIL PEQUENO (769–1100): el hueco entre movil y escritorio
+   9. TABLET Y PORTATIL PEQUENO (769 a 1100): el hueco entre movil y escritorio
    ===================================================================== */
 @media (min-width: 769px) and (max-width: 1100px) {
     .header-container,

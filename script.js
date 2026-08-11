@@ -257,7 +257,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Idioma inicial: manda lo que el visitante eligio a mano; si nunca ha elegido,
     // se mira el idioma del NAVEGADOR (no la IP: no hace falta servicio externo, no
-    // hay latencia ni datos de terceros, y acierta mas — un espanol en Londres sigue
+    // hay latencia ni datos de terceros, y acierta mas: un espanol en Londres sigue
     // leyendo en castellano). Si no queda claro, ingles.
     function detectLang() {
         const list = navigator.languages && navigator.languages.length
@@ -643,7 +643,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const typeOpt = typeSel.options[typeSel.selectedIndex];
             const area = typeOpt.getAttribute(isEN ? 'data-en' : 'data-es') || typeOpt.text;
             const message = (document.getElementById('form-message').value || '').trim();
-            const subject = `[Portfolio] ${area} — ${name}`;
+            const subject = `[Portfolio] ${area} · ${name}`;
 
             const openMailto = () => {
                 const body =
