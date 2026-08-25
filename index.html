@@ -2115,6 +2115,48 @@
                                     </div>
                                 </div>
                             </div>
+
+                            <!-- Case 6: RevitBridge -->
+                            <div class="tech-case-item inverse">
+                                <div class="case-image-wrapper">
+                                    <img src="content/tech/revitbridge/01.png" alt="RevitBridge architecture diagram: Claude Code to a live Revit model" loading="lazy">
+                                </div>
+                                <div class="case-info">
+                                    <span class="case-tag">C# / .NET 8 / Model Context Protocol / Revit API / Roslyn</span>
+                                    <h4>
+                                        <span class="lang-es">Un agente de IA modelando dentro de Revit, con permiso siempre pedido</span>
+                                        <span class="lang-en">An AI agent modeling inside Revit, always asking permission first</span>
+                                    </h4>
+                                    <div class="lang-es">
+                                        <p><strong>El porqué:</strong> ya existen varios puentes IA-Revit. Casi todos resuelven la parte fácil, conectar un LLM a la API, y ninguno la difícil: qué pasa cuando el LLM se equivoca dentro de un modelo real de cliente.</p>
+                                        <p><strong>Lo que construí:</strong> un puente de dos procesos (servidor MCP en .NET 8 más un add-in cargado dentro de Revit, comunicados por un named pipe local sin puerto ni superficie de red) con 19 salvaguardas explícitas. Aprobación humana obligatoria antes de tocar nada preexistente, filtrado del código C# generado antes de poder ejecutarlo, y un catálogo de 60 comandos que crece a partir de lo que se demuestra útil en sesión real, no de una lista imaginada de antemano. Investigación propia, código abierto.</p>
+                                    </div>
+                                    <div class="lang-en">
+                                        <p><strong>The why:</strong> several AI-Revit bridges already exist. Most solve the easy part, wiring an LLM to the API, and skip the hard one: what happens when the LLM gets it wrong inside a real client model.</p>
+                                        <p><strong>What I built:</strong> a two-process bridge (a .NET 8 MCP server plus an add-in loaded inside Revit, talking over a local named pipe with no open port and no network surface) with 19 explicit safeguards. Mandatory human approval before touching anything pre-existing, a filter on generated C# before it can run, and a 60-command catalog that grows from what proves useful in real sessions, not from a list imagined up front. Self-directed research, open source.</p>
+                                    </div>
+
+                                    <figure class="code-proof">
+                                        <figcaption>
+                                            <span class="code-proof-file">SyntaxGuard.cs · filtro previo a compilar</span>
+                                            <span class="code-proof-note"><span class="lang-es">código real en producción</span><span class="lang-en">real production code</span></span>
+                                        </figcaption>
+<pre><code>// Bloquea por NOMBRE DE MÉTODO, no por la variable receptora:
+// "var d = doc; d.Delete(id);" burlaba el filtro anterior.
+private static readonly HashSet&lt;string&gt; MetodosProhibidos = new(StringComparer.Ordinal)
+{
+    "Delete", "SaveAs", "Close",                       // borrado, guardado, cierre
+    "GetMethod", "GetMethods", "InvokeMember"          // vía de reflexión para rodearlo
+};</code></pre>
+                                    </figure>
+
+                                    <div class="case-proof">
+                                        <a class="case-proof-link" href="https://github.com/Ashromer/prompt-to-revit" target="_blank" rel="noopener">
+                                            <svg class="lucide brand-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg><span class="lang-es">Repositorio en GitHub</span><span class="lang-en">Repository on GitHub</span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </section>
 
